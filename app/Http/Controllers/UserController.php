@@ -29,8 +29,15 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-
-        // dd($request);
+        $request->validate([
+            'name' => 'required|max:255|min:7',
+            'username' => 'required|max:255|min:7',
+            'email' => 'required|email:rfc,dns',
+            'no_hp' => 'required|max:12|min:11',
+            'jabatan_id' => 'required',
+            'departement_id' => 'required',
+            'password' => 'required|max:255|min:7'
+        ]);
         User::create([
             'name' => $request->name,
             'username' => $request->username,
@@ -57,7 +64,15 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user   = User::find($id);
-        // dd($user);
+        $request->validate([
+            'name' => 'required|max:255|min:7',
+            'username' => 'required|max:255|min:7',
+            'email' => 'required|email:rfc,dns',
+            'no_hp' => 'required|max:12|min:11',
+            'jabatan_id' => 'required',
+            'departement_id' => 'required',
+            'password' => 'required|max:255|min:7'
+        ]);
         $user->update([
             'name' => $request->name,
             'username' => $request->username,

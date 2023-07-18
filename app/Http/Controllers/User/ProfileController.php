@@ -38,7 +38,7 @@ class ProfileController extends Controller
             // dd($data);
 
         // dd($data);
-        
+
         return redirect()->route('me.index')
         ->with('success', 'Congratulation !  Data Berhasil diupdate');
 

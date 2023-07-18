@@ -16,9 +16,24 @@ class Form extends Model
         return $this->belongsTo(User:: class, 'from_id');
     }
 
+    public function checked()
+    {
+        return $this->belongsTo(User:: class, 'checked_by');
+    }
+
+    public function approve()
+    {
+        return $this->belongsTo(User:: class, 'approve_by');
+    }
+
     public function departement()
     {
         return $this->belongsTo(Departement::class, 'departement_id');
+    }
+
+    public function norek()
+    {
+        return $this->belongsTo(NoRek::class, 'norek_id');
     }
 
 }

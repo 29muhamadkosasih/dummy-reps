@@ -3,6 +3,68 @@
 @section('content')
 <div class="content-body">
     <section id="dashboard-ecommerce">
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <div class="card">
+                    <div class="card-body d-flex align-items-center justify-content-between">
+                        <div>
+                            <h3 class="fw-bolder mb-75">{{ $total }}</h3>
+                            <span>Total Pengajuan</span>
+                        </div>
+                        <div class="avatar bg-light-primary p-50">
+                            <span class="avatar-content">
+                                <i data-feather="user" class="font-medium-4"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="card">
+                    <div class="card-body d-flex align-items-center justify-content-between">
+                        <div>
+                            <h3 class="fw-bolder mb-75">{{$paid}}</h3>
+                            <span>Paid Pengajuan</span>
+                        </div>
+                        <div class="avatar bg-light-danger p-50">
+                            <span class="avatar-content">
+                                <i data-feather="user-plus" class="font-medium-4"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="card">
+                    <div class="card-body d-flex align-items-center justify-content-between">
+                        <div>
+                            <h3 class="fw-bolder mb-75">{{ $process }}</h3>
+                            <span>Process Pengajuan</span>
+                        </div>
+                        <div class="avatar bg-light-success p-50">
+                            <span class="avatar-content">
+                                <i data-feather="user-check" class="font-medium-4"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="card">
+                    <div class="card-body d-flex align-items-center justify-content-between">
+                        <div>
+                            <h3 class="fw-bolder mb-75">{{ $cancel }}</h3>
+                            <span>Cancel Pengajuan</span>
+                        </div>
+                        <div class="avatar bg-light-warning p-50">
+                            <span class="avatar-content">
+                                <i data-feather="user-x" class="font-medium-4"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row match-height">
             <div class="col-lg-4 col-12">
                 <div class="row match-height">
@@ -13,7 +75,7 @@
                                     <div class="col-6">
                                         <h4 class="card-title">Total Pengajuan Perbulan</h4>
                                     </div>
-                                    <div class=" mb-1">
+                                    <div class="fw-bolder mb-1">
                                         <div>
                                             <h1 class="fw-bolder">Rp.{{ number_format($jumlah_total, 0, ',', '.',) }} /
                                                 {{
@@ -31,9 +93,9 @@
                                     <div class="col-6">
                                         <h4 class="card-title">Total RF Perbulan</h4>
                                     </div>
-                                    <div class="fw-bolder mb-1">
+                                    <div class="fw-bolder m-1">
                                         <div>
-                                            <h1 class="fw-bolder">{{ $reports }} / {{ $namaBulan }}</h1>
+                                            <h1 class="fw-bolder">{{ $reports }} / {{ $namaBulan }} </h1>
                                         </div>
                                     </div>
                                 </div>
@@ -51,15 +113,15 @@
                             <div class="card-header">
                                 <h4 class="card-title">Total Pengajuan Perbulan</h4>
                             </div>
-                            <div class="card-body"><canvas id="myAreaChart" width="100%" height="71"></canvas></div>
+                            <div class="card-body"><canvas id="myAreaChart" width="100%" height="75"></canvas></div>
                         </div>
                     </div>
                     <div class="col-xl-6">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Total Pengajuan Perbulan</h4>
+                                <h4 class="card-title">Total pengajuan Perbulan</h4>
                             </div>
-                            <div class="card-body"><canvas id="myBarChart" width="100%" height="71"></canvas></div>
+                            <div class="card-body"><canvas id="myBarChart" width="100%" height="75"></canvas></div>
                         </div>
                     </div>
                 </div>
@@ -68,6 +130,7 @@
         </div>
 
         <div class="row match-height">
+
             <div class="col-lg-12 col-12">
                 <div class="card card-company-table">
                     <div class="card">

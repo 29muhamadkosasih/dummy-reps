@@ -15,34 +15,39 @@ class AuthController extends Controller
     }
 
     public function authanticate(Request $request)
-    {
 
-        $login = $request->validate([
-            'email' => 'required',
-            'password' => 'required'
+        {
+        $credentials = $request->validate([
+            'email' => ['required', 'string', 'email'],
+            'password' => ['required', 'string'],
         ]);
 
-        // dd($request);
-        Session::put('name', $request->name);
-
-
-        if (Auth::attempt($login)) {
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            $ud =Auth::user()->name;
+            if ( auth()->user()->jabatan_id == 2) {
+            return redirect()->route('dashboard.checked')->with('success', ' You have successfully logged in to Policeasu. Now you can start to explore! ');
+            } elseif( auth()->user()->jabatan_id == 3) {
+                return redirect()->route('dashboard.checked')->with('success', ' You have successfully logged in to Policeasu. Now you can start to explore! ');
+            } elseif( auth()->user()->jabatan_id == 4) {
+                return redirect()->route('dashboard.approve')->with('success', ' You have successfully logged in to Policeasu. Now you can start to explore! ');
+            }elseif( auth()->user()->jabatan_id == 5) {
+                return redirect()->route('dashboard.general')->with('success', ' You have successfully logged in to Policeasu. Now you can start to explore! ');
+            }elseif( auth()->user()->jabatan_id == 6) {
+                return redirect()->route('dashboard.general')->with('success', ' You have successfully logged in to Policeasu. Now you can start to explore! ');
+            }else{
+                return redirect()->intended('/dashboard')->with('success', ' You have successfully logged in to Policeasu. Now you can start to explore! ');
+            }
 
-            return redirect()->intended('/dashboard')->with('success', ' 👋 Welcome '. $ud .'!  You have successfully logged in to Policeasu. Now you can start to explore! ');
-        }
+        };
+
             return back()->with('error', 'Login failed!
             Please check your email or password again');
-
     }
 
     public function logout(Request $request)
     {
         Auth::logout();
-        Session::put('login',FALSE);
-        Session::put('level','');
         return redirect('/');
     }
 

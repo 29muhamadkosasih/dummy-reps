@@ -51,12 +51,12 @@
                                     @case($data->status == 1)
                                     <span class="badge bg-success"> RF Telah DiChecked</span> @break
                                     @default
-                                    <span class="badge bg-success">Process</span>
+                                    <span class="badge bg-info">Process</span>
                                     @endswitch
                                 </td>
                                 <td style="text-align: center">
                                     <form onsubmit="return confirm('Apakah Anda Yakin ?');"
-                                        action="{{ route('form.destroy', $data->id) }}" method="POST">
+                                        action="{{ route('form-approve.destroy', $data->id) }}" method="POST">
 
                                         <a href="{{ route('form-approve.detail', $data->id) }}"
                                             class="btn btn-secondary btn-sm"><i data-feather='eye'></i></a>

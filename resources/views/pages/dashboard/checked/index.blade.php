@@ -13,7 +13,7 @@
                                     <div class="col-6">
                                         <h4 class="card-title">Total Pengajuan Perbulan</h4>
                                     </div>
-                                    <div class=" mb-1">
+                                    <div class="fw-bolder mb-1">
                                         <div>
                                             <h1 class="fw-bolder">Rp.{{ number_format($jumlah_total, 0, ',', '.',) }} /
                                                 {{
@@ -31,9 +31,9 @@
                                     <div class="col-6">
                                         <h4 class="card-title">Total RF Perbulan</h4>
                                     </div>
-                                    <div class="fw-bolder mb-1">
+                                    <div class="fw-bolder m-1">
                                         <div>
-                                            <h1 class="fw-bolder">{{ $reports }} / {{ $namaBulan }}</h1>
+                                            <h1 class="fw-bolder">{{ $reports }} / {{ $namaBulan }} </h1>
                                         </div>
                                     </div>
                                 </div>
@@ -51,15 +51,15 @@
                             <div class="card-header">
                                 <h4 class="card-title">Total Pengajuan Perbulan</h4>
                             </div>
-                            <div class="card-body"><canvas id="myAreaChart" width="100%" height="71"></canvas></div>
+                            <div class="card-body"><canvas id="myAreaChart" width="100%" height="75"></canvas></div>
                         </div>
                     </div>
                     <div class="col-xl-6">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Total Pengajuan Perbulan</h4>
+                                <h4 class="card-title">Total pengajuan Perbulan</h4>
                             </div>
-                            <div class="card-body"><canvas id="myBarChart" width="100%" height="71"></canvas></div>
+                            <div class="card-body"><canvas id="myBarChart" width="100%" height="75"></canvas></div>
                         </div>
                     </div>
                 </div>
@@ -120,10 +120,10 @@
                                             <span class="badge bg-secondary">Pending</span>
                                             @break
                                             @case($data->status == 2)
-                                            <span class="badge bg-danger">Reject</span>
+                                            <span class="badge bg-danger">Cancel</span>
                                             @break
                                             @case($data->status == 3)
-                                            <span class="badge bg-warning">Approve</span>
+                                            <span class="badge bg-info">Process</span>
                                             @break
                                             @default
                                             <span class="badge bg-success">PAID</span>

@@ -11,7 +11,7 @@ class CheckedController extends Controller
 {
     public function index()
     {
-        $form = Form::all();
+        $form = Form::where('status', null)->get();
         $departement = Departement::all();
 
         // dd($form);
@@ -50,20 +50,26 @@ class CheckedController extends Controller
         ]);
     }
 
-        public function update(Request $request, $id)
+    public function update(Request $request, $id)
     {
-        $data = Form::findOrFail($id);
-        // dd($date);
-
         // dd($request->all());
+        $data = Form::findOrFail($id);
         $total = $request->qty * $request->price;
         $total2 = $request->qty2 * $request->price2;
         $total3 = $request->qty3 * $request->price3;
         $total4 = $request->qty4 * $request->price4;
+        $total5 = $request->qty * $request->price5;
+        $total6 = $request->qty * $request->price6;
+        $total7 = $request->qty * $request->price7;
+        $total8 = $request->qty * $request->price8;
         $jumlah = $total + $total2 ;
         $jumlah2 = $total3 + $total4 ;
-        $total_jumlah = $jumlah + $jumlah2;
-                // dd($jumlah);
+        $jumlah3 = $total5 + $total6 ;
+        $jumlah4 = $total7 + $total8 ;
+        $total_jumlah1 = $jumlah + $jumlah2;
+        $total_jumlah2 = $jumlah3 + $jumlah4;
+        $jumlah_akhir = $total_jumlah1 + $total_jumlah2;
+
         $data->update([
             'from_id' => $request->from_id,
             'to' => $request->to,
@@ -91,7 +97,28 @@ class CheckedController extends Controller
             'qty4' => $request->qty4,
             'price4' => $request->price4,
             'total4' => $total4,
-            'jumlah_total' => $total_jumlah,
+            'description5' => $request->description5,
+            'unit5' => $request->unit5,
+            'qty5' => $request->qty5,
+            'price5' => $request->price5,
+            'total5' => $total5,
+            'description6' => $request->description6,
+            'unit6'=> $request->unit6,
+            'qty6' => $request->qty6,
+            'price6' => $request->price6,
+            'total6' => $total6,
+            'description7' => $request->description7,
+            'unit7'=> $request->unit7,
+            'qty7' => $request->qty7,
+            'price7' => $request->price7,
+            'total7' => $total7,
+            'description8' => $request->description8,
+            'unit8'=> $request->unit8,
+            'qty8' => $request->qty8,
+            'price8' => $request->price8,
+            'total8' => $total8,
+            'jumlah_total' => $jumlah_akhir,
+            'norek_id' =>$request->norek_id
         ]);
 
         // dd($data);
@@ -104,22 +131,26 @@ class CheckedController extends Controller
         $data = Form::findOrFail($id);
         $userId = auth()->id();
         $date =date('y-m-d');
-        // dd($date);
-
-        // dd($data);
         $total = $request->qty * $request->price;
         $total2 = $request->qty2 * $request->price2;
         $total3 = $request->qty3 * $request->price3;
         $total4 = $request->qty4 * $request->price4;
+        $total5 = $request->qty * $request->price5;
+        $total6 = $request->qty * $request->price6;
+        $total7 = $request->qty * $request->price7;
+        $total8 = $request->qty * $request->price8;
         $jumlah = $total + $total2 ;
         $jumlah2 = $total3 + $total4 ;
-        $total_jumlah = $jumlah + $jumlah2;
-                // dd($jumlah);
+        $jumlah3 = $total5 + $total6 ;
+        $jumlah4 = $total7 + $total8 ;
+        $total_jumlah1 = $jumlah + $jumlah2;
+        $total_jumlah2 = $jumlah3 + $jumlah4;
+        $jumlah_akhir = $total_jumlah1 + $total_jumlah2;
         $data->update([
             'from_id' => $request->from_id,
             'to' => $request->to,
             'ketegori_pengajuan' => $request->ketegori_pengajuan,
-            'departement' => $request->departement,
+            'departement_id' => $request->departement_id,
             'tanggal_kebutuhan' => $request->tanggal_kebutuhan,
             'payment' => $request->payment,
             'description' => $request->description,
@@ -142,13 +173,32 @@ class CheckedController extends Controller
             'qty4' => $request->qty4,
             'price4' => $request->price4,
             'total4' => $total4,
-            'jumlah_total' => $total_jumlah,
+            'description5' => $request->description5,
+            'unit5' => $request->unit5,
+            'qty5' => $request->qty5,
+            'price5' => $request->price5,
+            'total5' => $total5,
+            'description6' => $request->description6,
+            'unit6'=> $request->unit6,
+            'qty6' => $request->qty6,
+            'price6' => $request->price6,
+            'total6' => $total6,
+            'description7' => $request->description7,
+            'unit7'=> $request->unit7,
+            'qty7' => $request->qty7,
+            'price7' => $request->price7,
+            'total7' => $total7,
+            'description8' => $request->description8,
+            'unit8'=> $request->unit8,
+            'qty8' => $request->qty8,
+            'price8' => $request->price8,
+            'total8' => $total8,
+            'jumlah_total' => $jumlah_akhir,
+            'norek_id' =>$request->norek_id,
             'status' =>1,
             'checked_by' =>$userId,
             'checked_date' =>$date
         ]);
-
-        // dd($data);
         return redirect()->route('form-checked.index')
         ->with('success', 'Congratulation !  Data Berhasil diChecked');
     }
@@ -165,12 +215,9 @@ class CheckedController extends Controller
                 "checked_date" =>$date
 
             ]);
-
-            // dd($data);
-            return back()
+        return back()
            ->with('success', 'Congratulation !  Data Berhasil Di Approve');
    }
-
        public function reject($id)
        {
         $userId = auth()->id();
@@ -183,7 +230,7 @@ class CheckedController extends Controller
                 "checked_date" =>$date
             ]
             );
-            return back()
+         return back()
             ->with('success', 'Congratulation !  Data Berhasil Di Reject');
     }
 }

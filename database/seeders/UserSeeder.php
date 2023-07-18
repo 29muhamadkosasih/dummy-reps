@@ -29,6 +29,33 @@ class UserSeeder extends Seeder
 
         ],
         [
+            'name' => 'Fadillah',
+            'email' => 'fadillah@gmail.com',
+            'password' => Hash::make('password'),
+            'jabatan_id'   =>'1',
+            'departement_id'=>'13',
+            'username' => 'fadillah',
+            'no_hp'  =>'08558955100'
+        ],
+        [
+            'name' => 'Bayu',
+            'email' => 'bayu@gmail.com',
+            'password' => Hash::make('password'),
+            'jabatan_id'   =>'1',
+            'departement_id'=>'14',
+            'username' => 'bayu',
+            'no_hp'  =>'08558955211'
+        ],
+        [
+            'name' => 'SPV',
+            'email' => 'spv@gmail.com',
+            'password' => Hash::make('password'),
+            'jabatan_id'   =>'2',
+            'departement_id'=>'1',
+            'username' => 'spv',
+            'no_hp'  =>'08558955239'
+        ],
+        [
             'name' => 'Manajer',
             'email' => 'manajer@gmail.com',
             'password' => Hash::make('password'),
@@ -41,28 +68,28 @@ class UserSeeder extends Seeder
             'name' => 'Finance',
             'email' => 'finance@gmail.com',
             'password' => Hash::make('password'),
-            'jabatan_id'   =>'3',
+            'jabatan_id'   =>'4',
             'departement_id'=>'1',
             'username' => 'finance',
             'no_hp'  =>'08558955200'
         ],
-                [
-            'name' => 'Fadillah',
-            'email' => 'fadillah@gmail.com',
+        [
+            'name' => 'Cashier',
+            'email' => 'cashier@gmail.com',
             'password' => Hash::make('password'),
-            'jabatan_id'   =>'1',
-            'departement_id'=>'13',
-            'username' => 'fadillah',
-            'no_hp'  =>'08558955100'
+            'jabatan_id'   =>'5',
+            'departement_id'=>'12',
+            'username' => 'cashier',
+            'no_hp'  =>'08558955200'
         ],
-                [
-            'name' => 'Bayu',
-            'email' => 'bayu@gmail.com',
+                        [
+            'name' => 'Direktur',
+            'email' => 'direktur@gmail.com',
             'password' => Hash::make('password'),
-            'jabatan_id'   =>'1',
-            'departement_id'=>'14',
-            'username' => 'bayu',
-            'no_hp'  =>'08558955211'
+            'jabatan_id'   =>'6',
+            'departement_id'=>'12',
+            'username' => 'direktur',
+            'no_hp'  =>'085511110'
         ],
     ];
     User::insert($users);

@@ -6,9 +6,9 @@
             <div class="card">
                 <div class="card-header border-bottom">
                     <h4 class="card-title mb-50">Pengajuan Dana</h4>
-                    <a href="{{ url('form/print', $show->id) }}" target="_blank" class="btn btn-primary"><i
-                            data-feather="download"></i>
-                        PDF</a>
+                    <a href="{{ route('form-checked.index') }}" class="btn btn-secondary"><i
+                            data-feather='chevrons-left'></i>
+                        Back</a>
                 </div>
                 <div class="card-body mt-2">
                     <div class="row">
@@ -63,8 +63,8 @@
                                     <tr>
                                         <td>2</td>
                                         <td>{{ $show->description2 }} </td>
-                                        <td>{{ $show->unit2 }}</td>
                                         <td>{{ $show->qty2 }}</td>
+                                        <td>{{ $show->unit2 }}</td>
                                         <td>
                                             @switch($show)
                                             @case($show->price2 == null)
@@ -84,8 +84,8 @@
                                     <tr>
                                         <td>3</td>
                                         <td>{{ $show->description3 }} </td>
-                                        <td>{{ $show->unit3 }}</td>
                                         <td>{{ $show->qty3 }}</td>
+                                        <td>{{ $show->unit3 }}</td>
                                         <td>
                                             @switch($show)
                                             @case($show->price3 == null)
@@ -105,8 +105,8 @@
                                     <tr>
                                         <td>4</td>
                                         <td>{{ $show->description4 }} </td>
-                                        <td>{{ $show->unit4 }}</td>
                                         <td>{{ $show->qty4 }}</td>
+                                        <td>{{ $show->unit4 }}</td>
                                         <td>
                                             @switch($show)
                                             @case($show->price4 == null)
@@ -121,6 +121,94 @@
                                             @break
                                             @default
                                             Rp. {{ number_format($show->total4, 0, ',', '.') }}
+                                            @endswitch
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>{{ $show->description5 }} </td>
+                                        <td>{{ $show->qty5 }}</td>
+                                        <td>{{ $show->unit5 }}</td>
+                                        <td>
+                                            @switch($show)
+                                            @case($show->price5 == null)
+                                            @break
+                                            @default
+                                            Rp. {{ number_format($show->price5, 0, ',', '.') }}
+                                            @endswitch
+                                        </td>
+                                        <td>
+                                            @switch($show)
+                                            @case($show->total5 == '0')
+                                            @break
+                                            @default
+                                            Rp. {{ number_format($show->total5, 0, ',', '.') }}
+                                            @endswitch
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>{{ $show->description6 }} </td>
+                                        <td>{{ $show->qty6 }}</td>
+                                        <td>{{ $show->unit6 }}</td>
+                                        <td>
+                                            @switch($show)
+                                            @case($show->price6 == null)
+                                            @break
+                                            @default
+                                            Rp. {{ number_format($show->price6, 0, ',', '.') }}
+                                            @endswitch
+                                        </td>
+                                        <td>
+                                            @switch($show)
+                                            @case($show->total6 == '0')
+                                            @break
+                                            @default
+                                            Rp. {{ number_format($show->total6, 0, ',', '.') }}
+                                            @endswitch
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>{{ $show->description7 }} </td>
+                                        <td>{{ $show->qty7 }}</td>
+                                        <td>{{ $show->unit7 }}</td>
+                                        <td>
+                                            @switch($show)
+                                            @case($show->price7 == null)
+                                            @break
+                                            @default
+                                            Rp. {{ number_format($show->price7, 0, ',', '.') }}
+                                            @endswitch
+                                        </td>
+                                        <td>
+                                            @switch($show)
+                                            @case($show->total7 == '0')
+                                            @break
+                                            @default
+                                            Rp. {{ number_format($show->total7, 0, ',', '.') }}
+                                            @endswitch
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>{{ $show->description8 }} </td>
+                                        <td>{{ $show->qty8 }}</td>
+                                        <td>{{ $show->unit8 }}</td>
+                                        <td>
+                                            @switch($show)
+                                            @case($show->price8 == null)
+                                            @break
+                                            @default
+                                            Rp. {{ number_format($show->price8, 0, ',', '.') }}
+                                            @endswitch
+                                        </td>
+                                        <td>
+                                            @switch($show)
+                                            @case($show->total8 == '0')
+                                            @break
+                                            @default
+                                            Rp. {{ number_format($show->total8, 0, ',', '.') }}
                                             @endswitch
                                         </td>
                                     </tr>

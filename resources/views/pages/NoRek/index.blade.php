@@ -40,7 +40,7 @@
                             <th>Bank</th>
                             <th>Rekening</th>
                             <th>Nama Penerima</th>
-                            <th>Action</th>
+                            <th width='100px'>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,7 +50,7 @@
                             <td>{{ $data->bank->nama_bank }}</td>
                             <td>{{ $data->no_rekening }}</td>
                             <td>{{ $data->nama_penerima }}</td>
-                            <td>
+                            <td style="text-align: center">
                                 <form onsubmit="return confirm('Apakah Anda Yakin ?');"
                                     action="{{ route('norek.destroy', $data->id) }}" method="POST">
                                     <a href="{{ route('norek.edit', $data->id) }}" class="btn btn-warning btn-sm">

@@ -6,16 +6,20 @@ use PDF;
 use App\Models\Bank;
 use App\Models\Form;
 use App\Models\User;
+use App\Models\NoRek;
+use App\Models\Departement;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Departement;
+use DB;
+
 
 class FormController extends Controller
 {
     public function index()
     {
         $userId = auth()->id();
-        $bank =Bank::all();
+        $bank =Bank::get();
+        $norek =NoRek::get();
         $form = Form::where('from_id', $userId)->get();
         $role =User::where('jabatan_id', $userId)->get();
         $departement = Departement::all();
@@ -25,20 +29,21 @@ class FormController extends Controller
             'role'   =>$role,
             'bank'   =>$bank,
             'departement'=> $departement,
+            'norek'   =>$norek
         ]);
     }
 
     public function store(Request $request)
     {
         $userId = auth()->id();
-        // dd($userId);
         $request->validate([
             'qty' => 'required',
             'unit' => 'required',
             'price' => 'required',
-            'departement_id' => 'required'
+            'departement_id' => 'required',
+            'ketegori_pengajuan' => 'required',
+            'payment' => 'required'
         ]);
-        // dd($request->all());
         $total = $request->qty * $request->price;
         $total2 = $request->qty2 * $request->price2;
         $total3 = $request->qty3 * $request->price3;
@@ -50,16 +55,12 @@ class FormController extends Controller
 
         $jumlah = $total + $total2 ;
         $jumlah2 = $total3 + $total4 ;
-        
         $jumlah3 = $total5 + $total6 ;
         $jumlah4 = $total7 + $total8 ;
-        
         $total_jumlah1 = $jumlah + $jumlah2;
         $total_jumlah2 = $jumlah3 + $jumlah4;
-
         $jumlah_akhir = $total_jumlah1 + $total_jumlah2;
 
-        // dd($total_jumlah);
         Form::create([
            'from_id' => $userId,
             'to' => $request->to,
@@ -87,32 +88,31 @@ class FormController extends Controller
             'qty4' => $request->qty4,
             'price4' => $request->price4,
             'total4' => $total4,
-                        'description5' => $request->description5,
+            'description5' => $request->description5,
             'unit5' => $request->unit5,
             'qty5' => $request->qty5,
             'price5' => $request->price5,
             'total5' => $total5,
-                        'description6' => $request->description6,
+            'description6' => $request->description6,
             'unit6'=> $request->unit6,
             'qty6' => $request->qty6,
             'price6' => $request->price6,
             'total6' => $total6,
-                                    'description7' => $request->description7,
+            'description7' => $request->description7,
             'unit7'=> $request->unit7,
             'qty7' => $request->qty7,
             'price7' => $request->price7,
             'total7' => $total7,
-                                                'description8' => $request->description8,
+            'description8' => $request->description8,
             'unit8'=> $request->unit8,
             'qty8' => $request->qty8,
             'price8' => $request->price8,
             'total8' => $total8,
             'jumlah_total' => $jumlah_akhir,
-
+            'norek_id' =>$request->norek_id
         ]);
         return redirect()->route('form.index')
-        ->with('success', 'Congratulation !  Data Berhasil ditambahkan');
-
+                        ->with('success', 'Congratulation !  Data Berhasil ditambahkan');
     }
 
     public function show($id)
@@ -128,7 +128,6 @@ class FormController extends Controller
     {
         $edit = Form::find($id);
         $departement = Departement::all();
-
         return view('pages.form.edit',[
             'edit'   =>$edit,
             'departement' =>$departement
@@ -159,14 +158,14 @@ class FormController extends Controller
 
         $jumlah = $total + $total2 ;
         $jumlah2 = $total3 + $total4 ;
-        
+
         $jumlah3 = $total5 + $total6 ;
         $jumlah4 = $total7 + $total8 ;
-        
+
         $total_jumlah1 = $jumlah + $jumlah2;
         $total_jumlah2 = $jumlah3 + $jumlah4;
 
-        $jumlah_akhir = $total_jumlah1 + $total_jumlah2; 
+        $jumlah_akhir = $total_jumlah1 + $total_jumlah2;
                 // dd($jumlah);
 
         $data->update([
@@ -196,22 +195,22 @@ class FormController extends Controller
             'qty4' => $request->qty4,
             'price4' => $request->price4,
             'total4' => $total4,
-                        'description5' => $request->description5,
+            'description5' => $request->description5,
             'unit5' => $request->unit5,
             'qty5' => $request->qty5,
             'price5' => $request->price5,
             'total5' => $total5,
-                        'description6' => $request->description6,
+            'description6' => $request->description6,
             'unit6'=> $request->unit6,
             'qty6' => $request->qty6,
             'price6' => $request->price6,
             'total6' => $total6,
-                                    'description7' => $request->description7,
+            'description7' => $request->description7,
             'unit7'=> $request->unit7,
             'qty7' => $request->qty7,
             'price7' => $request->price7,
             'total7' => $total7,
-                                                'description8' => $request->description8,
+            'description8' => $request->description8,
             'unit8'=> $request->unit8,
             'qty8' => $request->qty8,
             'price8' => $request->price8,
@@ -237,9 +236,15 @@ class FormController extends Controller
     {
         $delete = Form::find($id);
         $delete->delete();
-        return redirect()->route('form-approve.index')
+        return redirect()->route('form-checked.index')
         ->with('success', 'Congratulation !  Data Berhasil dihapus');
     }
 
+    public function getBank($id)
+    {
+        $NoRek =NoRek::where('kode_bank', $id)->get();
+        // dd($norek);
+        return response()->json($NoRek);
+    }
 
 }

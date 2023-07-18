@@ -25,8 +25,8 @@ class NoRekController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'nama_penerima' => 'required',
-            'no_rekening' => 'required',
+            'nama_penerima' => 'required|max:255|min:4',
+            'no_rekening' => 'required|max:17|min:10',
             'bank_id'=>'required'
 
         ]);

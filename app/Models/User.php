@@ -50,6 +50,16 @@ class User extends Authenticatable
         return $this->hasMany(Form::class);
 
     }
+    public function checked()
+    {
+        return $this->hasMany(Form::class);
+
+    }
+    public function approve()
+    {
+        return $this->hasMany(Form::class);
+
+    }
     public function jabatan()
     {
         return $this->belongsTo(Jabatan:: class, 'jabatan_id');

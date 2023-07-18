@@ -59,14 +59,13 @@
                                     @endswitch
                                 </td>
                                 <td style="text-align: center">
-
                                     @switch($data)
                                     @case($data->status == 2)
                                     <span class="badge bg-danger"> RF Telah Di Reject</span>
                                     @break
 
                                     @case($data->status == 3)
-                                    <span class="badge bg-success"> RF Telah Di Approve</span>
+                                    <span class="badge bg-success"> RF Telah Di Checked</span>
                                     @break
                                     @default
 
@@ -80,7 +79,7 @@
                                             class="btn btn-warning btn-sm">
                                             <i data-feather='edit'></i>
                                         </a>
-                                        
+
                                         <a href="{{ url('reject/maker', $data->id) }}" class="btn btn-danger btn-sm">
                                             <i data-feather='x'></i>
                                         </a>

@@ -1,7 +1,12 @@
 @extends('layout.master')
 @section('content')
-<section id="complex-header-datatable">
 
+{{-- cdn select --}}
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
+    integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+
+<section id="complex-header-datatable">
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -54,7 +59,6 @@
                                     {{ $data->tanggal_kebutuhan }}
                                 </td>
                                 <td>
-                                    {{-- {{ $data->status }} --}}
                                     @switch($data)
                                     @case($data->status == null)
                                     <span class="badge bg-secondary">Pending</span>
@@ -62,8 +66,11 @@
                                     @case($data->status == 2)
                                     <span class="badge bg-danger">Reject</span>
                                     @break
+                                    @case($data->status == 3)
+                                    <span class="badge bg-warning">Approve</span>
+                                    @break
                                     @default
-                                    <span class="badge bg-success">Process</span>
+                                    <span class="badge bg-success">PAID</span>
                                     @endswitch
                                 </td>
                                 <td style="text-align: center">
@@ -135,17 +142,6 @@
                                         </select>
                                     </div>
                                 </div>
-                                {{-- <div class="col-xl-4 col-md-6 col-12">
-                                    <div class="mb-1">
-                                        <label class="form-label" for="helpInputTop">
-                                            <h5>Departement</h5>
-                                        </label>
-                                        <input type="text" class="form-control" id="basicInput" name="departement_id"
-                                            placeholder="Enter" required value="{{ Auth::user()->departement_id }}"
-                                            readonly />
-
-                                    </div>
-                                </div> --}}
                                 <input type="hidden" name="departement_id" value="{{ Auth::user()->departement_id }}">
                                 <div class="col-xl-4 col-md-6 col-12">
                                     <div class="mb-1">
@@ -160,22 +156,10 @@
                                 <div class="col-xl-4 col-md-6 col-12">
                                     <div class="mb-1">
                                         <label class="form-label" for="helpInputTop">
-                                            <h5>Payment</h5>
-                                        </label>
-                                        <select class="form-select" id="selectDefault" name="payment" required>
-                                            <option selected>Open this select</option>
-                                            <option value="Cash">Cash</option>
-                                            <option value="Transfer">Transfer</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-md-6 col-12">
-                                    <div class="mb-1">
-                                        <label class="form-label" for="helpInputTop">
                                             <h5>Ditujukan Untuk</h5>
                                         </label>
                                         <select class="form-select" id="selectDefault" name="to" required>
-                                            <option selected>Open this select</option>
+                                            <option>Open this select</option>
                                             <option value="SPV">SPV</option>
                                             <option value="Finance">Finance</option>
                                             <option value="Manager">Manager</option>
@@ -183,38 +167,31 @@
                                         </select>
                                     </div>
                                 </div>
-
                                 <div class="col-xl-4 col-md-6 col-12">
                                     <div class="mb-1">
                                         <label class="form-label" for="helpInputTop">
-                                            <h5>Nama Penerima</h5>
+                                            <h5>Payment</h5>
                                         </label>
-                                        <input type="text" class="form-control" id="basicInput" placeholder="Enter"
-                                            name="" />
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-md-6 col-12">
-                                    <div class="mb-1">
-                                        <label class="form-label" for="basicInput">
-                                            <h5>Nama Bank</h5>
-                                        </label>
-                                        <select class="form-select" id="selectDefault" name="">
+                                        <select class="form-select" id="selectDefault" name="payment" id="car"
+                                            onchange="enableBrand(this)" required>
                                             <option selected>Open this select</option>
-                                            @foreach ($bank as $key => $value)
-                                            <option value="{{ $value->id }}">
-                                                {{ $value->nama_bank }}
-                                            </option>
-                                            @endforeach
+                                            <option value="Cash">Cash</option>
+                                            <option value="Transfer">Transfer</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-md-6 col-12">
-                                    <div class="mb-1">
-                                        <label class="form-label" for="helpInputTop">
-                                            <h5>No. Rekening</h5>
+                                <div class="col-xl-12 col-md-12 col-12 d-none" id="carbrand">
+                                    <div class="mb-0">
+                                        <label class="form-label" for="select2-basic">
+                                            <h5>Nama Rekening Penerima</h5>
                                         </label>
-                                        <input type="text" class="form-control" id="basicInput" placeholder="Enter"
-                                            name="" />
+                                        <select class="select2 form-select" id="select2-basic" name="norek_id">
+                                            <option></option>
+                                            @foreach ($norek as $item)
+                                            <option value="{{ $item->id }}">{{ $item->nama_penerima }}</option>
+                                            @endforeach
+                                        </select>
+
                                     </div>
                                 </div>
                             </div>
@@ -239,7 +216,7 @@
                                                         <h5>Description</h5>
                                                     </label>
                                                     <input type="text" class="form-control" id="basicInput"
-                                                        name="description" placeholder="Enter" autofocus />
+                                                        name="description" placeholder="Enter" autofocus required />
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-md-6 col-12">
@@ -248,7 +225,7 @@
                                                         <h5>Unit</h5>
                                                     </label>
                                                     <input type="text" class="form-control" id="basicInput" name="unit"
-                                                        placeholder="Enter" autofocus />
+                                                        placeholder="Enter" autofocus required />
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-md-6 col-12">
@@ -257,7 +234,7 @@
                                                         <h5>Price</h5>
                                                     </label>
                                                     <input type="number" class="form-control" id="basicInput"
-                                                        name="price" placeholder="Enter" autofocus />
+                                                        name="price" placeholder="Enter" autofocus required />
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-md-6 col-12">
@@ -266,7 +243,7 @@
                                                         <h5>Qty</h5>
                                                     </label>
                                                     <input type="number" class="form-control" id="basicInput" name="qty"
-                                                        placeholder="Enter" autofocus />
+                                                        placeholder="Enter" autofocus required />
                                                 </div>
                                             </div>
                                         </div>
@@ -657,6 +634,66 @@
         </div>
     </div>
     <!--/ Edit User Modal -->
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+
+    <script type="text/javascript">
+        function enableBrand(answer) {
+            console.log(answer.value);
+            if (answer.value == 'Transfer') {
+                document.getElementById('carbrand').classList.remove('d-none');
+                document.getElementById('carbrand2').classList.remove('d-none');
+                document.getElementById('carbrand3').classList.remove('d-none');
+            } else {
+                document.getElementById('carbrand').classList.add('d-none');
+                document.getElementById('carbrand2').classList.add('d-none');
+                document.getElementById('carbrand3').classList.add('d-none');
+            }
+        }
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('#bank').on('change', function () {
+                var kode_bank = $(this).val();
+                // console.log(kode_bank);
+                if (kode_bank) {
+                    $.ajax({
+                        url: '/form/' + kode_bank,
+                        type: 'GET',
+                        data: {
+                            '_token': '{{ csrf_token() }}'
+                        },
+                        dataType: 'json',
+                        success: function (data) {
+                            console.log(data);
+                            if (data) {
+                                $('#user').empty();
+                                $('#user').append('<option value="">-Pilih-</option>');
+                                $.each(data, function (key, NoRek) {
+                                    $('select[name="norek_id"]').append(
+                                        '<option value="' + NoRek.id + '">' +
+                                        NoRek.nama_penerima + '</option>'
+                                    );
+                                });
+                            } else {
+                                $('#user').empty();
+                            }
+                        }
+                    });
+                } else {
+                    $('#user').empty();
+                }
+            });
+        });
+    </script>
 
 </section>
 

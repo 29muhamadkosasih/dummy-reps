@@ -1,4 +1,3 @@
-@auth
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
 <!-- BEGIN: Head-->
@@ -55,6 +54,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/plugins/forms/form-wizard.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/plugins/forms/form-validation.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/forms/select/select2.min.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('app-assets/vendors/css/forms/spinner/jquery.bootstrap-touchspin.css') }}">
 
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/core/menu/menu-types/vertical-menu.css') }}">
@@ -119,7 +120,6 @@
                                 alt="avatar" height="40" width="40"><span class="avatar-status-online"></span></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
-
                         <a class="dropdown-item" href="{{ url('logout') }}"><i class="me-50" data-feather="power">
                             </i> Logout</a>
                     </div>
@@ -150,10 +150,12 @@
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+                @if ( auth()->user()->jabatan_id == 1 )
+
                 <li class=" nav-item"><a class="d-flex align-items-center" href="index.html"><i
                             data-feather="home"></i><span class="menu-title text-truncate"
                             data-i18n="Dashboards">Dashboard</span><span
-                            class="badge badge-light-warning rounded-pill ms-auto me-1">1</span></a>
+                            class="badge badge-light-warning rounded-pill ms-auto me-1"></span></a>
                     <ul class="menu-content">
                         <li class="{{ (request()->is('dashboard')) ? 'active' : '' }}"><a
                                 class="d-flex align-items-center" href="{{ route('dashboard.index') }}"><i
@@ -162,8 +164,6 @@
                         </li>
                     </ul>
                 </li>
-                @if ( auth()->user()->jabatan_id == 1 )
-
                 <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i
                         data-feather="more-horizontal"></i>
                 </li>
@@ -177,26 +177,106 @@
                             class="menu-title text-truncate" data-i18n="Kanban">Form</span></a>
                 </li>
 
-                @elseif ( auth()->user()->jabatan_id == 3 || 4)
+                @elseif( auth()->user()->jabatan_id == 2)
+                <li class=" nav-item"><a class="d-flex align-items-center" href="index.html"><i
+                            data-feather="home"></i><span class="menu-title text-truncate"
+                            data-i18n="Dashboards">Dashboard</span><span
+                            class="badge badge-light-warning rounded-pill ms-auto me-1"></span></a>
+                    <ul class="menu-content">
+                        <li class="{{ (request()->is('dashboard-checked')) ? 'active' : '' }}"><a
+                                class="d-flex align-items-center" href="{{ route('dashboard.checked') }}"><i
+                                    data-feather="circle"></i><span class="menu-item text-truncate"
+                                    data-i18n="eCommerce">Checked</span></a>
+                        </li>
+                    </ul>
+                </li>
                 <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i
                         data-feather="more-horizontal"></i>
                 </li>
-
                 <li class=" nav-item {{ (request()->is('me')) ? 'active' : '' }}"><a class="d-flex align-items-center"
                         href="{{ route('me.index') }}"><i data-feather="user"></i><span class="menu-title text-truncate"
                             data-i18n="Kanban">Profile</span></a>
                 </li>
+
                 <li class=" nav-item {{ (request()->is('form-checked')) ? 'active' : '' }}"><a
                         class="d-flex align-items-center" href="{{ route('form-checked.index') }}"><i
                             data-feather='eye'></i><span class="menu-title text-truncate" data-i18n="Kanban">Form
                             Checked</span></a>
+                </li>
+                @elseif( auth()->user()->jabatan_id == 3)
+                <li class=" nav-item"><a class="d-flex align-items-center" href="index.html"><i
+                            data-feather="home"></i><span class="menu-title text-truncate"
+                            data-i18n="Dashboards">Dashboard</span><span
+                            class="badge badge-light-warning rounded-pill ms-auto me-1"></span></a>
+                    <ul class="menu-content">
+                        <li class="{{ (request()->is('dashboard-checked')) ? 'active' : '' }}"><a
+                                class="d-flex align-items-center" href="{{ route('dashboard.checked') }}"><i
+                                    data-feather="circle"></i><span class="menu-item text-truncate"
+                                    data-i18n="eCommerce">Checked</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i
+                        data-feather="more-horizontal"></i>
+                </li>
+                <li class=" nav-item {{ (request()->is('me')) ? 'active' : '' }}"><a class="d-flex align-items-center"
+                        href="{{ route('me.index') }}"><i data-feather="user"></i><span class="menu-title text-truncate"
+                            data-i18n="Kanban">Profile</span></a>
+                </li>
+
+                <li class=" nav-item {{ (request()->is('form-checked')) ? 'active' : '' }}"><a
+                        class="d-flex align-items-center" href="{{ route('form-checked.index') }}"><i
+                            data-feather='eye'></i><span class="menu-title text-truncate" data-i18n="Kanban">Form
+                            Checked</span></a>
+                </li>
+                @elseif( auth()->user()->jabatan_id == 4)
+
+                <li class=" nav-item"><a class="d-flex align-items-center" href="index.html"><i
+                            data-feather="home"></i><span class="menu-title text-truncate"
+                            data-i18n="Dashboards">Dashboard</span><span
+                            class="badge badge-light-warning rounded-pill ms-auto me-1"></span></a>
+                    <ul class="menu-content">
+                        <li class="{{ (request()->is('dashboard-approve')) ? 'active' : '' }}"><a
+                                class="d-flex align-items-center" href="{{ route('dashboard.approve') }}"><i
+                                    data-feather="circle"></i><span class="menu-item text-truncate"
+                                    data-i18n="eCommerce">Approve</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i
+                        data-feather="more-horizontal"></i>
+                </li>
+                <li class=" nav-item {{ (request()->is('me')) ? 'active' : '' }}"><a class="d-flex align-items-center"
+                        href="{{ route('me.index') }}"><i data-feather="user"></i><span class="menu-title text-truncate"
+                            data-i18n="Kanban">Profile</span></a>
                 </li>
 
                 <li
                     class=" nav-item {{ (request()->is('form-approve', 'form-approve.edit', 'form-approve.show','form-approve.approve')) ? 'active' : '' }}">
                     <a class="d-flex align-items-center" href="{{ route('form-approve.index') }}"><i
                             data-feather='check-circle'></i><span class="menu-title text-truncate"
-                            data-i18n="Kanban">Form Approve</span></a>
+                            data-i18n="Kanban">Form
+                            Approve</span></a>
+                </li>
+                @else
+                <li class=" nav-item"><a class="d-flex align-items-center" href="index.html"><i
+                            data-feather="home"></i><span class="menu-title text-truncate"
+                            data-i18n="Dashboards">Dashboard</span><span
+                            class="badge badge-light-warning rounded-pill ms-auto me-1"></span></a>
+                    <ul class="menu-content">
+                        <li class="{{ (request()->is('dashboard-general')) ? 'active' : '' }}"><a
+                                class="d-flex align-items-center" href="{{ route('dashboard.general') }}"><i
+                                    data-feather="circle"></i><span class="menu-item text-truncate"
+                                    data-i18n="eCommerce">General</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i
+                        data-feather="more-horizontal"></i>
+                </li>
+                <li class=" nav-item {{ (request()->is('me')) ? 'active' : '' }}"><a class="d-flex align-items-center"
+                        href="{{ route('me.index') }}"><i data-feather="user"></i><span class="menu-title text-truncate"
+                            data-i18n="Kanban">Profile</span></a>
                 </li>
 
                 <li class=" nav-item {{ (request()->is('form-list')) ? 'active' : '' }}"><a
@@ -219,20 +299,10 @@
                             data-feather="send"></i><span class="menu-title text-truncate"
                             data-i18n="Kanban">Rekening</span></a>
                 </li>
-
                 <li class=" nav-item {{ (request()->is('bank')) ? 'active' : '' }}"><a class="d-flex align-items-center"
                         href="{{ route('bank.index') }}"><i data-feather="database"></i><span
                             class="menu-title text-truncate" data-i18n="Kanban">Bank</span></a>
                 </li>
-
-                @else
-
-                <li class=" nav-item {{ (request()->is('form-list')) ? 'active' : '' }}"><a
-                        class="d-flex align-items-center" href="{{ route('form-list.index') }}"><i
-                            data-feather='list'></i><span class="menu-title text-truncate" data-i18n="Kanban">
-                            Form List </span></a>
-                </li>
-
                 @endif
             </ul>
         </div>
@@ -293,6 +363,7 @@
     <script src="{{ asset('app-assets/vendors/js/forms/cleave/cleave.min.js')}}"></script>
     <script src="{{ asset('app-assets/vendors/js/forms/cleave/addons/cleave-phone.us.j')}}s"></script>
     <script src="{{ asset('app-assets/vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('app-assets/js/scripts/forms/form-select2.js') }}"></script>
 
     <!-- END: Page Vendor JS-->
 
@@ -326,9 +397,13 @@
     <script src="{{ asset('app-assets/js/scripts/pages/modal-edit-user.js') }}"></script>
     <script src="{{ asset('app-assets/js/scripts/pages/modal-share-project.js') }}"></script>
     <script src="{{ asset('app-assets/js/scripts/pages/auth-login.js') }}"></script>
+    <script src="{{ asset('app-assets/js/scripts/forms/form-number-input.js') }}"></script>
 
 
     <!-- END: Page JS-->
+
+    <script src="{{ asset('app-assets/demo/chart-area-demo.js')}}"></script>
+    <script src="{{ asset('app-assets/demo/chart-bar-demo.js')}}"></script>
 
     <script>
         $(window).on('load', function () {
@@ -372,5 +447,3 @@
 <!-- END: Body-->
 
 </html>
-
-@endauth

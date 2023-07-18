@@ -18,7 +18,9 @@ class CreateFormTable extends Migration
             $table->unsignedBigInteger('from_id')->nullable();
             $table->foreign('from_id')->references('id')->on('users');
             $table->unsignedBigInteger('departement_id')->nullable();
-            $table->foreign('departement_id')->references('id')->on('departement')->onDelete('cascade');
+            $table->foreign('departement_id')->references('id')->on('departement');
+            $table->unsignedBigInteger('norek_id')->nullable();
+            $table->foreign('norek_id')->references('id')->on('norek');
             $table->string('to')->nullable();
             $table->string('ketegori_pengajuan');
             $table->string('tanggal_kebutuhan');
@@ -65,9 +67,11 @@ class CreateFormTable extends Migration
             $table->string('total8')->nullable();
             $table->string('jumlah_total');
             $table->string('status')->nullable();
-            $table->string('checked_by')->nullable();
+            $table->unsignedBigInteger('checked_by')->nullable();
+            $table->foreign('checked_by')->references('id')->on('users');
             $table->date('checked_date')->nullable();
-            $table->string('approve_by')->nullable();
+            $table->unsignedBigInteger('approve_by')->nullable();
+            $table->foreign('approve_by')->references('id')->on('users');
             $table->date('approve_date')->nullable();
             $table->timestamps();
         });

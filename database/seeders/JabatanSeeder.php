@@ -18,16 +18,16 @@ class JabatanSeeder extends Seeder
             'jabatan' => ('General'),
         ]);
         DB::table('jabatan')->insert([
-            'jabatan' => ('Cashier'),
+            'jabatan' => ('Supervisor'),
         ]);
         DB::table('jabatan')->insert([
-            'jabatan' => ('Supervisor'),
+            'jabatan' => ('Manager'),
         ]);
         DB::table('jabatan')->insert([
             'jabatan' => ('Finance'),
         ]);
         DB::table('jabatan')->insert([
-            'jabatan' => ('Manager'),
+            'jabatan' => ('Cashier'),
         ]);
         DB::table('jabatan')->insert([
             'jabatan' => ('Direktor'),

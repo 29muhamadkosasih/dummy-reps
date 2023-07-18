@@ -38,7 +38,7 @@
                         <tr>
                             <th>No</th>
                             <th>Nama</th>
-                            <th>Action</th>
+                            <th width='100px'>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,7 +46,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $data->nama_bank }}</td>
-                            <td>
+                            <td style="text-align: center">
                                 <form onsubmit="return confirm('Apakah Anda Yakin ?');"
                                     action="{{ route('bank.destroy', $data->id) }}" method="POST">
                                     <a href="{{ route('bank.edit', $data->id) }}" class="btn btn-warning btn-sm">

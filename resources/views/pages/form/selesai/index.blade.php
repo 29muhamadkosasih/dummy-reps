@@ -14,13 +14,15 @@
                             <tr>
                                 <th width='10px' style="text-align: center">No</th>
                                 <th>Dari</th>
-                                <th>Tanggal Kebutuhan</th>
                                 <th>Departement</th>
+                                <th>Payment Method</th>
                                 <th>Kategori
                                     Pengajuan</th>
+                                <th>Jumlah/RP.</th>
+                                <th>Nama Bank </th>
+                                <th>No Rekening </th>
+                                <th>A/n </th>
                                 <th>Status</th>
-                                <th>Jumlah </th>
-                                <th width='180px' style="text-align: center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,13 +33,38 @@
                                     {{ $data->user->name }}
                                 </td>
                                 <td>
-                                    {{ $data->tanggal_kebutuhan }}
-                                </td>
-                                <td>
                                     {{ $data->departement->nama_departement }}
                                 </td>
                                 <td>
+                                    {{ $data->payment }}
+                                </td>
+                                <td>
                                     {{ $data->ketegori_pengajuan }}
+                                </td>
+                                <td>
+                                    {{ $data->jumlah_total }}
+                                </td>
+                                <td>
+                                    @switch($data)
+                                    @case($data->norek_id == null)
+                                    @break
+                                    @default
+                                    {{ $data->norek->bank->nama_bank }}
+                                    @endswitch
+                                </td>
+                                <td>
+                                    @switch($data)
+                                    @case($data->norek_id == null)
+                                    @break
+                                    @default
+                                    {{ $data->norek->no_rekening }} @endswitch
+                                </td>
+                                <td>
+                                    @switch($data)
+                                    @case($data->norek_id == null)
+                                    @break
+                                    @default
+                                    {{ $data->norek->nama_penerima }} @endswitch
                                 </td>
                                 <td>
                                     {{-- {{ $data->status }} --}}
@@ -48,16 +75,18 @@
                                     @case($data->status == 1)
                                     <span class="badge bg-success"> RF Telah DiChecked</span> @break
                                     @default
-                                    <span class="badge bg-success">Selesai</span>
+                                    <span class="badge bg-success">PAID</span>
                                     @endswitch
+                                    {{-- <a href="{{ url('form/print', $data->id) }}" target="_blank"
+                                        class="btn btn-icon btn-flat-success">
+                                        <i data-feather='download'></i>
+                                    </a> --}}
                                 </td>
-                                <td>
-                                    {{ $data->jumlah_total }}
-                                </td>
-                                <td style="text-align: center">
+                                {{-- <td style="text-align: center">
                                     <a href="{{ route('form-list.show', $data->id) }}"
                                         class="btn btn-secondary btn-sm"><i data-feather='eye'></i></a>
-                                </td>
+                                    <span class="badge bg-success">PAID</span>
+                                </td> --}}
                             </tr>
                             @endforeach
                         </tbody>

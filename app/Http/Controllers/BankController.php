@@ -18,7 +18,7 @@ class BankController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_bank'=>['required'],
+            'nama_bank'=>'required|max:255|min:5 ',
 
         ]);
 

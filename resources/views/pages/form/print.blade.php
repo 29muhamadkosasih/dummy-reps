@@ -64,7 +64,7 @@
             <tr>
                 <td style="width: 30%;">Departement</td>
                 <td style="width: 5%;">:</td>
-                <td style="width: 65%;">{{ $data->departement }}</td>
+                <td style="width: 65%;">{{ $data->departement->nama_departement }}</td>
             </tr>
             <tr>
                 <td style="width: 30%;">Tanggal Pengajuan</td>
@@ -303,12 +303,9 @@
         {{-- <p>menyatakan dengan sebenar-benarnya akan bersungguh-sungguh belajar dan bekerja.</p> --}}
 
         {{-- <div style="width: 50%; text-align: left; float: right;">Purwodadi, 20 Januari 2020</div><br> --}}
-        <div style="width: 50%; text-align: left; float: left;">Amount Received</div><br><br><br><br>
-
-
-        <div style="width: 50%; text-align: right; float: right;">Yang bertanda tangan,</div><br><br><br><br>
-
-        <div style="width: 50%; text-align: left; float: left;">Arbrian Abdul Jamal</div>
+        {{-- <div style="width: 50%; text-align: left; float: left;">Amount Received</div><br><br><br><br> --}}
+        {{-- <div style="width: 50%; text-align: right; float: right;">Yang bertanda tangan,</div><br><br><br><br> --}}
+        {{-- <div style="width: 50%; text-align: left; float: left;">Arbrian Abdul Jamal</div> --}}
 
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
