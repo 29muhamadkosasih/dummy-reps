@@ -12,7 +12,7 @@
         content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
     {{-- <title>Dashboard ecommerce - Vuexy - Bootstrap HTML admin template</title> --}}
-    <title>Form FRF </title>
+    <title>REQUEST FUND </title>
 
     <link rel="apple-touch-icon" href="{{ asset('app-assets/images/ico/apple-icon-120.png') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('app-assets/images/ico/icons8-x-men-48.png') }}">
@@ -139,7 +139,7 @@
                             <img alt="svgImg"
                                 src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iOTYiIGhlaWdodD0iOTYiCnZpZXdCb3g9IjAgMCA0OCA0OCIKc3R5bGU9IiBmaWxsOiMwMDAwMDA7Ij48cmVjdCB3aWR0aD0iNS45OTkiIGhlaWdodD0iMzYuMDYyIiB4PSIyMC43NSIgeT0iNS43MTkiIGZpbGw9IiM2YzE5ZmYiIHRyYW5zZm9ybT0icm90YXRlKC00NS4wMDEgMjMuNzUgMjMuNzUpIj48L3JlY3Q+PHJlY3Qgd2lkdGg9IjM1LjM1NSIgaGVpZ2h0PSI1Ljk5OSIgeD0iNi4zMjIiIHk9IjIxIiBmaWxsPSIjNmMxOWZmIiB0cmFuc2Zvcm09InJvdGF0ZSgtNDUuMDAxIDI0IDI0KSI+PC9yZWN0PjxyZWN0IHdpZHRoPSI1Ljk5OSIgaGVpZ2h0PSI1Ljk5OSIgeD0iMjEiIHk9IjIxIiBmaWxsPSIjMjEwMGM0IiB0cmFuc2Zvcm09InJvdGF0ZSgtNDUuMDAxIDI0IDI0KSI+PC9yZWN0PjxwYXRoIGZpbGw9IiM2YzE5ZmYiIGQ9Ik0yNCw0QzEyLjk1NCw0LDQsMTIuOTU0LDQsMjRjMCwxMS4wNDYsOC45NTQsMjAsMjAsMjBzMjAtOC45NTQsMjAtMjBDNDQsMTIuOTU0LDM1LjA0Niw0LDI0LDR6IE0yNCwzOGMtNy43MzIsMC0xNC02LjI2OC0xNC0xNGMwLTcuNzMyLDYuMjY4LTE0LDE0LTE0czE0LDYuMjY4LDE0LDE0QzM4LDMxLjczMiwzMS43MzIsMzgsMjQsMzh6Ij48L3BhdGg+PGc+PHBhdGggZmlsbD0iIzIxMDBjNCIgZD0iTTM1Ljc4MywzMS41NDFjLTEuMDkyLDEuNzAzLTIuNTQsMy4xNS00LjI0Miw0LjI0Mmw0LjMwNSw0LjMwNSBjMS42MTktMS4xOTQsMy4wNDgtMi42MjMsNC4yNDItNC4yNDJMMzUuNzgzLDMxLjU0MXoiPjwvcGF0aD48cGF0aCBmaWxsPSIjMjEwMGM0IiBkPSJNMTIuMjE3LDMxLjU0MWwtNC4zMDUsNC4zMDVjMS4xOTQsMS42MTksMi42MjMsMy4wNDgsNC4yNDIsNC4yNDJsNC4zMDUtNC4zMDUgQzE0Ljc1NiwzNC42OTEsMTMuMzA5LDMzLjI0NCwxMi4yMTcsMzEuNTQxeiI+PC9wYXRoPjxwYXRoIGZpbGw9IiMyMTAwYzQiIGQ9Ik0zNS43ODMsMTYuNDU5bDQuMzA1LTQuMzA1Yy0xLjE5NC0xLjYxOS0yLjYyMy0zLjA0OC00LjI0Mi00LjI0MmwtNC4zMDUsNC4zMDUgQzMzLjI0NCwxMy4zMDksMzQuNjkxLDE0Ljc1NiwzNS43ODMsMTYuNDU5eiI+PC9wYXRoPjxwYXRoIGZpbGw9IiMyMTAwYzQiIGQ9Ik0xMi4yMTcsMTYuNDU5YzEuMDkyLTEuNzAzLDIuNTQtMy4xNSw0LjI0Mi00LjI0MmwtNC4zMDUtNC4zMDUgYy0xLjYxOSwxLjE5NC0zLjA0OCwyLjYyMy00LjI0Miw0LjI0MkwxMi4yMTcsMTYuNDU5eiI+PC9wYXRoPjwvZz48L3N2Zz4=" />
                         </span>
-                        <h2 class="brand-text">FORM</h2>
+                        <h2 class="brand-text">REQUEST FUND</h2>
                     </a></li>
                 <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse"><i
                             class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i><i
@@ -174,7 +174,7 @@
 
                 <li class=" nav-item {{ (request()->is('form')) ? 'active' : '' }}"><a class="d-flex align-items-center"
                         href="{{ route('form.index') }}"><i data-feather='folder'></i><span
-                            class="menu-title text-truncate" data-i18n="Kanban">Form</span></a>
+                            class="menu-title text-truncate" data-i18n="Kanban">Form Request</span></a>
                 </li>
 
                 @elseif( auth()->user()->jabatan_id == 2)
@@ -186,7 +186,7 @@
                         <li class="{{ (request()->is('dashboard-checked')) ? 'active' : '' }}"><a
                                 class="d-flex align-items-center" href="{{ route('dashboard.checked') }}"><i
                                     data-feather="circle"></i><span class="menu-item text-truncate"
-                                    data-i18n="eCommerce">Checked</span></a>
+                                    data-i18n="eCommerce">Index</span></a>
                         </li>
                     </ul>
                 </li>
@@ -200,8 +200,9 @@
 
                 <li class=" nav-item {{ (request()->is('form-checked')) ? 'active' : '' }}"><a
                         class="d-flex align-items-center" href="{{ route('form-checked.index') }}"><i
-                            data-feather='eye'></i><span class="menu-title text-truncate" data-i18n="Kanban">Form
-                            Checked</span></a>
+                            data-feather='eye'></i><span class="menu-title text-truncate" data-i18n="Kanban">
+                            Form Request
+                        </span></a>
                 </li>
                 @elseif( auth()->user()->jabatan_id == 3)
                 <li class=" nav-item"><a class="d-flex align-items-center" href="index.html"><i
@@ -212,7 +213,7 @@
                         <li class="{{ (request()->is('dashboard-checked')) ? 'active' : '' }}"><a
                                 class="d-flex align-items-center" href="{{ route('dashboard.checked') }}"><i
                                     data-feather="circle"></i><span class="menu-item text-truncate"
-                                    data-i18n="eCommerce">Checked</span></a>
+                                    data-i18n="eCommerce">Index</span></a>
                         </li>
                     </ul>
                 </li>
@@ -226,8 +227,9 @@
 
                 <li class=" nav-item {{ (request()->is('form-checked')) ? 'active' : '' }}"><a
                         class="d-flex align-items-center" href="{{ route('form-checked.index') }}"><i
-                            data-feather='eye'></i><span class="menu-title text-truncate" data-i18n="Kanban">Form
-                            Checked</span></a>
+                            data-feather='eye'></i><span class="menu-title text-truncate" data-i18n="Kanban">
+                            Form Request
+                        </span></a>
                 </li>
                 @elseif( auth()->user()->jabatan_id == 4)
 
@@ -239,7 +241,7 @@
                         <li class="{{ (request()->is('dashboard-approve')) ? 'active' : '' }}"><a
                                 class="d-flex align-items-center" href="{{ route('dashboard.approve') }}"><i
                                     data-feather="circle"></i><span class="menu-item text-truncate"
-                                    data-i18n="eCommerce">Approve</span></a>
+                                    data-i18n="eCommerce">Index</span></a>
                         </li>
                     </ul>
                 </li>
@@ -254,9 +256,9 @@
                 <li
                     class=" nav-item {{ (request()->is('form-approve', 'form-approve.edit', 'form-approve.show','form-approve.approve')) ? 'active' : '' }}">
                     <a class="d-flex align-items-center" href="{{ route('form-approve.index') }}"><i
-                            data-feather='check-circle'></i><span class="menu-title text-truncate"
-                            data-i18n="Kanban">Form
-                            Approve</span></a>
+                            data-feather='check-circle'></i><span class="menu-title text-truncate" data-i18n="Kanban">
+                            Form Request
+                        </span></a>
                 </li>
                 @else
                 <li class=" nav-item"><a class="d-flex align-items-center" href="index.html"><i
@@ -267,7 +269,7 @@
                         <li class="{{ (request()->is('dashboard-general')) ? 'active' : '' }}"><a
                                 class="d-flex align-items-center" href="{{ route('dashboard.general') }}"><i
                                     data-feather="circle"></i><span class="menu-item text-truncate"
-                                    data-i18n="eCommerce">General</span></a>
+                                    data-i18n="eCommerce">Index</span></a>
                         </li>
                     </ul>
                 </li>
@@ -282,7 +284,8 @@
                 <li class=" nav-item {{ (request()->is('form-list')) ? 'active' : '' }}"><a
                         class="d-flex align-items-center" href="{{ route('form-list.index') }}"><i
                             data-feather='list'></i><span class="menu-title text-truncate" data-i18n="Kanban">
-                            Form List </span></a>
+                            Form Request
+                        </span></a>
                 </li>
 
                 <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Settings</span><i

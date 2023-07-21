@@ -84,7 +84,5 @@ class DepartementSeeder extends Seeder
             'nama_departement' => ('TK2I-General'),
         ]);
 
-
-
     }
 }

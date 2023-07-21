@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             DepartementSeeder::class,
             UserSeeder::class,
             NoRekSeeder::class,
+            FormSeeder::class,
         ]);
     }
 }

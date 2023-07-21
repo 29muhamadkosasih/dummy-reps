@@ -186,8 +186,8 @@
                         <!-- /Brand logo-->
                         <!-- Left Text-->
                         <div class="d-none d-lg-flex col-lg-8 align-items-center p-5">
-                            <div class="w-100 d-lg-flex align-items-center justify-content-center px-5"><img class="img-fluid"
-                                    src="{{ asset('app-assets/images/btn1.png') }}" alt="" /></div>
+                            <div class="w-100 d-lg-flex align-items-center justify-content-center px-5"><img
+                                    class="img-fluid" src="{{ asset('app-assets/images/btn1.png') }}" alt="" /></div>
                         </div>
                         <!-- /Left Text-->
                         <!-- Login-->
@@ -195,7 +195,8 @@
                             <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
                                 <h2 class="card-title fw-bold mb-1">Selamat Datang di </br> Transafe Management System
                                     👋</h2>
-                                {{-- <p class="card-text mb-2">Please sign-in to your account and start the adventure</p> --}}
+                                {{-- <p class="card-text mb-2">Please sign-in to your account and start the adventure
+                                </p> --}}
                                 @if ($message = Session::get('error'))
                                 <div class="demo-spacing-0">
                                     <div class="alert alert-danger mt-1 alert-validation-msg" role="alert">
@@ -238,34 +239,34 @@
                                     </div>
                                 </div>
                                 @endif
-                                <form action="/login" method="POST" class="mt-2 mb-2 login-input">
-                                    @csrf
-                                    <div class="mb-1">
-                                        <label class="form-label" for="login-email">Email</label>
-                                        <input class="form-control" id="email" type="email" name="email"
-                                            placeholder="john@example.com" aria-describedby="email" autofocus=""
-                                            tabindex="1" required />
-                                    </div>
-                                    <div class="mb-1">
-                                        <div class="d-flex justify-content-between">
-                                            <label class="form-label" for="login-password">Password</label>
+                                {{-- <form action="/login" method="POST" class="mt-2 mb-2 login-input">
+                                    @csrf --}}
+                                    <form action="{{ route('login') }}" method="POST" class="mt-2 mb-2 login-input">
+                                        @csrf
+                                        <div class="mb-1">
+                                            <label class="form-label" for="login-email">Email</label>
+                                            <input class="form-control" id="email" type="email" name="email"
+                                                placeholder="john@example.com" aria-describedby="email" autofocus=""
+                                                tabindex="1" required />
                                         </div>
-                                        <div class="input-group input-group-merge form-password-toggle">
-                                            <input class="form-control form-control-merge" id="login-password"
-                                                type="password" required name="password" placeholder="············"
-                                                aria-describedby="login-password" tabindex="2" /><span
-                                                class="input-group-text cursor-pointer"><i
-                                                    data-feather="eye"></i></span>
+                                        <div class="mb-1">
+                                            <div class="d-flex justify-content-between">
+                                                <label class="form-label" for="login-password">Password</label>
+                                            </div>
+                                            <div class="input-group input-group-merge form-password-toggle">
+                                                <input class="form-control form-control-merge" id="login-password"
+                                                    type="password" required name="password" placeholder="············"
+                                                    aria-describedby="login-password" tabindex="2" /><span
+                                                    class="input-group-text cursor-pointer"><i
+                                                        data-feather="eye"></i></span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="mb-1">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary w-100" tabindex="4">Sign
-                                        in</button>
-                                    {{--
-                                </form>
-                                <p class="text-center mt-2"><span>New on our platform?</span><a
-                                        href="{{ url('/register') }}"><span>&nbsp;Create an account</span></a></p> --}}
+                                        <div class="mb-1">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary w-100" tabindex="4">Sign
+                                            in</button>
+
+                                    </form>
                             </div>
                             <!-- /Login-->
                         </div>

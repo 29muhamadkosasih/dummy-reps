@@ -25,11 +25,11 @@ use App\Http\Controllers\User\FormController as FormsController;
 
 
 Route::get('/', function () {
-    return view('pages.login.index');
+        return redirect()->route('login.index');
 });
 
-Route::get('/login', [AuthController::class, 'index']);
-Route::post('/login', [AuthController::class, 'authanticate']);
+Route::get('/login', [AuthController::class, 'index'])->name('login.index');
+Route::post('/login', [AuthController::class, 'authanticate'])->name('login');
 
 Route::middleware(['isLogin'])->group(function () {
     //Your routes here
@@ -40,67 +40,27 @@ Route::middleware(['isLogin'])->group(function () {
     Route::resource('form-approve', ApproveController::class);
     Route::resource('form-checked', CheckedController::class);
 
-        Route::resource('me', ProfileController::class);
-        Route::resource('user', UserController::class);
-        Route::resource('norek', NoRekController::class);
-        Route::resource('bank', BankController::class);
+    Route::resource('me', ProfileController::class);
+    Route::resource('user', UserController::class);
+    Route::resource('norek', NoRekController::class);
+    Route::resource('bank', BankController::class);
 
-        Route::put('form-checked/checked/{id}', [CheckedController::class, 'checked'])->name('form-checked.checked');
-        Route::get('form-checked/detail/{id}', [CheckedController::class, 'detail'])->name('form-checked.detail');
+    Route::put('form-checked/checked/{id}', [CheckedController::class, 'checked'])->name('form-checked.checked');
+    Route::get('form-checked/detail/{id}', [CheckedController::class, 'detail'])->name('form-checked.detail');
 
-        Route::put('form-approve/approve/{id}', [ApproveController::class, 'approve'])->name('form-approve.approve');
-        Route::get('form-approve/detail/{id}', [ApproveController::class, 'detail'])->name('form-approve.detail');
+    Route::put('form-approve/approve/{id}', [ApproveController::class, 'approve'])->name('form-approve.approve');
+    Route::get('form-approve/detail/{id}', [ApproveController::class, 'detail'])->name('form-approve.detail');
 
-        Route::resource('form-list', FormsController::class);
+    Route::resource('form-list', FormsController::class);
+    Route::get('approve/maker/{id}', [CheckedController::class, 'approve']);
+    Route::get('reject/maker/{id}', [CheckedController::class, 'reject']);
 
-        Route::get('approve/maker/{id}', [CheckedController::class, 'approve']);
-        Route::get('reject/maker/{id}', [CheckedController::class, 'reject']);
+    Route::get('approve/approve/{id}', [ApproveController::class, 'approve']);
+    Route::get('/form/{id}', [FormController::class, 'getBank']);
 
-        Route::get('approve/approve/{id}', [ApproveController::class, 'approve']);
-
-        Route::get('/form/{id}', [FormController::class, 'getBank']);
-
-        Route::get('dashboard-checked', [DashboardController::class, 'checked'])->name('dashboard.checked');
-        Route::get('dashboard-approve', [DashboardController::class, 'approve'])->name('dashboard.approve');
-        Route::get('dashboard-general', [DashboardController::class, 'general'])->name('dashboard.general');
+    Route::get('dashboard-checked', [DashboardController::class, 'checked'])->name('dashboard.checked');
+    Route::get('dashboard-approve', [DashboardController::class, 'approve'])->name('dashboard.approve');
+    Route::get('dashboard-general', [DashboardController::class, 'general'])->name('dashboard.general');
 
 
     });
-
-// Route::middleware(['auth', 'role:1'])->group(function () {
-//     Route::resource('form', FormController::class);
-//     Route::get('/form/{id}', [FormController::class, 'getBank']);
-
-//     Route::resource('me', ProfileController::class);
-//     Route::resource('dashboard', DashboardController::class);
-// });
-
-
-// Route::middleware(['auth', 'role:2|3'])->group(function () {
-//     Route::resource('me', ProfileController::class);
-//     Route::resource('dashboard', DashboardController::class);
-//     Route::resource('form-checked', CheckedController::class);
-//     Route::put('form-checked/checked/{id}', [CheckedController::class, 'checked'])->name('form-checked.checked');
-//     Route::get('form-checked/detail/{id}', [CheckedController::class, 'detail'])->name('form-checked.detail');
-//     Route::put('form-approve/approve/{id}', [ApproveController::class, 'approve'])->name('form-approve.approve');
-//     Route::get('form-approve/detail/{id}', [ApproveController::class, 'detail'])->name('form-approve.detail');
-//     Route::get('form/print/{id}', [FormController::class, 'print'])->name('form.print');
-
-// });
-
-// Route::middleware(['auth', 'role:4'])->group(function () {
-//     Route::resource('me', ProfileController::class);
-//     Route::resource('dashboard', DashboardController::class);
-//     Route::resource('form-approve', ApproveController::class);
-//         Route::get('approve/approve/{id}', [ApproveController::class, 'approve']);
-//          Route::put('form-approve/approve/{id}', [ApproveController::class, 'approve'])->name('form-approve.approve');
-//          Route::get('form-approve/detail/{id}', [ApproveController::class, 'detail'])->name('form-approve.detail');
-
-// });
-
-
-// Route::middleware(['auth', 'role:5|6'])->group(function () {
-//     Route::resource('me', ProfileController::class);
-//     Route::resource('dashboard', DashboardController::class);
-//     Route::resource('form-list', FormsController::class);
-// });

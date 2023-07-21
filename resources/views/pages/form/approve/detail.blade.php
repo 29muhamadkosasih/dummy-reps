@@ -6,9 +6,14 @@
             <div class="card">
                 <div class="card-header border-bottom">
                     <h4 class="card-title mb-50">Pengajuan Dana</h4>
-                    <a href="{{ route('form-approve.index') }}" class="btn btn-secondary"><i
-                            data-feather='chevrons-left'></i>
-                        Back</a>
+                    <div class="justify-content-left">
+                        <a href="{{ route('form-approve.index') }}" class="btn btn-secondary"><i
+                                data-feather='chevrons-left'></i>
+                            Back</a>
+                        <a href="{{ url('form/print', $show->id) }}" target="_blank" class="btn btn-primary"><i
+                                data-feather="download"></i>
+                            PDF</a>
+                    </div>
                 </div>
                 <div class="card-body mt-2">
                     <div class="row">

@@ -226,6 +226,7 @@ class FormController extends Controller
     public function print($id)
     {
         $data = Form::find($id);
+        // dd($data);
         $pdf = PDF::loadview('pages.form.print',[
             'data' => $data
     ]);

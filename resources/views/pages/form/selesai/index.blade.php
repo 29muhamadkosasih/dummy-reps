@@ -1,7 +1,6 @@
 @extends('layout.master')
 @section('content')
 <section id="complex-header-datatable">
-
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -47,6 +46,10 @@
                                 <td>
                                     @switch($data)
                                     @case($data->norek_id == null)
+                                    <span class="badge bg-info">
+                                        <i data-feather='dollar-sign'></i>
+                                        Cash
+                                    </span>
                                     @break
                                     @default
                                     {{ $data->norek->bank->nama_bank }}
@@ -55,6 +58,10 @@
                                 <td>
                                     @switch($data)
                                     @case($data->norek_id == null)
+                                    <span class="badge bg-info">
+                                        <i data-feather='dollar-sign'></i>
+                                        Cash
+                                    </span>
                                     @break
                                     @default
                                     {{ $data->norek->no_rekening }} @endswitch
@@ -62,12 +69,15 @@
                                 <td>
                                     @switch($data)
                                     @case($data->norek_id == null)
+                                    <span class=" badge bg-info">
+                                        <i data-feather='dollar-sign'></i>
+                                        Cash
+                                    </span>
                                     @break
                                     @default
                                     {{ $data->norek->nama_penerima }} @endswitch
                                 </td>
                                 <td>
-                                    {{-- {{ $data->status }} --}}
                                     @switch($data)
                                     @case($data->status == null)
                                     <span class="badge bg-secondary">Pending</span>
@@ -77,16 +87,7 @@
                                     @default
                                     <span class="badge bg-success">PAID</span>
                                     @endswitch
-                                    {{-- <a href="{{ url('form/print', $data->id) }}" target="_blank"
-                                        class="btn btn-icon btn-flat-success">
-                                        <i data-feather='download'></i>
-                                    </a> --}}
                                 </td>
-                                {{-- <td style="text-align: center">
-                                    <a href="{{ route('form-list.show', $data->id) }}"
-                                        class="btn btn-secondary btn-sm"><i data-feather='eye'></i></a>
-                                    <span class="badge bg-success">PAID</span>
-                                </td> --}}
                             </tr>
                             @endforeach
                         </tbody>
@@ -95,7 +96,5 @@
             </div>
         </div>
     </div>
-
 </section>
-
 @endsection

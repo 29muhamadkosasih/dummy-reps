@@ -273,12 +273,12 @@ class DashboardController extends Controller
         ->whereMonth('created_at', $currentMonth)
         ->whereYear('created_at', 2023)
         ->sum('jumlah_total');
+        $jumlah_total_all = DB::table('form')
+        ->sum('jumlah_total');
         $reports = DB::table('form')
-        ->whereMonth('created_at', $currentMonth)
         ->whereYear('created_at', 2023)
         ->get()
         ->count();
-
     // dd($jumlah_total);
         $paid = Form::where('status', '4')->get()->count();
         $process = Form::where('status', '3')->get()->count();
@@ -356,7 +356,8 @@ class DashboardController extends Controller
         'process'   =>$process,
         'cancel'    =>$cancel,
         'reports'   =>$reports,
-        'jumlah_total' =>$jumlah_total
+        'jumlah_total' =>$jumlah_total,
+        'jumlah_total_all' =>$jumlah_total_all
 
         ]);
     }

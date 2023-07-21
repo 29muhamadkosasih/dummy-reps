@@ -75,27 +75,11 @@
                                     <div class="col-6">
                                         <h4 class="card-title">Total Pengajuan Perbulan</h4>
                                     </div>
-                                    <div class="fw-bolder mb-1">
+                                    <div class="fw-bolder">
                                         <div>
-                                            <h1 class="fw-bolder">Rp.{{ number_format($jumlah_total, 0, ',', '.',) }} /
+                                            <h1 class="fw-bolder">{{ $reports }} /
                                                 {{
                                                 $namaBulan }}</h1>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-md-6 col-12">
-                        <div class="card earnings-card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <h4 class="card-title">Total RF Perbulan</h4>
-                                    </div>
-                                    <div class="fw-bolder m-1">
-                                        <div>
-                                            <h1 class="fw-bolder">{{ $reports }} / {{ $namaBulan }} </h1>
                                         </div>
                                     </div>
                                 </div>
@@ -109,28 +93,66 @@
             <div class="col-lg-8 col-12">
                 <div class="row">
                     <div class="col-xl-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Total Pengajuan Perbulan</h4>
+                        <div class="card earnings-card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <h4 class="card-title">Total Pengajuan Perbulan</h4>
+                                    </div>
+                                    <div class="fw-bolder">
+                                        <div>
+                                            <h1 class="fw-bolder">
+                                                Rp. {{ number_format($jumlah_total, 0, ',', '.',)}} / {{ $namaBulan }}
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-body"><canvas id="myAreaChart" width="100%" height="75"></canvas></div>
                         </div>
                     </div>
                     <div class="col-xl-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Total pengajuan Perbulan</h4>
+                        <div class="card earnings-card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <h4 class="card-title">Total Pengajuan</h4>
+                                    </div>
+                                    <div class="fw-bolder">
+                                        <div>
+                                            <h1 class="fw-bolder">Rp. {{ number_format($jumlah_total_all, 0, ',',
+                                                '.',)}}
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-body"><canvas id="myBarChart" width="100%" height="75"></canvas></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--/ Revenue Report Card -->
+
+        </div>
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Total Pengajuan Perbulan</h4>
+                    </div>
+                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="75"></canvas></div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Total pengajuan Perbulan</h4>
+                    </div>
+                    <div class="card-body"><canvas id="myBarChart" width="100%" height="75"></canvas></div>
+                </div>
+            </div>
         </div>
 
+        <!--/ Revenue Report Card -->
         <div class="row match-height">
-
             <div class="col-lg-12 col-12">
                 <div class="card card-company-table">
                     <div class="card">
@@ -201,7 +223,10 @@
                 </div>
             </div>
         </div>
-    </section>
+
+</div>
+
+</section>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 <script type="text/javascript">
