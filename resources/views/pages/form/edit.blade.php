@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.master')
 @section('content')
 <section id="complex-header-datatable">
     <div class="row">
@@ -467,7 +467,7 @@
                         </div>
 
                     </div>
-                    <div class="col-12 text-center mb-2 mt-1 pt-20">
+                    <div class="col-12 text-center mb-4 mt-1 pt-20">
                         <a href="{{ route('form.index') }}" class="btn btn-outline-secondary me-1">Back</a>
                         <button type="submit" class="btn btn-primary ">Update</button>
                     </div>

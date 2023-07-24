@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use PDF;
 use App\Models\Bank;
 use App\Models\Form;
@@ -9,14 +10,16 @@ use App\Models\User;
 use App\Models\NoRek;
 use App\Models\Departement;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
-use DB;
+use Illuminate\Support\Facades\Gate;
 
 
 class FormController extends Controller
 {
     public function index()
     {
+        abort_if(Gate::denies('form.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
         $userId = auth()->id();
         $bank =Bank::get();
         $norek =NoRek::get();
@@ -36,6 +39,7 @@ class FormController extends Controller
     public function store(Request $request)
     {
         $userId = auth()->id();
+        // dd($request);
         $request->validate([
             'qty' => 'required',
             'unit' => 'required',
@@ -117,6 +121,7 @@ class FormController extends Controller
 
     public function show($id)
     {
+        abort_if(Gate::denies('form.show'), Response::HTTP_FORBIDDEN, 'Forbidden');
         $show =Form::find($id);
         return view('pages.form.show', [
             'show'   =>$show
@@ -126,6 +131,7 @@ class FormController extends Controller
 
     public function edit($id)
     {
+    abort_if(Gate::denies('form.edit'), Response::HTTP_FORBIDDEN, 'Forbidden');
         $edit = Form::find($id);
         $departement = Departement::all();
         return view('pages.form.edit',[
@@ -235,6 +241,7 @@ class FormController extends Controller
 
     public function destroy($id)
     {
+    abort_if(Gate::denies('form.delete'), Response::HTTP_FORBIDDEN, 'Forbidden');
         $delete = Form::find($id);
         $delete->delete();
         return redirect()->route('form-checked.index')
@@ -246,6 +253,15 @@ class FormController extends Controller
         $NoRek =NoRek::where('kode_bank', $id)->get();
         // dd($norek);
         return response()->json($NoRek);
+    }
+
+    public function list()
+    {
+        $form = Form::where('status', '4')->get();
+        // dd($form);
+        return view ('pages.form.selesai.index',[
+            'form' =>$form
+        ]);
     }
 
 }

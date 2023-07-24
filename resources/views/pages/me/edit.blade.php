@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.master')
 @section('content')
 <section id="complex-header-datatable">
     <div class="row">

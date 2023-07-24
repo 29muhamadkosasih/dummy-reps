@@ -5,13 +5,17 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Form;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class DashboardController extends Controller
 {
     public function index()
     {
+        abort_if(Gate::denies('dashboard.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
+
         $userId = auth()->id();
         $form = Form::where('from_id', $userId)->get();
         $forms = Form::where('from_id', $userId)->get();
@@ -26,6 +30,12 @@ class DashboardController extends Controller
         $reports = DB::table('form')
         ->where('from_id', $userId)
         ->whereMonth('created_at', $currentMonth)
+        ->whereYear('created_at', 2023)
+        ->get()
+        ->count();
+
+        $reportss= DB::table('form')
+        ->where('from_id', $userId)
         ->whereYear('created_at', 2023)
         ->get()
         ->count();
@@ -96,12 +106,14 @@ class DashboardController extends Controller
         'monthCount'=>$monthCount,
         'namaBulan'=>$namaBulan,
         'reports'   =>$reports,
-        'jumlah_total'   =>$jumlah_total
+        'jumlah_total'   =>$jumlah_total,
+        'reportss'   =>$reportss
         ]);
     }
 
     public function checked()
     {
+        abort_if(Gate::denies('dashboard.checked.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
         $userId = auth()->id();
         $form = Form::all();
         $total = Form::all()->count();
@@ -188,10 +200,20 @@ class DashboardController extends Controller
 
     public function approve()
     {
+        abort_if(Gate::denies('dashboard.approve.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
         $userId = auth()->id();
         $form = Form::where('status','3')->get();
         $bulan = Form::where('status','3')->get()->sum('jumlah_total');
         $total = Form::where('status','3')->get()->count();
+        $reports = DB::table('form')
+        ->whereYear('created_at', 2023)
+        ->get()
+        ->count();
+
+        $jumlah_total = DB::table('form')
+        ->whereYear('created_at', 2023)
+        ->get()
+        ->sum('jumlah_total');
 
         $data=Form::all()->groupBy(function($data){
             return Carbon::parse($data->created_at)->format('d');
@@ -258,12 +280,16 @@ class DashboardController extends Controller
         'monthCount'=>$monthCount,
         'bulan'  =>$bulan,
         'total'   =>$total,
-        'namaBulan'=> $namaBulan
-        ]);
+        'namaBulan'=> $namaBulan,
+        'reports'   =>$reports,
+        'jumlah_total'   =>$jumlah_total,
+
+         ]);
     }
 
     public function general()
     {
+        abort_if(Gate::denies('dashboard.general.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
         $userId = auth()->id();
         $form = Form::all();
         $bulan = Form::all()->sum('jumlah_total');
@@ -340,7 +366,7 @@ class DashboardController extends Controller
                 break;
             default:
                 $namaBulan = 'Bulan tidak valid';
-                break;
+            break;
         }
 
         return view ('pages.dashboard.general',[

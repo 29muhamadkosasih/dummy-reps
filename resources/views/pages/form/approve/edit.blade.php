@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.master')
 @section('content')
 <section id="complex-header-datatable">
     <div class="row">
@@ -16,8 +16,8 @@
                             <div class="col-xl-4 col-md-6 col-12">
                                 <div class="mb-1">
                                     <label class="form-label" for="basicInput">Dari</label>
-                                    <input type="hidden" class="form-control" id="basicInput" name="from_id"
-                                        placeholder="Enter" required value="{{ $edit->user->id }}" readonly />
+                                    <input type="hidden" name="from_id" value="{{ $edit->from_id }}" />
+                                    <input type="hidden" name="departement_id" value="{{ $edit->departement_id }}" />
                                     <input type="text" class="form-control" id="basicInput" placeholder="Enter" required
                                         value="{{ $edit->user->name }}" readonly />
                                 </div>
@@ -39,14 +39,6 @@
                                     <label class="form-label" for="helpInputTop">Departement</label>
                                     <input type="text" class="form-control" id="basicInput" placeholder="Enter" required
                                         value="{{ $edit->departement->nama_departement }}" readonly />
-                                    <select class="hidden" id="selectDefault" name="departement_id" required>
-                                        <option selected>{{ $edit->departement_id }}</option>
-                                        @foreach ($departement as $key => $data)
-                                        <option value="{{ $data->id }}">
-                                            {{ $data->nama_departement }}
-                                        </option>
-                                        @endforeach
-                                    </select>
                                 </div>
                             </div>
                             <div class="col-xl-4 col-md-6 col-12">

@@ -1,63 +1,56 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## Laravel Roles Permissions Manager
+<h5>Laravel Version : 8</h5>
+<hr />
+<h4>Previews</h4>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+
+<p>
+    <img src="https://github.com/amitkumarbiswas2001/my-github-images/blob/main/laravel-roles-permissions-manager/80e570b2-e396-42bd-ac86-d55f2fe5176d.PNG"/>
 </p>
 
-## About Laravel
+<hr />
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<p>
+    <img src="https://github.com/amitkumarbiswas2001/my-github-images/blob/main/laravel-roles-permissions-manager/98580690-3a76-46b4-8a64-83e7e9534e05.PNG"/>
+</p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<hr />
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<p>
+    <img src="https://github.com/amitkumarbiswas2001/my-github-images/blob/main/laravel-roles-permissions-manager/ed31028c-86a0-4266-a641-d17a577de6f1.PNG"/>
+</p>
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+[MIT license](https://opensource.org/licenses/MIT).
+
+## Usage
+This is not a package - it's a full Laravel project that you should use as a starter boilerplate, and then add your own custom functionality.
+
+<ul>
+    <li>Clone the repository with <code>git clone</code></li>
+    <li>Copy <code>.env.example</code> file to <code>.env</code> and edit database credentials there</li>
+    <li>Run <code>composer install</code></li>
+    <li>Run <code>php artisan key:generate</code></li>
+</ul>
+
+With that user you can create more roles/permissions/users, and then use them in your code, by using functionality like Gate or @can, as in default Laravel.
+
+<b>Your will be get Login Credentials from seeder file</b> <br>
+--- &lt;root-project&gt; / database / seeders / UsersTableSeeder.php <br>
+
+## Notice
+We are not responsible for any functionality or bugs in Monsteradmin & Others packages or their future versions, if you find bugs there - please contact vendors directly.
+
+## Credit
+
+<p><b>Author : </b> Amit Kumar Biswas</p>
+<p><b>Template From : </b> <a href="https://www.wrappixel.com/">https://www.wrappixel.com/</a> </p> 
+<p><b>Template Link : </b> <a href="https://www.wrappixel.com/templates/monsteradmin/">https://www.wrappixel.com/templates/monsteradmin/</a></p>
+<p><b>Development : </b> Amit Kumar Biswas</p>
+<br><br>
+Thanks For Downloading
+
+

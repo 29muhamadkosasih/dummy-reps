@@ -1,44 +1,51 @@
-@extends('layout.master')
-
+@extends('layouts/master')
 @section('content')
-<div class="row">
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-header border-bottom">
-                <div class="head-label">
+
+
+<!-- Invoice table -->
+<div class="col-xs-4 col-sm-4 col-md-4 mb-4">
+    <div class="card">
+        <div class="card-body">
+            <div class="row ">
+                <div class="col-auto me-auto ">
                     @if (isset($edit))
-                    <h4 class="card-title">Edit Data User</h4>
+                    <h5 class="mb-0">Edit Data Bank</h5>
                     @else
-                    <h4 class="card-title">Tambah Data User</h4>
+                    <h5 class="mb-0">Tambah Data Bank</h5>
+                    @endif
+                </div>
+                <div class="card-body">
+                    @if (isset($edit))
+                    @include('pages.bank.edit')
+                    @else
+                    @include('pages.bank.create')
                     @endif
                 </div>
             </div>
-            <div class="card-body pt-2">
-                @if (isset($edit))
-                @include('pages.bank.edit')
-                @else
-                @include('pages.bank.create')
-                @endif
-            </div>
         </div>
     </div>
-    <div class="col-xs-8 col-sm-8 col-md-8">
-        <div class="card">
-            {{-- header --}}
-            <div class="card-header border-bottom">
-                <div class="head-label">
-                    <h4 class="card-title">List Data User</h4>
+</div>
+<div class="col-xs-8 col-sm-8 col-md-8">
+    <div class="card">
+        <div class="card-body">
+            <div class="row ">
+                <div class="col-auto me-auto ">
+                    <h5 class="mb-0">List Data Bank</h5>
+                </div>
+                <div class="col-auto">
+                    @can('users.create')
+                    <a href="{{ route('users.create') }}" class="btn btn-primary">Create</a>
+                    @endcan
+
                 </div>
             </div>
-
-            {{-- body --}}
-            <div class="card-body table-responsive">
-                <table class="table table-bordered dataTable zero-configuration">
+            <div class="table-responsive text-nowrap">
+                <table class="table table-hover zero-configuration">
                     <thead>
                         <tr>
-                            <th>No</th>
+                            <th width='10px'>No</th>
                             <th>Nama</th>
-                            <th width='100px'>Action</th>
+                            <th width='150px' class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,26 +54,31 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $data->nama_bank }}</td>
                             <td style="text-align: center">
-                                <form onsubmit="return confirm('Apakah Anda Yakin ?');"
-                                    action="{{ route('bank.destroy', $data->id) }}" method="POST">
-                                    <a href="{{ route('bank.edit', $data->id) }}" class="btn btn-warning btn-sm">
-                                        <i data-feather='edit'></i>
-                                    </a>
+                                @can('bank.edit')
+                                <a href="{{ route('bank.edit', $data->id) }}" class="btn btn-icon btn-warning btn-sm">
+                                    <span class="ti ti-edit"></span>
+                                </a>
+                                @endcan
+
+                                @can('bank.delete')
+                                <form action="{{ route('bank.destroy', $data->id) }}" class="d-inline-block"
+                                    method="post">
                                     @csrf
                                     @method('DELETE')
-
-                                    <button type="submit" class="btn btn-danger btn-sm">
-                                        <i data-feather='trash'></i>
+                                    <button type="submit" onclick="return confirm('Are you sure?')"
+                                        class="btn btn-icon btn-danger btn-sm">
+                                        <span class="ti ti-trash "></span>
                                     </button>
                                 </form>
+                                @endcan
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
-
                 </table>
             </div>
         </div>
     </div>
 </div>
+<!-- /Invoice table -->
 @endsection

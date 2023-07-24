@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -16,15 +18,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name',
-        'username',
-        'email',
-        'no_hp',
-        'password',
-        'jabatan_id',
-        'departement_id'
-    ];
+    protected $guarded =[];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -45,7 +39,32 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function user()
+    public function setPasswordAttribute($input)
+    {
+        if ($input) {
+            $this->attributes['password'] = app('hash')->needsRehash($input) ? Hash::make($input) : $input;
+        }
+    }
+
+    public function role(){
+        return $this->belongsTo(Role::class);
+    }
+
+
+    static function boot(){
+        parent::boot();
+
+        static::created(function(Model $model){
+            if($model->role_id == ""){
+                $model->update([
+                    'role_id' => Role::where('title','user')->first()->id,
+                ]);
+            }
+        });
+
+    }
+
+        public function user()
     {
         return $this->hasMany(Form::class);
 
@@ -69,5 +88,4 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Departement::class, 'departement_id');
     }
-
 }

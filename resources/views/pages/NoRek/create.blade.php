@@ -1,7 +1,6 @@
 <form action="{{ route('norek.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
-    <div class="form-body">
-        <div class="form-group mb-1">
+        <div class="mb-3">
             <label class="form-label" for="basicInput">Nama Bank</label>
             <select class="form-select @error('bank_id') is-invalid @enderror" id="selectDefault" name="bank_id"
                 value="{{ old('bank_id') }}">
@@ -18,7 +17,7 @@
             </div>
             @enderror
         </div>
-        <div class="form-group mb-1">
+        <div class="mb-3">
             <label class="form-label" for="basicInput">No Rekening</label>
             <input type="text" class="form-control @error('no_rekening') is-invalid @enderror" id="basicInput"
                 name="no_rekening" placeholder="Enter" value="{{ old('no_rekening') }}" required />
@@ -28,7 +27,8 @@
             </div>
             @enderror
         </div>
-        <div class="form-group mb-1">
+
+        <div class="mb-3">
             <label class="form-label" for="basicInput">Penerima</label>
             <input type="text" class="form-control @error('nama_penerima') is-invalid @enderror" id="basicInput"
                 name="nama_penerima" placeholder="Enter" value="{{ old('nama_penerima') }}" required />
@@ -38,8 +38,5 @@
             </div>
             @enderror
         </div>
-    </div>
-    <div class="form-footer">
-        <button type="submit" class="btn btn-primary" data-bs-dismiss="form">Submit</button>
-    </div>
+    <button type="submit" class="btn btn-primary float-end ms-2">Submit</button>
 </form>

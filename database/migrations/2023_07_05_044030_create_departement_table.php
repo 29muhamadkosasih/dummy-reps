@@ -39,7 +39,6 @@ class CreateDepartementTable extends Migration
                 'TIDP-General',
                 'TK2I-Project',
                 'TK2I-General',
-                'TEST'
             ]);
             $table->timestamps();
         });

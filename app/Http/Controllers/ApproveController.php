@@ -5,11 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Form;
 use App\Models\Departement;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class ApproveController extends Controller
 {
     public function index()
     {
+        abort_if(Gate::denies('form-approve.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
         $form = Form::where('status', '3')->get();
         // dd($form);
         return view('pages.form.approve.index',[
@@ -78,7 +82,7 @@ class ApproveController extends Controller
             'total' => $total,
             'description2' => $request->description2,
             'unit2' => $request->unit2,
-            'qty2' => $request->qty2,
+            'qty2' => $request->qty2,   
             'price2' => $request->price2,
             'total2' => $total2,
             'description3' => $request->description3,
@@ -135,14 +139,5 @@ class ApproveController extends Controller
             return back()
            ->with('success', 'Congratulation !  Data Berhasil Di Approve');
    }
-
-    public function destroy($id)
-    {
-        $delete = Form::find($id);
-        $delete->delete();
-        return redirect()->route('form-approve.index')
-        ->with('success', 'Congratulation !  Data Berhasil dihapus');
-    }
-
 
 }
