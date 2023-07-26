@@ -1,27 +1,13 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-        <a href="index.html" class="app-brand-link">
-            <span class="app-brand-logo demo">
-                <svg width="32" height="22" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M0.00172773 0V6.85398C0.00172773 6.85398 -0.133178 9.01207 1.98092 10.8388L13.6912 21.9964L19.7809 21.9181L18.8042 9.88248L16.4951 7.17289L9.23799 0H0.00172773Z"
-                        fill="#7367F0" />
-                    <path opacity="0.06" fill-rule="evenodd" clip-rule="evenodd"
-                        d="M7.69824 16.4364L12.5199 3.23696L16.5541 7.25596L7.69824 16.4364Z" fill="#161616" />
-                    <path opacity="0.06" fill-rule="evenodd" clip-rule="evenodd"
-                        d="M8.07751 15.9175L13.9419 4.63989L16.5849 7.28475L8.07751 15.9175Z" fill="#161616" />
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M7.77295 16.3566L23.6563 0H32V6.88383C32 6.88383 31.8262 9.17836 30.6591 10.4057L19.7824 22H13.6938L7.77295 16.3566Z"
-                        fill="#7367F0" />
-                </svg>
-            </span>
-            <span class="app-brand-text demo menu-text fw-bold">Vuexy</span>
-        </a>
+        {{-- <span class="app-brand-logo demo"> --}}
+            <img src="{{ asset('assets/img/favicon/lgo.png') }}" width="110" height="90" alt
+                class="me-3 ms-3 h-auto text-right" />
 
-        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
-            <i class="ti menu-toggle-icon d-none d-xl-block ti-sm align-middle"></i>
-            <i class="ti ti-x d-block d-xl-none ti-sm align-middle"></i>
-        </a>
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+                <i class="ti menu-toggle-icon d-none d-xl-block ti-sm align-middle"></i>
+                <i class="ti ti-x d-block d-xl-none ti-sm align-middle"></i>
+            </a>
     </div>
 
     <div class="menu-inner-shadow"></div>
@@ -39,7 +25,7 @@
         @can('dashboard.index')
         <li class="menu-item {{ (request()->is('dashboard')) ? 'active' : '' }}">
             <a href="{{ route('dashboard.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <i class="menu-icon tf-icons ti ti-layout-sidebar"></i>
                 <div data-i18n="Index">Index</div>
             </a>
         </li>
@@ -48,7 +34,7 @@
         @can('dashboard.checked.index')
         <li class="menu-item {{ (request()->is('dashboard-checked')) ? 'active' : '' }}">
             <a href="{{ route('dashboard.checked') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <i class="menu-icon tf-icons ti ti-3d-cube-sphere"></i>
                 <div data-i18n="Checked"> Checked</div>
             </a>
         </li>
@@ -57,7 +43,7 @@
         @can('dashboard.approve.index')
         <li class="menu-item {{ (request()->is('dashboard-approve')) ? 'active' : '' }}">
             <a href="{{ route('dashboard.approve') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <i class="menu-icon tf-icons ti ti-atom-2"></i>
                 <div data-i18n="Approve">Approve</div>
             </a>
         </li>
@@ -66,7 +52,7 @@
         @can('dashboard.general.index')
         <li class="menu-item {{ (request()->is('dashboard-general')) ? 'active' : '' }}">
             <a href="{{ route('dashboard.general') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <i class="menu-icon tf-icons ti ti-layout-kanban"></i>
                 <div data-i18n="Admin">Admin</div>
             </a>
         </li>
@@ -88,7 +74,7 @@
         @can('profile.index')
         <li class="menu-item {{  (request()->is('me')) ? 'active' : ''  }}">
             <a href="{{ route('me.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-mail"></i>
+                <i class="menu-icon tf-icons ti ti-user"></i>
                 <div data-i18n="Profile">Profile</div>
             </a>
         </li>
@@ -106,7 +92,7 @@
         @can('form-checked.index')
         <li class="menu-item {{ (request()->is('form-checked')) ? 'active' : '' }}">
             <a href="{{ route('form-checked.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-folder"></i>
+                <i class="menu-icon tf-icons ti ti-chart-pie"></i>
                 <div data-i18n="Form Checked">Form Checked </div>
             </a>
         </li>
@@ -115,7 +101,7 @@
         @can('form-approve.index')
         <li class="menu-item {{ (request()->is('form-approve')) ? 'active' : '' }}">
             <a href="{{ route('form-approve.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-folder"></i>
+                <i class="menu-icon tf-icons ti ti-atom-2"></i>
                 <div data-i18n="Form Approve">Form Approve</div>
             </a>
         </li>
@@ -124,16 +110,25 @@
         @can('form-list.index')
         <li class="menu-item {{ (request()->is('form-list')) ? 'active' : '' }}">
             <a href="{{ route('form-list.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-folder"></i>
+                <i class="menu-icon tf-icons ti ti-checkbox"></i>
                 <div data-i18n="Form List">Form List</div>
             </a>
         </li>
         @endcan
 
+        @can('listAdvance.index')
+        <li class="menu-item {{ (request()->is('listAdvance')) ? 'active' : '' }}">
+            <a href="{{ route('listAdvance') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-checkbox"></i>
+                <div data-i18n="List Advance">List Advance</div>
+            </a>
+        </li>
+        @endcan
 
-        @canany(['bank.index','norek.index'])
+
+        @canany(['bank.index','norek.index','keperluan.index','kpengajuan.index','rujukan.index'])
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Settings</span>
+            <span class="menu-header-text">Master Data</span>
         </li>
 
         @can('bank.index')
@@ -148,11 +143,40 @@
         @can('norek.index')
         <li class="menu-item {{ (request()->is('norek')) ? 'active' : '' }}">
             <a href="{{ route('norek.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-book"></i>
+                <i class="menu-icon tf-icons ti ti-file-dollar"></i>
                 <div data-i18n="Norek">Norek</div>
             </a>
         </li>
         @endcan
+
+        @can('keperluan.index')
+        <li class="menu-item {{ (request()->is('keperluan')) ? 'active' : '' }}">
+            <a href="{{ route('keperluan.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-text-wrap-disabled"></i>
+                <div data-i18n="Keperluan">Keperluan</div>
+            </a>
+        </li>
+        @endcan
+
+        @can('kpengajuan.index')
+        <li class="menu-item {{ (request()->is('kpengajuan')) ? 'active' : '' }}">
+            <a href="{{ route('kpengajuan.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-layout-navbar"></i>
+                <div data-i18n="Kategori Pengajuan">Kategori Pengajuan</div>
+            </a>
+        </li>
+        @endcan
+
+
+        @can('rujukan.index')
+        <li class="menu-item {{ (request()->is('rujukan')) ? 'active' : '' }}">
+            <a href="{{ route('rujukan.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-id"></i>
+                <div data-i18n="Rujukan">Rujukan</div>
+            </a>
+        </li>
+        @endcan
+
         @endcanany
 
         @canany(['users.index','roles.index','permissions.index'])

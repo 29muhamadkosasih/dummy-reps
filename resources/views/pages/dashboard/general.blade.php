@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+@section('title', 'Dashboard')
 
 <div class="col-xl-3 mb-4">
     <div class="card">

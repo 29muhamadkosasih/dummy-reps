@@ -1,6 +1,8 @@
 @extends('layouts/master')
 @section('content')
 
+@section('title', 'Form')
+
 <!-- Invoice table -->
 <div class="col-xl-12">
     <div class="card">
@@ -13,18 +15,18 @@
             <div class="table-responsive text-nowrap">
                 <table class="table table-hover zero-configuration">
                     <thead>
-                        <tr >
+                        <tr>
                             <th width='10px' style="text-align: center">No</th>
                             <th>Dari</th>
                             <th>Departement</th>
                             <th>Payment Method</th>
                             <th>Kategori
                                 Pengajuan</th>
-                            <th>Jumlahh / (Rp)</th>
+                            <th>Jumlah (Rp)</th>
                             <th>Nama Bank </th>
                             <th>No Rekening </th>
                             <th>Penerima </th>
-                            <th>Status</th>
+                            <th class="text-center">Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,8 +43,7 @@
                                 {{ $data->payment }}
                             </td>
                             <td>
-                                {{ $data->ketegori_pengajuan }}
-                            </td>
+                                {{ $data->kpengajuan->name }} </td>
                             <td>
                                 {{ number_format($data->jumlah_total, 0, ',', '.',) }}
                             </td>
@@ -78,9 +79,13 @@
                                 </span>
                                 @break
                                 @default
-                                {{ $data->norek->nama_penerima }} @endswitch
+                                {{ $data->norek->nama_penerima }}
+                                 @endswitch
                             </td>
                             <td>
+                                <a href="{{ url('form/print', $data->id) }}" target="_blank">
+                                    <i class="menu-icon tf-icons ti ti-download"></i>
+                                </a> &nbsp;
                                 @switch($data)
                                 @case($data->status == null)
                                 <span class="badge bg-secondary">Pending</span>
@@ -90,6 +95,7 @@
                                 @default
                                 <span class="badge bg-success">PAID</span>
                                 @endswitch
+
                             </td>
                         </tr>
                         @endforeach

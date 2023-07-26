@@ -1,8 +1,7 @@
 @extends('layouts/master')
 
-@section('title', 'Users')
-
 @section('content')
+@section('title', 'Users')
 <!-- Invoice table -->
 <div class="offset-2 col-8">
     <div class="card">
@@ -27,6 +26,16 @@
                     <label class="form-label" for="basic-default-fullname">Name</label>
                     <input type="text" class="form-control" id="basic-default-fullname" placeholder="John Doe"
                         name="name" value="{{ old('name', $user->name) }}" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="basicInput">Username</label>
+                    <input type="text" class="form-control @error('username') is-invalid @enderror" id="basicInput"
+                        name="username" placeholder="Enter" value="{{ old('username', $user->username) }}" required />
+                    @error('username')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="basic-default-email">Email</label>

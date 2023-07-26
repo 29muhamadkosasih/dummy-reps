@@ -1,6 +1,6 @@
 @extends('layouts/master')
 @section('content')
-
+@section('title', 'Form')
 <!-- Invoice table -->
 <div class="col-xl-12">
     <div class="card">
@@ -35,59 +35,74 @@
                                 {{ $data->tanggal_kebutuhan }}
                             </td>
                             <td>
-                                {{ $data->to }}
-                            </td>
+                                {{ $data->rujukan->name }} </td>
                             <td>
                                 {{ $data->departement->nama_departement }}
                             </td>
                             <td>
-                                {{ $data->ketegori_pengajuan }}
-                            </td>
+                                {{ $data->kpengajuan->name }} </td>
                             <td>
                                 @switch($data)
                                 @case($data->status == null)
                                 <span class="badge bg-secondary">Pending</span>
                                 @break
-                                @case($data->status == 1)
-                                <span class="badge bg-success"> RF Telah DiChecked</span> @break
+                                @case($data->status == 4)
+                                <span class="badge bg-success"> RF Telah Approve</span>
+                                @break
+                                @case($data->status == 5)
+                                <span class="badge bg-warning"> Menunggu Konfimasi Pembayaran</span>
+                                @break
+
+                                @case($data->status == 6)
+                                <span class="badge bg-success">Selesai</span>
+                                @break
+
                                 @default
                                 <span class="badge bg-info">Process</span>
                                 @endswitch
                             </td>
                             <td style="text-align: center">
+                                @switch($data)
+                                @case($data->status == 4)
+                                <span class="badge bg-success"> Menunggu Konfirmasi </span>
+                                @break
 
+                                @case($data->status == 5)
+                                <span class="badge bg-success"> Menunggu Konfimasi Pembayaran</span>
+                                @break
+
+                                @case($data->status == 6)
+                                <a href="{{ route('form-approve.viewDetail', $data->id) }}"
+                                    class="btn btn-icon btn-secondary btn-sm">
+                                    <span class="ti ti-eye"></span>
+                                </a> @break
+
+                                @default
                                 <form onsubmit="return confirm('Apakah Anda Yakin ?');"
                                     action="{{ route('form-approve.destroy', $data->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    {{-- @can('form-checked.detail') --}}
                                     <a href="{{ route('form-approve.detail', $data->id) }}"
                                         class="btn btn-icon btn-secondary btn-sm">
                                         <span class="ti ti-eye"></span>
                                     </a>
-                                    {{-- @endcan --}}
 
-                                    {{-- @can('form-checked.edit') --}}
+                                    <a href="{{ route('form-approve.view', $data->id) }}"
+                                        class="btn btn-icon btn-success btn-sm">
+                                        <span class="ti ti-check"></span>
+                                    </a>
                                     <a href="{{ route('form-approve.edit', $data->id) }}"
                                         class="btn btn-icon btn-warning btn-sm">
                                         <span class="ti ti-edit"></span>
                                     </a>
-                                    {{-- @endcan --}}
 
-                                    {{-- @can('form-checked.approve') --}}
-                                    <a href="{{ url('approve/approve', $data->id) }}"
-                                        class="btn btn-icon btn-success btn-sm">
-                                        <span class="ti ti-check"></span>
-                                    </a>
-                                    {{-- @endcan --}}
-                                    {{-- @can('form-checked.delete') --}}
                                     <button type="submit" class="btn btn-icon btn-danger btn-sm">
                                         <span class="ti ti-trash"></span>
 
                                     </button>
-                                    {{-- @endcan --}}
                                 </form>
 
+                                @endswitch
                             </td>
                         </tr>
                         @endforeach

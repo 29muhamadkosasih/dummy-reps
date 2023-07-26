@@ -1,6 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
+@section('title', 'Dashboard')
+
 <div class="col-xl-4 col-12">
     <div class="row">
         <!-- Expenses -->

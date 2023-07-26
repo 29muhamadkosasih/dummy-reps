@@ -1,5 +1,7 @@
 @extends('layouts.master')
 @section('content')
+
+@section('title', 'Me')
 <section id="complex-header-datatable">
 
     <div class="row">

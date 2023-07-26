@@ -1,6 +1,6 @@
 @extends('layouts/master')
 @section('content')
-
+@section('title', 'Form')
 <!-- Invoice table -->
 <div class="col-xl-12">
     <div class="card">
@@ -17,8 +17,9 @@
                             <th width='10px' style="text-align: center">No</th>
                             <th>Dari</th>
                             <th>Tanggal Kebutuhan</th>
-                            <th>Untuk</th>
                             <th>Departement</th>
+                            <th>Keperluan</th>
+                            <th>Untuk</th>
                             <th>Kategori
                                 Pengajuan</th>
                             <th>Status</th>
@@ -35,14 +36,16 @@
                                 {{ $data->tanggal_kebutuhan }}
                             </td>
                             <td>
-                                {{ $data->to }}
-                            </td>
-                            <td>
                                 {{ $data->departement->nama_departement }}
                             </td>
                             <td>
-                                {{ $data->ketegori_pengajuan }}
+                                {{ $data->keperluan->name }}
                             </td>
+                            <td>
+                                {{ $data->rujukan->name }}
+                            </td>
+                            <td>
+                                {{ $data->kpengajuan->name }} </td>
                             <td>
                                 @switch($data)
                                 @case($data->status == null)

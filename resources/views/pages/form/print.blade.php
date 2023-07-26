@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Contoh Surat Pengajuan Dana</title>
+    <title>FUND REQUEST FORM</title>
     <style>
         #judul {
             text-align: center;
@@ -41,126 +41,65 @@
 
 <body>
     <div id=halaman class="container-fluid">
-        <h3 id=judul>SURAT PENGAJUAN</h3>
-
-        <p>Saya yang bertanda tangan di bawah ini :</p>
-
-        <table>
-            <tr>
-                <td style="width: 30%;">Nama</td>
-                <td style="width: 5%;">:</td>
-                <td style="width: 65%;">{{ $data->user->name }}</td>
-            </tr>
-            <tr>
-                <td style="width: 30%;">Untuk </td>
-                <td style="width: 5%;">:</td>
-                <td style="width: 65%;">{{ $data->to }}</td>
-            </tr>
-            <tr>
-                <td style="width: 30%;">Pengajuan</td>
-                <td style="width: 5%;">:</td>
-                <td style="width: 65%;">{{ $data->ketegori_pengajuan }}</td>
-            </tr>
-            <tr>
-                <td style="width: 30%;">Departement</td>
-                <td style="width: 5%;">:</td>
-                <td style="width: 65%;">{{ $data->departement->nama_departement }}</td>
-            </tr>
-            <tr>
-                <td style="width: 30%;">Tanggal Pengajuan</td>
-                <td style="width: 5%;">:</td>
-                <td style="width: 65%;">{{ $data->tanggal_kebutuhan }}</td>
-            </tr>
-        </table>
-
+        <h3 id=judul>FUND REQUEST FORM </h3>
         <table class="table table-bordered tab mt-4">
             <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Desciption</th>
-                    <th>Unit</th>
-                    <th>Qty</th>
-                    <th>Price</th>
-                    <th>Total</th>
+                <tr width='20px' style="background-color:skyblue">
+                    <th width='20px'>No</th>
+                    <th>Nama</th>
+                    <th>Departement</th>
+                    <th>Payment Method</th>
+                    <th>Kategori
+                        Pengajuan</th>
+                    <th>Jumlah (Rp)</th>
+                    <th>Nama Bank </th>
+                    <th>No Rekening </th>
+                    <th>Nama Penerima </th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <th>1</th>
-                    <th style="text-align: left">{{ $data->description }} </th>
-                    <th>{{ $data->unit }}</th>
-                    <th>{{ $data->qty }}</th>
-                    <th style="text-align: left">Rp. {{ number_format($data->price, 0, ',', '.') }}</th>
-                    <th style="text-align: left">Rp. {{ number_format($data->total, 0, ',', '.') }}</th>
-                </tr>
-                <tr>
-                    <th>2</th>
-                    <th style="text-align: left">{{ $data->description2 }} </th>
-                    <th>{{ $data->unit2 }}</th>
-                    <th>{{ $data->qty2 }}</th>
-                    <th style="text-align: left">
+                    <th>{{ $data->user->name }}</th>
+                    <th>{{ $data->departement->nama_departement }}</th>
+                    <th>{{ $data->payment }}</th>
+                    <th>{{ $data->kpengajuan->name }}</th>
+                    <th>{{ number_format($data->jumlah_total, 0, ',', '.',) }}</th>
+                    <th>
                         @switch($data)
-                        @case($data->price2 == null)
+                        @case($data->norek_id == null)
+                        <span class="badge bg-info m-1">
+                            <i data-feather='dollar-sign'></i>
+                            Cash
+                        </span>
                         @break
                         @default
-                        Rp. {{ number_format($data->price2, 0, ',', '.') }}
-                        @endswitch </th>
-                    <th style="text-align: left">
-                        @switch($data)
-                        @case($data->total2 == '0')
-                        @break
-                        @default
-                        Rp. {{ number_format($data->total2, 0, ',', '.') }}
+                        {{ $data->norek->bank->nama_bank }}
                         @endswitch
                     </th>
-                </tr>
-                <tr>
-                    <th>3</th>
-                    <th style="text-align: left">{{ $data->description3 }} </th>
-                    <th>{{ $data->unit3 }}</th>
-                    <th>{{ $data->qty3 }}</th>
-                    <th style="text-align: left">
+                    <th>
                         @switch($data)
-                        @case($data->price3 == null)
+                        @case($data->norek_id == null)
+                        <span class="badge bg-info m-1">
+                            <i data-feather='dollar-sign'></i>
+                            Cash
+                        </span>
                         @break
                         @default
-                        Rp. {{ number_format($data->price3, 0, ',', '.') }}
-                        @endswitch
+                        {{ $data->norek->no_rekening }} @endswitch
                     </th>
-                    <th style="text-align: left">
+                    <th>
                         @switch($data)
-                        @case($data->total3 == '0')
+                        @case($data->norek_id == null)
+                        <span class=" badge bg-info m-1">
+                            <i data-feather='dollar-sign'></i>
+                            Cash
+                        </span>
                         @break
                         @default
-                        Rp. {{ number_format($data->total3, 0, ',', '.') }}
+                        {{ $data->norek->nama_penerima }}
                         @endswitch
                     </th>
-                </tr>
-                <tr>
-                    <th>4</th>
-                    <th style="text-align: left">{{ $data->description4 }} </th>
-                    <th>{{ $data->unit4 }}</th>
-                    <th>{{ $data->qty4 }}</th>
-                    <th style="text-align: left">
-                        @switch($data)
-                        @case($data->price4 == null)
-                        @break
-                        @default
-                        Rp. {{ number_format($data->price4, 0, ',', '.') }}
-                        @endswitch
-                    </th>
-                    <th style="text-align: left">
-                        @switch($data)
-                        @case($data->total4 == '0')
-                        @break
-                        @default
-                        Rp. {{ number_format($data->total4, 0, ',', '.') }}
-                        @endswitch
-                    </th>
-                </tr>
-                <tr>
-                    <th colspan="5" style="text-align: center">Total</th>
-                    <th style="text-align: left">Rp. {{ number_format($data->jumlah_total, 0, ',', '.') }}</th>
                 </tr>
             </tbody>
         </table>
@@ -235,7 +174,7 @@
                                             n(r, e)
                                         })
                                     }(n, function (n) {
-                                        "TR" == (o = n.nodeName) ? (e = [], u.push(e), a.push(n)) : "TD" !=
+                                        "TR" == (o = n.nodeName) ? (e = [], u.push(e), a.push(n)) : "th" !=
                                         o && "TH" != o || e.push(n)
                                     }), [u, a]
                                 }(), i = a[0], s = a[1], c = r(i), f = c > 1 && r(i[0]) < r(i[1]) ? 1 : 0, v = f +

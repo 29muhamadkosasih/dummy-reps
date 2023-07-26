@@ -22,6 +22,7 @@
         <input type="text" class="form-control" id="basicInput" name="nama_penerima" placeholder="Enter"
             value="{{ $edit->nama_penerima }}" required />
     </div>
+    <input type="hidden" name="user_id" value="{{ $userId }}">
     <button type="submit" class="btn btn-primary float-end ms-2">Submit</button>
     <a href="{{ route('norek.index') }}" class="btn btn-secondary float-end ">Back</a>
 </form>

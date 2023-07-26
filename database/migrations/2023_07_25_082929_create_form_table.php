@@ -21,8 +21,12 @@ class CreateFormTable extends Migration
             $table->foreign('departement_id')->references('id')->on('departement');
             $table->unsignedBigInteger('norek_id')->nullable();
             $table->foreign('norek_id')->references('id')->on('norek');
-            $table->string('to')->nullable();
-            $table->string('ketegori_pengajuan');
+            $table->unsignedBigInteger('rujukan_id')->nullable();
+            $table->foreign('rujukan_id')->references('id')->on('rujukan');
+            $table->unsignedBigInteger('kpengajuan_id')->nullable();
+            $table->foreign('kpengajuan_id')->references('id')->on('kpengajuan');
+            $table->unsignedBigInteger('keperluan_id')->nullable();
+            $table->foreign('keperluan_id')->references('id')->on('keperluan');
             $table->string('tanggal_kebutuhan');
             $table->string('payment');
             $table->string('description');
@@ -73,6 +77,12 @@ class CreateFormTable extends Migration
             $table->unsignedBigInteger('approve_by')->nullable();
             $table->foreign('approve_by')->references('id')->on('users');
             $table->date('approve_date')->nullable();
+            $table->string('jumlah_dana')->nullable();
+            $table->date('tgl_terima_dana')->nullable();
+            $table->string('jumlah_pemakaian')->nullable();
+            $table->string('tgl_pengembalian')->nullable();
+            $table->string('balance')->nullable();
+            $table->string('tgl_pembayaran')->nullable();
             $table->timestamps();
         });
     }

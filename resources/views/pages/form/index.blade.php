@@ -1,6 +1,6 @@
 @extends('layouts/master')
 @section('content')
-
+@section('title', 'Form')
 <!-- Invoice table -->
 <div class="col-xl-12">
     <div class="card">
@@ -25,8 +25,9 @@
                         <tr>
                             <th width='10px' style="text-align: center">No</th>
                             <th>Tgl Pengajuan</th>
-                            <th>Dari</th>
-                            <th>Departement</th>
+                            {{-- <th>Dari</th>
+                            <th>Departement</th> --}}
+                            <th>Keperluan</th>
                             <th>Untuk</th>
                             <th>Pengajuan</th>
                             <th>Payment</th>
@@ -36,22 +37,26 @@
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                        @foreach ($form as $data) <tr>
+                        @foreach ($form as $data)
+                        <tr>
                             <td style="text-align: center">{{ $loop->iteration }}</td>
                             <td>
                                 {{ $data->created_at->format('Y-m-d')}}
                             </td>
-                            <td>
+                            {{-- <td>
                                 {{ $data->user->name }}
                             </td>
                             <td>
                                 {{ $data->departement->nama_departement }}
+                            </td> --}}
+                            <td>
+                                {{ $data->keperluan->name }}
                             </td>
                             <td>
-                                {{ $data->to }}
+                                {{ $data->rujukan->name }}
                             </td>
                             <td>
-                                {{ $data->ketegori_pengajuan }}
+                                {{ $data->kpengajuan->name }}
                             </td>
                             <td>
                                 {{ $data->payment }}
@@ -70,19 +75,48 @@
                                 @case($data->status == 3)
                                 <span class="badge bg-warning">Approve</span>
                                 @break
+                                @case($data->status == 4)
+                                <span class="badge bg-success">Konfirmasi Dana</span>
+                                @break
+
+                                @case($data->status == 5)
+                                <span class="badge bg-success">Konfirmasi Pembayaran</span>
+                                @break
+
+                                @case($data->status == 6)
+                                <span class="badge bg-success">Pembayaran Selesai </span>
+                                @break
+
                                 @default
                                 <span class="badge bg-success">PAID</span>
                                 @endswitch
                             </td>
-                            <td class="text-center">
 
+                            <td class="text-center">
+                                @switch($data)
+                                @case($data->status == 4)
+                                <a href="{{ url('approve/konfirmasi', $data->id) }}"
+                                    class="btn btn-icon btn-success btn-sm">
+                                    <span class="ti ti-check"></span>
+                                </a>
+                                @break
+                                @case($data->status == 5)
+                                <a href="{{ route('form.detail', $data->id) }}" class="btn btn-icon btn-primary btn-sm">
+                                    <span class="ti ti-eye"></span>
+                                </a>
+                                @break
+                                @case($data->status == 6)
+                                <span class="badge bg-success">Pembayaran Selesai</span> </a>
+                                @break
+
+                                @default
                                 <form onsubmit="return confirm('Apakah Anda Yakin ?');"
                                     action="{{ route('form.destroy', $data->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     @can('form.show')
-                                    <a href=" {{ route('form.show', $data->id) }}" class="btn btn-icon btn-secondary
-                                btn-sm">
+                                    <a href=" {{ route('form.show', $data->id) }}"
+                                        class="btn btn-icon btn-secondary btn-sm">
                                         <span class="ti ti-eye"></span>
                                     </a>
                                     @endcan
@@ -99,6 +133,7 @@
                                     </button>
                                     @endcan
                                 </form>
+                                @endswitch
                             </td>
                         </tr>
                         @endforeach
@@ -121,7 +156,8 @@
                 </div>
                 <form action="{{ route('form.store') }}" method="POST" class="row g-3" enctype="multipart/form-data">
                     @csrf
-                    <div class="col-xl-6 col-md-6 col-12">
+                    <input type="hidden" name="departement_id" value="{{ Auth::user()->departement_id }}">
+                    <div class="col-xl-4 col-md-6 col-12">
                         <div class="mb-1">
                             <label class="form-label" for="basicInput">
                                 Dari
@@ -130,21 +166,37 @@
                                 required value="{{ Auth::user()->name }}" readonly />
                         </div>
                     </div>
-                    <div class="col-xl-6 col-md-6 col-12">
+
+                    <div class="col-xl-4 col-md-6 col-12">
                         <div class="mb-1">
                             <label class="form-label" for="basicInput">
                                 Kategori
                                 Pengajuan
                             </label>
-                            <select class="form-select" id="selectDefault" name="ketegori_pengajuan" required>
+                            <select class="form-select" id="selectDefault" name="kpengajuan_id" required>
                                 <option selected>Open this select</option>
-                                <option value="Advance">Advance</option>
-                                <option value="Reimburse">Reimburse</option>
-                                <option value="Payment">Payment</option>
+                                @foreach ($kpengajuan as $item)
+                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
-                    <input type="hidden" name="departement_id" value="{{ Auth::user()->departement_id }}">
+
+                    <div class="col-xl-4 col-md-6 col-12">
+                        <div class="mb-1">
+                            <label class="form-label" for="basicInput">
+                                Keperluan
+                            </label>
+                            <select class="form-select" id="selectDefault" name="keperluan_id" required>
+                                <option selected>Open this select</option>
+                                @foreach ($keperluan as $item)
+                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+
                     <div class="col-xl-4 col-md-6 col-12">
                         <div class="mb-1">
                             <label class="form-label" for="basicInput">
@@ -160,12 +212,11 @@
                             <label class="form-label" for="helpInputTop">
                                 Ditujukan Untuk
                             </label>
-                            <select class="form-select" id="selectDefault" name="to" required>
+                            <select class="form-select" id="selectDefault" name="rujukan_id" required>
                                 <option>Open this select</option>
-                                <option value="SPV">SPV</option>
-                                <option value="Finance">Finance</option>
-                                <option value="Manager">Manager</option>
-                                <option value="Direktur Utama">Direktur Utama</option>
+                                @foreach ($rujukan as $item)
+                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>

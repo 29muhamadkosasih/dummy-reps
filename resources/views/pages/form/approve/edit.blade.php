@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+@section('title', 'Form')
 <section id="complex-header-datatable">
     <div class="row">
         <div class="offset-2 col-8">
@@ -26,19 +27,24 @@
                                 <div class="mb-1">
                                     <label class="form-label" for="basicInput">Kategori
                                         Pengajuan</label>
-                                    <select class="form-select" id="selectDefault" name="ketegori_pengajuan" required>
-                                        <option selected>{{ $edit->ketegori_pengajuan }}</option>
-                                        <option value="Advance">Advance</option>
-                                        <option value="Reimburse">Reimburse</option>
-                                        <option value="Payment">Payment</option>
+                                    <select class="form-select" id="selectDefault" name="kpengajuan_id" required>
+                                        <option selected>Open this select</option> @foreach ($kpengajuan as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
                             <div class="col-xl-4 col-md-6 col-12">
                                 <div class="mb-1">
-                                    <label class="form-label" for="helpInputTop">Departement</label>
-                                    <input type="text" class="form-control" id="basicInput" placeholder="Enter" required
-                                        value="{{ $edit->departement->nama_departement }}" readonly />
+                                    <label class="form-label" for="basicInput">
+                                        Keperluan
+                                    </label>
+                                    <select class="form-select" id="selectDefault" name="keperluan_id" required>
+                                        <option selected>Open this select</option>
+                                        @foreach ($keperluan as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-xl-4 col-md-6 col-12">
@@ -62,12 +68,11 @@
                             <div class="col-xl-4 col-md-6 col-12">
                                 <div class="mb-1">
                                     <label class="form-label" for="helpInputTop">Ditujukan Untuk</label>
-                                    <select class="form-select" id="selectDefault" name="to" required>
-                                        <option selected>{{ $edit->to }}</option>
-                                        <option value="SPV">SPV</option>
-                                        <option value="Finance">Finance</option>
-                                        <option value="Manager">Manager</option>
-                                        <option value="Direktur Utama">Direktur Utama</option>
+                                    <select class="form-select" id="selectDefault" name="rujukan_id" required>
+                                        <option>Open this select</option>
+                                        @foreach ($rujukan as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

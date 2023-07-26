@@ -14,19 +14,18 @@ class FormsController extends Controller
     {
         abort_if(Gate::denies('form-list.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
-         $form = Form::where('status', '4')->get();
+        $form = Form::where('status', '6')->get();
         // dd($form);
-        return view ('pages.form.selesai.index',[
-            'form' =>$form
+        return view('pages.form.selesai.index', [
+            'form' => $form
         ]);
     }
 
-        public function show($id)
+    public function show($id)
     {
-        $show =Form::find($id);
+        $show = Form::find($id);
         return view('pages.form.selesai.show', [
-            'show'   =>$show
+            'show'   => $show
         ]);
-
     }
 }

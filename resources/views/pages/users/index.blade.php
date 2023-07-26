@@ -24,7 +24,11 @@
                         <tr>
                             <th width='10px' style="text-align: center">No</th>
                             <th>Name</th>
+                            <th>UserName</th>
                             <th>Email</th>
+                            <th>Jabatan</th>
+                            <th>Departement</th>
+                            <th>No Hp</th>
                             <th>Roles</th>
                             <th width='150px' class="text-center">Actions</th>
                         </tr>
@@ -34,7 +38,11 @@
                         <tr>
                             <td class="text-center">{{$loop->iteration}}</td>
                             <td>{{$user->name}}</td>
+                            <td>{{$user->username}}</td>
                             <td>{{$user->email}}</td>
+                            <td>{{$user->jabatan->jabatan}}</td>
+                            <td>{{$user->departement->nama_departement}}</td>
+                            <td>{{$user->no_hp}}</td>
                             <td>{{$user->role->title ?? "--"}}</td>
                             <td class="text-center">
                                 @can('users.show')

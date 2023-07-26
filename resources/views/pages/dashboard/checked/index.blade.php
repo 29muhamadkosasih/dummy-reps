@@ -1,83 +1,80 @@
 @extends('layouts.master')
 
 @section('content')
+@section('title', 'Dashboard')
 <div class="col-xl-4 col-12">
     <div class="row">
-        <div class="col-xl-4 col-12">
-            <div class="row">
-                <!-- Expenses -->
-                <div class="col-xl-6 mb-4 col-md-3 col-6">
-                    <div class="card">
-                        <div class="card-header pb-0">
-                            <h5 class="card-title mb-0">Total RF</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center mt-3 gap-3">
-                                <h4 class="mb-0">{{ $reports }}</h4>
-                            </div>
-                        </div>
+        <!-- Expenses -->
+        <div class="col-xl-6 mb-4 col-md-3 col-6">
+            <div class="card">
+                <div class="card-header pb-0">
+                    <h5 class="card-title mb-0">Total RF</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mt-3 gap-3">
+                        <h4 class="mb-0">{{ $reports }}</h4>
                     </div>
                 </div>
-                <!--/ Expenses -->
-
-                <!-- Profit last month -->
-                <div class="col-xl-6 mb-4 col-md-3 col-6">
-                    <div class="card">
-                        <div class="card-header pb-0">
-                            <h5 class="card-title mb-0">RF Perbulan</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center mt-3 gap-3">
-                                <h4 class="mb-0">
-                                    {{ $reports }} / {{ $namaBulan }} </h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--/ Profit last month -->
-
-                <!-- Generated Leads -->
-                <div class="col-xl-12 mb-4 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <div class="d-flex flex-column">
-                                    <div class="card-title mb-auto">
-                                        <h5 class="mb-1 text-nowrap">Total RF</h5>
-                                        <small></small>
-                                    </div>
-                                    <div class="chart-statistics">
-                                        <h3 class="card-title mb-1">{{ number_format($jumlah_total, 0, ',', '.',) }}
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-12 mb-4 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <div class="d-flex flex-column">
-                                    <div class="card-title mb-auto">
-                                        <h5 class="mb-1 text-nowrap">Total RF Perbulan</h5>
-                                        <small></small>
-                                    </div>
-                                    <div class="chart-statistics">
-                                        <h3 class="card-title mb-1">Rp.
-                                            {{ number_format($jumlah_total, 0, ',', '.',) }} /
-                                            {{
-                                            $namaBulan }}</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--/ Generated Leads -->
             </div>
         </div>
+        <!--/ Expenses -->
+
+        <!-- Profit last month -->
+        <div class="col-xl-6 mb-4 col-md-3 col-6">
+            <div class="card">
+                <div class="card-header pb-0">
+                    <h5 class="card-title mb-0">RF Perbulan</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mt-3 gap-3">
+                        <h4 class="mb-0">
+                            {{ $reports }} / {{ $namaBulan }} </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Profit last month -->
+
+        <!-- Generated Leads -->
+        <div class="col-xl-12 mb-4 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-column">
+                            <div class="card-title mb-auto">
+                                <h5 class="mb-1 text-nowrap">Total RF</h5>
+                                <small></small>
+                            </div>
+                            <div class="chart-statistics">
+                                <h3 class="card-title mb-1">{{ number_format($jumlah_total, 0, ',', '.',) }}
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-12 mb-4 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-column">
+                            <div class="card-title mb-auto">
+                                <h5 class="mb-1 text-nowrap">Total RF Perbulan</h5>
+                                <small></small>
+                            </div>
+                            <div class="chart-statistics">
+                                <h3 class="card-title mb-1">Rp.
+                                    {{ number_format($jumlah_total, 0, ',', '.',) }} /
+                                    {{
+                                    $namaBulan }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Generated Leads -->
     </div>
 </div>
 

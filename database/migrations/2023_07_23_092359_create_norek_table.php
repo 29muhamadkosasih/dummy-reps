@@ -17,6 +17,8 @@ class CreateNorekTable extends Migration
             $table->id();
             $table->unsignedBigInteger('bank_id')->nullable();
             $table->foreign('bank_id')->references('id')->on('bank');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('no_rekening');
             $table->string('nama_penerima');
             $table->timestamps();

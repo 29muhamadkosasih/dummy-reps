@@ -1,5 +1,6 @@
 @extends('layout.master')
 @section('content')
+@section('title', 'Form')
 <section id="complex-header-datatable">
     <div class="row">
         <div class="offset-2 col-8">

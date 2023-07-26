@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+@section('title', 'Form')
 <section id="complex-header-datatable">
     <div class="row">
         <div class="offset-2 col-9">
@@ -23,7 +24,7 @@
                                 <dd class="col-sm-8 mb-1">: {{ $show->departement->nama_departement }}</dd>
 
                                 <dt class="col-sm-4 fw-bolder mb-1">Untuk</dt>
-                                <dd class="col-sm-8 mb-3">: {{ $show->to }}</dd>
+                                <dd class="col-sm-8 mb-3">: {{ $show->rujukan->name }}</dd>
 
 
                             </dl>
@@ -31,7 +32,7 @@
                         <div class="col-xl-5 col-12">
                             <dl class="row mb-0">
                                 <dt class="col-sm-4 fw-bolder mb-1">Pengajuan</dt>
-                                <dd class="col-sm-8 mb-1">: {{ $show->ketegori_pengajuan }}</dd>
+                                <dd class="col-sm-8 mb-1">: {{ $show->kpengajuan->name }}</dd>
 
                                 <dt class="col-sm-4 fw-bolder mb-1">Payment</dt>
                                 <dd class="col-sm-8 mb-1">: {{ $show->payment }}</dd>
