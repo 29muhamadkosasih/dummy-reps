@@ -2,7 +2,7 @@
     @csrf
     <div class="mb-3">
         <label class="form-label">Nama Bank</label>
-        <input type="text" class="form-control @error('nama_bank') is-invalid @enderror" placeholder="John Doe"
+        <input type="text" class="form-control @error('nama_bank') is-invalid @enderror" placeholder="Masukan Nama Bank"
             name="nama_bank" value="{{ old('nama_bank') }}" />
         @error('nama_bank')
         <span class="invalid-feedback" role="alert">

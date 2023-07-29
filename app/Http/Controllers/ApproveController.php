@@ -17,8 +17,8 @@ class ApproveController extends Controller
     public function index()
     {
         abort_if(Gate::denies('form-approve.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
-        // $form = Form::where('status', '3')->get();
-        $form = Form::all();
+        $form = Form::where('status', '2')->get();
+        // $form = Form::all();
         // dd($form);
         return view('pages.form.approve.index', [
             'form'   => $form,
@@ -76,7 +76,7 @@ class ApproveController extends Controller
         $total_jumlah1 = $jumlah + $jumlah2;
         $total_jumlah2 = $jumlah3 + $jumlah4;
         $jumlah_akhir = $total_jumlah1 + $total_jumlah2;
-
+        // dd($request->all());
         $data->update([
             'from_id' => $request->from_id,
             'rujukan_id' => $request->rujukan_id,
@@ -141,17 +141,32 @@ class ApproveController extends Controller
         $data->update(
             [
                 "status" => "4",
-                "checked_by"  => $userId,
-                "checked_date" => $date
+                "approve_by"  => $userId,
+                "approve_date" => $date
 
+            ]
+        );
+        return back()
+            ->with('success', 'Congratulation !  Data Berhasil Di Process');
+    }
+
+    public function reject($id)
+    {
+        $userId = auth()->id();
+        $date = date('y-m-d');
+        $data = Form::where('id', $id)->first();
+        $data->update(
+            [
+                "status" => "3",
+                "approve_by"  => $userId,
+                "approve_date" => $date
             ]
         );
 
         // dd($data);
         return back()
-            ->with('success', 'Congratulation !  Data Berhasil Di Approve');
+            ->with('success', 'Congratulation !  Data Berhasil Di Cancel');
     }
-
     public function view($id)
     {
         $show = Form::find($id);
@@ -245,13 +260,12 @@ class ApproveController extends Controller
             'norek_id' => $request->norek_id,
             'jumlah_dana' => $request->jumlah_dana,
             'tgl_terima_dana' => $date,
-            'status' => 4
+            'status' => 5
         ]);
         // dd($data);
-        return redirect()->route('form-approve.index')
-            ->with('success', 'Congratulation !  Data Berhasil Di Process');
+        return redirect()->route('form-list.index')
+            ->with('success', 'Congratulation ! Dana Telah Berhasil Di Kirim');
     }
-
 
     public function viewDetail($id)
     {
@@ -260,5 +274,13 @@ class ApproveController extends Controller
         return view('pages.form.approve.selesai', [
             'show'   => $show
         ]);
+    }
+
+    public function destroy($id)
+    {
+        $delete = Form::find($id);
+        $delete->delete();
+        return redirect()->route('form-approve.index')
+            ->with('success', 'Congratulation !  Data Berhasil dihapus');
     }
 }

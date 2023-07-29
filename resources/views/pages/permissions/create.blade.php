@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- Invoice table -->
-<div class="offset-2 col-8">
+<div class="col-12">
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Create Permissions</h5>
@@ -14,8 +14,8 @@
                 @csrf
                 <div class="mb-3">
                     <label class="form-label">Name</label>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="John Doe"
-                        name="name" value="{{ old('name') }}" />
+                    <input type="text" class="form-control @error('name') is-invalid @enderror"
+                        placeholder="Masukan Name Permissions" name="name" value="{{ old('name') }}" />
                     @error('name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

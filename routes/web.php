@@ -7,7 +7,6 @@ use App\Http\Controllers\FormController;
 use App\Http\Controllers\NoRekController;
 use App\Http\Controllers\ApproveController;
 use App\Http\Controllers\CheckedController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StaterkitController;
@@ -42,9 +41,29 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('layouts/empty', [StaterkitController::class, 'layout_empty'])->name('layout.empty');
     Route::get('form/print/{id}', [FormController::class, 'print'])->name('form.print');
     Route::get('form/listAdvance', [FormController::class, 'listAdvance'])->name('listAdvance');
+    Route::put('form-checked/checked/{id}', [CheckedController::class, 'checked'])->name('form-checked.checked');
+    Route::get('form-checked/detail/{id}', [CheckedController::class, 'detail'])->name('form-checked.detail');
+    Route::put('form-approve/approve/{id}', [ApproveController::class, 'approve'])->name('form-approve.approve');
+    Route::get('form-approve/detail/{id}', [ApproveController::class, 'detail'])->name('form-approve.detail');
+    Route::get('form-approve/detail/{id}', [ApproveController::class, 'detail'])->name('form-approve.detail');
+    Route::get('form-approve/view/{id}', [ApproveController::class, 'view'])->name('form-approve.view');
+    Route::get('form-approve/viewDetail/{id}', [ApproveController::class, 'viewDetail'])->name('form-approve.viewDetail');
+    Route::get('form/detail/{id}', [FormController::class, 'detail'])->name('form.detail');
+    Route::put('form/kPembayaran/{id}', [FormController::class, 'kPembayaran'])->name('form.kPembayaran');
+    Route::put('form-approve/process/{id}', [ApproveController::class, 'process'])->name('form-approve.process');
+    Route::get('approve/konfirmasi/{id}', [FormController::class, 'konfirmasi']);
+    Route::get('approve/konfirmasiRem/{id}', [FormController::class, 'konfirmasiRem']);
+    Route::get('approve/maker/{id}', [CheckedController::class, 'approve']);
+    Route::get('approve/paid/{id}', [CheckedController::class, 'paid']);
+    Route::get('reject/maker/{id}', [CheckedController::class, 'reject']);
+    Route::get('approve/approve/{id}', [ApproveController::class, 'approve']);
+    Route::get('reject/reject/{id}', [ApproveController::class, 'reject']);
+    Route::get('form-list/list', [FormsController::class, 'list'])->name('list');
+    Route::get('dashboard-checked', [DashboardController::class, 'checked'])->name('dashboard.checked');
+    Route::get('dashboard-approve', [DashboardController::class, 'approve'])->name('dashboard.approve');
+    Route::get('dashboard-general', [DashboardController::class, 'general'])->name('dashboard.general');
     Route::resource('/users', UserController::class);
     Route::resource('/roles', RoleController::class);
-    Route::resource('/product', ProductController::class);
     Route::resource('/permissions', PermissionController::class)->except(['show']);
     Route::resource('bank', BankController::class);
     Route::resource('norek', NoRekController::class);
@@ -53,29 +72,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('form-checked', CheckedController::class);
     Route::resource('form-list', FormsController::class);
     Route::resource('me', ProfileController::class);
-    Route::put('form-checked/checked/{id}', [CheckedController::class, 'checked'])->name('form-checked.checked');
-    Route::get('form-checked/detail/{id}', [CheckedController::class, 'detail'])->name('form-checked.detail');
-    Route::put('form-approve/approve/{id}', [ApproveController::class, 'approve'])->name('form-approve.approve');
-    Route::get('form-approve/detail/{id}', [ApproveController::class, 'detail'])->name('form-approve.detail');
-    Route::get('form-approve/view/{id}', [ApproveController::class, 'view'])->name('form-approve.view');
-    Route::get('form-approve/viewDetail/{id}', [ApproveController::class, 'viewDetail'])->name('form-approve.viewDetail');
-    Route::get('form/detail/{id}', [FormController::class, 'detail'])->name('form.detail');
-    Route::put('form/kPembayaran/{id}', [FormController::class, 'kPembayaran'])->name('form.kPembayaran');
-    Route::put('form-approve/process/{id}', [ApproveController::class, 'process'])->name('form-approve.process');
-
-    Route::get('approve/konfirmasi/{id}', [FormController::class, 'konfirmasi']);
-
-
-    Route::get('approve/maker/{id}', [CheckedController::class, 'approve']);
-
-    Route::get('reject/maker/{id}', [CheckedController::class, 'reject']);
-    Route::get('approve/approve/{id}', [ApproveController::class, 'approve']);
-    Route::get('/form/{id}', [FormController::class, 'getBank']);
     Route::resource('dashboard', DashboardController::class);
-    Route::get('dashboard-checked', [DashboardController::class, 'checked'])->name('dashboard.checked');
-    Route::get('dashboard-approve', [DashboardController::class, 'approve'])->name('dashboard.approve');
-    Route::get('dashboard-general', [DashboardController::class, 'general'])->name('dashboard.general');
     Route::resource('keperluan', KeperluanController::class);
     Route::resource('kpengajuan', KpengajuanController::class);
     Route::resource('rujukan', RujukanController::class);
+
+    Route::post('import-file', [UserController::class, 'import'])->name('import');
 });

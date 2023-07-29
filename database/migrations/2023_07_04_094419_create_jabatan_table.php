@@ -21,8 +21,8 @@ class CreateJabatanTable extends Migration
                 'Supervisor',
                 'Finance',
                 'Manager',
-                'Direktor'
-        ]);
+                'Director'
+            ]);
             $table->timestamps();
         });
     }

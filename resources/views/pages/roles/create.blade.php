@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- Invoice table -->
-<div class="offset-2 col-8">
+<div class="col-12">
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Create Roles</h5>
@@ -14,8 +14,8 @@
                 @csrf
                 <div class="mb-3">
                     <label class="form-label">Title</label>
-                    <input type="text" class="form-control @error('title') is-invalid @enderror" placeholder="John Doe"
-                        name="title" value="{{ old('title') }}" />
+                    <input type="text" class="form-control @error('title') is-invalid @enderror"
+                        placeholder="Masukan Title" name="title" value="{{ old('title') }}" />
                     @error('title')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -26,8 +26,8 @@
                     <label class="form-label">Short Code</label>
                     <div class="input-group input-group-merge">
                         <input type="text" class=" form-control @error('short_code') is-invalid @enderror"
-                            placeholder="john.doe" aria-label="john.doe" aria-describedby="basic-default-email2"
-                            name="short_code" value="{{ old('short_code') }}" />
+                            placeholder="Masukan Short Code" aria-label="john.doe"
+                            aria-describedby="basic-default-email2" name="short_code" value="{{ old('short_code') }}" />
                         @error('short_code')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

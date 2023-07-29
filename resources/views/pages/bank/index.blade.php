@@ -1,7 +1,7 @@
 @extends('layouts/master')
 @section('content')
 
-
+@section('title', 'Bank')
 <!-- Invoice table -->
 <div class="col-xs-4 col-sm-4 col-md-4 mb-4">
     <div class="card">
@@ -31,12 +31,6 @@
             <div class="row ">
                 <div class="col-auto me-auto ">
                     <h5 class="mb-0">List Data Bank</h5>
-                </div>
-                <div class="col-auto">
-                    @can('users.create')
-                    <a href="{{ route('users.create') }}" class="btn btn-primary">Create</a>
-                    @endcan
-
                 </div>
             </div>
             <div class="table-responsive text-nowrap">

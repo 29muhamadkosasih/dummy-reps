@@ -12,47 +12,47 @@ class BankController extends Controller
 {
     public function index()
     {
-    abort_if(Gate::denies('bank.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
+        abort_if(Gate::denies('bank.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
-        $bank =Bank::all();
-        return view('pages.bank.index',[
-            'bank'    =>$bank
+        $bank = Bank::all();
+        return view('pages.bank.index', [
+            'bank'    => $bank
         ]);
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'nama_bank'=>'required|max:255|min:5 ',
-
+            'nama_bank' => 'required|max:255|min:5|unique:bank',
         ]);
-
         Bank::create($request->all());
-        return redirect()->route('bank.index')->with('success','👋 Added data successfuly !   Jelly oat cake candy jelly');
+        return redirect()->route('bank.index')->with('success', 'Success ! Data Bank Berhasil di Tambahkan');
     }
 
     public function edit($id)
     {
         abort_if(Gate::denies('bank.edit'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
-        $edit =Bank::find($id);
-        $bank =Bank::all();
-        return view('pages.bank.index',[
-            'edit'   =>$edit,
-            'bank'    =>$bank
+        $edit = Bank::find($id);
+        $bank = Bank::all();
+        return view('pages.bank.index', [
+            'edit'   => $edit,
+            'bank'    => $bank
         ]);
-
     }
 
     public function update(Request $request, $id)
     {
-        $input  = $request->all();
         $bank   = Bank::find($id);
-        // dd($id);
-        $bank->update($input);
+        $this->validate($request, [
+            'nama_bank' => 'required|max:255|min:5|unique:bank',
+        ]);
+        $bank->update([
+            'nama_bank'   => $request->nama_bank
+        ]);
 
         return redirect()->route('bank.index')
-                             ->with('success','👋 Update data successfuly !   Jelly oat cake candy jelly');
+            ->with('success', 'Success ! Data Bank Berhasil di Update');
     }
 
 
@@ -63,8 +63,6 @@ class BankController extends Controller
         $delete = Bank::find($id);
         $delete->delete();
         return redirect()->route('bank.index')
-                            ->with('success','👋 Delete data successfuly !   Jelly oat cake candy jelly');
+            ->with('success', 'Success ! Data Bank Berhasil di Hapus');
     }
-
-
 }

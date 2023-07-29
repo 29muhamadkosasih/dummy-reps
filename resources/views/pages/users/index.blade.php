@@ -28,7 +28,6 @@
                             <th>Email</th>
                             <th>Jabatan</th>
                             <th>Departement</th>
-                            <th>No Hp</th>
                             <th>Roles</th>
                             <th width='150px' class="text-center">Actions</th>
                         </tr>
@@ -42,7 +41,6 @@
                             <td>{{$user->email}}</td>
                             <td>{{$user->jabatan->jabatan}}</td>
                             <td>{{$user->departement->nama_departement}}</td>
-                            <td>{{$user->no_hp}}</td>
                             <td>{{$user->role->title ?? "--"}}</td>
                             <td class="text-center">
                                 @can('users.show')

@@ -75,7 +75,8 @@
                                 <a href="{{ route('form-approve.viewDetail', $data->id) }}"
                                     class="btn btn-icon btn-secondary btn-sm">
                                     <span class="ti ti-eye"></span>
-                                </a> @break
+                                </a>
+                                 @break
 
                                 @default
                                 <form onsubmit="return confirm('Apakah Anda Yakin ?');"
@@ -87,13 +88,26 @@
                                         <span class="ti ti-eye"></span>
                                     </a>
 
-                                    <a href="{{ route('form-approve.view', $data->id) }}"
+                                    {{-- <a href="{{ route('form-approve.view', $data->id) }}"
                                         class="btn btn-icon btn-success btn-sm">
                                         <span class="ti ti-check"></span>
-                                    </a>
+                                    </a> --}}
+
                                     <a href="{{ route('form-approve.edit', $data->id) }}"
                                         class="btn btn-icon btn-warning btn-sm">
                                         <span class="ti ti-edit"></span>
+                                    </a>
+
+                                    <a href="{{ url('reject/reject', $data->id) }}"
+                                        class="btn btn-icon btn-danger btn-sm">
+                                        <span class="ti ti-x"></span>
+                                    </a>
+                                    {{-- @endcan --}}
+
+                                    {{-- @can('form-checked.approve') --}}
+                                    <a href="{{ url('approve/approve', $data->id) }}"
+                                        class="btn btn-icon btn-success btn-sm">
+                                        <span class="ti ti-check"></span>
                                     </a>
 
                                     <button type="submit" class="btn btn-icon btn-danger btn-sm">

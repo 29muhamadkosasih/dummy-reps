@@ -40,3 +40,61 @@
 
 <script src="{{ asset('assets/demo/chart-area-demo.js')}}"></script>
 <script src="{{ asset('assets/demo/chart-bar-demo.js')}}"></script>
+<script src="{{ asset('assets/demo/donut.js')}}"></script>
+
+
+<!-- Vendors JS -->
+<script src="{{ asset('assets/vendor/libs/toastr/toastr.js')}}"></script>
+
+<!-- Page JS -->
+<script src="{{ asset('assets/js/ui-toasts.js') }}"></script>
+
+<!-- Vendors JS -->
+<script src="{{ asset('assets/vendor/libs/@form-validation/umd/bundle/popular.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/libs/@form-validation/umd/plugin-bootstrap5/index.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/libs/@form-validation/umd/plugin-auto-focus/index.min.js') }}"></script>
+
+<!-- Main JS -->
+<script src="{{ asset('assets/js/main.js') }}"></script>
+
+<!-- Page JS -->
+<script src="{{ asset('assets/js/pages-auth.js') }}"></script>
+
+<script>
+    $(window).on('load', function () {
+                if (feather) {
+                    feather.replace({
+                        width: 14,
+                        height: 14
+                    });
+                }
+            })
+
+            @if(Session::has('success'))
+            toastr.options = {
+                "closeButton": true,
+            }
+            toastr.success("{{ session('success') }}");
+            @endif
+
+            @if(Session::has('error'))
+            toastr.options = {
+                "closeButton": true,
+            }
+            toastr.error("{{ session('error') }}");
+            @endif
+
+            @if(Session::has('info'))
+            toastr.options = {
+                "closeButton": true,
+            }
+            toastr.info("{{ session('info') }}");
+            @endif
+
+            @if(Session::has('warning'))
+            toastr.options = {
+                "closeButton": true,
+            }
+            toastr.warning("{{ session('warning') }}");
+            @endif
+</script>

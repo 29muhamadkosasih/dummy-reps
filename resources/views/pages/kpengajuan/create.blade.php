@@ -3,7 +3,7 @@
     <div class="mb-3">
         <label class="form-label" for="basicInput">Kategori Pengajuan</label>
         <input type="text" class="form-control @error('name') is-invalid @enderror" id="basicInput" name="name"
-            placeholder="Enter" value="{{ old('name') }}" required />
+            placeholder="Masukan Kategori Pengajuan" value="{{ old('name') }}" required />
         @error('name')
         <div class="invalid-feedback">
             {{ $message }}

@@ -10,8 +10,10 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
+use App\Imports\DatabaseUsersImport;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StoreUserRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateUserRequest;
@@ -29,8 +31,7 @@ class UserController extends Controller
         abort_if(Gate::denies('users.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
         $users = User::with('role')->get();
-        return view('pages.users.index',compact('users'));
-
+        return view('pages.users.index', compact('users'));
     }
 
     /**
@@ -42,13 +43,13 @@ class UserController extends Controller
     {
         abort_if(Gate::denies('users.create'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
-        $jabatan =Jabatan::all();
-        $departement =Departement::all();
-        $roles = Role::pluck('title','id');
-        return view('pages.users.create',[
-            'jabatan'   =>$jabatan,
-            'departement'  =>$departement,
-            'roles'   =>$roles
+        $jabatan = Jabatan::all();
+        $departement = Departement::all();
+        $roles = Role::pluck('title', 'id');
+        return view('pages.users.create', [
+            'jabatan'   => $jabatan,
+            'departement'  => $departement,
+            'roles'   => $roles
         ]);
     }
 
@@ -75,10 +76,9 @@ class UserController extends Controller
             'name' => $request->name,
             'username' => $request->username,
             'email' => $request->email,
-            'no_hp' => $request->no_hp,
             'jabatan_id' => $request->jabatan_id,
             'departement_id' => $request->departement_id,
-            'role_id'    =>$request->role_id,
+            'role_id'    => $request->role_id,
             'password' => Hash::make($request->password),
         ]);
         return redirect()->route('users.index')->with(['status-success' => "New User Created"]);
@@ -95,8 +95,8 @@ class UserController extends Controller
     {
         abort_if(Gate::denies('users.show'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
-        $data =User::find($id);
-        return view('pages.users.show',compact('data'));
+        $data = User::find($id);
+        return view('pages.users.show', compact('data'));
     }
 
     /**
@@ -105,16 +105,20 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id)
+    public function edit($id)
     {
         abort_if(Gate::denies('users.edit'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
-        $user =User::find($id);
-                $jabatan =Jabatan::all();
-        $departement =Departement::all();
-        $roles = Role::pluck('title','id');
-        return view('pages.users.edit',compact('user','roles','jabatan',
-            'departement'));
+        $user = User::find($id);
+        $jabatan = Jabatan::all();
+        $departement = Departement::all();
+        $roles = Role::pluck('title', 'id');
+        return view('pages.users.edit', compact(
+            'user',
+            'roles',
+            'jabatan',
+            'departement'
+        ));
     }
 
 
@@ -130,7 +134,7 @@ class UserController extends Controller
         $input  = $request->all();
 
         // dd($request);
-        $user =User::find($id);
+        $user = User::find($id);
 
         // dd($request);
         $user->update($input);
@@ -150,5 +154,14 @@ class UserController extends Controller
 
         $user->delete();
         return redirect()->back()->with(['status-success' => "User Deleted"]);
+    }
+
+    public function import(Request $request)
+    {
+        $fileName = request()->file->getClientOriginalName();
+        request()->file('file')->storeAs('DatabaseUsers', $fileName, 'public');
+        // dd($fileName);
+        Excel::import(new DatabaseUsersImport, $request->file);
+        return redirect()->back()->with('success', '👋 Update data successfuly !   Jelly oat cake candy jelly');;
     }
 }

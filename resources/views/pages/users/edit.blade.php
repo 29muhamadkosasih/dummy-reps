@@ -45,20 +45,22 @@
                             value="{{ old('email', $user->email) }}" />
                     </div>
                 </div>
-                <div class="form-group mb-3">
-                    <label class="form-label" for="basicInput">Nomor HP</label>
-                    <input type="number" class="form-control @error('no_hp') is-invalid @enderror" id="basicInput"
-                        name="no_hp" placeholder="Enter" value="{{ old('no_hp', $user->no_hp) }}" required />
-                    @error('no_hp')
-                    <div class="invalid-feedback">
-                        {{ $message }}
+                <div class="mb-3 form-password-toggle">
+                    <div class="d-flex justify-content-between">
+                        <label class="form-label" for="password">Password</label>
                     </div>
-                    @enderror
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="basic-default-password">Password</label>
-                    <input type="password" id="basic-default-password" class="form-control" placeholder="658 799 8941"
-                        name="password" />
+                    <div class="input-group input-group-merge">
+                        <input type="password" id="password"
+                            class="form-control @error('password') is-invalid @enderror"
+                            placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                            name="password" required autocomplete="current-password" />
+                        <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
+                        @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
                 </div>
                 <div class="form-group mb-3">
                     <label class="form-label" for="basicInput">Jabatan</label>

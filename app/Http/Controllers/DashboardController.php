@@ -21,34 +21,34 @@ class DashboardController extends Controller
         $forms = Form::where('from_id', $userId)->get();
         $currentMonth = date('m');
         $jumlah_total = DB::table('form')
-        ->where('from_id', $userId)
-        ->whereMonth('created_at', $currentMonth)
-        ->whereYear('created_at', 2023)
-        ->get()
-        ->sum('jumlah_total');
+            ->where('from_id', $userId)
+            ->whereMonth('created_at', $currentMonth)
+            ->whereYear('created_at', 2023)
+            ->get()
+            ->sum('jumlah_total');
 
         $reports = DB::table('form')
-        ->where('from_id', $userId)
-        ->whereMonth('created_at', $currentMonth)
-        ->whereYear('created_at', 2023)
-        ->get()
-        ->count();
+            ->where('from_id', $userId)
+            ->whereMonth('created_at', $currentMonth)
+            ->whereYear('created_at', 2023)
+            ->get()
+            ->count();
 
-        $reportss= DB::table('form')
-        ->where('from_id', $userId)
-        ->whereYear('created_at', 2023)
-        ->get()
-        ->count();
+        $reportss = DB::table('form')
+            ->where('from_id', $userId)
+            ->whereYear('created_at', 2023)
+            ->get()
+            ->count();
 
-        $data=Form::where('from_id', $userId)->get()->groupBy(function($data){
-            return Carbon::parse($data->tanggal_kebutuhan)->format('M');
+        $data = Form::where('from_id', $userId)->get()->groupBy(function ($data) {
+            return Carbon::parse($data->created_at)->format('M');
         });
 
-        $months=[];
-        $monthCount=[];
-        foreach($data as $month => $values){
-            $months[]=$month;
-            $monthCount[]=count($values);
+        $months = [];
+        $monthCount = [];
+        foreach ($data as $month => $values) {
+            $months[] = $month;
+            $monthCount[] = count($values);
         }
         // dd($monthCount);
 
@@ -99,15 +99,15 @@ class DashboardController extends Controller
         }
 
         return view('pages.dashboard.index', [
-        'form' => $form,
-        'forms' => $forms,
-        'data'=>$data,
-        'months'=>$months,
-        'monthCount'=>$monthCount,
-        'namaBulan'=>$namaBulan,
-        'reports'   =>$reports,
-        'jumlah_total'   =>$jumlah_total,
-        'reportss'   =>$reportss
+            'form' => $form,
+            'forms' => $forms,
+            'data' => $data,
+            'months' => $months,
+            'monthCount' => $monthCount,
+            'namaBulan' => $namaBulan,
+            'reports'   => $reports,
+            'jumlah_total'   => $jumlah_total,
+            'reportss'   => $reportss
         ]);
     }
 
@@ -119,25 +119,25 @@ class DashboardController extends Controller
         $total = Form::all()->count();
         $currentMonth = date('m');
         $jumlah_total = DB::table('form')
-        ->whereMonth('created_at', $currentMonth)
-        ->whereYear('created_at', 2023)
-        ->get()
-        ->sum('jumlah_total');
+            ->whereMonth('created_at', $currentMonth)
+            ->whereYear('created_at', 2023)
+            ->get()
+            ->sum('jumlah_total');
         $reports = DB::table('form')
-        ->whereMonth('created_at', $currentMonth)
-        ->whereYear('created_at', 2023)
-        ->get()
-        ->count();
-        $data=Form::all()->groupBy(function($data){
+            ->whereMonth('created_at', $currentMonth)
+            ->whereYear('created_at', 2023)
+            ->get()
+            ->count();
+        $data = Form::all()->groupBy(function ($data) {
             return Carbon::parse($data->created_at)->format('M');
         });
 
         // dd($data);
-        $months=[];
-        $monthCount=[];
-        foreach($data as $month => $values){
-            $months[]=$month;
-            $monthCount[]=count($values);
+        $months = [];
+        $monthCount = [];
+        foreach ($data as $month => $values) {
+            $months[] = $month;
+            $monthCount[] = count($values);
         }
 
         $bulann = date('m');
@@ -186,15 +186,15 @@ class DashboardController extends Controller
                 break;
         }
 
-        return view ('pages.dashboard.checked.index',[
-        'form' => $form,
-        'data'=>$data,
-        'total'   =>$total,
-        'namaBulan'=> $namaBulan,
-        'reports'   =>$reports,
-        'jumlah_total'   =>$jumlah_total,
-        'monthCount'   =>$monthCount,
-        'months'   =>$months
+        return view('pages.dashboard.checked.index', [
+            'form' => $form,
+            'data' => $data,
+            'total'   => $total,
+            'namaBulan' => $namaBulan,
+            'reports'   => $reports,
+            'jumlah_total'   => $jumlah_total,
+            'monthCount'   => $monthCount,
+            'months'   => $months
         ]);
     }
 
@@ -202,29 +202,29 @@ class DashboardController extends Controller
     {
         abort_if(Gate::denies('dashboard.approve.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
         $userId = auth()->id();
-        $form = Form::where('status','3')->get();
-        $bulan = Form::where('status','3')->get()->sum('jumlah_total');
-        $total = Form::where('status','3')->get()->count();
+        $form = Form::where('status', '3')->get();
+        $bulan = Form::where('status', '3')->get()->sum('jumlah_total');
+        $total = Form::where('status', '3')->get()->count();
         $reports = DB::table('form')
-        ->whereYear('created_at', 2023)
-        ->get()
-        ->count();
+            ->whereYear('created_at', 2023)
+            ->get()
+            ->count();
 
         $jumlah_total = DB::table('form')
-        ->whereYear('created_at', 2023)
-        ->get()
-        ->sum('jumlah_total');
+            ->whereYear('created_at', 2023)
+            ->get()
+            ->sum('jumlah_total');
 
-        $data=Form::all()->groupBy(function($data){
+        $data = Form::all()->groupBy(function ($data) {
             return Carbon::parse($data->created_at)->format('d');
         });
 
         // dd($data);
-        $months=[];
-        $monthCount=[];
-        foreach($data as $month => $values){
-            $months[]=$month;
-            $monthCount[]=count($values);
+        $months = [];
+        $monthCount = [];
+        foreach ($data as $month => $values) {
+            $months[] = $month;
+            $monthCount[] = count($values);
         }
 
         $bulann = date('m');
@@ -273,18 +273,18 @@ class DashboardController extends Controller
                 break;
         }
 
-        return view ('pages.dashboard.approve.index',[
-        'form' => $form,
-        'data'=>$data,
-        'months'=>$months,
-        'monthCount'=>$monthCount,
-        'bulan'  =>$bulan,
-        'total'   =>$total,
-        'namaBulan'=> $namaBulan,
-        'reports'   =>$reports,
-        'jumlah_total'   =>$jumlah_total,
+        return view('pages.dashboard.approve.index', [
+            'form' => $form,
+            'data' => $data,
+            'months' => $months,
+            'monthCount' => $monthCount,
+            'bulan'  => $bulan,
+            'total'   => $total,
+            'namaBulan' => $namaBulan,
+            'reports'   => $reports,
+            'jumlah_total'   => $jumlah_total,
 
-         ]);
+        ]);
     }
 
     public function general()
@@ -295,32 +295,30 @@ class DashboardController extends Controller
         $bulan = Form::all()->sum('jumlah_total');
         $total = Form::all()->count();
         $currentMonth = date('m');
-        $jumlah_total = DB::table('form')
-        ->whereMonth('created_at', $currentMonth)
-        ->whereYear('created_at', 2023)
-        ->sum('jumlah_total');
+        $jumlah_total = DB::table('form')->whereYear('created_at', 2023)
+            ->sum('jumlah_total');
         $jumlah_total_all = DB::table('form')
-        ->sum('jumlah_total');
+            ->sum('jumlah_total');
         $reports = DB::table('form')
-        ->whereYear('created_at', 2023)
-        ->get()
-        ->count();
-    // dd($jumlah_total);
+            ->whereYear('created_at', 2023)
+            ->get()
+            ->count();
+        // dd($jumlah_total);
         $paid = Form::where('status', '4')->get()->count();
         $process = Form::where('status', '3')->get()->count();
         $cancel = Form::where('status', '2')->get()->count();
 
         $forms = Form::where('from_id', $userId)->get();
-        $data=Form::all()->groupBy(function($data){
+        $data = Form::all()->groupBy(function ($data) {
             return Carbon::parse($data->created_at)->format('M');
         });
 
         // dd($data);
-        $months=[];
-        $monthCount=[];
-        foreach($data as $month => $values){
-            $months[]=$month;
-            $monthCount[]=count($values);
+        $months = [];
+        $monthCount = [];
+        foreach ($data as $month => $values) {
+            $months[] = $month;
+            $monthCount[] = count($values);
         }
 
         $bulann = date('m');
@@ -366,24 +364,24 @@ class DashboardController extends Controller
                 break;
             default:
                 $namaBulan = 'Bulan tidak valid';
-            break;
+                break;
         }
 
-        return view ('pages.dashboard.general',[
-        'form' => $form,
-        'forms' => $forms,
-        'data'=>$data,
-        'months'=>$months,
-        'monthCount'=>$monthCount,
-        'bulan'  =>$bulan,
-        'total'   =>$total,
-        'namaBulan'=> $namaBulan,
-        'paid'     =>$paid,
-        'process'   =>$process,
-        'cancel'    =>$cancel,
-        'reports'   =>$reports,
-        'jumlah_total' =>$jumlah_total,
-        'jumlah_total_all' =>$jumlah_total_all
+        return view('pages.dashboard.general', [
+            'form' => $form,
+            'forms' => $forms,
+            'data' => $data,
+            'months' => $months,
+            'monthCount' => $monthCount,
+            'bulan'  => $bulan,
+            'total'   => $total,
+            'namaBulan' => $namaBulan,
+            'paid'     => $paid,
+            'process'   => $process,
+            'cancel'    => $cancel,
+            'reports'   => $reports,
+            'jumlah_total' => $jumlah_total,
+            'jumlah_total_all' => $jumlah_total_all
 
         ]);
     }

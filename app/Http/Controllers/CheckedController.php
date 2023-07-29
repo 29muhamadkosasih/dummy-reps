@@ -147,7 +147,7 @@ class CheckedController extends Controller
         $data = Form::where('id', $id)->first();
         $data->update(
             [
-                "status" => "3",
+                "status" => "2",
                 "checked_by"  => $userId,
                 "checked_date" => $date
 
@@ -156,6 +156,22 @@ class CheckedController extends Controller
         return back()
             ->with('success', 'Congratulation !  Data Berhasil Di Approve');
     }
+
+    public function paid($id)
+    {
+        $userId = auth()->id();
+        $date = date('y-m-d');
+        $data = Form::where('id', $id)->first();
+        $data->update(
+            [
+                "status" => "8",
+
+            ]
+        );
+        return back()
+            ->with('success', 'Congratulation ! Konfirmasi Pengembalian Berhasil');
+    }
+
     public function reject($id)
     {
         $userId = auth()->id();
@@ -163,7 +179,7 @@ class CheckedController extends Controller
         $data = Form::where('id', $id)->first();
         $data->update(
             [
-                "status" => "2",
+                "status" => "1",
                 "checked_by"  => $userId,
                 "checked_date" => $date
             ]

@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- Invoice table -->
-<div class="offset-2 col-8">
+<div class="col-12">
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Edit Roles</h5>

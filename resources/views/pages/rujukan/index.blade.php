@@ -8,9 +8,9 @@
             <div class="row ">
                 <div class="col-auto me-auto ">
                     @if (isset($edit))
-                    <h5 class="mb-0">Edit Data rujukan</h5>
+                    <h5 class="mb-0">Edit Data Rujukan</h5>
                     @else
-                    <h5 class="mb-0">Tambah Data rujukan</h5>
+                    <h5 class="mb-0">Tambah Data Rujukan</h5>
                     @endif
                 </div>
                 <div class="card-body">

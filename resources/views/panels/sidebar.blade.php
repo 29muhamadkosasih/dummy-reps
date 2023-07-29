@@ -26,7 +26,7 @@
         <li class="menu-item {{ (request()->is('dashboard')) ? 'active' : '' }}">
             <a href="{{ route('dashboard.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-layout-sidebar"></i>
-                <div data-i18n="Index">Index</div>
+                <div data-i18n="Dashboard">Dashboard</div>
             </a>
         </li>
         @endcan
@@ -35,7 +35,7 @@
         <li class="menu-item {{ (request()->is('dashboard-checked')) ? 'active' : '' }}">
             <a href="{{ route('dashboard.checked') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-3d-cube-sphere"></i>
-                <div data-i18n="Checked"> Checked</div>
+                <div data-i18n="Dashboard"> Dashboard</div>
             </a>
         </li>
         @endcan
@@ -44,7 +44,7 @@
         <li class="menu-item {{ (request()->is('dashboard-approve')) ? 'active' : '' }}">
             <a href="{{ route('dashboard.approve') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-atom-2"></i>
-                <div data-i18n="Approve">Approve</div>
+                <div data-i18n="Dashboard">Dashboard</div>
             </a>
         </li>
         @endcan
@@ -53,7 +53,7 @@
         <li class="menu-item {{ (request()->is('dashboard-general')) ? 'active' : '' }}">
             <a href="{{ route('dashboard.general') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-layout-kanban"></i>
-                <div data-i18n="Admin">Admin</div>
+                <div data-i18n="Dashboard">Dashboard</div>
             </a>
         </li>
         @endcan
@@ -93,7 +93,7 @@
         <li class="menu-item {{ (request()->is('form-checked')) ? 'active' : '' }}">
             <a href="{{ route('form-checked.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-chart-pie"></i>
-                <div data-i18n="Form Checked">Form Checked </div>
+                <div data-i18n="Checked">Checked </div>
             </a>
         </li>
         @endcan
@@ -102,7 +102,7 @@
         <li class="menu-item {{ (request()->is('form-approve')) ? 'active' : '' }}">
             <a href="{{ route('form-approve.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-atom-2"></i>
-                <div data-i18n="Form Approve">Form Approve</div>
+                <div data-i18n="Approve">Approve</div>
             </a>
         </li>
         @endcan
@@ -110,11 +110,18 @@
         @can('form-list.index')
         <li class="menu-item {{ (request()->is('form-list')) ? 'active' : '' }}">
             <a href="{{ route('form-list.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-checkbox"></i>
-                <div data-i18n="Form List">Form List</div>
+                <i class="menu-icon tf-icons ti ti-list"></i>
+                <div data-i18n="List">List</div>
             </a>
         </li>
         @endcan
+
+        <li class="menu-item {{ (request()->is('list')) ? 'active' : '' }}">
+            <a href="{{ route('list') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-checkbox"></i>
+                <div data-i18n="Paid">Paid</div>
+            </a>
+        </li>
 
         @can('listAdvance.index')
         <li class="menu-item {{ (request()->is('listAdvance')) ? 'active' : '' }}">
@@ -144,7 +151,7 @@
         <li class="menu-item {{ (request()->is('norek')) ? 'active' : '' }}">
             <a href="{{ route('norek.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-file-dollar"></i>
-                <div data-i18n="Norek">Norek</div>
+                <div data-i18n="Nomor Rekening">Nomor Rekening</div>
             </a>
         </li>
         @endcan

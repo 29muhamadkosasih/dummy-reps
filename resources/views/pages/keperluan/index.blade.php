@@ -9,9 +9,9 @@
             <div class="row ">
                 <div class="col-auto me-auto ">
                     @if (isset($edit))
-                    <h5 class="mb-0">Edit Data keperluan</h5>
+                    <h5 class="mb-0">Edit Data Keperluan</h5>
                     @else
-                    <h5 class="mb-0">Tambah Data keperluan</h5>
+                    <h5 class="mb-0">Tambah Data Keperluan</h5>
                     @endif
                 </div>
                 <div class="card-body">
@@ -30,7 +30,7 @@
         <div class="card-body">
             <div class="row ">
                 <div class="col-auto me-auto ">
-                    <h5 class="mb-0">List Data keperluan</h5>
+                    <h5 class="mb-0">List Data Keperluan</h5>
                 </div>
             </div>
             <div class="table-responsive text-nowrap">

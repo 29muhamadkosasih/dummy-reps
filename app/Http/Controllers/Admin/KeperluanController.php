@@ -25,11 +25,14 @@ class KeperluanController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'name' => 'required|max:255|min:3',
+            'name' => 'required|max:255|min:3|unique:keperluan',
+
         ]);
-        // dd($request);
         Keperluan::create($validateData);
-        return redirect()->route('keperluan.index')->with('success', '👋 Added data successfuly !   Jelly oat cake candy jelly');
+        return redirect()->route('keperluan.index')->with(
+            'success',
+            'Success ! Data Bank Berhasil di Tambahkan'
+        );
     }
 
     public function edit($id)
@@ -46,13 +49,19 @@ class KeperluanController extends Controller
 
     public function update(Request $request, $id)
     {
-        $input  = $request->all();
         $keperluan   = Keperluan::find($id);
-        // dd($input);
-        $keperluan->update($input);
+        $this->validate($request, [
+            'name' => 'required|max:255|min:3|unique:keperluan',
+        ]);
+        $keperluan->update([
+            'name'   => $request->name
+        ]);
 
         return redirect()->route('keperluan.index')
-            ->with('success', '👋 Update data successfuly !   Jelly oat cake candy jelly');
+            ->with(
+                'success',
+                'Success ! Data Bank Berhasil di Update'
+            );
     }
 
     public function destroy($id)
@@ -61,6 +70,9 @@ class KeperluanController extends Controller
         $delete = Keperluan::find($id);
         $delete->delete();
         return redirect()->route('keperluan.index')
-            ->with('success', '👋 Delete data successfuly !   Jelly oat cake candy jelly');
+            ->with(
+                'success',
+                'Success ! Data Bank Berhasil di Hapus'
+            );
     }
 }

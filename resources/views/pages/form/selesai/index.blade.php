@@ -80,22 +80,40 @@
                                 @break
                                 @default
                                 {{ $data->norek->nama_penerima }}
-                                 @endswitch
+                                @endswitch
                             </td>
-                            <td>
-                                <a href="{{ url('form/print', $data->id) }}" target="_blank">
-                                    <i class="menu-icon tf-icons ti ti-download"></i>
-                                </a> &nbsp;
+                            <td class="text-center">
                                 @switch($data)
                                 @case($data->status == null)
                                 <span class="badge bg-secondary">Pending</span>
                                 @break
-                                @case($data->status == 1)
-                                <span class="badge bg-success"> RF Telah DiChecked</span> @break
+                                @case($data->status == 4)
+                                <a href="{{ route('form-approve.view', $data->id) }}"
+                                    class="btn btn-icon btn-success btn-sm">
+                                    <span class="ti ti-eye"></span>
+                                </a>
+                                @break
+                                @case($data->status == 5)
+                                <span class="badge bg-secondary">Menunggu Konfirmasi Dana Masuk</span>
+                                @break
+                                @case($data->status == 6)
+                                <span class="badge bg-primary">Menunggu Konfirmasi Pembayaran</span>
+                                @break
+                                @case($data->status == 7)
+                                <a href="{{ route('form-approve.viewDetail', $data->id) }}"
+                                    class="btn btn-icon btn-secondary btn-sm">
+                                    <span class="ti ti-eye"></span>
+                                </a>
+                                <a href="{{ url('approve/paid', $data->id) }}" class="btn btn-icon btn-success btn-sm">
+                                    <span class="ti ti-check"></span>
+                                </a>
+                                @break
                                 @default
+                                <a href="{{ url('form/print', $data->id) }}" target="_blank">
+                                    <i class="menu-icon tf-icons ti ti-download"></i>
+                                </a> &nbsp;
                                 <span class="badge bg-success">PAID</span>
                                 @endswitch
-
                             </td>
                         </tr>
                         @endforeach

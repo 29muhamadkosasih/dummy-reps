@@ -1,9 +1,9 @@
 <form action="{{ route('keperluan.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">
-        <label class="form-label" for="basicInput">No Rekening</label>
+        <label class="form-label" for="basicInput">Keperluan</label>
         <input type="text" class="form-control @error('name') is-invalid @enderror" id="basicInput" name="name"
-            placeholder="Enter" value="{{ old('name') }}" required />
+            placeholder="Masukan Keperluan" value="{{ old('name') }}" required />
         @error('name')
         <div class="invalid-feedback">
             {{ $message }}

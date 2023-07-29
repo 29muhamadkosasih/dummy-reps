@@ -25,11 +25,13 @@ class KpengajuanController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'name' => 'required|max:255|min:3',
+            'name' => 'required|max:255|min:3|unique:kpengajuan',
         ]);
-        // dd($request);
         Kpengajuan::create($validateData);
-        return redirect()->route('kpengajuan.index')->with('success', '👋 Added data successfuly !   Jelly oat cake candy jelly');
+        return redirect()->route('kpengajuan.index')->with(
+            'success',
+            'Success ! Data Bank Berhasil di Tambahkan'
+        );
     }
 
     public function edit($id)
@@ -46,13 +48,19 @@ class KpengajuanController extends Controller
 
     public function update(Request $request, $id)
     {
-        $input  = $request->all();
         $kpengajuan   = Kpengajuan::find($id);
-        // dd($input);
-        $kpengajuan->update($input);
+        $this->validate($request, [
+            'name' => 'required|max:255|min:3|unique:kpengajuan',
+        ]);
+        $kpengajuan->update([
+            'name'   => $request->name
+        ]);
 
         return redirect()->route('kpengajuan.index')
-            ->with('success', '👋 Update data successfuly !   Jelly oat cake candy jelly');
+            ->with(
+                'success',
+                'Success ! Data Bank Berhasil di Update'
+            );
     }
 
     public function destroy($id)
@@ -61,6 +69,9 @@ class KpengajuanController extends Controller
         $delete = Kpengajuan::find($id);
         $delete->delete();
         return redirect()->route('kpengajuan.index')
-            ->with('success', '👋 Delete data successfuly !   Jelly oat cake candy jelly');
+            ->with(
+                'success',
+                'Success ! Data Bank Berhasil di Hapus'
+            );
     }
 }

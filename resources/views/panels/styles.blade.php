@@ -18,7 +18,13 @@
 <link rel="stylesheet" href="{{ asset('assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css')}}" />
 <link rel="stylesheet" href="{{ asset('assets/vendor/libs/flatpickr/flatpickr.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/vendor/libs/select2/select2.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/vendor/libs/toastr/toastr.css')}}" />
+<link rel="stylesheet" href="{{ asset('assets/vendor/libs/animate-css/animate.css')}}" />
 
+<!-- Vendor -->
+<link rel="stylesheet" href="{{ asset('assets/vendor/libs/@form-validation/umd/styles/index.min.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/page-auth.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/page-faq.css') }}" />
 <!-- Page CSS -->
 
 <!-- Helpers -->

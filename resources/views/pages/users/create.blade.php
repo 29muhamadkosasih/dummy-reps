@@ -43,20 +43,22 @@
                             aria-label="john.doe" aria-describedby="basic-default-email2" name="email" />
                     </div>
                 </div>
-                <div class="form-group mb-3">
-                    <label class="form-label" for="basicInput">Nomor HP</label>
-                    <input type="number" class="form-control @error('no_hp') is-invalid @enderror" id="basicInput"
-                        name="no_hp" placeholder="Enter" value="{{ old('no_hp') }}" required />
-                    @error('no_hp')
-                    <div class="invalid-feedback">
-                        {{ $message }}
+                <div class="mb-3 form-password-toggle">
+                    <div class="d-flex justify-content-between">
+                        <label class="form-label" for="password">Password</label>
                     </div>
-                    @enderror
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="basic-default-password">Password</label>
-                    <input type="password" id="basic-default-password" class="form-control" placeholder="658 799 8941"
-                        name="password" />
+                    <div class="input-group input-group-merge">
+                        <input type="password" id="password"
+                            class="form-control @error('password') is-invalid @enderror"
+                            placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                            name="password" required autocomplete="current-password" />
+                        <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
+                        @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="form-group mb-3">
@@ -97,7 +99,33 @@
                     <button type="submit" class="btn btn-primary float-end ms-2">Submit</button>
                     <a href="{{ route('users.index') }}" class="btn btn-secondary float-end ">Back</a>
             </form>
+
         </div>
+        {{-- <form id="kt_modal_new_card_form" class="form" action="{{ route('import') }}" method="POST"
+            enctype="multipart/form-data">
+            @csrf
+            <!--begin::Input group-->
+            <div class="d-flex flex-column mb-7 fv-row">
+                <!--begin::Label-->
+                <label class="d-flex align-items-center fs-6 fw-semibold form-label mb-2">
+                    <span class="required">File</span>
+                    <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip"
+                        title="Specify a card holder's name"></i>
+                </label>
+                <!--end::Label-->
+                <input type="file" class="form-control form-control-solid" name="file" required />
+            </div>
+            <!--end::Input group-->
+
+            <!--begin::Actions-->
+            <div class="text-center pt-15">
+                <button type="reset" class="btn btn-light me-3">Reset</button>
+                <button type="submit" id="kt_modal_new_card_submit" class="btn btn-primary">
+                    <span class="indicator-label">Submit</span>
+                </button>
+            </div>
+            <!--end::Actions-->
+        </form> --}}
     </div>
 </div>
 <!-- /Invoice table -->

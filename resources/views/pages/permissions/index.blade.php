@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- Invoice table -->
-<div class="offset-2 col-8">
+<div class="col-12">
     <div class="card">
         <div class="card-body">
             <div class="row ">
@@ -22,9 +22,9 @@
                 <table class="table table-hover zero-configuration">
                     <thead>
                         <tr>
-                            <th width='10px' class="text-center">No</th>
+                            <th width='50px' class="text-center">No</th>
                             <th>Name</th>
-                            <th width='150px' class="text-center">Actions</th>
+                            <th width='100px' class="text-center">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">

@@ -5,16 +5,16 @@
 <section id="complex-header-datatable">
 
     <div class="row">
-        <div class="offset-2 col-8">
+        <div class="col-12">
             @foreach ($user as $data)
             <div class="card">
-                <div class="card-header">
+                {{-- <div class="card-header">
                     <h4 class="card-title mb-50"></h4>
                     <a href="{{ route('me.edit', $data->id) }}" class="btn btn-primary btn-sm">
                         <i data-feather='edit'></i>
                         Edit Profile
                     </a>
-                </div>
+                </div> --}}
                 <div class="card-body">
                     <div class="user-avatar-section">
                         <div class="d-flex align-items-center flex-column">
@@ -48,8 +48,8 @@
                             </div>
                             <div class="col-xl-5 col-12">
                                 <dl class="row mb-0">
-                                    <dt class="col-sm-5 fw-bolder mb-1">No. Handphone </dt>
-                                    <dd class="col-sm-7 mb-1">: {{ $data->no_hp }}</dd>
+                                    {{-- <dt class="col-sm-5 fw-bolder mb-1">No. Handphone </dt>
+                                    <dd class="col-sm-7 mb-1">: {{ $data->no_hp }}</dd> --}}
 
                                     <dt class="col-sm-5 fw-bolder mb-1">Jabatan</dt>
                                     <dd class="col-sm-7 mb-1">: {{ $data->jabatan->jabatan }} </dd>

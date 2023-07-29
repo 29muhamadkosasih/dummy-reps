@@ -25,11 +25,14 @@ class RujukanController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'name' => 'required|max:255|min:3',
+            'name' => 'required|max:255|min:3|unique:rujukan',
         ]);
         // dd($request);
         Rujukan::create($validateData);
-        return redirect()->route('rujukan.index')->with('success', '👋 Added data successfuly !   Jelly oat cake candy jelly');
+        return redirect()->route('rujukan.index')->with(
+            'success',
+            'Success ! Data Bank Berhasil di Tambahkan'
+        );
     }
 
     public function edit($id)
@@ -46,13 +49,19 @@ class RujukanController extends Controller
 
     public function update(Request $request, $id)
     {
-        $input  = $request->all();
         $rujukan   = Rujukan::find($id);
-        // dd($input);
-        $rujukan->update($input);
+        $this->validate($request, [
+            'name' => 'required|max:255|min:3|unique:rujukan',
+        ]);
+        $rujukan->update([
+            'name'   => $request->name
+        ]);
 
         return redirect()->route('rujukan.index')
-            ->with('success', '👋 Update data successfuly !   Jelly oat cake candy jelly');
+            ->with(
+                'success',
+                'Success ! Data Bank Berhasil di Update'
+            );
     }
 
     public function destroy($id)
@@ -61,6 +70,9 @@ class RujukanController extends Controller
         $delete = Rujukan::find($id);
         $delete->delete();
         return redirect()->route('rujukan.index')
-            ->with('success', '👋 Delete data successfuly !   Jelly oat cake candy jelly');
+            ->with(
+                'success',
+                'Success ! Data Bank Berhasil di Hapus'
+            );
     }
 }

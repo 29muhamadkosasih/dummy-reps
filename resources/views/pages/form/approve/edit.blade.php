@@ -19,6 +19,14 @@
                                     <label class="form-label" for="basicInput">Dari</label>
                                     <input type="hidden" name="from_id" value="{{ $edit->from_id }}" />
                                     <input type="hidden" name="departement_id" value="{{ $edit->departement_id }}" />
+
+                                    <input type="hidden" name="kpengajuan_id" value="{{ $edit->kpengajuan_id }}" />
+                                    <input type="hidden" name="keperluan_id" value="{{ $edit->keperluan_id }}" />
+                                    <input type="hidden" name="payment" value="{{ $edit->payment }}" />
+                                    <input type="hidden" name="rujukan_id" value="{{ $edit->rujukan_id }}" />
+                                    <input type="hidden" name="norek_id" value="{{ $edit->norek_id }}" />
+
+
                                     <input type="text" class="form-control" id="basicInput" placeholder="Enter" required
                                         value="{{ $edit->user->name }}" readonly />
                                 </div>
@@ -27,11 +35,8 @@
                                 <div class="mb-1">
                                     <label class="form-label" for="basicInput">Kategori
                                         Pengajuan</label>
-                                    <select class="form-select" id="selectDefault" name="kpengajuan_id" required>
-                                        <option selected>Open this select</option> @foreach ($kpengajuan as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" class="form-control" id="basicInput" placeholder="Enter" required
+                                        value="{{ $edit->kpengajuan->name }}" readonly />
                                 </div>
                             </div>
                             <div class="col-xl-4 col-md-6 col-12">
@@ -39,12 +44,8 @@
                                     <label class="form-label" for="basicInput">
                                         Keperluan
                                     </label>
-                                    <select class="form-select" id="selectDefault" name="keperluan_id" required>
-                                        <option selected>Open this select</option>
-                                        @foreach ($keperluan as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" class="form-control" id="basicInput" placeholder="Enter" required
+                                        value="{{ $edit->keperluan->name }}" readonly />
                                 </div>
                             </div>
                             <div class="col-xl-4 col-md-6 col-12">
@@ -58,22 +59,15 @@
                             <div class="col-xl-4 col-md-6 col-12">
                                 <div class="mb-1">
                                     <label class="form-label" for="helpInputTop">Payment</label>
-                                    <select class="form-select" id="selectDefault" name="payment" required>
-                                        <option selected>{{ $edit->payment }}</option>
-                                        <option value="Cash">Cash</option>
-                                        <option value="Transfer">Transfer</option>
-                                    </select>
+                                    <input type="text" class="form-control" id="basicInput" placeholder="Enter" required
+                                        value="{{ $edit->payment }}" readonly />
                                 </div>
                             </div>
                             <div class="col-xl-4 col-md-6 col-12">
                                 <div class="mb-1">
                                     <label class="form-label" for="helpInputTop">Ditujukan Untuk</label>
-                                    <select class="form-select" id="selectDefault" name="rujukan_id" required>
-                                        <option>Open this select</option>
-                                        @foreach ($rujukan as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" class="form-control" id="basicInput" placeholder="Enter" required
+                                        value="{{ $edit->rujukan->name}}" readonly />
                                 </div>
                             </div>
                         </div>

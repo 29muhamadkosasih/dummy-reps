@@ -59,8 +59,7 @@
                             <div class="mb-1">
                                 <label class="form-label" for="helpInputTop">Ditujukan Untuk</label>
                                 <select class="form-select" id="selectDefault" name="rujukan_id" required>
-                                    <option selected>{{ $edit->rujukan->name }}</option>
-                                    @foreach ($rujukan as $item)
+                                    <option selected>Open this select</option> @foreach ($rujukan as $item)
                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
                                 </select>
@@ -498,41 +497,5 @@
             document.getElementById('carbrand3').classList.add('d-none');
         }
     }
-</script>
-
-<script>
-    $(document).ready(function () {
-        $('#bank').on('change', function () {
-            var kode_bank = $(this).val();
-            // console.log(kode_bank);
-            if (kode_bank) {
-                $.ajax({
-                    url: '/form/' + kode_bank,
-                    type: 'GET',
-                    data: {
-                        '_token': '{{ csrf_token() }}'
-                    },
-                    dataType: 'json',
-                    success: function (data) {
-                        console.log(data);
-                        if (data) {
-                            $('#user').empty();
-                            $('#user').append('<option value="">-Pilih-</option>');
-                            $.each(data, function (key, NoRek) {
-                                $('select[name="norek_id"]').append(
-                                    '<option value="' + NoRek.id + '">' +
-                                    NoRek.nama_penerima + '</option>'
-                                );
-                            });
-                        } else {
-                            $('#user').empty();
-                        }
-                    }
-                });
-            } else {
-                $('#user').empty();
-            }
-        });
-    });
 </script>
 @endsection

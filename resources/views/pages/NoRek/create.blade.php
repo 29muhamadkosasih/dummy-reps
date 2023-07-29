@@ -18,9 +18,9 @@
         @enderror
     </div>
     <div class="mb-3">
-        <label class="form-label" for="basicInput">No Rekening</label>
-        <input type="text" class="form-control @error('no_rekening') is-invalid @enderror" id="basicInput"
-            name="no_rekening" placeholder="Enter" value="{{ old('no_rekening') }}" required />
+        <label class="form-label" for="basicInput">No. Rekening</label>
+        <input type="number" class="form-control @error('no_rekening') is-invalid @enderror" id="basicInput"
+            name="no_rekening" placeholder="Masukan No. Rekening" value="{{ old('no_rekening') }}" required />
         @error('no_rekening')
         <div class="invalid-feedback">
             {{ $message }}
@@ -31,7 +31,7 @@
     <div class="mb-3">
         <label class="form-label" for="basicInput">Penerima</label>
         <input type="text" class="form-control @error('nama_penerima') is-invalid @enderror" id="basicInput"
-            name="nama_penerima" placeholder="Enter" value="{{ old('nama_penerima') }}" required />
+            name="nama_penerima" placeholder="Masukan A/N Penerima" value="{{ old('nama_penerima') }}" required />
         @error('nama_penerima')
         <div class="invalid-feedback">
             {{ $message }}

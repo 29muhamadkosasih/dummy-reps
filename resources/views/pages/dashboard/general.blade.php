@@ -6,10 +6,10 @@
 <div class="col-xl-3 mb-4">
     <div class="card">
         <div class="card-body">
-            <div class="badge p-2 bg-label-danger mb-2 rounded">
-                <i class="ti ti-currency-dollar ti-md"></i>
+            <div class="badge p-2 bg-label-info mb-2 rounded">
+                <i class="ti ti-file-plus ti-md"></i>
             </div>
-            <h5 class="card-title mb-1 pt-2">Total Pengajuan</h5>
+            <h5 class="card-title mb-1 pt-2">Total RF</h5>
             <h5 class="card-title mb-1 pt-2">{{ $total }}</h5>
 
         </div>
@@ -20,10 +20,10 @@
 <div class="col-xl-3 mb-4">
     <div class="card">
         <div class="card-body">
-            <div class="badge p-2 bg-label-danger mb-2 rounded">
-                <i class="ti ti-currency-dollar ti-md"></i>
+            <div class="badge p-2 bg-label-success mb-2 rounded">
+                <i class="ti ti-check ti-md"></i>
             </div>
-            <h5 class="card-title mb-1 pt-2">Paid Pengajuan</h5>
+            <h5 class="card-title mb-1 pt-2">Paid RF</h5>
             <h5 class="card-title mb-1 pt-2">{{$paid}}</h5>
         </div>
     </div>
@@ -33,8 +33,8 @@
 <div class="col-xl-3 mb-4">
     <div class="card">
         <div class="card-body">
-            <div class="badge p-2 bg-label-info mb-2 rounded"><i class="ti ti-chart-bar ti-md"></i></div>
-            <h5 class="card-title mb-1 pt-2">Process Pengajuan</h5>
+            <div class="badge p-2 bg-label-primary mb-2 rounded"><i class="ti ti-loader ti-md"></i></div>
+            <h5 class="card-title mb-1 pt-2">Process RF</h5>
             <h5 class="card-title mb-1 pt-2">{{ $process }}</h5>
         </div>
     </div>
@@ -43,8 +43,8 @@
 <div class="col-xl-3 mb-4">
     <div class="card">
         <div class="card-body">
-            <div class="badge p-2 bg-label-info mb-2 rounded"><i class="ti ti-chart-bar ti-md"></i></div>
-            <h5 class="card-title mb-1 pt-2">Cancel Pengajuan</h5>
+            <div class="badge p-2 bg-label-danger mb-2 rounded"><i class="ti ti-x ti-md"></i></div>
+            <h5 class="card-title mb-1 pt-2">Cancel RF</h5>
             <h5 class="card-title mb-1 pt-2">{{ $cancel }}</h5>
         </div>
     </div>
@@ -54,8 +54,8 @@
 <div class="col-xl-4 mb-4">
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title mb-1 pt-2">Total Pengajuan</h5>
-            <h5 class="card-title mb-1 pt-2">Rp. {{ number_format($jumlah_total, 0, ',', '.',)}} / {{ $namaBulan }}</h5>
+            <h5 class="card-title mb-1 pt-2">Total RF</h5>
+            <h5 class="card-title mb-1 pt-2">Rp. {{ number_format($jumlah_total, 0, ',', '.',)}}</h5>
         </div>
     </div>
 </div>
@@ -63,7 +63,7 @@
 <div class="col-xl-4 mb-4">
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title mb-1 pt-2">Total Pengajuan Perbulan</h5>
+            <h5 class="card-title mb-1 pt-2">Total RF Perbulan</h5>
             <h5 class="card-title mb-1 pt-2">
                 Rp. {{ number_format($jumlah_total, 0, ',', '.',)}} / {{ $namaBulan }}
             </h5>
@@ -74,7 +74,7 @@
 <div class="col-xl-4 mb-4">
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title mb-1 pt-2">Total Pengajuan Perbulan</h5>
+            <h5 class="card-title mb-1 pt-2">Total RF Perbulan</h5>
             <h5 class="card-title mb-1 pt-2">{{ $reports }} /
                 {{$namaBulan }}</h5>
         </div>
@@ -84,7 +84,7 @@
 <div class="col-xl-6 mb-4">
     <div class="card">
         <div class="card-header">
-            <h5 class="m-0 card-title">Total Pengajuan Perbulan</h5>
+            <h5 class="m-0 card-title">Total RF Perbulan</h5>
 
         </div>
         <div class="card-body mb-2"><canvas id="myAreaChart" width="100%" height="75"></canvas></div>
@@ -94,7 +94,7 @@
 <div class="col-xl-6 mb-4">
     <div class="card">
         <div class="card-header">
-            <h5 class="m-0 card-title">Total Pengajuan Perbulan</h5>
+            <h5 class="m-0 card-title">Total RF Perbulan</h5>
         </div>
         <div class="card-body"><canvas id="myBarChart" width="100%" height="75"></canvas></div>
     </div>

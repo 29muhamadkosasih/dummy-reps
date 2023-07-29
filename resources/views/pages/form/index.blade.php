@@ -43,12 +43,6 @@
                             <td>
                                 {{ $data->created_at->format('Y-m-d')}}
                             </td>
-                            {{-- <td>
-                                {{ $data->user->name }}
-                            </td>
-                            <td>
-                                {{ $data->departement->nama_departement }}
-                            </td> --}}
                             <td>
                                 {{ $data->keperluan->name }}
                             </td>
@@ -69,22 +63,27 @@
                                 @case($data->status == null)
                                 <span class="badge bg-secondary">Pending</span>
                                 @break
-                                @case($data->status == 2)
+                                @case($data->status == 1)
                                 <span class="badge bg-danger">Reject</span>
                                 @break
+                                @case($data->status == 2)
+                                <span class="badge bg-info">Approve</span>
+                                @break
                                 @case($data->status == 3)
-                                <span class="badge bg-warning">Approve</span>
+                                <span class="badge bg-danger">Cancel</span>
                                 @break
                                 @case($data->status == 4)
-                                <span class="badge bg-success">Konfirmasi Dana</span>
+                                <span class="badge bg-primary">Menuggu Konfirmasi Dana</span>
                                 @break
-
                                 @case($data->status == 5)
-                                <span class="badge bg-success">Konfirmasi Pembayaran</span>
+                                <span class="badge bg-success">Konfirmasi Dana Masuk</span>
                                 @break
 
                                 @case($data->status == 6)
-                                <span class="badge bg-success">Pembayaran Selesai </span>
+                                <span class="badge bg-primary">Konfirmasi Pembayaran </span>
+                                @break
+                                @case($data->status == 7)
+                                <span class="badge bg-info">Menuggu Konfirmasi Pengembalian Dana </span>
                                 @break
 
                                 @default
@@ -94,19 +93,47 @@
 
                             <td class="text-center">
                                 @switch($data)
+
+                                @case($data->status == 1)
+                                <span class="badge bg-danger">RF di Tolak</span>
+                                @break
+
+                                @case($data->status == 3)
+                                <span class="badge bg-danger">RF di Tolak</span>
+                                @break
+
                                 @case($data->status == 4)
-                                <a href="{{ url('approve/konfirmasi', $data->id) }}"
+                                <span class="badge bg-primary">Menuggu Konfirmasi Dana</span>
+                                @break
+
+                                @case($data->status == 5)
+                                @switch($data)
+                                @case($data->kpengajuan_id == 2)
+                                <a href="{{ url('approve/konfirmasiRem', $data->id) }}"
                                     class="btn btn-icon btn-success btn-sm">
                                     <span class="ti ti-check"></span>
                                 </a>
                                 @break
-                                @case($data->status == 5)
+                                @default
+                                <a href="{{ url('approve/konfirmasi', $data->id) }}"
+                                    class="btn btn-icon btn-success btn-sm">
+                                    <span class="ti ti-check"></span>
+                                </a>
+                                @endswitch
+
+                                @break
+                                @case($data->status == 6)
                                 <a href="{{ route('form.detail', $data->id) }}" class="btn btn-icon btn-primary btn-sm">
                                     <span class="ti ti-eye"></span>
                                 </a>
                                 @break
-                                @case($data->status == 6)
-                                <span class="badge bg-success">Pembayaran Selesai</span> </a>
+
+                                @case($data->status == 7)
+                                <span class="badge bg-info">Waiting</span>
+                                @break
+
+                                @case($data->status == 8)
+                                <span class="badge bg-success">PAID</span>
                                 @break
 
                                 @default
@@ -127,11 +154,11 @@
                                         <span class="ti ti-edit"></span>
                                     </a>
                                     @endcan
-                                    @can('form.delete')
+                                    {{-- @can('form.delete')
                                     <button type="submit" class="btn btn-icon btn-danger btn-sm">
                                         <span class="ti ti-trash"></span>
                                     </button>
-                                    @endcan
+                                    @endcan --}}
                                 </form>
                                 @endswitch
                             </td>

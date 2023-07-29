@@ -25,7 +25,7 @@ class FormController extends Controller
         abort_if(Gate::denies('form.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
         $userId = auth()->id();
         $bank = Bank::get();
-        $norek = NoRek::get();
+        $norek = NoRek::where('user_id', $userId)->get();
         $kpengajuan = Kpengajuan::all();
         $keperluan = Keperluan::all();
         $rujukan = Rujukan::all();
@@ -130,7 +130,10 @@ class FormController extends Controller
             'norek_id' => $request->norek_id
         ]);
         return redirect()->route('form.index')
-            ->with('success', 'Congratulation !  Data Berhasil ditambahkan');
+            ->with(
+                'success',
+                'Success ! Data RF Berhasil di Tambahkan'
+            );
     }
 
     public function show($id)
@@ -246,11 +249,16 @@ class FormController extends Controller
             'price8' => $request->price8,
             'total8' => $total8,
             'jumlah_total' => $jumlah_akhir,
+            'norek_id' => $request->norek_id
+
         ]);
 
         // dd($data);
         return redirect()->route('form.index')
-            ->with('success', 'Congratulation !  Data Berhasil diupdate');
+            ->with(
+                'success',
+                'Success ! Data RF Berhasil di Update'
+            );
     }
 
     public function print($id)
@@ -270,14 +278,10 @@ class FormController extends Controller
         $delete = Form::find($id);
         $delete->delete();
         return redirect()->route('form-checked.index')
-            ->with('success', 'Congratulation !  Data Berhasil dihapus');
-    }
-
-    public function getBank($id)
-    {
-        $NoRek = NoRek::where('kode_bank', $id)->get();
-        // dd($norek);
-        return response()->json($NoRek);
+            ->with(
+                'success',
+                'Success ! Data RF Berhasil di Hapus'
+            );
     }
 
     public function list()
@@ -314,11 +318,24 @@ class FormController extends Controller
         $data = Form::where('id', $id)->first();
         $data->update(
             [
-                "status" => "5",
+                "status" => "6",
             ]
         );
         return back()
-            ->with('success', 'Congratulation !  Data Berhasil Di Approve');
+            ->with('success', 'Congratulation ! Konfirmasi Dana telah berhasil');
+    }
+    public function konfirmasiRem($id)
+    {
+        $userId = auth()->id();
+        $date = date('y-m-d');
+        $data = Form::where('id', $id)->first();
+        $data->update(
+            [
+                "status" => "8",
+            ]
+        );
+        return back()
+            ->with('success', 'Congratulation ! Konfirmasi Dana telah berhasil');
     }
 
     public function detail($id)
@@ -420,11 +437,11 @@ class FormController extends Controller
             'tgl_pembayaran'    => $date,
             'balance'  => $totalBalance,
             'jumlah_pemakaian'    => $request->jumlah_pemakaian,
-            'status' => 6,
+            'status' => 7,
 
         ]);
         // dd($data);
         return redirect()->route('form.index')
-            ->with('success', 'Congratulation !  Data Berhasil Di Process');
+            ->with('success', 'Congratulation !  Data RF Berhasil Di Process');
     }
 }

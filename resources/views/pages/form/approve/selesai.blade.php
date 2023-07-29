@@ -8,6 +8,9 @@
             <div class="card-title mb-0">
                 <h5 class="mb-0">PENGAJUAN DANA</h5>
             </div>
+            <div class="col-auto">
+                <a href="{{ route('form-list.index') }}" class="btn btn-secondary">Back</a>
+            </div>
         </div>
         <div class="card-body mt-2">
             <div class="row">
