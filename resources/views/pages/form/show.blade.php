@@ -27,7 +27,7 @@
                         @switch($show)
                         @case($show->payment == 'Transfer')
                         <dt class="col-sm-4 fw-bolder mb-1">Nomor Rekening</dt>
-                        <dd class="col-sm-8 mb-1"> {{ $show->norek->bank->nama_bank }}</dd>
+                        <dd class="col-sm-8 mb-1"> {{ $show->norek->no_rekening }}</dd>
                         @break
                         @default
                         @endswitch
@@ -41,7 +41,7 @@
                         @switch($show)
                         @case($show->payment == 'Transfer')
                         <dt class="col-sm-4 fw-bolder mb-1">A/n</dt>
-                        <dd class="col-sm-8 mb-2"> {{ $show->norek->bank->nama_bank }}</dd>
+                        <dd class="col-sm-8 mb-2"> {{ $show->norek->nama_penerima }}</dd>
                         @break
                         @default
                         @endswitch
@@ -242,7 +242,7 @@
                             @case($show->payment == 'Transfer')
                             <tr>
                                 <th colspan="5" style="text-align :right ">Biaya Admin</th>
-                                <td style="text-align :right">{{ $show->norek->bank->nama_bank }}</td>
+                                <td style="text-align :right">{{ $show->norek->bank->b_admin }}</td>
                             </tr>
                             <tr>
                                 <th colspan="5" style="text-align :right ">TOTAL</th>

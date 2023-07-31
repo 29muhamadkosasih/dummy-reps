@@ -89,7 +89,7 @@
                                     {{-- @endcan --}}
 
                                     {{-- @can('form-checked.approve') --}}
-                                    <a href="{{ url('approve/maker', $data->id) }}"
+                                <a href="{{ url('approve/maker', $data->id) }}"
                                         class="btn btn-icon btn-success btn-sm">
                                         <span class="ti ti-check"></span>
                                     </a>

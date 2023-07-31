@@ -30,6 +30,8 @@ class FormController extends Controller
         $keperluan = Keperluan::all();
         $rujukan = Rujukan::all();
 
+        // dd($norek);
+
         $form = Form::where('from_id', $userId)->get();
         $role = User::where('jabatan_id', $userId)->get();
         $departement = Departement::all();
@@ -49,7 +51,9 @@ class FormController extends Controller
     public function store(Request $request)
     {
         $userId = auth()->id();
-        // dd($request);
+        // dd($request->norek->bank->b_admin);
+
+
         $request->validate([
             'qty' => 'required',
             'unit' => 'required',
@@ -61,6 +65,9 @@ class FormController extends Controller
             'keperluan_id' => 'required',
 
         ]);
+
+        $b_admin = $request->norek_id;
+
         $total = $request->qty * $request->price;
         $total2 = $request->qty2 * $request->price2;
         $total3 = $request->qty3 * $request->price3;
@@ -77,6 +84,14 @@ class FormController extends Controller
         $total_jumlah1 = $jumlah + $jumlah2;
         $total_jumlah2 = $jumlah3 + $jumlah4;
         $jumlah_akhir = $total_jumlah1 + $total_jumlah2;
+
+        $data = $request->norek_id;
+        if ($data == NULL) {
+            $jumlah_total_akhir = $jumlah_akhir + 0;
+        } else {
+            $jumlah_total_akhir = $jumlah_akhir + 6500;
+        };
+        // dd($jumlah_total_akhir);
 
         Form::create([
             'from_id' => $userId,
@@ -126,7 +141,7 @@ class FormController extends Controller
             'qty8' => $request->qty8,
             'price8' => $request->price8,
             'total8' => $total8,
-            'jumlah_total' => $jumlah_akhir,
+            'jumlah_total' => $jumlah_total_akhir,
             'norek_id' => $request->norek_id
         ]);
         return redirect()->route('form.index')
@@ -200,6 +215,15 @@ class FormController extends Controller
         $jumlah_akhir = $total_jumlah1 + $total_jumlah2;
         // dd($jumlah);
 
+
+        $data2 = $request->norek_id;
+        if ($data2 == NULL) {
+            $jumlah_total_akhir = $jumlah_akhir + 0;
+        } else {
+            $jumlah_total_akhir = $jumlah_akhir + 6500;
+        };
+        // dd($jumlah_total_akhir);
+
         $data->update([
             'from_id' => $userId,
             'rujukan_id' => $request->rujukan_id,
@@ -248,7 +272,7 @@ class FormController extends Controller
             'qty8' => $request->qty8,
             'price8' => $request->price8,
             'total8' => $total8,
-            'jumlah_total' => $jumlah_akhir,
+            'jumlah_total' => $jumlah_total_akhir,
             'norek_id' => $request->norek_id
 
         ]);
@@ -349,7 +373,7 @@ class FormController extends Controller
 
     public function kPembayaran(Request $request, $id)
     {
-        // dd($request->all());
+        // dd($request->jumlah_total);
         // dd($request->jumlah_pemakaian);
         $date = date('y-m-d');
         $data = Form::findOrFail($id);
@@ -362,15 +386,6 @@ class FormController extends Controller
         $total6 = $request->qty * $request->price6;
         $total7 = $request->qty * $request->price7;
         $total8 = $request->qty * $request->price8;
-
-        $jumlah = $total + $total2;
-        $jumlah2 = $total3 + $total4;
-
-        $jumlah3 = $total5 + $total6;
-        $jumlah4 = $total7 + $total8;
-
-        $total_jumlah1 = $jumlah + $jumlah2;
-        $total_jumlah2 = $jumlah3 + $jumlah4;
 
         $jumlah_total = $request->jumlah_dana;
         $jumlah_total2 = $request->jumlah_pemakaian;
@@ -442,6 +457,6 @@ class FormController extends Controller
         ]);
         // dd($data);
         return redirect()->route('form.index')
-            ->with('success', 'Congratulation !  Data RF Berhasil Di Process');
+            ->with('success', 'Congratulation !  Data Berhasil Di Process');
     }
 }

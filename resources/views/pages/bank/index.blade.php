@@ -39,6 +39,7 @@
                         <tr>
                             <th width='10px'>No</th>
                             <th>Nama</th>
+                            <th>Biaya Admin (Rp.)</th>
                             <th width='150px' class="text-center">Action</th>
                         </tr>
                     </thead>
@@ -47,6 +48,14 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $data->nama_bank }}</td>
+                            <td> @switch($data)
+                                @case($data->b_admin == 1)
+                                <span class="badge bg-primary">FREE</span>
+                                @break
+                                @default
+                                {{ $data->b_admin }}
+                                @endswitch
+                            </td>
                             <td style="text-align: center">
                                 @can('bank.edit')
                                 <a href="{{ route('bank.edit', $data->id) }}" class="btn btn-icon btn-warning btn-sm">

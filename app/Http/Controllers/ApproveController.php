@@ -77,6 +77,14 @@ class ApproveController extends Controller
         $total_jumlah2 = $jumlah3 + $jumlah4;
         $jumlah_akhir = $total_jumlah1 + $total_jumlah2;
         // dd($request->all());
+
+        $data2 = $request->norek_id;
+        if ($data2 == NULL) {
+            $jumlah_total_akhir = $jumlah_akhir + 0;
+        } else {
+            $jumlah_total_akhir = $jumlah_akhir + 6500;
+        };
+        // dd($jumlah_total_akhir);
         $data->update([
             'from_id' => $request->from_id,
             'rujukan_id' => $request->rujukan_id,
@@ -125,7 +133,7 @@ class ApproveController extends Controller
             'qty8' => $request->qty8,
             'price8' => $request->price8,
             'total8' => $total8,
-            'jumlah_total' => $jumlah_akhir,
+            'jumlah_total' => $jumlah_total_akhir,
             'norek_id' => $request->norek_id
         ]);
         // dd($data);
@@ -204,9 +212,19 @@ class ApproveController extends Controller
         $jumlah2 = $total3 + $total4;
         $jumlah3 = $total5 + $total6;
         $jumlah4 = $total7 + $total8;
+        
         $total_jumlah1 = $jumlah + $jumlah2;
         $total_jumlah2 = $jumlah3 + $jumlah4;
+
         $jumlah_akhir = $total_jumlah1 + $total_jumlah2;
+
+        $data2 = $request->norek_id;
+        if ($data2 == NULL) {
+            $jumlah_total_akhir = $jumlah_akhir + 0;
+        } else {
+            $jumlah_total_akhir = $jumlah_akhir + 6500;
+        };
+        // dd($jumlah_total_akhir);
 
         $data->update([
             'from_id' => $request->from_id,
@@ -256,7 +274,7 @@ class ApproveController extends Controller
             'qty8' => $request->qty8,
             'price8' => $request->price8,
             'total8' => $total8,
-            'jumlah_total' => $jumlah_akhir,
+            'jumlah_total' => $jumlah_total_akhir,
             'norek_id' => $request->norek_id,
             'jumlah_dana' => $request->jumlah_dana,
             'tgl_terima_dana' => $date,

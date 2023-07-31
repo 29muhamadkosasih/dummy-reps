@@ -25,7 +25,7 @@
                         @switch($show)
                         @case($show->payment == 'Transfer')
                         <dt class="col-sm-4 fw-bolder mb-1">Nomor Rekening</dt>
-                        <dd class="col-sm-8 mb-1"> {{ $show->norek->bank->nama_bank }}</dd>
+                        <dd class="col-sm-8 mb-1"> {{ $show->norek->no_rekening }}</dd>
                         @break
                         @default
                         @endswitch
@@ -39,7 +39,7 @@
                         @switch($show)
                         @case($show->payment == 'Transfer')
                         <dt class="col-sm-4 fw-bolder mb-1">A/n</dt>
-                        <dd class="col-sm-8 mb-2"> {{ $show->norek->bank->nama_bank }}</dd>
+                        <dd class="col-sm-8 mb-2"> {{ $show->norek->nama_penerima }}</dd>
                         @break
                         @default
                         @endswitch
@@ -237,19 +237,37 @@
                             @case($show->payment == 'Transfer')
                             <tr>
                                 <th colspan="5" style="text-align :right ">Biaya Admin</th>
-                                <td style="text-align :right">{{ $show->norek->bank->nama_bank }}</td>
+                                <td style="text-align :right">{{ $show->norek->bank->b_admin }}</td>
                             </tr>
-                            <tr>
+                            <tr style="background-color:skyblue">
                                 <th colspan="5" style="text-align :right ">TOTAL</th>
                                 <td style="text-align :right"> {{ number_format($show->jumlah_total, 0, ',',
                                     '.') }}</td>
+                            </tr>
+                            <tr>
+                                <th colspan="2" style="text-align: right">Tanggal Uang Masuk</th>
+                                <td colspan="2" style="text-align: right"> {{ $show->tgl_terima_dana }}
+                                </td>
+                                <th colspan="1" style="text-align: right">Jumlah Uang Masuk</th>
+                                <td colspan="2" style="text-align: right"> {{ number_format($show->jumlah_dana, 0, ',',
+                                    '.') }}
+                                </td>
                             </tr>
                             @break
                             @default
-                            <tr>
+                            <tr style="background-color:skyblue">
                                 <th colspan="5" style="text-align :right ">TOTAL</th>
                                 <td style="text-align :right"> {{ number_format($show->jumlah_total, 0, ',',
                                     '.') }}</td>
+                            </tr>
+                            <tr>
+                                <th colspan="2" style="text-align: right">Tanggal Uang Masuk</th>
+                                <td colspan="2" style="text-align: right"> {{ $show->tgl_terima_dana }}
+                                </td>
+                                <th colspan="1" style="text-align: right">Jumlah Uang Masuk</th>
+                                <td colspan="2" style="text-align: right"> {{ number_format($show->jumlah_dana, 0, ',',
+                                    '.') }}
+                                </td>
                             </tr>
                             @endswitch
                         </tbody>

@@ -304,7 +304,7 @@ class DashboardController extends Controller
             ->get()
             ->count();
         // dd($jumlah_total);
-        $paid = Form::where('status', '4')->get()->count();
+        $paid = Form::where('status', '8')->get()->count();
         $process = Form::where('status', '3')->get()->count();
         $cancel = Form::where('status', '2')->get()->count();
 
