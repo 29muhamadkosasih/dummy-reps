@@ -66,8 +66,6 @@ class FormController extends Controller
 
         ]);
 
-        $b_admin = $request->norek_id;
-
         $total = $request->qty * $request->price;
         $total2 = $request->qty2 * $request->price2;
         $total3 = $request->qty3 * $request->price3;
@@ -88,10 +86,14 @@ class FormController extends Controller
         $data = $request->norek_id;
         if ($data == NULL) {
             $jumlah_total_akhir = $jumlah_akhir + 0;
+            // dd($data);
         } else {
             $jumlah_total_akhir = $jumlah_akhir + 6500;
         };
-        // dd($jumlah_total_akhir);
+
+        $data = $request->all();
+
+        dd($data);
 
         Form::create([
             'from_id' => $userId,
@@ -144,6 +146,7 @@ class FormController extends Controller
             'jumlah_total' => $jumlah_total_akhir,
             'norek_id' => $request->norek_id
         ]);
+
         return redirect()->route('form.index')
             ->with(
                 'success',
