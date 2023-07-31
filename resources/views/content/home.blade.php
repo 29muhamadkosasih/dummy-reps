@@ -18,7 +18,7 @@
                     <li class="nav-item">
                         <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#payment">
                             <i class="ti ti-credit-card me-1 ti-sm"></i>
-                            <span class="align-middle fw-semibold">Payment</span>
+                            <span class="align-middle fw-semibold">Pengajuan</span>
                         </button>
                     </li>
                     <li class="nav-item">
@@ -68,9 +68,8 @@
                         </div>
                         <div>
                             <h4 class="mb-0">
-                                <span class="align-middle">Payment</span>
+                                <span class="align-middle">Pengajuan</span>
                             </h4>
-                            <small>Get help with payment</small>
                         </div>
                     </div>
                     <div id="accordionPayment" class="accordion">
@@ -79,16 +78,20 @@
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     aria-expanded="true" data-bs-target="#accordionPayment-1"
                                     aria-controls="accordionPayment-1">
-                                    When is payment taken for my order?
+                                    Pengajuan Permintaan Dana
                                 </button>
                             </h2>
 
                             <div id="accordionPayment-1" class="accordion-collapse collapse show">
                                 <div class="accordion-body">
-                                    Payment is taken during the checkout process when you pay for your order. The
-                                    order number
-                                    that appears on the confirmation screen indicates payment has been successfully
-                                    processed.
+                                    Karyawan yang membutuhkan dana harus mengajukan permintaan dana
+                                    melalui formulir pengajuan dana yang
+                                    telah disiapkan oleh departemen keuangan atau manajemen. Formulir tersebut harus
+                                    mencakup informasi berikut:
+                                    Nama lengkap pengaju dana.
+                                    Tujuan penggunaan dana (deskripsi singkat kebutuhan dan alasan).
+                                    Jumlah dana yang diminta.
+                                    Tanggal perkiraan penggunaan dana.
                                 </div>
                             </div>
                         </div>

@@ -116,12 +116,38 @@
         </li>
         @endcan
 
-        <li class="menu-item {{ (request()->is('list')) ? 'active' : '' }}">
+        @can('form-list.paid')
+        <li class="menu-item {{ Route::currentRouteNamed('list') ? 'active' : '' }}">
             <a href="{{ route('list') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-checkbox"></i>
                 <div data-i18n="Paid">Paid</div>
             </a>
         </li>
+        @endcan
+
+        @canany(['report.today.index','report.resumeRf.index'])
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Report</span>
+        </li>
+
+        @can('report.today.index')
+        <li class="menu-item {{ Route::currentRouteNamed('today') ? 'active' : '' }}">
+            <a href="{{ route('today') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-shield"></i>
+                <div data-i18n="Resume Rf">Resume Rf</div>
+            </a>
+        </li>
+        @endcan
+
+        @can('report.resumeRf.index')
+        <li class="menu-item {{ Route::currentRouteNamed('resumeRf') ? 'active' : '' }}">
+            <a href="{{ route('resumeRf') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-color-swatch"></i>
+                <div data-i18n="Report RF">Report RF</div>
+            </a>
+        </li>
+        @endcan
+        @endcanany
 
         @can('listAdvance.index')
         <li class="menu-item {{ (request()->is('listAdvance')) ? 'active' : '' }}">

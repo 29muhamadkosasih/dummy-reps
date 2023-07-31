@@ -9,7 +9,7 @@
                     <h5 class="mb-0">PENGAJUAN DANA</h5>
                 </div>
                 <div class="col-auto">
-                    <a href="{{ route('form-checked .index') }}" class="btn btn-secondary">Back</a>
+                    <a href="{{ route('form-checked.index') }}" class="btn btn-secondary">Back</a>
                 </div>
             </div>
             <div class="row">
@@ -54,6 +54,9 @@
 
                         <dt class="col-sm-4 fw-bolder mb-1">Untuk</dt>
                         <dd class="col-sm-8 mb-1"> {{ $show->rujukan->name }}</dd>
+
+                        <dt class="col-sm-4 fw-bolder mb-1">Keperluan</dt>
+                        <dd class="col-sm-8 mb-1"> {{ $show->keperluan->name }}</dd>
 
                         <dt class="col-sm-4 fw-bolder mb-1">Tgl Kebutuhan</dt>
                         <dd class="col-sm-8 mb-3"> {{ $show->tanggal_kebutuhan }}</dd>

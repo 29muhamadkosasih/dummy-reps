@@ -59,6 +59,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('approve/approve/{id}', [ApproveController::class, 'approve']);
     Route::get('reject/reject/{id}', [ApproveController::class, 'reject']);
     Route::get('form-list/list', [FormsController::class, 'list'])->name('list');
+    Route::get('form-list/today', [FormsController::class, 'today'])->name('today');
+    Route::get('form-list/resumeRf', [FormsController::class, 'resumeRf'])->name('resumeRf');
     Route::get('dashboard-checked', [DashboardController::class, 'checked'])->name('dashboard.checked');
     Route::get('dashboard-approve', [DashboardController::class, 'approve'])->name('dashboard.approve');
     Route::get('dashboard-general', [DashboardController::class, 'general'])->name('dashboard.general');
@@ -76,6 +78,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('keperluan', KeperluanController::class);
     Route::resource('kpengajuan', KpengajuanController::class);
     Route::resource('rujukan', RujukanController::class);
-
+    Route::post('getLaporan', [FormsController::class, 'getLaporan'])->name('laporan.getLaporan');
     Route::post('import-file', [UserController::class, 'import'])->name('import');
 });
