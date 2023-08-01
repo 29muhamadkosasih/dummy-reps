@@ -700,6 +700,31 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="card accordion-item">
+                                <h2 class="accordion-header" id="headingNine">
+                                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#accordionNine" aria-expanded="false"
+                                        aria-controls="accordionNine">
+                                        Lampiran
+                                    </button>
+                                </h2>
+                                <div id="accordionNine" class="accordion-collapse collapse"
+                                    aria-labelledby="headingNine" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <div class="row">
+                                            <div class="col-xl-12 col-md-12 col-12">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="basicInput">
+                                                        Lampiran
+                                                    </label>
+                                                    <input type="file" class="form-control" id="basicInput" name="file"
+                                                        placeholder="Enter" autofocus required />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

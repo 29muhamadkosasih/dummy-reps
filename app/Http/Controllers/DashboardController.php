@@ -22,22 +22,22 @@ class DashboardController extends Controller
         $currentMonth = date('m');
         $jumlah_total = DB::table('form')
             ->where('from_id', $userId)
+            ->get()
+            ->sum('jumlah_total');
+        $jumlah_total2 = DB::table('form')
+            ->where('from_id', $userId)
             ->whereMonth('created_at', $currentMonth)
-            ->whereYear('created_at', 2023)
             ->get()
             ->sum('jumlah_total');
 
         $reports = DB::table('form')
             ->where('from_id', $userId)
             ->whereMonth('created_at', $currentMonth)
-            ->whereYear('created_at', 2023)
             ->get()
             ->count();
 
         $reportss = DB::table('form')
-            ->where('from_id', $userId)
-            ->whereYear('created_at', 2023)
-            ->get()
+            ->where('from_id', $userId)->get()
             ->count();
 
         $data = Form::where('from_id', $userId)->get()->groupBy(function ($data) {
@@ -107,7 +107,8 @@ class DashboardController extends Controller
             'namaBulan' => $namaBulan,
             'reports'   => $reports,
             'jumlah_total'   => $jumlah_total,
-            'reportss'   => $reportss
+            'reportss'   => $reportss,
+            'jumlah_total2'   => $jumlah_total2,
         ]);
     }
 
@@ -305,13 +306,27 @@ class DashboardController extends Controller
             ->count();
         // dd($jumlah_total);
         $paid = Form::where('status', '8')->get()->count();
-        $process = Form::where('status', '3')->get()->count();
-        $cancel = Form::where('status', '2')->get()->count();
+        $process = Form::where('status', '4')->get()->count();
+        $cancel = Form::where('status', '3')->get()->count();
 
         $forms = Form::where('from_id', $userId)->get();
         $data = Form::all()->groupBy(function ($data) {
             return Carbon::parse($data->created_at)->format('M');
         });
+
+
+        $jumlah_total = DB::table('form')->get()
+            ->sum('jumlah_total');
+        $jumlah_total2 = DB::table('form')
+            ->whereMonth('created_at', $currentMonth)
+            ->get()
+            ->sum('jumlah_total');
+
+        $reports = DB::table('form')->whereMonth('created_at', $currentMonth)
+            ->get()
+            ->count();
+
+        $reportss = DB::table('form')->get()->count();
 
         // dd($data);
         $months = [];
@@ -381,6 +396,8 @@ class DashboardController extends Controller
             'cancel'    => $cancel,
             'reports'   => $reports,
             'jumlah_total' => $jumlah_total,
+            'reportss' => $reportss,
+            'jumlah_total2' => $jumlah_total2,
             'jumlah_total_all' => $jumlah_total_all
 
         ]);

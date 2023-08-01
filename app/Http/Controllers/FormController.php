@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 
 
 class FormController extends Controller
@@ -63,6 +64,7 @@ class FormController extends Controller
             'payment' => 'required',
             'rujukan_id' => 'required',
             'keperluan_id' => 'required',
+            'file' => 'required',
 
         ]);
 
@@ -91,10 +93,9 @@ class FormController extends Controller
             $jumlah_total_akhir = $jumlah_akhir + 6500;
         };
 
-        $data = $request->all();
-
-        // dd($data);
-
+        $files = $request->file('file');
+        $files->storeAs('public/files', $files->hashName());
+        // dd($request->all());
         Form::create([
             'from_id' => $userId,
             'rujukan_id' => $request->rujukan_id,
@@ -144,7 +145,8 @@ class FormController extends Controller
             'price8' => $request->price8,
             'total8' => $total8,
             'jumlah_total' => $jumlah_total_akhir,
-            'norek_id' => $request->norek_id
+            'norek_id' => $request->norek_id,
+            'file' => $request->file
         ]);
 
         return redirect()->route('form.index')
@@ -158,6 +160,8 @@ class FormController extends Controller
     {
         abort_if(Gate::denies('form.show'), Response::HTTP_FORBIDDEN, 'Forbidden');
         $show = Form::find($id);
+
+        dd($show->file);
         return view('pages.form.show', [
             'show'   => $show
         ]);

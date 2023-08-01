@@ -149,6 +149,13 @@
         @endcan
         @endcanany
 
+        <li class="menu-item {{ Route::currentRouteNamed('reportPB') ? 'active' : '' }}">
+            <a href="{{ route('reportPB') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-brand-tabler"></i>
+                <div data-i18n="Report PB">Report PB</div>
+            </a>
+        </li>
+
         @can('listAdvance.index')
         <li class="menu-item {{ (request()->is('listAdvance')) ? 'active' : '' }}">
             <a href="{{ route('listAdvance') }}" class="menu-link">

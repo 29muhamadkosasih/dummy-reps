@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddRelationshipFieldsToUsersTable extends Migration
+class AddRelationshipFieldsToFormTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class AddRelationshipFieldsToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('role_id')->nullable()->after('password');
-            $table->foreign('role_id')->references('id')->on('roles');
+        Schema::table('form', function (Blueprint $table) {
+            $table->string('file')
+                ->nullable()
+                ->after('jumlah_total');
         });
     }
 

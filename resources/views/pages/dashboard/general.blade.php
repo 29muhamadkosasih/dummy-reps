@@ -3,7 +3,7 @@
 @section('content')
 @section('title', 'Dashboard')
 
-<div class="col-xl-3 mb-4">
+{{-- <div class="col-xl-3 mb-4">
     <div class="card">
         <div class="card-body">
             <div class="badge p-2 bg-label-info mb-2 rounded">
@@ -48,46 +48,74 @@
             <h5 class="card-title mb-1 pt-2">{{ $cancel }}</h5>
         </div>
     </div>
-</div>
+</div> --}}
 
 
-<div class="col-xl-4 mb-4">
+<div class="col-sm-6 col-xl-3 mb-3">
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title mb-1 pt-2">Total RF</h5>
-            <h5 class="card-title mb-1 pt-2">Rp. {{ number_format($jumlah_total, 0, ',', '.',)}}</h5>
+            <div class="d-flex align-items-start justify-content-between">
+                <div class="content-left">
+                    <h5 class="card-title mb-0">Total RF</h5>
+                    <div class="d-flex align-items-center my-1">
+                        <h4 class="mb-0 me-2">{{ $reportss }}</h4>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
-<div class="col-xl-4 mb-4">
+<div class="col-sm-6 col-xl-3 mb-3">
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title mb-1 pt-2">Total RF Perbulan</h5>
-            <h5 class="card-title mb-1 pt-2">
-                Rp. {{ number_format($jumlah_total, 0, ',', '.',)}} / {{ $namaBulan }}
-            </h5>
+            <div class="d-flex align-items-start justify-content-between">
+                <div class="content-left">
+                    <h5 class="card-title mb-0">Total Amount RF</h5>
+                    <div class="d-flex align-items-center my-1">
+                        <h4 class="mb-0 me-2">{{ number_format($jumlah_total, 0, ',', '.',) }}</h4>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
-<div class="col-xl-4 mb-4">
+<div class="col-sm-6 col-xl-3 mb-3">
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title mb-1 pt-2">Total RF Perbulan</h5>
-            <h5 class="card-title mb-1 pt-2">{{ $reports }} /
-                {{$namaBulan }}</h5>
+            <div class="d-flex align-items-start justify-content-between">
+                <div class="content-left">
+                    <h5 class="card-title mb-0">Total RF Perbulan</h5>
+                    <div class="d-flex align-items-center my-1">
+                        <h4 class="mb-0 me-2">{{ $reports }} / {{ $namaBulan }}</h4>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
+<div class="col-sm-6 col-xl-3 mb-3">
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex align-items-start justify-content-between">
+                <div class="content-left">
+                    <h5 class="card-title mb-0">Amount RF Perbulan</h5>
+                    <div class="d-flex align-items-center my-1">
+                        <h4 class="mb-0 me-2">{{ number_format($jumlah_total2, 0, ',', '.',) }} /
+                            {{
+                            $namaBulan }}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="col-xl-6 mb-4">
     <div class="card">
         <div class="card-header">
             <h5 class="m-0 card-title">Total RF Perbulan</h5>
 
         </div>
-        <div class="card-body mb-2"><canvas id="myAreaChart" width="100%" height="75"></canvas></div>
+        <div class="card-body"><canvas id="myAreaChart" width="100%" height="75"></canvas></div>
     </div>
 </div>
 
@@ -137,11 +165,9 @@
                                 {{ $data->departement->nama_departement }}
                             </td>
                             <td>
-                                {{ $data->to }}
-                            </td>
+                                {{ $data->rujukan->name }} </td>
                             <td>
-                                {{ $data->ketegori_pengajuan }}
-                            </td>
+                                {{ $data->kpengajuan->name }} </td>
                             <td>
                                 {{ $data->payment }}
                             </td>

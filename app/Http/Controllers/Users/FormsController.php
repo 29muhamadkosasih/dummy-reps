@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Reportpb;
 use Illuminate\Support\Facades\Gate;
 
 class FormsController extends Controller
@@ -16,7 +17,9 @@ class FormsController extends Controller
     {
         abort_if(Gate::denies('form-list.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
-        $form = Form::where('status', '>', '3')->get();
+        $form = Form::where('status', '>', '3')
+            ->where('status', '<', '8')
+            ->get();
         return view('pages.form.selesai.index', [
             'form' => $form
         ]);
@@ -49,6 +52,14 @@ class FormsController extends Controller
         ]);
     }
 
+    public function reportPB()
+    {
+        $data  =Reportpb::all();
+        return view('pages.form.selesai.reportPB', [
+            'data' => $data,
+        ]);
+    }
+
     public function getLaporan(Request $request)
     {
         // dd($request);
@@ -72,27 +83,30 @@ class FormsController extends Controller
     public function today()
     {
         $currentDay = date('d');
-        $form = Form::where('status', '8')
+        $form = Form::where('status', '4')
             ->where('payment', 'Cash')
             ->whereDay('created_at', $currentDay)
             ->get();
         $currentDate = Carbon::now()->format('d-m-Y');
         $jumlah_total = DB::table('form')
-            ->where('status','8')
+            ->where('status', '4')
             ->whereDay('created_at', $currentDay)
             ->where('payment', 'Cash')
             ->sum('jumlah_total');
 
-        $form2 = Form::where('status', '8')
+        $form2 = Form::where('status', '4')
             ->where('payment', 'Transfer')
             ->whereDay('created_at', $currentDay)
             ->get();
         $currentDate = Carbon::now()->format('d-m-Y');
         $jumlah_total2 = DB::table('form')
             ->whereDay('created_at', $currentDay)
+            ->where('status', '4')
             ->where('payment', 'Transfer')
             ->sum('jumlah_total');
-
+        $jumlah_total3 = DB::table('form')
+            ->where('status', '4')
+            ->whereDay('created_at', $currentDay)->sum('jumlah_total');
 
 
         return view('pages.form.selesai.today', [
@@ -101,6 +115,7 @@ class FormsController extends Controller
             'currentDate' => $currentDate,
             'form2' => $form2,
             'jumlah_total2' => $jumlah_total2,
+            'jumlah_total3' => $jumlah_total3,
         ]);
     }
 }

@@ -61,6 +61,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('form-list/list', [FormsController::class, 'list'])->name('list');
     Route::get('form-list/today', [FormsController::class, 'today'])->name('today');
     Route::get('form-list/resumeRf', [FormsController::class, 'resumeRf'])->name('resumeRf');
+    Route::get('form-list/reportPB', [FormsController::class, 'reportPB'])->name('reportPB');
     Route::get('dashboard-checked', [DashboardController::class, 'checked'])->name('dashboard.checked');
     Route::get('dashboard-approve', [DashboardController::class, 'approve'])->name('dashboard.approve');
     Route::get('dashboard-general', [DashboardController::class, 'general'])->name('dashboard.general');
