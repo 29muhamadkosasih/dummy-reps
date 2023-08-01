@@ -87,7 +87,7 @@
                                     <option value="{{ $item->id }}">{{ $item->nama_penerima }}</option>
                                     @endforeach
                                 </select>
-                                <div id="defaultFormControlHelp" class="form-text">
+                                {{-- <div id="defaultFormControlHelp" class="form-text">
                                     * Biaya Admin
                                     @switch($item->bank_id)
                                     @case($item->bank->b_admin == 1)
@@ -96,7 +96,7 @@
                                     @default
                                     Rp. {{ number_format($item->bank->b_admin, 0, ',', '.',) }}
                                     @endswitch
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

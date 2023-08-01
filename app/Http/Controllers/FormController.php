@@ -93,7 +93,7 @@ class FormController extends Controller
 
         $data = $request->all();
 
-        dd($data);
+        // dd($data);
 
         Form::create([
             'from_id' => $userId,

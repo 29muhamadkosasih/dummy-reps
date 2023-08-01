@@ -444,7 +444,7 @@
                         </div>
 
                     </div>
-                    <div class="col-12 text-center mb-2 mt-1 pt-20">
+                    <div class="col-12 text-center mb-2 mt-1 pt-20 mb-4">
                         <a href="{{ route('form-checked.index') }}" class="btn btn-outline-secondary me-1">Back</a>
                         <button type="submit" class="btn btn-primary ">Update</button>
                     </div>

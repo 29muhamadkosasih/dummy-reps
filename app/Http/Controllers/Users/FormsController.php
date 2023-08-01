@@ -55,9 +55,6 @@ class FormsController extends Controller
         $from = $request->from . ' ';
         $to = $request->to . ' ';
         $form = Form::whereBetween('created_at', [$from, $to])->get();
-        // $jumlah_total = DB::table('form')
-        //     ->whereDay('created_at', [$from, $to])
-        //     ->sum('jumlah_total');
         $jumlah_total = Form::whereBetween('created_at', [$from, $to])->get()->sum('jumlah_total');
 
 
@@ -76,18 +73,34 @@ class FormsController extends Controller
     {
         $currentDay = date('d');
         $form = Form::where('status', '8')
+            ->where('payment', 'Cash')
             ->whereDay('created_at', $currentDay)
             ->get();
         $currentDate = Carbon::now()->format('d-m-Y');
-        // dd($currentDate);
-
         $jumlah_total = DB::table('form')
+            ->where('status','8')
             ->whereDay('created_at', $currentDay)
+            ->where('payment', 'Cash')
             ->sum('jumlah_total');
+
+        $form2 = Form::where('status', '8')
+            ->where('payment', 'Transfer')
+            ->whereDay('created_at', $currentDay)
+            ->get();
+        $currentDate = Carbon::now()->format('d-m-Y');
+        $jumlah_total2 = DB::table('form')
+            ->whereDay('created_at', $currentDay)
+            ->where('payment', 'Transfer')
+            ->sum('jumlah_total');
+
+
+
         return view('pages.form.selesai.today', [
             'form' => $form,
             'jumlah_total' => $jumlah_total,
-            'currentDate' => $currentDate
+            'currentDate' => $currentDate,
+            'form2' => $form2,
+            'jumlah_total2' => $jumlah_total2,
         ]);
     }
 }

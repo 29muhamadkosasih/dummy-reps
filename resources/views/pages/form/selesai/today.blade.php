@@ -9,7 +9,7 @@
         <div class="card-body">
             <div class="row mb-3">
                 <div class="col-auto me-auto ">
-                    <h5 class="mb-0">Pengajuan Tanggal : {{ $currentDate }}
+                    <h5 class="mb-0">Tanggal : {{ $currentDate }}
                 </div>
             </div>
             <div class="table-responsive text-nowrap">
@@ -25,7 +25,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($form as $data)
+                        @forelse ($form as $data)
                         <tr>
                             <td style="text-align: center">{{ $loop->iteration }}</td>
                             <td>
@@ -41,10 +41,35 @@
                                 {{ number_format($data->jumlah_total, 0, ',', '.',) }}
                             </td>
                         </tr>
-                        @endforeach
-                        <tr>
+                        @empty
+                        @endforelse
+                        <tr style="background-color: skyblue">
                             <th colspan="4" style="text-align :right ">TOTAL</th>
                             <td style="text-align :right"> {{ number_format($jumlah_total, 0, ',',
+                                '.') }}</td>
+                        </tr>
+
+                        @forelse ($form2 as $data)
+                        <tr>
+                            <td style="text-align: center">{{ $loop->iteration }}</td>
+                            <td>
+                                {{ $data->user->name }}
+                            </td>
+
+                            <td>
+                                {{ $data->payment }}
+                            </td>
+                            <td>
+                                {{ $data->kpengajuan->name }} </td>
+                            <td style="text-align :right ">
+                                {{ number_format($data->jumlah_total, 0, ',', '.',) }}
+                            </td>
+                        </tr>
+                        @empty
+                        @endforelse
+                        <tr style="background-color: skyblue">
+                            <th colspan="4" style="text-align :right ">TOTAL</th>
+                            <td style="text-align :right"> {{ number_format($jumlah_total2, 0, ',',
                                 '.') }}</td>
                         </tr>
                     </tbody>

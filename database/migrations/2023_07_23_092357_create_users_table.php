@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('no_hp')->nullable();
-            $table->unsignedBigInteger('jabatan_id');
+            $table->unsignedBigInteger('jabatan_id')->nulllabe();;
             $table->foreign('jabatan_id')->references('id')->on('jabatan')->onDelete('cascade');
             $table->unsignedBigInteger('departement_id')->nulllabe();
             $table->foreign('departement_id')->references('id')->on('departement')->onDelete('cascade');

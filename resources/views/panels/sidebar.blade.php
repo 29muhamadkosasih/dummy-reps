@@ -247,4 +247,14 @@
 
         @endcanany
     </ul>
+    <footer class="content-footer footer bg-footer-theme">
+        <ul class="menu-inner py-3">
+            <li class="menu-item">
+                <a href="#" onclick="$('#logout-form').submit();" class="menu-link">
+                    <i class="menu-icon tf-icons ti ti-logout"></i>
+                    <div data-i18n="Logout">Logout</div>
+                </a>
+            </li>
+        </ul>
+    </footer>
 </aside>

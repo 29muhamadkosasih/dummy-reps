@@ -40,6 +40,7 @@
                     <thead>
                         <tr>
                             <th width='10px' style="text-align: center">No</th>
+                            <th>Tanggal</th>
                             <th>Dari</th>
                             <th>Payment Method</th>
                             <th>Kategori
@@ -51,6 +52,9 @@
                         @foreach ($form as $data)
                         <tr>
                             <td style="text-align: center">{{ $loop->iteration }}</td>
+                            <td>
+                                {{ $data->created_at->format('d M Y') }}
+                            </td>
                             <td>
                                 {{ $data->user->name }}
                             </td>
@@ -65,8 +69,8 @@
                             </td>
                         </tr>
                         @endforeach
-                        <tr>
-                            <th colspan="4" style="text-align :right ">TOTAL</th>
+                        <tr style="background-color: skyblue">
+                            <th colspan="5" style="text-align :right ">TOTAL</th>
                             <td style="text-align :right"> {{ number_format($jumlah_total, 0, ',',
                                 '.') }}</td>
                         </tr>

@@ -45,11 +45,12 @@
                     </thead>
                     <tbody>
                         @foreach ($bank as $data)
+
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $data->nama_bank }}</td>
                             <td> @switch($data)
-                                @case($data->b_admin == 1)
+                                @case($data->b_admin == NULL)
                                 <span class="badge bg-primary">FREE</span>
                                 @break
                                 @default
