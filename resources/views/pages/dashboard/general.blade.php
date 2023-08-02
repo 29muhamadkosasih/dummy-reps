@@ -112,7 +112,7 @@
 <div class="col-xl-6 mb-4">
     <div class="card">
         <div class="card-header">
-            <h5 class="m-0 card-title">Total RF Perbulan</h5>
+            <h5 class="m-0 card-title">Highchart Total RF Perbulan</h5>
 
         </div>
         <div class="card-body"><canvas id="myAreaChart" width="100%" height="75"></canvas></div>
@@ -122,7 +122,7 @@
 <div class="col-xl-6 mb-4">
     <div class="card">
         <div class="card-header">
-            <h5 class="m-0 card-title">Total RF Perbulan</h5>
+            <h5 class="m-0 card-title">Line Total RF Perbulan</h5>
         </div>
         <div class="card-body"><canvas id="myBarChart" width="100%" height="75"></canvas></div>
     </div>

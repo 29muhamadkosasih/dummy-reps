@@ -18,6 +18,8 @@ use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\KeperluanController;
 use App\Http\Controllers\Admin\KpengajuanController;
 use App\Http\Controllers\Admin\RujukanController;
+use App\Http\Controllers\ReportpbController;
+use App\Models\Reportpb;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +42,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('lang/{locale}', [LanguageController::class, 'swap']);
     Route::get('layouts/empty', [StaterkitController::class, 'layout_empty'])->name('layout.empty');
     Route::get('form/print/{id}', [FormController::class, 'print'])->name('form.print');
+    Route::get('form-list/print/{id}', [FormsController::class, 'printToday'])->name('form-list.print');
     Route::get('form/listAdvance', [FormController::class, 'listAdvance'])->name('listAdvance');
     Route::put('form-checked/checked/{id}', [CheckedController::class, 'checked'])->name('form-checked.checked');
     Route::get('form-checked/detail/{id}', [CheckedController::class, 'detail'])->name('form-checked.detail');
@@ -71,6 +74,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('bank', BankController::class);
     Route::resource('norek', NoRekController::class);
     Route::resource('form', FormController::class);
+    Route::resource('reportPB', ReportpbController::class);
     Route::resource('form-approve', ApproveController::class);
     Route::resource('form-checked', CheckedController::class);
     Route::resource('form-list', FormsController::class);
@@ -81,4 +85,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('rujukan', RujukanController::class);
     Route::post('getLaporan', [FormsController::class, 'getLaporan'])->name('laporan.getLaporan');
     Route::post('import-file', [UserController::class, 'import'])->name('import');
+
+    Route::get('form/download/{file}', [FormController::class, 'download'])->name('form.download');
 });

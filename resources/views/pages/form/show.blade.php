@@ -24,6 +24,14 @@
                         <dt class="col-sm-4 fw-bolder mb-1">Payment</dt>
                         <dd class="col-sm-8 mb-1"> {{ $show->payment }}</dd>
 
+                        <dt class="col-sm-4 fw-bolder mb-1">Lampiran</dt>
+                        <dd class="col-sm-8 mb-1">
+                            <a href="{{ url('form/download/' . $show->file) }}" target="_blank"
+                                class="text-primary font-weight-bold"> <i data-feather="download"></i>
+                                {{ $show->file }}
+                            </a>
+                        </dd>
+
                         @switch($show)
                         @case($show->payment == 'Transfer')
                         <dt class="col-sm-4 fw-bolder mb-1">Nomor Rekening</dt>

@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Users;
 
 use Carbon\Carbon;
 use App\Models\Form;
+use App\Models\Reportpb;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Reportpb;
 use Illuminate\Support\Facades\Gate;
 
 class FormsController extends Controller
@@ -54,7 +55,7 @@ class FormsController extends Controller
 
     public function reportPB()
     {
-        $data  =Reportpb::all();
+        $data  = Reportpb::all();
         return view('pages.form.selesai.reportPB', [
             'data' => $data,
         ]);
@@ -117,5 +118,49 @@ class FormsController extends Controller
             'jumlah_total2' => $jumlah_total2,
             'jumlah_total3' => $jumlah_total3,
         ]);
+    }
+
+    public function printToday($id)
+    {
+        // $data = Form::find($id);
+        $currentDay = date('d');
+        $form = Form::find($id)
+            ->where('status', '4')
+            ->where('payment', 'Cash')
+            ->whereDay('created_at', $currentDay)
+            ->get();
+        $currentDate = Carbon::now()->format('d-m-Y');
+        $jumlah_total = DB::table('form')
+            ->where('status', '4')
+            ->whereDay('created_at', $currentDay)
+            ->where('payment', 'Cash')
+            ->sum('jumlah_total');
+
+        $form2 = Form::where('status', '4')
+            ->where('payment', 'Transfer')
+            ->whereDay('created_at', $currentDay)
+            ->get();
+        $currentDate = Carbon::now()->format('d-m-Y');
+        $jumlah_total2 = DB::table('form')
+            ->whereDay('created_at', $currentDay)
+            ->where('status', '4')
+            ->where('payment', 'Transfer')
+            ->sum('jumlah_total');
+        $jumlah_total3 = DB::table('form')
+            ->where('status', '4')
+            ->whereDay('created_at', $currentDay)->sum('jumlah_total');
+
+        // dd($data);
+        $pdf = PDF::loadview('pages.form.selesai.printToday', [
+            // 'data' => $data,
+            'form' => $form,
+            'currentDate' => $currentDate,
+            'jumlah_total' => $jumlah_total,
+            'form2' => $form2,
+            'jumlah_total2' => $jumlah_total2,
+            'jumlah_total3' => $jumlah_total3,
+        ]);
+        $pdf->set_paper('letter', 'landscape');
+        return $pdf->stream('Surat-Pengajuan.pdf');
     }
 }

@@ -357,7 +357,7 @@ INSERT INTO `permissions` VALUES (12, 'permissions.index', '2023-07-23 04:14:40'
 INSERT INTO `permissions` VALUES (13, 'permissions.edit', '2023-07-23 04:14:40', '2023-07-23 04:14:40');
 INSERT INTO `permissions` VALUES (14, 'permissions.delete', '2023-07-23 04:14:40', '2023-07-23 04:14:40');
 INSERT INTO `permissions` VALUES (15, 'permissions.create', '2023-07-23 04:14:40', '2023-07-23 04:14:40');
-INSERT INTO `permissions` VALUES (16, 'layout.empty.index', '2023-07-23 04:14:40', '2023-07-23 04:14:40');
+-- INSERT INTO `permissions` VALUES (16, 'layout.empty.index', '2023-07-23 04:14:40', '2023-07-23 04:14:40');
 INSERT INTO `permissions` VALUES (17, 'form.index', '2023-07-23 04:14:40', '2023-07-23 04:14:40');
 INSERT INTO `permissions` VALUES (18, 'form.edit', '2023-07-23 04:14:40', '2023-07-23 04:14:40');
 INSERT INTO `permissions` VALUES (19, 'form.show', '2023-07-23 04:14:40', '2023-07-23 04:14:40');

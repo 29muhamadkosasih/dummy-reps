@@ -15,8 +15,8 @@ class CreateReportpbTable extends Migration
     {
         Schema::create('reportpb', function (Blueprint $table) {
             $table->id();
-            $table->string('a_b');
-            $table->string('b_a');
+            $table->string('a_b')->nullable();
+            $table->string('b_a')->nullable();
             $table->timestamps();
         });
     }

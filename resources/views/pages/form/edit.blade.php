@@ -287,7 +287,7 @@
                                     <div class="col-xl-6 col-md-6 col-12">
                                         <div class="mb-1">
                                             <label class="form-label" for="basicInput">
-                                                <h5>Description</h5>
+                                                Description
                                             </label>
                                             <input type="text" class="form-control" id="basicInput" name="description5"
                                                 placeholder="Enter" autofocus value="{{ $edit->description5 }}" />
@@ -296,7 +296,7 @@
                                     <div class="col-xl-6 col-md-6 col-12">
                                         <div class="mb-1">
                                             <label class="form-label" for="basicInput">
-                                                <h5>Unit</h5>
+                                                Unit
                                             </label>
                                             <input type="text" class="form-control" id="basicInput" name="unit5"
                                                 placeholder="Enter" autofocus value="{{ $edit->unit5 }}" />
@@ -305,7 +305,7 @@
                                     <div class="col-xl-6 col-md-6 col-12">
                                         <div class="mb-1">
                                             <label class="form-label" for="helpInputTop">
-                                                <h5>Price</h5>
+                                                Price
                                             </label>
                                             <input type="number" class="form-control" id="basicInput" name="price5"
                                                 placeholder="Enter" autofocus value="{{ $edit->price5 }}" />
@@ -314,7 +314,7 @@
                                     <div class="col-xl-6 col-md-6 col-12">
                                         <div class="mb-1">
                                             <label class="form-label" for="basicInput">
-                                                <h5>Qty</h5>
+                                                Qty
                                             </label>
                                             <input type="number" class="form-control" id="basicInput" name="qty5"
                                                 placeholder="Enter" autofocus value="{{ $edit->qty5 }}" />
@@ -337,7 +337,7 @@
                                     <div class="col-xl-6 col-md-6 col-12">
                                         <div class="mb-1">
                                             <label class="form-label" for="basicInput">
-                                                <h5>Description</h5>
+                                                Description
                                             </label>
                                             <input type="text" class="form-control" id="basicInput" name="description6"
                                                 placeholder="Enter" autofocus value="{{ $edit->description6 }}" />
@@ -346,7 +346,7 @@
                                     <div class="col-xl-6 col-md-6 col-12">
                                         <div class="mb-1">
                                             <label class="form-label" for="basicInput">
-                                                <h5>Unit</h5>
+                                                Unit
                                             </label>
                                             <input type="text" class="form-control" id="basicInput" name="unit6"
                                                 placeholder="Enter" autofocus value="{{ $edit->unit6 }}" />
@@ -355,7 +355,7 @@
                                     <div class="col-xl-6 col-md-6 col-12">
                                         <div class="mb-1">
                                             <label class="form-label" for="helpInputTop">
-                                                <h5>Price</h5>
+                                                Price
                                             </label>
                                             <input type="number" class="form-control" id="basicInput" name="price6"
                                                 placeholder="Enter" autofocus value="{{ $edit->price6 }}" />
@@ -364,7 +364,7 @@
                                     <div class="col-xl-6 col-md-6 col-12">
                                         <div class="mb-1">
                                             <label class="form-label" for="basicInput">
-                                                <h5>Qty</h5>
+                                                Qty
                                             </label>
                                             <input type="number" class="form-control" id="basicInput" name="qty6"
                                                 placeholder="Enter" autofocus value="{{ $edit->qty6 }}" />
@@ -387,7 +387,7 @@
                                     <div class="col-xl-6 col-md-6 col-12">
                                         <div class="mb-1">
                                             <label class="form-label" for="basicInput">
-                                                <h5>Description</h5>
+                                                Description
                                             </label>
                                             <input type="text" class="form-control" id="basicInput" name="description7"
                                                 placeholder="Enter" autofocus value="{{ $edit->description7 }}" />
@@ -396,7 +396,7 @@
                                     <div class="col-xl-6 col-md-6 col-12">
                                         <div class="mb-1">
                                             <label class="form-label" for="basicInput">
-                                                <h5>Unit</h5>
+                                                Unit
                                             </label>
                                             <input type="text" class="form-control" id="basicInput" name="unit7"
                                                 placeholder="Enter" autofocus value="{{ $edit->unit7 }}" />
@@ -405,7 +405,7 @@
                                     <div class="col-xl-6 col-md-6 col-12">
                                         <div class="mb-1">
                                             <label class="form-label" for="helpInputTop">
-                                                <h5>Price</h5>
+                                                Price
                                             </label>
                                             <input type="number" class="form-control" id="basicInput" name="price7"
                                                 placeholder="Enter" autofocus value="{{ $edit->price7 }}" />
@@ -414,7 +414,7 @@
                                     <div class="col-xl-6 col-md-6 col-12">
                                         <div class="mb-1">
                                             <label class="form-label" for="basicInput">
-                                                <h5>Qty</h5>
+                                                Qty
                                             </label>
                                             <input type="number" class="form-control" id="basicInput" name="qty7"
                                                 placeholder="Enter" autofocus value="{{ $edit->qty7 }}" />
@@ -437,7 +437,7 @@
                                     <div class="col-xl-6 col-md-6 col-12">
                                         <div class="mb-1">
                                             <label class="form-label" for="basicInput">
-                                                <h5>Description</h5>
+                                                Description
                                             </label>
                                             <input type="text" class="form-control" id="basicInput" name="description8"
                                                 placeholder="Enter" autofocus value="{{ $edit->description8 }}" />
@@ -446,7 +446,7 @@
                                     <div class="col-xl-6 col-md-6 col-12">
                                         <div class="mb-1">
                                             <label class="form-label" for="basicInput">
-                                                <h5>Unit</h5>
+                                                Unit
                                             </label>
                                             <input type="text" class="form-control" id="basicInput" name="unit8"
                                                 placeholder="Enter" autofocus value="{{ $edit->unit8 }}" />
@@ -455,7 +455,7 @@
                                     <div class="col-xl-6 col-md-6 col-12">
                                         <div class="mb-1">
                                             <label class="form-label" for="helpInputTop">
-                                                <h5>Price</h5>
+                                                Price
                                             </label>
                                             <input type="number" class="form-control" id="basicInput" name="price8"
                                                 placeholder="Enter" autofocus value="{{ $edit->price8 }}" />
@@ -464,7 +464,7 @@
                                     <div class="col-xl-6 col-md-6 col-12">
                                         <div class="mb-1">
                                             <label class="form-label" for="basicInput">
-                                                <h5>Qty</h5>
+                                                Qty
                                             </label>
                                             <input type="number" class="form-control" id="basicInput" name="qty8"
                                                 placeholder="Enter" autofocus value="{{ $edit->qty8 }}" />
@@ -475,6 +475,33 @@
                         </div>
                     </div>
 
+                    <div class="accordion-item">
+                        <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconNine">
+                            <button type="button" class="accordion-button" data-bs-toggle="collapse"
+                                data-bs-target="#accordionIcon-9" aria-expanded="true" aria-controls="accordionIcon-9">
+                                Lampiran </button>
+                        </h2>
+                        <div id="accordionIcon-9" class="accordion-collapse collapse" data-bs-parent="#accordionIcon">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-xl-12 col-md-12 col-12">
+                                        <div class="mb-1">
+                                            <label class="form-label" for="basicInput">
+                                                Lampiran
+                                            </label>
+                                            <a href="{{ url('transaction-mega/download/' . $edit->file) }}"
+                                                class="form-control text-primary font-weight-bold"> <i
+                                                    data-feather="download"></i>
+                                                {{ $edit->file }}
+                                            </a>
+                                            <input type="file" class="form-control" id="basicInput" name="file"
+                                                placeholder="Enter" autofocus required value="{{ $edit->file }}" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-12 text-center mb-4 mt-1 pt-20">
                     <a href="{{ route('form.index') }}" class="btn btn-outline-secondary me-1">Back</a>

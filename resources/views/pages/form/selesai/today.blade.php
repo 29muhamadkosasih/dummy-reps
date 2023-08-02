@@ -24,6 +24,11 @@
                     </thead>
                     <tbody>
                         @forelse ($form as $data)
+                        <tr colspan="5" class="mb-2">
+                            <a href="{{ url('form-list/print', $data->id) }}" target="_blank">
+                                <i class="menu-icon tf-icons ti ti-download"></i>
+                            </a>
+                        </tr>
                         <tr>
                             <td style="text-align: center">{{ $loop->iteration }}</td>
                             <td>
@@ -94,8 +99,7 @@
             </div>
         </div>
         <div class="card-body">
-            <form action="#" method="POST" enctype="multipart/form-data">
-                @method('PUT')
+            <form action="{{ route('reportPB.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label class="form-label">Saldo 899</label>
@@ -104,13 +108,13 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">PBB 899-893</label>
-                    <input type="number" class="form-control @error('jumlah_dana') is-invalid @enderror"
-                        placeholder="Masukkan Jumlah Uang" name="jumlah_dana" />
+                    <input type="number" class="form-control @error('a_b') is-invalid @enderror"
+                        placeholder="Masukkan Jumlah Uang" name="a_b" />
                 </div>
                 <div class="mb-3">
                     <label class="form-label">PBB 893-899</label>
-                    <input type="number" class="form-control @error('jumlah_dana') is-invalid @enderror"
-                        placeholder="Masukkan Jumlah Uang" name="jumlah_dana" />
+                    <input type="number" class="form-control @error('b_a') is-invalid @enderror"
+                        placeholder="Masukkan Jumlah Uang" name="b_a" />
                 </div>
                 <div class="mb-3">
                     <button type="submit" class="btn btn-primary float-end ms-2">Submit</button>

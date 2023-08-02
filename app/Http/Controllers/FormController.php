@@ -15,6 +15,7 @@ use App\Models\Departement;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
@@ -52,6 +53,9 @@ class FormController extends Controller
     public function store(Request $request)
     {
         $userId = auth()->id();
+        $username = Auth::user()->name;
+        // dd($username);
+
         // dd($request->norek->bank->b_admin);
 
 
@@ -93,8 +97,23 @@ class FormController extends Controller
             $jumlah_total_akhir = $jumlah_akhir + 6500;
         };
 
-        $files = $request->file('file');
-        $files->storeAs('public/files', $files->hashName());
+        // $files = $request->file('file');
+        // $files->storeAs('public/files', $files->hashName());
+
+        $documentNumber = $username;
+
+        if ($request->hasFile('file')) {
+            $this->validate($request, [
+                'file'          => 'mimes:pdf,xls,csv,xlsx',
+            ]);
+            $file               = $request->file('file');
+            $temp               = str_replace('/', '_', $documentNumber);
+            $filename           = 'Lampiran_' . $temp . '.' . $file->getClientOriginalExtension();
+            $destinationPath    = 'storage/MD';
+            $file->move($destinationPath, $filename);
+        }
+
+
         // dd($request->all());
         Form::create([
             'from_id' => $userId,
@@ -146,7 +165,7 @@ class FormController extends Controller
             'total8' => $total8,
             'jumlah_total' => $jumlah_total_akhir,
             'norek_id' => $request->norek_id,
-            'file' => $request->file
+            'file' => $filename
         ]);
 
         return redirect()->route('form.index')
@@ -161,7 +180,7 @@ class FormController extends Controller
         abort_if(Gate::denies('form.show'), Response::HTTP_FORBIDDEN, 'Forbidden');
         $show = Form::find($id);
 
-        dd($show->file);
+        // dd($show->file);
         return view('pages.form.show', [
             'show'   => $show
         ]);
@@ -465,5 +484,12 @@ class FormController extends Controller
         // dd($data);
         return redirect()->route('form.index')
             ->with('success', 'Congratulation !  Data Berhasil Di Process');
+    }
+
+    public function download($file)
+    {
+        $pathToFile = public_path('storage/MD/' . $file);
+        return response()->download($pathToFile);
+        // return $pathToFile->stream('Surat-Pengajuan.pdf');
     }
 }

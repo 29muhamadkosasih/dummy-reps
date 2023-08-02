@@ -5,12 +5,27 @@
 @section('content')
 
 <!-- Invoice table -->
-<div class="col-xl-12">
-    <div class="faq-header d-flex flex-column justify-content-center align-items-center rounded">
-        <h3 class="text-center ms-5 me-5">Hello {{ Auth::user()->name }}, how can we help?</h3>
-    </div>
 
-    <div class="row mt-4">
+<div class="col-xl-12">
+    <div class="row mb-5">
+        <div class="col-md">
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img class="card-img card-img-left"
+                            src="{{ asset('assets/img/illustrations/WhatsApp Image 2023-08-02 at 10.54.10.jpeg') }}"
+                            alt="Card image" />
+                    </div>
+                    <div class="col-md-8 rounded faq-header">
+                        <div class="card-body mt-5">
+                            <h3 class="text-center ms-5 me-5">Hello {{ Auth::user()->name }}, how can we help?</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-0">
         <!-- Navigation -->
         <div class="col-lg-3 col-md-4 col-12 mb-md-0 mb-3">
             <div class="d-flex justify-content-between flex-column mb-2 mb-md-0">

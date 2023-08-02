@@ -125,7 +125,7 @@
         </li>
         @endcan
 
-        @canany(['report.today.index','report.resumeRf.index'])
+        @canany(['report.today.index','report.resumeRf.index','report.reportPB.index'])
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Report</span>
         </li>
@@ -139,6 +139,15 @@
         </li>
         @endcan
 
+        @can('report.reportPB.index')
+        <li class="menu-item {{ Route::currentRouteNamed('reportPB') ? 'active' : '' }}">
+            <a href="{{ route('reportPB') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-brand-tabler"></i>
+                <div data-i18n="Report PB">Report PB</div>
+            </a>
+        </li>
+        @endcan
+
         @can('report.resumeRf.index')
         <li class="menu-item {{ Route::currentRouteNamed('resumeRf') ? 'active' : '' }}">
             <a href="{{ route('resumeRf') }}" class="menu-link">
@@ -147,15 +156,8 @@
             </a>
         </li>
         @endcan
+
         @endcanany
-
-        <li class="menu-item {{ Route::currentRouteNamed('reportPB') ? 'active' : '' }}">
-            <a href="{{ route('reportPB') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-brand-tabler"></i>
-                <div data-i18n="Report PB">Report PB</div>
-            </a>
-        </li>
-
         @can('listAdvance.index')
         <li class="menu-item {{ (request()->is('listAdvance')) ? 'active' : '' }}">
             <a href="{{ route('listAdvance') }}" class="menu-link">
