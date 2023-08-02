@@ -14,13 +14,13 @@
                 </div>
             </div>
             <div class="table-responsive text-nowrap">
-                <table class="table table-hover zero-configuration">
+                <table class="table table-hover table-bordered zero-configuration">
                     <thead>
                         <tr style="background-color: skyblue">
                             <th width='10px' style="text-align: center">No</th>
                             <th>Tanggal</th>
-                            <th>899-893</th>
-                            <th>893-899</th>
+                            <th style="text-align: center">899-893 /(RP)</th>
+                            <th style="text-align: center">893-899 /(RP)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,11 +30,11 @@
                             <td>
                                 {{ $data->created_at->format('d M Y') }}
                             </td>
-                            <td>
-                                {{ $data->a_b }}
+                            <td style="text-align :right">
+                                {{ number_format($data->a_b, 0, ',', '.') }}
                             </td>
-                            <td>
-                                {{ $data->b_a }}
+                            <td style="text-align :right">
+                                {{ number_format($data->b_a, 0, ',', '.') }}
                             </td>
                         </tr>
                         @endforeach

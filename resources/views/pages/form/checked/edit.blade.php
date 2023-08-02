@@ -19,12 +19,20 @@
                                     <label class="form-label" for="basicInput">Dari</label>
                                     <input type="hidden" name="from_id" value="{{ $edit->from_id }}" />
                                     <input type="hidden" name="departement_id" value="{{ $edit->departement_id }}" />
-
                                     <input type="hidden" name="kpengajuan_id" value="{{ $edit->kpengajuan_id }}" />
                                     <input type="hidden" name="keperluan_id" value="{{ $edit->keperluan_id }}" />
                                     <input type="hidden" name="payment" value="{{ $edit->payment }}" />
                                     <input type="hidden" name="rujukan_id" value="{{ $edit->rujukan_id }}" />
                                     <input type="hidden" name="norek_id" value="{{ $edit->norek_id }}" />
+
+                                    <input type="hidden" name="image1" value="{{ $edit->image1 }}" />
+                                    <input type="hidden" name="image2" value="{{ $edit->image2 }}" />
+                                    <input type="hidden" name="image3" value="{{ $edit->image3 }}" />
+                                    <input type="hidden" name="image4" value="{{ $edit->image4 }}" />
+                                    <input type="hidden" name="image5" value="{{ $edit->image5 }}" />
+                                    <input type="hidden" name="image6" value="{{ $edit->image6 }}" />
+                                    <input type="hidden" name="image7" value="{{ $edit->image7 }}" />
+                                    <input type="hidden" name="image8" value="{{ $edit->image8 }}" />
 
 
                                     <input type="text" class="form-control" id="basicInput" placeholder="Enter" required

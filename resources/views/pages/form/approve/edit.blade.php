@@ -26,6 +26,15 @@
                                     <input type="hidden" name="rujukan_id" value="{{ $edit->rujukan_id }}" />
                                     <input type="hidden" name="norek_id" value="{{ $edit->norek_id }}" />
 
+                                    <input type="hidden" name="image1" value="{{ $edit->image1 }}" />
+                                    <input type="hidden" name="image2" value="{{ $edit->image2 }}" />
+                                    <input type="hidden" name="image3" value="{{ $edit->image3 }}" />
+                                    <input type="hidden" name="image4" value="{{ $edit->image4 }}" />
+                                    <input type="hidden" name="image5" value="{{ $edit->image5 }}" />
+                                    <input type="hidden" name="image6" value="{{ $edit->image6 }}" />
+                                    <input type="hidden" name="image7" value="{{ $edit->image7 }}" />
+                                    <input type="hidden" name="image8" value="{{ $edit->image8 }}" />
+
 
                                     <input type="text" class="form-control" id="basicInput" placeholder="Enter" required
                                         value="{{ $edit->user->name }}" readonly />
@@ -70,6 +79,25 @@
                                         value="{{ $edit->rujukan->name}}" readonly />
                                 </div>
                             </div>
+                            @switch($edit)
+                            @case($edit->payment == 'Transfer')
+                            <div class="col-xl-12 col-md-12 col-12 mt-2">
+                                <label class="form-label" for="helpInputTop">Biaya Admin</label>
+                                <div class="form-check mt-1">
+                                    <input name="b_admin" class="form-check-input" type="radio" value="0"
+                                        id="defaultRadio1">
+                                    <label class="form-check-label" for="defaultRadio1"><span
+                                            class="badge bg-success">Free</span> </label>
+                                </div>
+                                <div class="form-check">
+                                    <input name="b_admin" class="form-check-input" type="radio" value="6500"
+                                        id="defaultRadio2" checked="">
+                                    <label class="form-check-label" for="defaultRadio2"> Rp. 6.500 </label>
+                                </div>
+                            </div>
+                            @break
+                            @default
+                            @endswitch
                         </div>
                     </div>
                     <div id="accordionIcon" class="accordion accordion-without-arrow">

@@ -71,6 +71,7 @@
                                 <th>Description</th>
                                 <th>Qty</th>
                                 <th>Unit</th>
+                                <th>Lampiran</th>
                                 <th class="text-center" style="text-align center">Unit Price (Rp)</th>
                                 <th class="text-center" style="text-align center">Sub Total (Rp)</th>
                             </tr>
@@ -81,6 +82,11 @@
                                 <td>{{ $show->description }} </td>
                                 <td>{{ $show->qty }}</td>
                                 <td>{{ $show->unit }}</td>
+                                <td>
+                                    <a href="#" class="text-primary font-weight-bold"> <i data-feather="download"></i>
+                                        {{ $show->image1 }}
+                                    </a>
+                                </td>
                                 <td style="text-align :right"> {{ number_format($show->price, 0, ',', '.',) }}
                                 </td>
                                 <td style="text-align :right">{{ number_format($show->total, 0, ',', '.') }}
@@ -91,6 +97,16 @@
                                 <td>{{ $show->description2 }} </td>
                                 <td>{{ $show->qty2 }}</td>
                                 <td>{{ $show->unit2 }}</td>
+                                <td>
+                                    @switch($show)
+                                    @case($show->image2 == 0)
+                                    @break
+                                    @default
+                                    <a href="#" class="text-primary font-weight-bold"> <i data-feather="download"></i>
+                                        {{ $show->image2 }}
+                                    </a>
+                                    @endswitch
+                                </td>
                                 <td style="text-align :right">
                                     @switch($show)
                                     @case($show->price2 == null)
@@ -112,6 +128,16 @@
                                 <td>{{ $show->description3 }} </td>
                                 <td>{{ $show->qty3 }}</td>
                                 <td>{{ $show->unit3 }}</td>
+                                <td>
+                                    @switch($show)
+                                    @case($show->image3 == 0)
+                                    @break
+                                    @default
+                                    <a href="#" class="text-primary font-weight-bold"> <i data-feather="download"></i>
+                                        {{ $show->image3 }}
+                                    </a>
+                                    @endswitch
+                                </td>
                                 <td style="text-align :right">
                                     @switch($show)
                                     @case($show->price3 == null)
@@ -133,6 +159,16 @@
                                 <td>{{ $show->description4 }} </td>
                                 <td>{{ $show->qty4 }}</td>
                                 <td>{{ $show->unit4 }}</td>
+                                <td>
+                                    @switch($show)
+                                    @case($show->image4 == 0)
+                                    @break
+                                    @default
+                                    <a href="#" class="text-primary font-weight-bold"> <i data-feather="download"></i>
+                                        {{ $show->image4 }}
+                                    </a>
+                                    @endswitch
+                                </td>
                                 <td style="text-align :right">
                                     @switch($show)
                                     @case($show->price4 == null)
@@ -155,6 +191,16 @@
                                 <td>{{ $show->description5 }} </td>
                                 <td>{{ $show->qty5 }}</td>
                                 <td>{{ $show->unit5 }}</td>
+                                <td>
+                                    @switch($show)
+                                    @case($show->image5 == 0)
+                                    @break
+                                    @default
+                                    <a href="#" class="text-primary font-weight-bold"> <i data-feather="download"></i>
+                                        {{ $show->image5 }}
+                                    </a>
+                                    @endswitch
+                                </td>
                                 <td style="text-align :right">
                                     @switch($show)
                                     @case($show->price5 == null)
@@ -177,6 +223,16 @@
                                 <td>{{ $show->description6 }} </td>
                                 <td>{{ $show->qty6 }}</td>
                                 <td>{{ $show->unit6 }}</td>
+                                <td>
+                                    @switch($show)
+                                    @case($show->image6 == 0)
+                                    @break
+                                    @default
+                                    <a href="#" class="text-primary font-weight-bold"> <i data-feather="download"></i>
+                                        {{ $show->image6 }}
+                                    </a>
+                                    @endswitch
+                                </td>
                                 <td style="text-align :right">
                                     @switch($show)
                                     @case($show->price6 == null)
@@ -199,6 +255,16 @@
                                 <td>{{ $show->description7 }} </td>
                                 <td>{{ $show->qty7 }}</td>
                                 <td>{{ $show->unit7 }}</td>
+                                <td>
+                                    @switch($show)
+                                    @case($show->image7 == 0)
+                                    @break
+                                    @default
+                                    <a href="#" class="text-primary font-weight-bold"> <i data-feather="download"></i>
+                                        {{ $show->image7 }}
+                                    </a>
+                                    @endswitch
+                                </td>
                                 <td style="text-align :right">
                                     @switch($show)
                                     @case($show->price7 == null)
@@ -221,6 +287,16 @@
                                 <td>{{ $show->description8 }} </td>
                                 <td>{{ $show->qty8 }}</td>
                                 <td>{{ $show->unit8 }}</td>
+                                <td>
+                                    @switch($show)
+                                    @case($show->image8 == 0)
+                                    @break
+                                    @default
+                                    <a href="#" class="text-primary font-weight-bold"> <i data-feather="download"></i>
+                                        {{ $show->image8 }}
+                                    </a>
+                                    @endswitch
+                                </td>
                                 <td style="text-align :right">
                                     @switch($show)
                                     @case($show->price8 == null)
@@ -241,18 +317,18 @@
                             @switch($show)
                             @case($show->payment == 'Transfer')
                             <tr>
-                                <th colspan="5" style="text-align :right ">Biaya Admin</th>
-                                <td style="text-align :right">{{ $show->norek->bank->b_admin }}</td>
+                                <th colspan="6" style="text-align :right ">Biaya Admin</th>
+                                <td style="text-align :right">{{ $show->b_admin }}</td>
                             </tr>
                             <tr>
-                                <th colspan="5" style="text-align :right ">TOTAL</th>
+                                <th colspan="6" style="text-align :right ">TOTAL</th>
                                 <td style="text-align :right"> {{ number_format($show->jumlah_total, 0, ',',
                                     '.') }}</td>
                             </tr>
                             @break
                             @default
                             <tr>
-                                <th colspan="5" style="text-align :right ">TOTAL</th>
+                                <th colspan="6" style="text-align :right ">TOTAL</th>
                                 <td style="text-align :right"> {{ number_format($show->jumlah_total, 0, ',',
                                     '.') }}</td>
                             </tr>

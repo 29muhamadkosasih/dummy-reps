@@ -85,6 +85,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('rujukan', RujukanController::class);
     Route::post('getLaporan', [FormsController::class, 'getLaporan'])->name('laporan.getLaporan');
     Route::post('import-file', [UserController::class, 'import'])->name('import');
-
+    Route::post('form-list/today', [ReportpbController::class, 'saldoStore'])->name('saldoStore');
     Route::get('form/download/{file}', [FormController::class, 'download'])->name('form.download');
+    Route::get('/print', [ReportpbController::class, 'showPrintView']);
 });

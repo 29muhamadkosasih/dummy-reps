@@ -3,6 +3,28 @@
 
 @section('title', 'Form')
 
+
+<div class="col-xl-12 mb-3">
+    <div class="card">
+        <div class="card-body">
+            <div class="row mb-2">
+                <div class="col-auto me-auto ">
+                    <h5 class="mb-0">Report Data Pengajuan
+                </div>
+            </div>
+            <form action="{{ route('laporan.getLaporan') }}" method="POST">
+                @csrf
+                <label for="from" class="mb-2">Start Date</label><br>
+                <input type="text" name="from" class="form-control mb-2" placeholder="Start Date"
+                    onfocusin="(this.type='date')" onfocusout="(this.type='text')">
+                <label for="to" class="mb-2">End Date</label><br>
+                <input type="text" name="to" class="form-control mb-3" placeholder="End Date"
+                    onfocusin="(this.type='date')" onfocusout="(this.type='text')">
+                <button type="submit" class="btn btn-primary mb-0" style="align-items: right">Cari Data</button>
+            </form>
+        </div>
+    </div>
+</div>
 <!-- Invoice table -->
 <div class="col-xl-12">
     <div class="card">
@@ -17,6 +39,7 @@
                     <thead>
                         <tr>
                             <th width='10px' style="text-align: center">No</th>
+                            <th>Tanggal</th>
                             <th>Dari</th>
                             <th>Departement</th>
                             <th>Payment Method</th>
@@ -33,6 +56,9 @@
                         @foreach ($form as $data)
                         <tr>
                             <td style="text-align: center">{{ $loop->iteration }}</td>
+                            <td>
+                                {{ $data->created_at->format('d M Y') }}
+                            </td>
                             <td>
                                 {{ $data->user->name }}
                             </td>

@@ -24,11 +24,11 @@
                     </thead>
                     <tbody>
                         @forelse ($form as $data)
-                        <tr colspan="5" class="mb-2">
+                        {{-- <tr colspan="5" class="mb-2">
                             <a href="{{ url('form-list/print', $data->id) }}" target="_blank">
                                 <i class="menu-icon tf-icons ti ti-download"></i>
                             </a>
-                        </tr>
+                        </tr> --}}
                         <tr>
                             <td style="text-align: center">{{ $loop->iteration }}</td>
                             <td>
@@ -99,27 +99,34 @@
             </div>
         </div>
         <div class="card-body">
-            <form action="{{ route('reportPB.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('saldoStore') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label class="form-label">Saldo 899</label>
-                    <input type="number" class="form-control @error('jumlah_dana') is-invalid @enderror"
-                        placeholder="Masukkan Jumlah Saldo" name="jumlah_dana" />
+                    <input type="number" class="form-control @error('jumlah_saldo') is-invalid @enderror"
+                        placeholder="Masukkan Jumlah Saldo" name="jumlah_saldo" required />
                 </div>
+                <div class="mb-2">
+                    <button type="submit" class="btn btn-primary float-end ms-2 mb-2 d-none"></button>
+            </form>
+            <form action="{{ route('reportPB.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="mb-3">
-                    <label class="form-label">PBB 899-893</label>
+                    <label class="form-label">PB 899-893</label>
                     <input type="number" class="form-control @error('a_b') is-invalid @enderror"
-                        placeholder="Masukkan Jumlah Uang" name="a_b" />
+                        placeholder="Masukkan Jumlah Saldo" name="a_b" />
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">PBB 893-899</label>
+                    <label class="form-label">PB 893-899</label>
                     <input type="number" class="form-control @error('b_a') is-invalid @enderror"
-                        placeholder="Masukkan Jumlah Uang" name="b_a" />
+                        placeholder="Masukkan Jumlah Saldo" name="b_a" />
                 </div>
-                <div class="mb-3">
-                    <button type="submit" class="btn btn-primary float-end ms-2">Submit</button>
+                <div class="mb-2">
+                    <button type="submit" class="btn btn-primary float-end ms-2 mb-2 d-none">Submit</button>
             </form>
         </div>
+    </div>
+    <div class="card-body">
     </div>
 </div>
 <!--/ Source Visit -->

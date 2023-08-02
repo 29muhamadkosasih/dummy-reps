@@ -76,14 +76,10 @@ class ApproveController extends Controller
         $total_jumlah1 = $jumlah + $jumlah2;
         $total_jumlah2 = $jumlah3 + $jumlah4;
         $jumlah_akhir = $total_jumlah1 + $total_jumlah2;
-        // dd($request->all());
 
-        $data2 = $request->norek_id;
-        if ($data2 == NULL) {
-            $jumlah_total_akhir = $jumlah_akhir + 0;
-        } else {
-            $jumlah_total_akhir = $jumlah_akhir + 6500;
-        };
+        $badmin = $request->b_admin;
+        // dd($badmin);
+        $jumlah_total_akhir = $jumlah_akhir + $badmin;
         // dd($jumlah_total_akhir);
         $data->update([
             'from_id' => $request->from_id,
@@ -134,7 +130,16 @@ class ApproveController extends Controller
             'price8' => $request->price8,
             'total8' => $total8,
             'jumlah_total' => $jumlah_total_akhir,
-            'norek_id' => $request->norek_id
+            'norek_id' => $request->norek_id,
+            'image1' => $request->image1,
+            'image2' => $request->image2,
+            'image3' => $request->image3,
+            'image4' => $request->image4,
+            'image5' => $request->image5,
+            'image6' => $request->image6,
+            'image7' => $request->image7,
+            'image8' => $request->image8,
+            'b_admin' => $badmin
         ]);
         // dd($data);
         return redirect()->route('form-approve.index')
@@ -212,7 +217,7 @@ class ApproveController extends Controller
         $jumlah2 = $total3 + $total4;
         $jumlah3 = $total5 + $total6;
         $jumlah4 = $total7 + $total8;
-        
+
         $total_jumlah1 = $jumlah + $jumlah2;
         $total_jumlah2 = $jumlah3 + $jumlah4;
 

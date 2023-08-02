@@ -140,6 +140,15 @@
                                                 placeholder="Enter" value="{{ $edit->qty }}" />
                                         </div>
                                     </div>
+                                    <div class="col-xl-12 col-md-12 col-12">
+                                        <div class="mb-1">
+                                            <label class="form-label" for="basicInput">
+                                                Lampirkan File
+                                            </label>
+                                            <input type="file" class="form-control" name="image1" placeholder="Enter"
+                                                autofocus required value="{{$edit->image1}}" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -181,6 +190,15 @@
                                             <label class="form-label" for="basicInput">Qty</label>
                                             <input type="number" class="form-control" id="basicInput" name="qty2"
                                                 placeholder="Enter" value="{{ $edit->qty2 }}" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-12 col-md-12 col-12">
+                                        <div class="mb-1">
+                                            <label class="form-label" for="basicInput">
+                                                Lampirkan File
+                                            </label>
+                                            <input type="file" class="form-control" name="image2" placeholder="Enter"
+                                                autofocus value="{{$edit->image2}}" />
                                         </div>
                                     </div>
                                 </div>
@@ -226,6 +244,15 @@
                                                 placeholder="Enter" value="{{ $edit->qty3 }}" />
                                         </div>
                                     </div>
+                                    <div class="col-xl-12 col-md-12 col-12">
+                                        <div class="mb-1">
+                                            <label class="form-label" for="basicInput">
+                                                Lampirkan File
+                                            </label>
+                                            <input type="file" class="form-control" name="image3" placeholder="Enter"
+                                                autofocus value="{{$edit->image3}}" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -267,6 +294,15 @@
                                             <label class="form-label" for="basicInput">Qty</label>
                                             <input type="number" class="form-control" id="basicInput" name="qty4"
                                                 placeholder="Enter" value="{{ $edit->qty4 }}" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-12 col-md-12 col-12">
+                                        <div class="mb-1">
+                                            <label class="form-label" for="basicInput">
+                                                Lampirkan File
+                                            </label>
+                                            <input type="file" class="form-control" name="image4" placeholder="Enter"
+                                                autofocus value="{{$edit->image4}}" />
                                         </div>
                                     </div>
                                 </div>
@@ -320,6 +356,15 @@
                                                 placeholder="Enter" autofocus value="{{ $edit->qty5 }}" />
                                         </div>
                                     </div>
+                                    <div class="col-xl-12 col-md-12 col-12">
+                                        <div class="mb-1">
+                                            <label class="form-label" for="basicInput">
+                                                Lampirkan File
+                                            </label>
+                                            <input type="file" class="form-control" name="image5" placeholder="Enter"
+                                                autofocus value="{{$edit->image5}}" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -368,6 +413,15 @@
                                             </label>
                                             <input type="number" class="form-control" id="basicInput" name="qty6"
                                                 placeholder="Enter" autofocus value="{{ $edit->qty6 }}" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-12 col-md-12 col-12">
+                                        <div class="mb-1">
+                                            <label class="form-label" for="basicInput">
+                                                Lampirkan File
+                                            </label>
+                                            <input type="file" class="form-control" name="image6" placeholder="Enter"
+                                                autofocus value="{{$edit->image6}}" />
                                         </div>
                                     </div>
                                 </div>
@@ -420,6 +474,15 @@
                                                 placeholder="Enter" autofocus value="{{ $edit->qty7 }}" />
                                         </div>
                                     </div>
+                                    <div class="col-xl-12 col-md-12 col-12">
+                                        <div class="mb-1">
+                                            <label class="form-label" for="basicInput">
+                                                Lampirkan File
+                                            </label>
+                                            <input type="file" class="form-control" name="image7" placeholder="Enter"
+                                                autofocus value="{{$edit->image7}}" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -470,32 +533,13 @@
                                                 placeholder="Enter" autofocus value="{{ $edit->qty8 }}" />
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconNine">
-                            <button type="button" class="accordion-button" data-bs-toggle="collapse"
-                                data-bs-target="#accordionIcon-9" aria-expanded="true" aria-controls="accordionIcon-9">
-                                Lampiran </button>
-                        </h2>
-                        <div id="accordionIcon-9" class="accordion-collapse collapse" data-bs-parent="#accordionIcon">
-                            <div class="accordion-body">
-                                <div class="row">
                                     <div class="col-xl-12 col-md-12 col-12">
                                         <div class="mb-1">
                                             <label class="form-label" for="basicInput">
-                                                Lampiran
+                                                Lampirkan File
                                             </label>
-                                            <a href="{{ url('transaction-mega/download/' . $edit->file) }}"
-                                                class="form-control text-primary font-weight-bold"> <i
-                                                    data-feather="download"></i>
-                                                {{ $edit->file }}
-                                            </a>
-                                            <input type="file" class="form-control" id="basicInput" name="file"
-                                                placeholder="Enter" autofocus required value="{{ $edit->file }}" />
+                                            <input type="file" class="form-control" name="image8" placeholder="Enter"
+                                                autofocus value="{{$edit->image8}}" />
                                         </div>
                                     </div>
                                 </div>

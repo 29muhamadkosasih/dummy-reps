@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Users;
 
+use PDF;
 use Carbon\Carbon;
 use App\Models\Form;
+use App\Models\Saldo;
 use App\Models\Reportpb;
-use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
@@ -41,6 +42,8 @@ class FormsController extends Controller
             'form' => $form
         ]);
     }
+
+
     public function resumeRf()
     {
         $form = Form::where('status', '1')->get();
@@ -67,16 +70,16 @@ class FormsController extends Controller
         $from = $request->from . ' ';
         $to = $request->to . ' ';
         $form = Form::whereBetween('created_at', [$from, $to])->get();
-        $jumlah_total = Form::whereBetween('created_at', [$from, $to])->get()->sum('jumlah_total');
+        // $jumlah_total = Form::whereBetween('created_at', [$from, $to])->get()->sum('jumlah_total');
 
 
         // dd($jumlah_total);
 
-        return view('pages.form.selesai.resume', [
+        return view('pages.form.selesai.list', [
             'form' => $form,
             'from' => $from,
             'to' => $to,
-            'jumlah_total' => $jumlah_total,
+            // 'jumlah_total' => $jumlah_total,
 
         ]);
     }
@@ -109,7 +112,10 @@ class FormsController extends Controller
             ->where('status', '4')
             ->whereDay('created_at', $currentDay)->sum('jumlah_total');
 
+        $jumlah_saldo = Reportpb::whereDay('created_at', $currentDay)->sum('jumlah_saldo');
 
+
+        // dd($latestData);
         return view('pages.form.selesai.today', [
             'form' => $form,
             'jumlah_total' => $jumlah_total,
@@ -117,6 +123,7 @@ class FormsController extends Controller
             'form2' => $form2,
             'jumlah_total2' => $jumlah_total2,
             'jumlah_total3' => $jumlah_total3,
+            'jumlah_saldo' => $jumlah_saldo,
         ]);
     }
 
@@ -151,6 +158,7 @@ class FormsController extends Controller
             ->whereDay('created_at', $currentDay)->sum('jumlah_total');
 
         // dd($data);
+
         $pdf = PDF::loadview('pages.form.selesai.printToday', [
             // 'data' => $data,
             'form' => $form,

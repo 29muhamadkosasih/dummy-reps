@@ -54,24 +54,16 @@ class FormController extends Controller
     {
         $userId = auth()->id();
         $username = Auth::user()->name;
-        // dd($username);
-
-        // dd($request->norek->bank->b_admin);
-
-
         $request->validate([
             'qty' => 'required',
             'unit' => 'required',
             'price' => 'required',
-            'departement_id' => 'required',
-            'kpengajuan_id' => 'required',
+            'departement_id' => 'required|numeric',
+            'kpengajuan_id' => 'required|numeric',
             'payment' => 'required',
-            'rujukan_id' => 'required',
-            'keperluan_id' => 'required',
-            'file' => 'required',
-
+            'rujukan_id' => 'required|numeric',
+            'keperluan_id' => 'required|numeric',
         ]);
-
         $total = $request->qty * $request->price;
         $total2 = $request->qty2 * $request->price2;
         $total3 = $request->qty3 * $request->price3;
@@ -80,7 +72,6 @@ class FormController extends Controller
         $total6 = $request->qty * $request->price6;
         $total7 = $request->qty * $request->price7;
         $total8 = $request->qty * $request->price8;
-
         $jumlah = $total + $total2;
         $jumlah2 = $total3 + $total4;
         $jumlah3 = $total5 + $total6;
@@ -92,27 +83,134 @@ class FormController extends Controller
         $data = $request->norek_id;
         if ($data == NULL) {
             $jumlah_total_akhir = $jumlah_akhir + 0;
+            // $jumlah_total_akhir = $jumlah_akhir + 0;
             // dd($data);
         } else {
-            $jumlah_total_akhir = $jumlah_akhir + 6500;
-        };
-
-        // $files = $request->file('file');
-        // $files->storeAs('public/files', $files->hashName());
-
-        $documentNumber = $username;
-
-        if ($request->hasFile('file')) {
-            $this->validate($request, [
-                'file'          => 'mimes:pdf,xls,csv,xlsx',
-            ]);
-            $file               = $request->file('file');
-            $temp               = str_replace('/', '_', $documentNumber);
-            $filename           = 'Lampiran_' . $temp . '.' . $file->getClientOriginalExtension();
-            $destinationPath    = 'storage/MD';
-            $file->move($destinationPath, $filename);
+            // $jumlah_total_akhir = $jumlah_akhir + 6500;
+            $jumlah_total_akhir = $jumlah_akhir + 0;
         }
 
+        $documentNumber = $username;
+        $data2 = $request->image1;
+        if ($data2 == NULL) {
+            $filename1 = 0;
+        } else {
+            if ($request->hasFile('image1')) {
+                $this->validate($request, [
+                    'image1'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                ]);
+                $file               = $request->file('image1');
+                $temp               = str_replace('/', '_', $documentNumber);
+                $filename1          = 'Lampiran1_' . $temp . '.' . $file->getClientOriginalExtension();
+                $destinationPath    = 'storage/MD';
+                $file->move($destinationPath, $filename1);
+            }
+        }
+        $data3 = $request->image2;
+        if ($data3 == NULL) {
+            $filename2 = 0;
+        } else {
+            if ($request->hasFile('image2')) {
+                $this->validate($request, [
+                    'image2'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                ]);
+                $file               = $request->file('image2');
+                $temp               = str_replace('/', '_', $documentNumber);
+                $filename2          = 'Lampiran2_' . $temp . '.' . $file->getClientOriginalExtension();
+                $destinationPath    = 'storage/MD';
+                $file->move($destinationPath, $filename2);
+            }
+        }
+        $data4 = $request->image3;
+        if ($data4 == NULL) {
+            $filename3 = 0;
+        } else {
+            if ($request->hasFile('image3')) {
+                $this->validate($request, [
+                    'image3'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                ]);
+                $file               = $request->file('image3');
+                $temp               = str_replace('/', '_', $documentNumber);
+                $filename3          = 'Lampiran3_' . $temp . '.' . $file->getClientOriginalExtension();
+                $destinationPath    = 'storage/MD';
+                $file->move($destinationPath, $filename3);
+            }
+        }
+        $data5 = $request->image4;
+        if ($data5 == NULL) {
+            $filename4 = 0;
+        } else {
+            if ($request->hasFile('image4')) {
+                $this->validate($request, [
+                    'image4'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                ]);
+                $file               = $request->file('image4');
+                $temp               = str_replace('/', '_', $documentNumber);
+                $filename4          = 'Lampiran4_' . $temp . '.' . $file->getClientOriginalExtension();
+                $destinationPath    = 'storage/MD';
+                $file->move($destinationPath, $filename4);
+            }
+        }
+        $data6 = $request->image5;
+        if ($data6 == NULL) {
+            $filename5 = 0;
+        } else {
+            if ($request->hasFile('image5')) {
+                $this->validate($request, [
+                    'image5'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                ]);
+                $file               = $request->file('image5');
+                $temp               = str_replace('/', '_', $documentNumber);
+                $filename5          = 'Lampiran5_' . $temp . '.' . $file->getClientOriginalExtension();
+                $destinationPath    = 'storage/MD';
+                $file->move($destinationPath, $filename5);
+            }
+        }
+        $data7 = $request->image6;
+        if ($data7 == NULL) {
+            $filename6 = 0;
+        } else {
+            if ($request->hasFile('image6')) {
+                $this->validate($request, [
+                    'image6'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                ]);
+                $file               = $request->file('image6');
+                $temp               = str_replace('/', '_', $documentNumber);
+                $filename6         = 'Lampiran6_' . $temp . '.' . $file->getClientOriginalExtension();
+                $destinationPath    = 'storage/MD';
+                $file->move($destinationPath, $filename6);
+            }
+        }
+        $data8 = $request->image7;
+        if ($data8 == NULL) {
+            $filename7 = 0;
+        } else {
+            if ($request->hasFile('image7')) {
+                $this->validate($request, [
+                    'image7'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                ]);
+                $file               = $request->file('image7');
+                $temp               = str_replace('/', '_', $documentNumber);
+                $filename7          = 'Lampiran7_' . $temp . '.' . $file->getClientOriginalExtension();
+                $destinationPath    = 'storage/MD';
+                $file->move($destinationPath, $filename7);
+            }
+        }
+        $data9 = $request->image8;
+        if ($data9 == NULL) {
+            $filename8 = 0;
+        } else {
+            if ($request->hasFile('image8')) {
+                $this->validate($request, [
+                    'image8'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                ]);
+                $file               = $request->file('image8');
+                $temp               = str_replace('/', '_', $documentNumber);
+                $filename8          = 'Lampiran8_' . $temp . '.' . $file->getClientOriginalExtension();
+                $destinationPath    = 'storage/MD';
+                $file->move($destinationPath, $filename8);
+            }
+        }
 
         // dd($request->all());
         Form::create([
@@ -165,7 +263,15 @@ class FormController extends Controller
             'total8' => $total8,
             'jumlah_total' => $jumlah_total_akhir,
             'norek_id' => $request->norek_id,
-            'file' => $filename
+            // 'file' => $filename,
+            'image1' => $filename1,
+            'image2' => $filename2,
+            'image3' => $filename3,
+            'image4' => $filename4,
+            'image5' => $filename5,
+            'image6' => $filename6,
+            'image7' => $filename7,
+            'image8' => $filename8,
         ]);
 
         return redirect()->route('form.index')
@@ -218,7 +324,7 @@ class FormController extends Controller
         ]);
         $data = Form::findOrFail($id);
         $userId = auth()->id();
-
+        $username = Auth::user()->name;
         // dd($request);
         $total = $request->qty * $request->price;
         $total2 = $request->qty2 * $request->price2;
@@ -249,7 +355,128 @@ class FormController extends Controller
             $jumlah_total_akhir = $jumlah_akhir + 6500;
         };
         // dd($jumlah_total_akhir);
-
+        $documentNumber = $username;
+        $data2 = $request->image1;
+        if ($data2 == NULL) {
+            $filename1 = 0;
+        } else {
+            if ($request->hasFile('image1')) {
+                $this->validate($request, [
+                    'image1'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                ]);
+                $file               = $request->file('image1');
+                $temp               = str_replace('/', '_', $documentNumber);
+                $filename1          = 'Lampiran1_' . $temp . '.' . $file->getClientOriginalExtension();
+                $destinationPath    = 'storage/MD';
+                $file->move($destinationPath, $filename1);
+            }
+        }
+        $data3 = $request->image2;
+        if ($data3 == NULL) {
+            $filename2 = 0;
+        } else {
+            if ($request->hasFile('image2')) {
+                $this->validate($request, [
+                    'image2'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                ]);
+                $file               = $request->file('image2');
+                $temp               = str_replace('/', '_', $documentNumber);
+                $filename2          = 'Lampiran2_' . $temp . '.' . $file->getClientOriginalExtension();
+                $destinationPath    = 'storage/MD';
+                $file->move($destinationPath, $filename2);
+            }
+        }
+        $data4 = $request->image3;
+        if ($data4 == NULL) {
+            $filename3 = 0;
+        } else {
+            if ($request->hasFile('image3')) {
+                $this->validate($request, [
+                    'image3'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                ]);
+                $file               = $request->file('image3');
+                $temp               = str_replace('/', '_', $documentNumber);
+                $filename3          = 'Lampiran3_' . $temp . '.' . $file->getClientOriginalExtension();
+                $destinationPath    = 'storage/MD';
+                $file->move($destinationPath, $filename3);
+            }
+        }
+        $data5 = $request->image4;
+        if ($data5 == NULL) {
+            $filename4 = 0;
+        } else {
+            if ($request->hasFile('image4')) {
+                $this->validate($request, [
+                    'image4'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                ]);
+                $file               = $request->file('image4');
+                $temp               = str_replace('/', '_', $documentNumber);
+                $filename4          = 'Lampiran4_' . $temp . '.' . $file->getClientOriginalExtension();
+                $destinationPath    = 'storage/MD';
+                $file->move($destinationPath, $filename4);
+            }
+        }
+        $data6 = $request->image5;
+        if ($data6 == NULL) {
+            $filename5 = 0;
+        } else {
+            if ($request->hasFile('image5')) {
+                $this->validate($request, [
+                    'image5'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                ]);
+                $file               = $request->file('image5');
+                $temp               = str_replace('/', '_', $documentNumber);
+                $filename5          = 'Lampiran5_' . $temp . '.' . $file->getClientOriginalExtension();
+                $destinationPath    = 'storage/MD';
+                $file->move($destinationPath, $filename5);
+            }
+        }
+        $data7 = $request->image6;
+        if ($data7 == NULL) {
+            $filename6 = 0;
+        } else {
+            if ($request->hasFile('image6')) {
+                $this->validate($request, [
+                    'image6'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                ]);
+                $file               = $request->file('image6');
+                $temp               = str_replace('/', '_', $documentNumber);
+                $filename6         = 'Lampiran6_' . $temp . '.' . $file->getClientOriginalExtension();
+                $destinationPath    = 'storage/MD';
+                $file->move($destinationPath, $filename6);
+            }
+        }
+        $data8 = $request->image7;
+        if ($data8 == NULL) {
+            $filename7 = 0;
+        } else {
+            if ($request->hasFile('image7')) {
+                $this->validate($request, [
+                    'image7'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                ]);
+                $file               = $request->file('image7');
+                $temp               = str_replace('/', '_', $documentNumber);
+                $filename7          = 'Lampiran7_' . $temp . '.' . $file->getClientOriginalExtension();
+                $destinationPath    = 'storage/MD';
+                $file->move($destinationPath, $filename7);
+            }
+        }
+        $data9 = $request->image8;
+        if ($data9 == NULL) {
+            $filename8 = 0;
+        } else {
+            if ($request->hasFile('image8')) {
+                $this->validate($request, [
+                    'image8'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                ]);
+                $file               = $request->file('image8');
+                $temp               = str_replace('/', '_', $documentNumber);
+                $filename8          = 'Lampiran8_' . $temp . '.' . $file->getClientOriginalExtension();
+                $destinationPath    = 'storage/MD';
+                $file->move($destinationPath, $filename8);
+            }
+        }
+        // dd($request->all());
         $data->update([
             'from_id' => $userId,
             'rujukan_id' => $request->rujukan_id,
@@ -299,7 +526,15 @@ class FormController extends Controller
             'price8' => $request->price8,
             'total8' => $total8,
             'jumlah_total' => $jumlah_total_akhir,
-            'norek_id' => $request->norek_id
+            'norek_id' => $request->norek_id,
+            'image1' => $filename1,
+            'image2' => $filename2,
+            'image3' => $filename3,
+            'image4' => $filename4,
+            'image5' => $filename5,
+            'image6' => $filename6,
+            'image7' => $filename7,
+            'image8' => $filename8,
 
         ]);
 

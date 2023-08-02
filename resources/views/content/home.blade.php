@@ -16,9 +16,11 @@
                             src="{{ asset('assets/img/illustrations/WhatsApp Image 2023-08-02 at 10.54.10.jpeg') }}"
                             alt="Card image" />
                     </div>
-                    <div class="col-md-8 rounded faq-header">
+                    <div class="col-md-8" style="background-color: #7367f0;">
                         <div class="card-body mt-5">
-                            <h3 class="text-center ms-5 me-5">Hello {{ Auth::user()->name }}, how can we help?</h3>
+                            <h3 class="text-center mt-4 ms-5 me-5" style="color: white">Hello {{ Auth::user()->name }},
+                                how
+                                can we help?</h3>
                         </div>
                     </div>
                 </div>

@@ -81,7 +81,7 @@
         @endcan
 
         @can('form.index')
-        <li class="menu-item {{ (request()->is('form')) ? 'active' : '' }}">
+        <li class="menu-item {{ (request()->is('form','form.show','form.edit')) ? 'active' : '' }}">
             <a href="{{ route('form.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-folder"></i>
                 <div data-i18n="Form">Form</div>

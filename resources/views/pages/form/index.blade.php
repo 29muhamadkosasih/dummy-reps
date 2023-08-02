@@ -200,12 +200,18 @@
                                 Kategori
                                 Pengajuan
                             </label>
-                            <select class="form-select" id="selectDefault" name="kpengajuan_id" required>
+                            <select class="form-select @error('kpengajuan_id') is-invalid @enderror" id="selectDefault"
+                                name="kpengajuan_id" required>
                                 <option selected>Open this select</option>
                                 @foreach ($kpengajuan as $item)
                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
                                 @endforeach
                             </select>
+                            @error('kpengajuan_id')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                     </div>
 
@@ -214,12 +220,18 @@
                             <label class="form-label" for="basicInput">
                                 Keperluan
                             </label>
-                            <select class="form-select" id="selectDefault" name="keperluan_id" required>
+                            <select class="form-select @error('keperluan_id') is-invalid @enderror" id="selectDefault"
+                                name="keperluan_id" required>
                                 <option selected>Open this select</option>
                                 @foreach ($keperluan as $item)
                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
                                 @endforeach
                             </select>
+                            @error('keperluan_id')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                     </div>
 
@@ -239,12 +251,18 @@
                             <label class="form-label" for="helpInputTop">
                                 Ditujukan Untuk
                             </label>
-                            <select class="form-select" id="selectDefault" name="rujukan_id" required>
+                            <select class="form-select @error('rujukan_id') is-invalid @enderror" id="selectDefault"
+                                name="rujukan_id" required>
                                 <option>Open this select</option>
                                 @foreach ($rujukan as $item)
                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
                                 @endforeach
                             </select>
+                            @error('rujukan_id')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                     </div>
                     <div class="col-xl-4 col-md-6 col-12">
@@ -252,12 +270,17 @@
                             <label class="form-label" for="helpInputTop">
                                 Payment
                             </label>
-                            <select class="form-select" id="selectDefault" name="payment" id="car"
-                                onchange="enableBrand(this)" required>
+                            <select class="form-select @error('payment') is-invalid @enderror" id="selectDefault"
+                                name="payment" id="car" onchange="enableBrand(this)" required>
                                 <option selected>Open this select</option>
                                 <option value="Cash">Cash</option>
                                 <option value="Transfer">Transfer</option>
                             </select>
+                            @error('payment')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                     </div>
                     <div class="col-xl-12 col-md-12 col-12 d-none" id="carbrand">
@@ -324,6 +347,15 @@
                                                         placeholder="Enter" autofocus required />
                                                 </div>
                                             </div>
+                                            <div class="col-xl-12 col-md-12 col-12">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="basicInput">
+                                                        Lampirkan File
+                                                    </label>
+                                                    <input type="file" class="form-control" name="image1"
+                                                        placeholder="Enter" autofocus required />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -376,6 +408,15 @@
                                                     </label>
                                                     <input type="number" class="form-control" id="basicInput"
                                                         name="qty2" placeholder="Enter" autofocus />
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-12 col-md-12 col-12">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="basicInput">
+                                                        Lampirkan File
+                                                    </label>
+                                                    <input type="file" class="form-control" name="image2"
+                                                        placeholder="Enter" autofocus />
                                                 </div>
                                             </div>
                                         </div>
@@ -431,6 +472,15 @@
                                                         name="qty3" placeholder="Enter" autofocus />
                                                 </div>
                                             </div>
+                                            <div class="col-xl-12 col-md-12 col-12">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="basicInput">
+                                                        Lampirkan File
+                                                    </label>
+                                                    <input type="file" class="form-control" name="image3"
+                                                        placeholder="Enter" autofocus />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -482,6 +532,15 @@
                                                     </label>
                                                     <input type="number" class="form-control" id="basicInput"
                                                         name="qty4" placeholder="Enter" autofocus />
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-12 col-md-12 col-12">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="basicInput">
+                                                        Lampirkan File
+                                                    </label>
+                                                    <input type="file" class="form-control" name="image4"
+                                                        placeholder="Enter" autofocus />
                                                 </div>
                                             </div>
                                         </div>
@@ -537,6 +596,15 @@
                                                         name="qty5" placeholder="Enter" autofocus />
                                                 </div>
                                             </div>
+                                            <div class="col-xl-12 col-md-12 col-12">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="basicInput">
+                                                        Lampirkan File
+                                                    </label>
+                                                    <input type="file" class="form-control" name="image5"
+                                                        placeholder="Enter" autofocus />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -588,6 +656,15 @@
                                                     </label>
                                                     <input type="number" class="form-control" id="basicInput"
                                                         name="qty6" placeholder="Enter" autofocus />
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-12 col-md-12 col-12">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="basicInput">
+                                                        Lampirkan File
+                                                    </label>
+                                                    <input type="file" class="form-control" name="image6"
+                                                        placeholder="Enter" autofocus />
                                                 </div>
                                             </div>
                                         </div>
@@ -643,6 +720,15 @@
                                                         name="qty7" placeholder="Enter" autofocus />
                                                 </div>
                                             </div>
+                                            <div class="col-xl-12 col-md-12 col-12">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="basicInput">
+                                                        Lampirkan File
+                                                    </label>
+                                                    <input type="file" class="form-control" name="image7"
+                                                        placeholder="Enter" autofocus />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -696,11 +782,20 @@
                                                         name="qty8" placeholder="Enter" autofocus />
                                                 </div>
                                             </div>
+                                            <div class="col-xl-12 col-md-12 col-12">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="basicInput">
+                                                        Lampirkan File
+                                                    </label>
+                                                    <input type="file" class="form-control" name="image8"
+                                                        placeholder="Enter" autofocus />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card accordion-item">
+                            {{-- <div class="card accordion-item">
                                 <h2 class="accordion-header" id="headingNine">
                                     <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
                                         data-bs-target="#accordionNine" aria-expanded="false"
@@ -718,13 +813,21 @@
                                                         Lampiran
                                                     </label>
                                                     <input type="file" class="form-control" id="basicInput" name="file"
-                                                        placeholder="Enter" autofocus required />
+                                                        placeholder="Enter" autofocus />
+                                                    <input type="file" class="form-control" name="image1">
+                                                    <input type="file" class="form-control" name="image2">
+                                                    <input type="file" class="form-control" name="image3">
+                                                    <input type="file" class="form-control" name="image4">
+                                                    <input type="file" class="form-control" name="image5">
+                                                    <input type="file" class="form-control" name="image6">
+                                                    <input type="file" class="form-control" name="image7">
+                                                    <input type="file" class="form-control" name="image8">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
 

@@ -82,7 +82,7 @@ class CheckedController extends Controller
 
         $total_jumlah1 = $jumlah + $jumlah2;
         $total_jumlah2 = $jumlah3 + $jumlah4;
-        
+
         $jumlah_akhir = $total_jumlah1 + $total_jumlah2;
 
         $data2 = $request->norek_id;
@@ -142,7 +142,15 @@ class CheckedController extends Controller
             'price8' => $request->price8,
             'total8' => $total8,
             'jumlah_total' => $jumlah_total_akhir,
-            'norek_id' => $request->norek_id
+            'norek_id' => $request->norek_id,
+            'image1' => $request->image1,
+            'image2' => $request->image2,
+            'image3' => $request->image3,
+            'image4' => $request->image4,
+            'image5' => $request->image5,
+            'image6' => $request->image6,
+            'image7' => $request->image7,
+            'image8' => $request->image8,
         ]);
 
         // dd($data);

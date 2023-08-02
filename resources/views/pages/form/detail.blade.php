@@ -237,7 +237,10 @@
                             @case($show->payment == 'Transfer')
                             <tr>
                                 <th colspan="5" style="text-align :right ">Biaya Admin</th>
-                                <td style="text-align :right">{{ $show->norek->bank->b_admin }}</td>
+                                <td style="text-align :right">
+                                    {{ number_format($show->b_admin, 0, ',',
+                                    '.') }}
+                                </td>
                             </tr>
                             <tr style="background-color:skyblue">
                                 <th colspan="5" style="text-align :right ">TOTAL</th>
