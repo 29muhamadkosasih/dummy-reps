@@ -17,6 +17,7 @@
                             <th width='10px' style="text-align: center">No</th>
                             <th>Dari</th>
                             <th>Payment Method</th>
+                            <th>Bank</th>
                             <th>Kategori
                                 Pengajuan</th>
                             <th>Jumlah (Rp)</th>
@@ -39,6 +40,19 @@
                                 {{ $data->payment }}
                             </td>
                             <td>
+                                @switch($data)
+                                @case($data->payment == 'Transfer')
+                                {{ $data->norek->bank->nama_bank }}
+                                @break
+                                @default
+                                <span class="badge bg-info">
+                                    <i data-feather='dollar-sign'></i>
+                                    Cash
+                                </span>
+                                @endswitch
+                            </td>
+
+                            <td>
                                 {{ $data->kpengajuan->name }} </td>
                             <td style="text-align :right ">
                                 {{ number_format($data->jumlah_total, 0, ',', '.',) }}
@@ -48,7 +62,7 @@
                         @endforelse
                         <tr style="color:black;
                                                     background-color: skyblue">
-                            <th colspan="4" style="text-align :right ">TOTAL CASH</th>
+                            <th colspan="5" style="text-align :right ">TOTAL CASH</th>
                             <td style="text-align :right"> {{ number_format($jumlah_total, 0, ',',
                                 '.') }}</td>
                         </tr>
@@ -64,6 +78,9 @@
                                 {{ $data->payment }}
                             </td>
                             <td>
+                                {{ $data->norek->bank->nama_bank }}
+                            </td>
+                            <td>
                                 {{ $data->kpengajuan->name }} </td>
                             <td style="text-align :right ">
                                 {{ number_format($data->jumlah_total, 0, ',', '.',) }}
@@ -73,16 +90,30 @@
                         @endforelse
                         <tr style="color:black;
                             background-color: skyblue">
-                            <th colspan="4" style="text-align :right ">TOTAL TRANSFER </th>
+                            <th colspan="5" style="text-align :right ">TOTAL TRANSFER </th>
                             <td style="text-align :right"> {{ number_format($jumlah_total2, 0, ',',
                                 '.') }}</td>
                         </tr>
                         <tr style="color:black;
-                                                    background-color: skyblue">
-                            <th colspan="4" style="text-align :right ">JUMLAH TOTAL </th>
-                            <td style="text-align :right"> {{ number_format($jumlah_total3, 0, ',',
+                            background-color: skyblue">
+                            <th colspan="5" style="text-align :right ">TOTAL BIAYA TRANSFER </th>
+                            <td style="text-align :right"> {{ number_format($jumlah_admin, 0, ',',
                                 '.') }}</td>
                         </tr>
+                        <tr style="color:black;
+                                                    background-color: skyblue">
+                            <th colspan="5" style="text-align :right ">JUMLAH TOTAL </th>
+                            <td style="text-align :right"> {{ number_format($jumlah_akhir, 0, ',',
+                                '.') }}</td>
+                        </tr>
+                        @foreach ($latestData as $item)
+                        <tr style="color:black;background-color: skyblue">
+                            <th colspan="5" style="text-align :right ">JUMLAH TOTAL SALDO </th>
+
+                            <td style="text-align :right">{{ number_format($item->jumlah_saldo, 0, ',',
+                                '.') }}</td>
+                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

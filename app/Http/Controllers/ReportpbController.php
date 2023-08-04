@@ -76,7 +76,7 @@ class ReportpbController extends Controller
             'jumlah_saldo'   => $request->jumlah_saldo
         ]);
 
-        return redirect()->route('reportPB.index')->with('success', 'Congratulation ! Saldo Berhasil');
+        return redirect()->route('today')->with('success', 'Congratulation ! Saldo Berhasil');
     }
 
     public function showPrintView()

@@ -353,7 +353,7 @@
                                                         Lampirkan File
                                                     </label>
                                                     <input type="file" class="form-control" name="image1"
-                                                        placeholder="Enter" autofocus required />
+                                                        placeholder="Enter" autofocus />
                                                 </div>
                                             </div>
                                         </div>

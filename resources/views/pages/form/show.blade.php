@@ -91,10 +91,15 @@
                                 <td>{{ $show->qty }}</td>
                                 <td>{{ $show->unit }}</td>
                                 <td>
+                                    @switch($show)
+                                    @case($show->image1 == 0)
+                                    @break
+                                    @default
                                     <a href="{{ url('form/download/' . $show->image1) }}" target="_blank"
                                         class="text-primary font-weight-bold"> <i data-feather="download"></i>
                                         {{ $show->image1 }}
                                     </a>
+                                    @endswitch
                                 </td>
                                 <td style="text-align :right"> {{ number_format($show->price, 0, ',', '.',) }}
                                 </td>

@@ -19,8 +19,8 @@
                         <tr style="background-color: skyblue">
                             <th width='10px' style="text-align: center">No</th>
                             <th>Tanggal</th>
-                            <th style="text-align: center">899-893 /(RP)</th>
-                            <th style="text-align: center">893-899 /(RP)</th>
+                            <th style="text-align: center">899-893 (RP)</th>
+                            <th style="text-align: center">893-899 (RP)</th>
                         </tr>
                     </thead>
                     <tbody>

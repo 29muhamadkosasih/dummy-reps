@@ -9,9 +9,6 @@
                 <div class="col-auto me-auto ">
                     <h5 class="mb-0">PENGAJUAN DANA</h5>
                 </div>
-                <div class="col-auto">
-                    <a href="{{ route('form-list.index') }}" class="btn btn-secondary">Back</a>
-                </div>
             </div>
             <div class="row">
                 <div class="col-xl-7 col-12">
@@ -84,10 +81,15 @@
                                 <td>{{ $show->qty }}</td>
                                 <td>{{ $show->unit }}</td>
                                 <td>
+                                    @switch($show)
+                                    @case($show->image1 == 0)
+                                    @break
+                                    @default
                                     <a href="{{ url('form/download/' . $show->image1) }}" target="_blank"
                                         class="text-primary font-weight-bold"> <i data-feather="download"></i>
                                         {{ $show->image1 }}
                                     </a>
+                                    @endswitch
                                 </td>
                                 <td style="text-align :right"> {{ number_format($show->price, 0, ',', '.',) }}
                                 </td>
@@ -327,7 +329,9 @@
                             @case($show->payment == 'Transfer')
                             <tr>
                                 <th colspan="6" style="text-align :right ">Biaya Admin</th>
-                                <td style="text-align :right">{{ $show->norek->bank->b_admin }}</td>
+                                <td style="text-align :right">
+                                    {{ number_format($show->b_admin, 0, ',', '.',) }}
+                                </td>
                             </tr>
                             <tr>
                                 <th colspan="6" style="text-align :right ">TOTAL</th>

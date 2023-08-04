@@ -79,7 +79,7 @@ class ApproveController extends Controller
 
         $badmin = $request->b_admin;
         // dd($badmin);
-        $jumlah_total_akhir = $jumlah_akhir + $badmin;
+        $jumlah_total_akhir = $jumlah_akhir + 0;
         // dd($jumlah_total_akhir);
         $data->update([
             'from_id' => $request->from_id,

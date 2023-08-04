@@ -97,7 +97,7 @@ class FormController extends Controller
         } else {
             if ($request->hasFile('image1')) {
                 $this->validate($request, [
-                    'image1'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                    'image1'          => 'mimes:jpeg,png,jpg,gif,pdf|max:2048',
                 ]);
                 $file               = $request->file('image1');
                 $temp               = str_replace('/', '_', $documentNumber);
@@ -106,6 +106,7 @@ class FormController extends Controller
                 $file->move($destinationPath, $filename1);
             }
         }
+
         $data3 = $request->image2;
         if ($data3 == NULL) {
             $filename2 = 0;

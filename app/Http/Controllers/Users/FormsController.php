@@ -69,7 +69,9 @@ class FormsController extends Controller
         // dd($request);
         $from = $request->from . ' ';
         $to = $request->to . ' ';
-        $form = Form::whereBetween('created_at', [$from, $to])->get();
+        $form = Form::whereBetween('created_at', [$from, $to])
+            ->where('status', '8')
+            ->get();
         // $jumlah_total = Form::whereBetween('created_at', [$from, $to])->get()->sum('jumlah_total');
 
 
@@ -112,7 +114,23 @@ class FormsController extends Controller
             ->where('status', '4')
             ->whereDay('created_at', $currentDay)->sum('jumlah_total');
 
-        $jumlah_saldo = Reportpb::whereDay('created_at', $currentDay)->sum('jumlah_saldo');
+        $jumlah_saldo = Reportpb::whereDay(
+            'created_at',
+            $currentDay
+        )->sum('jumlah_saldo');
+
+        $jumlah_admin = Form::where('status', '4')
+            ->where('payment', 'Transfer')
+            ->whereDay('created_at', $currentDay)
+            ->sum('b_admin');
+
+        $jumlah_akhir = $jumlah_total3 + $jumlah_admin;
+        $latestData = Saldo::orderBy('created_at', 'desc')
+            ->whereDay('created_at', $currentDay)
+            ->take(1)
+            ->get();
+
+        // dd($latestData);
 
 
         // dd($latestData);
@@ -124,6 +142,10 @@ class FormsController extends Controller
             'jumlah_total2' => $jumlah_total2,
             'jumlah_total3' => $jumlah_total3,
             'jumlah_saldo' => $jumlah_saldo,
+            'jumlah_admin' => $jumlah_admin,
+            'jumlah_akhir' => $jumlah_akhir,
+            'jumlah_saldo' => $jumlah_saldo,
+            'latestData' => $latestData,
         ]);
     }
 

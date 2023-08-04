@@ -11,10 +11,10 @@
                     <!-- Logo -->
                     <div class="app-brand justify-content-center mb-4 mt-2">
                         <img src="{{ asset('assets/img/favicon/lgo.png') }}" width="120" height="90" alt
-                            class="h-auto rounded-circle" />
+                            class="h-auto" />
                     </div>
                     <!-- /Logo -->
-                    <h4 class="mb-1 pt-2">Welcome to Transafe !</h4>
+                    <h4 class="mb-1 pt-2">Welcome to Transafe </h4>
                     {{-- <p class="mb-3">Please sign-in to your account</p> --}}
                     <form id="formAuthentication" class="mb-3" method="POST" action="{{ route('login') }}">
                         @csrf
