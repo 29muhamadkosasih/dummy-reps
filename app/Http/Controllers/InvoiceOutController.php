@@ -17,7 +17,7 @@ class InvoiceOutController extends Controller
      */
     public function index()
     {
-        // abort_if(Gate::denies('InvoiceOut.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
+        abort_if(Gate::denies('invoiceOut.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
         $InvoiceOut = InvoiceOut::all();
         return view('pages.InvoiceOut.index', [
             'InvoiceOut' => $InvoiceOut,
@@ -31,7 +31,7 @@ class InvoiceOutController extends Controller
      */
     public function create()
     {
-        // abort_if(Gate::denies('InvoiceOut.create'), Response::HTTP_FORBIDDEN, 'Forbidden');
+        abort_if(Gate::denies('invoiceOut.create'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
         return view('pages.InvoiceOut.create');
     }
@@ -81,7 +81,7 @@ class InvoiceOutController extends Controller
      */
     public function edit($id)
     {
-        // abort_if(Gate::denies('InvoiceOut.edit'), Response::HTTP_FORBIDDEN, 'Forbidden');
+        abort_if(Gate::denies('invoiceOut.edit'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
         $edit = InvoiceOut::find($id);
         $data = InvoiceOut::all();
@@ -124,7 +124,7 @@ class InvoiceOutController extends Controller
      */
     public function destroy($id)
     {
-        // abort_if(Gate::denies('invoiceOut.delete'), Response::HTTP_FORBIDDEN, 'Forbidden');
+        abort_if(Gate::denies('invoiceOut.delete'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
         $delete = InvoiceOut::find($id);
         $delete->delete();
@@ -134,6 +134,8 @@ class InvoiceOutController extends Controller
 
     public function report()
     {
+        abort_if(Gate::denies('invoiceOut.report'), Response::HTTP_FORBIDDEN, 'Forbidden');
+
         $currentDay = date('d');
         $currentDay2 = date('d M Y');
 

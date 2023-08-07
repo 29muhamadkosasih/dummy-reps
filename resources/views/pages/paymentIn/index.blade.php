@@ -12,10 +12,15 @@
                     <h5 class="mb-0">List Data Payment In</h5>
                 </div>
                 <div class="col-auto">
+                    @can('paymentIn.report')
                     <a href="{{ url('paymentIn/report') }}" class="btn btn-secondary">Report</a>
+                    @endcan
+
                 </div>
                 <div class="col-auto">
+                    @can('paymentIn.create')
                     <a href="{{ route('paymentIn.create') }}" class="btn btn-primary">Create</a>
+                    @endcan
                 </div>
             </div>
             <div class="table-responsive text-nowrap">
@@ -45,23 +50,23 @@
                                 '.') }}
                             </td>
                             <td class="text-center">
-                                {{-- <a href="{{ route('paymentIn.show', $data->id) }}"
-                                    class="btn btn-icon btn-success btn-sm">
-                                    <span class="ti ti-eye"></span>
-                                </a> --}}
+                                @can('paymentIn.edit')
                                 <a href="{{ route('paymentIn.edit', $data->id) }}"
                                     class="btn btn-icon btn-warning btn-sm">
                                     <span class="ti ti-edit"></span>
                                 </a>
+                                @endcan
 
                                 <form action="{{ route('paymentIn.destroy', $data->id) }}" class="d-inline-block"
                                     method="post">
                                     @csrf
                                     @method('DELETE')
+                                    @can('paymentIn.delete')
                                     <button type="submit" onclick="return confirm('Are you sure?')"
                                         class="btn btn-icon btn-danger btn-sm">
                                         <span class="ti ti-trash"></span>
                                     </button>
+                                    @endcan
                                 </form>
                             </td>
                         </tr>

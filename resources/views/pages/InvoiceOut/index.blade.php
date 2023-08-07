@@ -12,10 +12,15 @@
                     <h5 class="mb-0">List Data Invoice Out</h5>
                 </div>
                 <div class="col-auto">
+                    @can('invoiceOut.report')
                     <a href="{{ url('invoiceOut/report') }}" class="btn btn-secondary">Report</a>
+                @endcan
                 </div>
                 <div class="col-auto">
+                    @can('invoiceOut.create')
+
                     <a href="{{ route('invoiceOut.create') }}" class="btn btn-primary">Create</a>
+                    @endcan
                 </div>
             </div>
             <div class="table-responsive text-nowrap">
@@ -40,19 +45,23 @@
                                 '.') }}
                             </td>
                             <td class="text-center">
+                                @can('invoiceOut.edit')
                                 <a href="{{ route('invoiceOut.edit', $data->id) }}"
                                     class="btn btn-icon btn-warning btn-sm">
                                     <span class="ti ti-edit"></span>
                                 </a>
+                                @endcan
 
                                 <form action="{{ route('invoiceOut.destroy', $data->id) }}" class="d-inline-block"
                                     method="post">
                                     @csrf
                                     @method('DELETE')
+                                    @can('invoiceOut.delete')
                                     <button type="submit" onclick="return confirm('Are you sure?')"
                                         class="btn btn-icon btn-danger btn-sm">
                                         <span class="ti ti-trash"></span>
                                     </button>
+                                    @endcan
                                 </form>
                             </td>
                         </tr>

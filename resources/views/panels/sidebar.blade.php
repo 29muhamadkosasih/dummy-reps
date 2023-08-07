@@ -133,7 +133,7 @@
         </li>
         @endcan
 
-        @canany(['report.today.index','report.resumeRf.index','report.reportPB.index'])
+        @canany(['report.today.index','report.resumeRf.index','report.reportPB.index','paymentIn.index','invoiceOut.index','cashflow.index','revenue.index'])
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Report</span>
         </li>
@@ -156,6 +156,8 @@
             </a>
         </li>
         @endcan
+
+        @can('paymentIn.index')
         <li
             class="menu-item {{ Route::currentRouteNamed('paymentIn.index','paymentIn.edit','paymentIn.report') ? 'active' : '' }}">
             <a href="{{ route('paymentIn.index') }}" class="menu-link">
@@ -163,6 +165,9 @@
                 <div data-i18n="Payment In">Payment In</div>
             </a>
         </li>
+        @endcan
+
+        @can('invoiceOut.index')
         <li
             class="menu-item {{ Route::currentRouteNamed('invoiceOut.index','invoiceOut.edit','invoiceOut.report') ? 'active' : '' }}">
             <a href="{{ route('invoiceOut.index') }}" class="menu-link">
@@ -171,18 +176,25 @@
             </a>
         </li>
 
+        @endcan
+
+        @can('cashflow.index')
         <li class="menu-item {{ Route::currentRouteNamed('cashflow.index') ? 'active' : '' }}">
             <a href="{{ route('cashflow.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-cash"></i>
                 <div data-i18n="Cash Flow">Cash Flow</div>
             </a>
         </li>
+        @endcan
+
+        @can('revenue.index')
         <li class="menu-item {{ Route::currentRouteNamed('revenue.index') ? 'active' : '' }}">
             <a href="{{ route('revenue.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-building-warehouse"></i>
                 <div data-i18n="Revenue">Revenue</div>
             </a>
         </li>
+        @endcan
 
         @endcanany
         @can('listAdvance.index')

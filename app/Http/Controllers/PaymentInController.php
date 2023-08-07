@@ -18,7 +18,7 @@ class PaymentInController extends Controller
      */
     public function index()
     {
-        // abort_if(Gate::denies('paymentIn.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
+        abort_if(Gate::denies('paymentIn.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
         $payment = PaymentIn::all();
         return view('pages.paymentIn.index', [
             'payment' => $payment,
@@ -32,8 +32,7 @@ class PaymentInController extends Controller
      */
     public function create()
     {
-        // abort_if(Gate::denies('paymentIn.create'), Response::HTTP_FORBIDDEN, 'Forbidden');
-
+        abort_if(Gate::denies('paymentIn.create'), Response::HTTP_FORBIDDEN, 'Forbidden');
         return view('pages.paymentIn.create');
     }
 
@@ -86,7 +85,7 @@ class PaymentInController extends Controller
      */
     public function edit($id)
     {
-        // abort_if(Gate::denies('paymentIn.edit'), Response::HTTP_FORBIDDEN, 'Forbidden');
+        abort_if(Gate::denies('paymentIn.edit'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
         $edit = PaymentIn::find($id);
         $data = PaymentIn::all();
@@ -132,7 +131,7 @@ class PaymentInController extends Controller
      */
     public function destroy($id)
     {
-        // abort_if(Gate::denies('paymentIn.delete'), Response::HTTP_FORBIDDEN, 'Forbidden');
+        abort_if(Gate::denies('paymentIn.delete'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
         $delete = PaymentIn::find($id);
         $delete->delete();
@@ -142,6 +141,8 @@ class PaymentInController extends Controller
 
     public function report()
     {
+        abort_if(Gate::denies('paymentIn.report'), Response::HTTP_FORBIDDEN, 'Forbidden');
+
         $currentDay = date('d');
         $currentDay2 = date('d M Y');
 
