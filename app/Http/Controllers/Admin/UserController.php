@@ -66,7 +66,7 @@ class UserController extends Controller
             'role_id'    => $request->role_id,
             'password' => Hash::make($request->password),
         ]);
-        return redirect()->route('users.index')->with(['status-success' => "New User Created"]);
+        return redirect()->route('users.index')->with('success', 'Success ! Data Users Berhasil di Tambahkan');
     }
 
 
@@ -123,7 +123,7 @@ class UserController extends Controller
 
         // dd($request);
         $user->update($input);
-        return redirect()->route('users.index')->with(['status-success' => "User Updated"]);
+        return redirect()->route('users.index')->with('success', 'Success ! Data Users Berhasil di Update');
     }
 
 
@@ -138,7 +138,7 @@ class UserController extends Controller
         abort_if(Gate::denies('users.delete'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
         $user->delete();
-        return redirect()->back()->with(['status-success' => "User Deleted"]);
+        return redirect()->back()->with('success', 'Success ! Data Users Berhasil di Hapus');
     }
 
     public function import(Request $request)

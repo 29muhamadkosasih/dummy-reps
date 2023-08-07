@@ -21,7 +21,7 @@ class PermissionController extends Controller
         abort_if(Gate::denies('permissions.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
         $permissions = Permission::all();
-        return view('pages.permissions.index',compact('permissions'));
+        return view('pages.permissions.index', compact('permissions'));
     }
 
     /**
@@ -43,13 +43,13 @@ class PermissionController extends Controller
      * @return \Illuminate\Http\Response
      */ public function store(Request $request)
     {
-     $request->validate([
-        'name' => 'string|max:100|unique:permissions,name',
-     ]);
+        $request->validate([
+            'name' => 'string|max:100|unique:permissions,name',
+        ]);
 
         Permission::create($request->all());
 
-        return redirect()->route('permissions.index')->with('status-success','New Permission Created');
+        return redirect()->route('permissions.index')->with('success', 'Success ! Data Permissions Berhasil di Tambahkan');
     }
 
 
@@ -77,7 +77,7 @@ class PermissionController extends Controller
     {
         $permission->update($request->validated());
 
-        return redirect()->route('permissions.index')->with('status-success','Permission Updated');
+        return redirect()->route('permissions.index')->with('success', 'Success ! Data Permissions Berhasil di Update');
     }
 
     /**
@@ -92,6 +92,6 @@ class PermissionController extends Controller
 
         $permission->delete();
 
-        return redirect()->back()->with('status-success','Permission Deleted');
+        return redirect()->back()->with('success', 'Success ! Data Permissions Berhasil di Hapus');
     }
 }

@@ -15,10 +15,10 @@
                     @can('users.create')
                     <a href="{{ route('users.create') }}" class="btn btn-primary">Create</a>
                     @endcan
-                    <button class="btn btn-secondary add-new btn-success" tabindex="0"
+                    {{-- <button class="btn btn-secondary add-new btn-success" tabindex="0"
                         aria-controls="DataTables_Table_0" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasAddUser"><span><span class="d-none d-sm-inline-block ">Import
-                                Excel</span></span></button>
+                                Excel</span></span></button> --}}
 
                 </div>
             </div>

@@ -51,7 +51,7 @@ class RoleController extends Controller
         $role = Role::create($request->validated());
         $role->permissions()->sync($request->permissions);
 
-        return redirect()->route('roles.index')->with('status-success', 'New Role Created');
+        return redirect()->route('roles.index')->with('success', 'Success ! Data Roles Berhasil di Tambahkan');
     }
 
 
@@ -95,7 +95,7 @@ class RoleController extends Controller
         $role->update($request->validated());
         $role->permissions()->sync($request->permissions);
 
-        return redirect()->route('roles.index')->with('status-success', 'Role Updated');
+        return redirect()->route('roles.index')->with('success', 'Success ! Data Roles Berhasil di Update');
     }
 
     /**
@@ -108,6 +108,6 @@ class RoleController extends Controller
     {
         abort_if(Gate::denies('roles.delete'), Response::HTTP_FORBIDDEN, 'Forbidden');
         $role->delete();
-        return redirect()->back()->with(['status-success' => "Role Deleted"]);
+        return redirect()->back()->with('success', 'Success ! Data Roles Berhasil di Hapus');
     }
 }

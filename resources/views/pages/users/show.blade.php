@@ -3,7 +3,7 @@
 @section('title', 'Users')
 
 @section('content')
-<div class="offset-2 col-8">
+<div class="col-12">
     <div class="card">
         <div class="card-body">
             <div class="user-avatar-section">
