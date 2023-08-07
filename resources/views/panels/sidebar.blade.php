@@ -178,23 +178,23 @@
 
         @endcan
 
-        @can('cashflow.index')
+        {{-- @can('cashflow.index') --}}
         <li class="menu-item {{ Route::currentRouteNamed('cashflow.index') ? 'active' : '' }}">
             <a href="{{ route('cashflow.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-cash"></i>
                 <div data-i18n="Cash Flow">Cash Flow</div>
             </a>
         </li>
-        @endcan
+        {{-- @endcan --}}
 
-        @can('revenue.index')
+        {{-- @can('revenue.index') --}}
         <li class="menu-item {{ Route::currentRouteNamed('revenue.index') ? 'active' : '' }}">
             <a href="{{ route('revenue.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-building-warehouse"></i>
                 <div data-i18n="Revenue">Revenue</div>
             </a>
         </li>
-        @endcan
+        {{-- @endcan --}}
 
         @endcanany
         @can('listAdvance.index')

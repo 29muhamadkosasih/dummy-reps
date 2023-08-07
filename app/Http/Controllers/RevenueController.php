@@ -13,7 +13,7 @@ class RevenueController extends Controller
      */
     public function index()
     {
-        dd('ini ');
+        dd('Proses Development ');
     }
 
     /**
