@@ -17,7 +17,7 @@ class CheckedController extends Controller
     public function index()
     {
         abort_if(Gate::denies('form-checked.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
-        $form = Form::where('status', null)->get();
+        $form = Form::where('status', 0)->get();
         $departement = Departement::all();
 
         // dd($form);

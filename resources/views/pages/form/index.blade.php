@@ -60,7 +60,7 @@
                             </td>
                             <td>
                                 @switch($data)
-                                @case($data->status == null)
+                                @case($data->status == 0)
                                 <span class="badge bg-secondary">Pending</span>
                                 @break
                                 @case($data->status == 1)
@@ -108,14 +108,14 @@
 
                                 @case($data->status == 5)
                                 @switch($data)
-                                @case($data->kpengajuan_id == 2)
-                                <a href="{{ url('approve/konfirmasiRem', $data->id) }}"
+                                @case($data->kpengajuan_id == 1)
+                                <a href="{{ url('approve/konfirmasi', $data->id) }}"
                                     class="btn btn-icon btn-success btn-sm">
                                     <span class="ti ti-check"></span>
                                 </a>
                                 @break
                                 @default
-                                <a href="{{ url('approve/konfirmasi', $data->id) }}"
+                                <a href="{{ url('approve/konfirmasiRem', $data->id) }}"
                                     class="btn btn-icon btn-success btn-sm">
                                     <span class="ti ti-check"></span>
                                 </a>
@@ -354,6 +354,9 @@
                                                     </label>
                                                     <input type="file" class="form-control" name="image1"
                                                         placeholder="Enter" autofocus />
+                                                    <div id="defaultFormControlHelp" class="form-text">
+                                                        * Max. file 15MB
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -417,6 +420,9 @@
                                                     </label>
                                                     <input type="file" class="form-control" name="image2"
                                                         placeholder="Enter" autofocus />
+                                                    <div id="defaultFormControlHelp" class="form-text">
+                                                        * Max. file 15MB
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -479,6 +485,9 @@
                                                     </label>
                                                     <input type="file" class="form-control" name="image3"
                                                         placeholder="Enter" autofocus />
+                                                    <div id="defaultFormControlHelp" class="form-text">
+                                                        * Max. file 15MB
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -541,6 +550,9 @@
                                                     </label>
                                                     <input type="file" class="form-control" name="image4"
                                                         placeholder="Enter" autofocus />
+                                                    <div id="defaultFormControlHelp" class="form-text">
+                                                        * Max. file 15MB
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -603,6 +615,9 @@
                                                     </label>
                                                     <input type="file" class="form-control" name="image5"
                                                         placeholder="Enter" autofocus />
+                                                    <div id="defaultFormControlHelp" class="form-text">
+                                                        * Max. file 15MB
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -665,6 +680,9 @@
                                                     </label>
                                                     <input type="file" class="form-control" name="image6"
                                                         placeholder="Enter" autofocus />
+                                                    <div id="defaultFormControlHelp" class="form-text">
+                                                        * Max. file 15MB
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -727,6 +745,9 @@
                                                     </label>
                                                     <input type="file" class="form-control" name="image7"
                                                         placeholder="Enter" autofocus />
+                                                    <div id="defaultFormControlHelp" class="form-text">
+                                                        * Max. file 15MB
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -789,45 +810,15 @@
                                                     </label>
                                                     <input type="file" class="form-control" name="image8"
                                                         placeholder="Enter" autofocus />
+                                                    <div id="defaultFormControlHelp" class="form-text">
+                                                        * Max. file 15MB
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="card accordion-item">
-                                <h2 class="accordion-header" id="headingNine">
-                                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                        data-bs-target="#accordionNine" aria-expanded="false"
-                                        aria-controls="accordionNine">
-                                        Lampiran
-                                    </button>
-                                </h2>
-                                <div id="accordionNine" class="accordion-collapse collapse"
-                                    aria-labelledby="headingNine" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <div class="row">
-                                            <div class="col-xl-12 col-md-12 col-12">
-                                                <div class="mb-1">
-                                                    <label class="form-label" for="basicInput">
-                                                        Lampiran
-                                                    </label>
-                                                    <input type="file" class="form-control" id="basicInput" name="file"
-                                                        placeholder="Enter" autofocus />
-                                                    <input type="file" class="form-control" name="image1">
-                                                    <input type="file" class="form-control" name="image2">
-                                                    <input type="file" class="form-control" name="image3">
-                                                    <input type="file" class="form-control" name="image4">
-                                                    <input type="file" class="form-control" name="image5">
-                                                    <input type="file" class="form-control" name="image6">
-                                                    <input type="file" class="form-control" name="image7">
-                                                    <input type="file" class="form-control" name="image8">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
                         </div>
                     </div>
 

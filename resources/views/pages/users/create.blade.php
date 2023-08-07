@@ -27,9 +27,10 @@
                         name="name" />
                 </div>
                 <div class="form-group mb-3">
-                    <label class="form-label" for="basicInput">Username</label>
-                    <input type="text" class="form-control @error('username') is-invalid @enderror" id="basicInput"
-                        name="username" placeholder="Enter" value="{{ old('username') }}" required />
+                    <label class="form-label" for="basic-default-fullname">Username</label>
+                    <input type="text" class="form-control @error('username') is-invalid @enderror"
+                        id="basic-default-fullname" name="username" placeholder="Enter" value="{{ old('username') }}"
+                        required />
                     @error('username')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -39,7 +40,7 @@
                 <div class="mb-3">
                     <label class="form-label" for="basic-default-email">Email</label>
                     <div class="input-group input-group-merge">
-                        <input type="text" id="basic-default-email" class="form-control" placeholder="john.doe"
+                        <input type="email" id="basic-default-email" class="form-control" placeholder="john.doe"
                             aria-label="john.doe" aria-describedby="basic-default-email2" name="email" />
                     </div>
                 </div>

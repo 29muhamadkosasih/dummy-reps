@@ -176,7 +176,7 @@
                             </td>
                             <td>
                                 @switch($data)
-                                @case($data->status == null)
+                                @case($data->status == 0)
                                 <span class="badge bg-secondary">Pending</span>
                                 @break
                                 @case($data->status == 2)

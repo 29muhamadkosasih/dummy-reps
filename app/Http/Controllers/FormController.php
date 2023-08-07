@@ -34,7 +34,10 @@ class FormController extends Controller
 
         // dd($norek);
 
-        $form = Form::where('from_id', $userId)->get();
+        $form = Form::where('from_id', $userId)
+            ->where('status', '<', 8)
+            ->get();
+
         $role = User::where('jabatan_id', $userId)->get();
         $departement = Departement::all();
         // dd($form);
@@ -97,7 +100,7 @@ class FormController extends Controller
         } else {
             if ($request->hasFile('image1')) {
                 $this->validate($request, [
-                    'image1'          => 'mimes:jpeg,png,jpg,gif,pdf|max:2048',
+                    'image1'          => 'mimes:jpeg,png,jpg,gif,pdf|max:15048',
                 ]);
                 $file               = $request->file('image1');
                 $temp               = str_replace('/', '_', $documentNumber);
@@ -113,7 +116,7 @@ class FormController extends Controller
         } else {
             if ($request->hasFile('image2')) {
                 $this->validate($request, [
-                    'image2'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                    'image2'          => 'image|mimes:jpeg,png,jpg,gif|max:15048',
                 ]);
                 $file               = $request->file('image2');
                 $temp               = str_replace('/', '_', $documentNumber);
@@ -128,7 +131,7 @@ class FormController extends Controller
         } else {
             if ($request->hasFile('image3')) {
                 $this->validate($request, [
-                    'image3'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                    'image3'          => 'image|mimes:jpeg,png,jpg,gif|max:15048',
                 ]);
                 $file               = $request->file('image3');
                 $temp               = str_replace('/', '_', $documentNumber);
@@ -143,7 +146,7 @@ class FormController extends Controller
         } else {
             if ($request->hasFile('image4')) {
                 $this->validate($request, [
-                    'image4'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                    'image4'          => 'image|mimes:jpeg,png,jpg,gif|max:15048',
                 ]);
                 $file               = $request->file('image4');
                 $temp               = str_replace('/', '_', $documentNumber);
@@ -158,7 +161,7 @@ class FormController extends Controller
         } else {
             if ($request->hasFile('image5')) {
                 $this->validate($request, [
-                    'image5'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                    'image5'          => 'image|mimes:jpeg,png,jpg,gif|max:15048',
                 ]);
                 $file               = $request->file('image5');
                 $temp               = str_replace('/', '_', $documentNumber);
@@ -173,7 +176,7 @@ class FormController extends Controller
         } else {
             if ($request->hasFile('image6')) {
                 $this->validate($request, [
-                    'image6'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                    'image6'          => 'image|mimes:jpeg,png,jpg,gif|max:15048',
                 ]);
                 $file               = $request->file('image6');
                 $temp               = str_replace('/', '_', $documentNumber);
@@ -188,7 +191,7 @@ class FormController extends Controller
         } else {
             if ($request->hasFile('image7')) {
                 $this->validate($request, [
-                    'image7'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                    'image7'          => 'image|mimes:jpeg,png,jpg,gif|max:15048',
                 ]);
                 $file               = $request->file('image7');
                 $temp               = str_replace('/', '_', $documentNumber);
@@ -203,7 +206,7 @@ class FormController extends Controller
         } else {
             if ($request->hasFile('image8')) {
                 $this->validate($request, [
-                    'image8'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                    'image8'          => 'image|mimes:jpeg,png,jpg,gif|max:15048',
                 ]);
                 $file               = $request->file('image8');
                 $temp               = str_replace('/', '_', $documentNumber);
@@ -273,6 +276,7 @@ class FormController extends Controller
             'image6' => $filename6,
             'image7' => $filename7,
             'image8' => $filename8,
+            'status' => 0,
         ]);
 
         return redirect()->route('form.index')
@@ -289,6 +293,17 @@ class FormController extends Controller
 
         // dd($show->file);
         return view('pages.form.show', [
+            'show'   => $show
+        ]);
+    }
+
+    public function showDetail($id)
+    {
+        abort_if(Gate::denies('form.show'), Response::HTTP_FORBIDDEN, 'Forbidden');
+        $show = Form::find($id);
+
+        // dd($show->file);
+        return view('pages.form.showDetail', [
             'show'   => $show
         ]);
     }
@@ -363,7 +378,7 @@ class FormController extends Controller
         } else {
             if ($request->hasFile('image1')) {
                 $this->validate($request, [
-                    'image1'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                    'image1'          => 'image|mimes:jpeg,png,jpg,gif|max:15048',
                 ]);
                 $file               = $request->file('image1');
                 $temp               = str_replace('/', '_', $documentNumber);
@@ -378,7 +393,7 @@ class FormController extends Controller
         } else {
             if ($request->hasFile('image2')) {
                 $this->validate($request, [
-                    'image2'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                    'image2'          => 'image|mimes:jpeg,png,jpg,gif|max:15048',
                 ]);
                 $file               = $request->file('image2');
                 $temp               = str_replace('/', '_', $documentNumber);
@@ -393,7 +408,7 @@ class FormController extends Controller
         } else {
             if ($request->hasFile('image3')) {
                 $this->validate($request, [
-                    'image3'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                    'image3'          => 'image|mimes:jpeg,png,jpg,gif|max:15048',
                 ]);
                 $file               = $request->file('image3');
                 $temp               = str_replace('/', '_', $documentNumber);
@@ -408,7 +423,7 @@ class FormController extends Controller
         } else {
             if ($request->hasFile('image4')) {
                 $this->validate($request, [
-                    'image4'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                    'image4'          => 'image|mimes:jpeg,png,jpg,gif|max:15048',
                 ]);
                 $file               = $request->file('image4');
                 $temp               = str_replace('/', '_', $documentNumber);
@@ -423,7 +438,7 @@ class FormController extends Controller
         } else {
             if ($request->hasFile('image5')) {
                 $this->validate($request, [
-                    'image5'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                    'image5'          => 'image|mimes:jpeg,png,jpg,gif|max:15048',
                 ]);
                 $file               = $request->file('image5');
                 $temp               = str_replace('/', '_', $documentNumber);
@@ -438,7 +453,7 @@ class FormController extends Controller
         } else {
             if ($request->hasFile('image6')) {
                 $this->validate($request, [
-                    'image6'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                    'image6'          => 'image|mimes:jpeg,png,jpg,gif|max:15048',
                 ]);
                 $file               = $request->file('image6');
                 $temp               = str_replace('/', '_', $documentNumber);
@@ -453,7 +468,7 @@ class FormController extends Controller
         } else {
             if ($request->hasFile('image7')) {
                 $this->validate($request, [
-                    'image7'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                    'image7'          => 'image|mimes:jpeg,png,jpg,gif|max:15048',
                 ]);
                 $file               = $request->file('image7');
                 $temp               = str_replace('/', '_', $documentNumber);
@@ -468,7 +483,7 @@ class FormController extends Controller
         } else {
             if ($request->hasFile('image8')) {
                 $this->validate($request, [
-                    'image8'          => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                    'image8'          => 'image|mimes:jpeg,png,jpg,gif|max:15048',
                 ]);
                 $file               = $request->file('image8');
                 $temp               = str_replace('/', '_', $documentNumber);

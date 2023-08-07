@@ -1,17 +1,18 @@
-@extends('layouts.master')
+@extends('layouts/master')
 @section('content')
 @section('title', 'Form')
-<div class="col-12">
+<!-- Projects table -->
+<div class="col-12 col-xl-12 col-sm-12 order-1 order-lg-2 mb-4 mb-lg-0">
     <div class="card">
-        <div class="card-body mt-2">
-            <div class="row mb-3" style="text-align right">
-                <div class="col-auto me-auto ">
-                    <h5 class="mb-0">PENGAJUAN DANA</h5>
-                </div>
-                <div class="col-auto">
-                    <a href="{{ route('form.index') }}" class="btn btn-secondary">Back</a>
-                </div>
+        <div class="card-header d-flex justify-content-between">
+            <div class="card-title mb-0">
+                <h5 class="mb-0">PENGAJUAN DANA</h5>
             </div>
+            <div class="col-auto">
+                <a href="{{ route('dashboard.index') }}" class="btn btn-secondary">Back</a>
+            </div>
+        </div>
+        <div class="card-body mt-2">
             <div class="row">
                 <div class="col-xl-7 col-12">
                     <dl class="row mb-0">
@@ -70,9 +71,8 @@
                                 <th>Description</th>
                                 <th>Qty</th>
                                 <th>Unit</th>
-                                <th>Lampiran</th>
-                                <th class="text-center" style="text-align center">Unit Price (Rp)</th>
-                                <th class="text-center" style="text-align center">Sub Total (Rp)</th>
+                                <th>Unit Price / (Rp)</th>
+                                <th>Sub Total / (Rp)</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -81,20 +81,9 @@
                                 <td>{{ $show->description }} </td>
                                 <td>{{ $show->qty }}</td>
                                 <td>{{ $show->unit }}</td>
-                                <td>
-                                    @switch($show)
-                                    @case($show->image1 == 0)
-                                    @break
-                                    @default
-                                    <a href="{{ url('form/download/' . $show->image1) }}" target="_blank"
-                                        class="text-primary font-weight-bold"> <i data-feather="download"></i>
-                                        {{ $show->image1 }}
-                                    </a>
-                                    @endswitch
+                                <td style="text-align: right"> {{ number_format($show->price, 0, ',', '.',) }}
                                 </td>
-                                <td style="text-align :right"> {{ number_format($show->price, 0, ',', '.',) }}
-                                </td>
-                                <td style="text-align :right">{{ number_format($show->total, 0, ',', '.') }}
+                                <td style="text-align: right"> {{ number_format($show->total, 0, ',', '.') }}
                                 </td>
                             </tr>
                             <tr>
@@ -102,27 +91,14 @@
                                 <td>{{ $show->description2 }} </td>
                                 <td>{{ $show->qty2 }}</td>
                                 <td>{{ $show->unit2 }}</td>
-                                <td>
-                                    @switch($show)
-                                    @case($show->image2 == 0)
-                                    @break
-                                    @default
-                                    <a href="{{ url('form/download/' . $show->image2) }}" target="_blank"
-                                        class="text-primary font-weight-bold"> <i data-feather="download"></i>
-                                        {{ $show->image2 }}
-                                    </a>
-                                    @endswitch
-                                </td>
-
-                                </td>
-                                <td style="text-align :right">
+                                <td style="text-align: right">
                                     @switch($show)
                                     @case($show->price2 == null)
                                     @break
                                     @default
                                     {{ number_format($show->price2, 0, ',', '.') }}
                                     @endswitch </td>
-                                <td style="text-align :right">
+                                <td style="text-align: right">
                                     @switch($show)
                                     @case($show->total2 == '0')
                                     @break
@@ -136,25 +112,14 @@
                                 <td>{{ $show->description3 }} </td>
                                 <td>{{ $show->qty3 }}</td>
                                 <td>{{ $show->unit3 }}</td>
-                                <td>
-                                    @switch($show)
-                                    @case($show->image3 == 0)
-                                    @break
-                                    @default
-                                    <a href="{{ url('form/download/' . $show->image3) }}" target="_blank"
-                                        class="text-primary font-weight-bold"> <i data-feather="download"></i>
-                                        {{ $show->image3 }}
-                                    </a>
-                                    @endswitch
-                                </td>
-                                <td style="text-align :right">
+                                <td style="text-align: right">
                                     @switch($show)
                                     @case($show->price3 == null)
                                     @break
                                     @default
                                     {{ number_format($show->price3, 0, ',', '.') }}
                                     @endswitch </td>
-                                <td style="text-align :right">
+                                <td style="text-align: right">
                                     @switch($show)
                                     @case($show->total3 == '0')
                                     @break
@@ -168,18 +133,7 @@
                                 <td>{{ $show->description4 }} </td>
                                 <td>{{ $show->qty4 }}</td>
                                 <td>{{ $show->unit4 }}</td>
-                                <td>
-                                    @switch($show)
-                                    @case($show->image4 == 0)
-                                    @break
-                                    @default
-                                    <a href="{{ url('form/download/' . $show->image4) }}" target="_blank"
-                                        class="text-primary font-weight-bold"> <i data-feather="download"></i>
-                                        {{ $show->image4 }}
-                                    </a>
-                                    @endswitch
-                                </td>
-                                <td style="text-align :right">
+                                <td style="text-align: right">
                                     @switch($show)
                                     @case($show->price4 == null)
                                     @break
@@ -187,7 +141,7 @@
                                     {{ number_format($show->price4, 0, ',', '.') }}
                                     @endswitch
                                 </td>
-                                <td style="text-align :right">
+                                <td style="text-align: right">
                                     @switch($show)
                                     @case($show->total4 == '0')
                                     @break
@@ -201,18 +155,7 @@
                                 <td>{{ $show->description5 }} </td>
                                 <td>{{ $show->qty5 }}</td>
                                 <td>{{ $show->unit5 }}</td>
-                                <td>
-                                    @switch($show)
-                                    @case($show->image5 == 0)
-                                    @break
-                                    @default
-                                    <a href="{{ url('form/download/' . $show->image5) }}" target="_blank"
-                                        class="text-primary font-weight-bold"> <i data-feather="download"></i>
-                                        {{ $show->image5 }}
-                                    </a>
-                                    @endswitch
-                                </td>
-                                <td style="text-align :right">
+                                <td style="text-align: right">
                                     @switch($show)
                                     @case($show->price5 == null)
                                     @break
@@ -220,7 +163,7 @@
                                     {{ number_format($show->price5, 0, ',', '.') }}
                                     @endswitch
                                 </td>
-                                <td style="text-align :right">
+                                <td style="text-align: right">
                                     @switch($show)
                                     @case($show->total5 == '0')
                                     @break
@@ -234,18 +177,7 @@
                                 <td>{{ $show->description6 }} </td>
                                 <td>{{ $show->qty6 }}</td>
                                 <td>{{ $show->unit6 }}</td>
-                                <td>
-                                    @switch($show)
-                                    @case($show->image6 == 0)
-                                    @break
-                                    @default
-                                    <a href="{{ url('form/download/' . $show->image6) }}" target="_blank"
-                                        class="text-primary font-weight-bold"> <i data-feather="download"></i>
-                                        {{ $show->image6 }}
-                                    </a>
-                                    @endswitch
-                                </td>
-                                <td style="text-align :right">
+                                <td style="text-align: right">
                                     @switch($show)
                                     @case($show->price6 == null)
                                     @break
@@ -253,7 +185,7 @@
                                     {{ number_format($show->price6, 0, ',', '.') }}
                                     @endswitch
                                 </td>
-                                <td style="text-align :right">
+                                <td style="text-align: right">
                                     @switch($show)
                                     @case($show->total6 == '0')
                                     @break
@@ -267,18 +199,7 @@
                                 <td>{{ $show->description7 }} </td>
                                 <td>{{ $show->qty7 }}</td>
                                 <td>{{ $show->unit7 }}</td>
-                                <td>
-                                    @switch($show)
-                                    @case($show->image7 == 0)
-                                    @break
-                                    @default
-                                    <a href="{{ url('form/download/' . $show->image7) }}" target="_blank"
-                                        class="text-primary font-weight-bold"> <i data-feather="download"></i>
-                                        {{ $show->image7 }}
-                                    </a>
-                                    @endswitch
-                                </td>
-                                <td style="text-align :right">
+                                <td style="text-align: right">
                                     @switch($show)
                                     @case($show->price7 == null)
                                     @break
@@ -286,7 +207,7 @@
                                     {{ number_format($show->price7, 0, ',', '.') }}
                                     @endswitch
                                 </td>
-                                <td style="text-align :right">
+                                <td style="text-align: right">
                                     @switch($show)
                                     @case($show->total7 == '0')
                                     @break
@@ -300,18 +221,7 @@
                                 <td>{{ $show->description8 }} </td>
                                 <td>{{ $show->qty8 }}</td>
                                 <td>{{ $show->unit8 }}</td>
-                                <td>
-                                    @switch($show)
-                                    @case($show->image8 == 0)
-                                    @break
-                                    @default
-                                    <a href="{{ url('form/download/' . $show->image8) }}" target="_blank"
-                                        class="text-primary font-weight-bold"> <i data-feather="download"></i>
-                                        {{ $show->image8 }}
-                                    </a>
-                                    @endswitch
-                                </td>
-                                <td style="text-align :right">
+                                <td style="text-align: right">
                                     @switch($show)
                                     @case($show->price8 == null)
                                     @break
@@ -319,7 +229,7 @@
                                     {{ number_format($show->price8, 0, ',', '.') }}
                                     @endswitch
                                 </td>
-                                <td style="text-align :right">
+                                <td style="text-align: right">
                                     @switch($show)
                                     @case($show->total8 == '0')
                                     @break
@@ -328,32 +238,41 @@
                                     @endswitch
                                 </td>
                             </tr>
-                            @switch($show)
-                            @case($show->payment == 'Transfer')
-                            <tr>
-                                <th colspan="6" style="text-align :right ">Biaya Admin</th>
-                                <td style="text-align :right">{{ $show->b_admin }}</td>
-                            </tr>
-                            <tr>
-                                <th colspan="6" style="text-align :right ">TOTAL</th>
-                                <td style="text-align :right"> {{ number_format($show->jumlah_total, 0, ',',
+                            <tr style="background-color:skyblue">
+                                <th colspan="5" style="text-align: right">TOTAL</th>
+                                <td style="text-align: right"> {{ number_format($show->jumlah_total, 0, ',',
                                     '.') }}</td>
                             </tr>
-                            @break
-                            @default
                             <tr>
-                                <th colspan="6" style="text-align :right ">TOTAL</th>
-                                <td style="text-align :right"> {{ number_format($show->jumlah_total, 0, ',',
+                                <th colspan="2" style="text-align: right">Tanggal Uang Masuk</th>
+                                <td colspan="2" style="text-align: right"> {{ $show->tgl_terima_dana }}
+                                </td>
+                                <th colspan="1" style="text-align: right">Jumlah Uang Masuk</th>
+                                <td colspan="2" style="text-align: right"> {{ number_format($show->jumlah_dana, 0, ',',
+                                    '.') }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2" style="text-align: right">Tanggal Pemakaian</th>
+                                <td colspan="2" style="text-align: right"> {{ $show->tgl_terima_dana }}
+                                </td>
+
+                                <th colspan="1" style="text-align: right">Jumlah Uang Pemakaian</th>
+                                <td colspan="2" style="text-align: right"> {{ number_format($show->jumlah_pemakaian, 0,
+                                    ',',
                                     '.') }}</td>
                             </tr>
-                            @endswitch
+
+                            <tr style="background-color:skyblue">
+                                <th colspan="5" style="text-align: right">Balance</th>
+                                <td style="text-align: right"> {{ number_format($show->balance, 0, ',',
+                                    '.') }}</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-    <!--/ Billing Address -->
 </div>
-
 @endsection

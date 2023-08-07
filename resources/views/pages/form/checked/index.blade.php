@@ -48,7 +48,7 @@
                                 {{ $data->kpengajuan->name }} </td>
                             <td>
                                 @switch($data)
-                                @case($data->status == null)
+                                @case($data->status == 0)
                                 <span class="badge bg-secondary">Pending</span>
                                 @break
                                 @case($data->status == 2)
@@ -89,7 +89,7 @@
                                     {{-- @endcan --}}
 
                                     {{-- @can('form-checked.approve') --}}
-                                <a href="{{ url('approve/maker', $data->id) }}"
+                                    <a href="{{ url('approve/maker', $data->id) }}"
                                         class="btn btn-icon btn-success btn-sm">
                                         <span class="ti ti-check"></span>
                                     </a>

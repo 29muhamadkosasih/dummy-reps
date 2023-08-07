@@ -15,6 +15,10 @@
                     @can('users.create')
                     <a href="{{ route('users.create') }}" class="btn btn-primary">Create</a>
                     @endcan
+                    <button class="btn btn-secondary add-new btn-success" tabindex="0"
+                        aria-controls="DataTables_Table_0" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasAddUser"><span><span class="d-none d-sm-inline-block ">Import
+                                Excel</span></span></button>
 
                 </div>
             </div>
@@ -74,4 +78,24 @@
     </div>
 </div>
 <!-- /Invoice table -->
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasAddUser" aria-labelledby="offcanvasAddUserLabel">
+    <div class="offcanvas-header">
+        <h5 id="offcanvasAddUserLabel" class="offcanvas-title">Add User</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body mx-0 flex-grow-0 pt-0 h-100">
+        <form class="add-new-user pt-0" id="addNewUserForm" action="{{ route('import') }}" method="POST"
+            enctype="multipart/form-data">
+            @csrf
+            <div class="mb-3">
+                <label class="form-label" for="add-user-fullname">Import</label>
+                <input type="file" class="form-control" id="add-user-fullname" name="file" />
+            </div>
+            <button type="reset" class="btn btn-label-secondary me-sm-3 me-1"
+                data-bs-dismiss="offcanvas">Cancel</button>
+            <button type="submit" class="btn btn-primary data-submit">Submit</button>
+        </form>
+    </div>
+</div>
 @endsection

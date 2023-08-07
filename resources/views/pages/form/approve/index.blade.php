@@ -43,7 +43,7 @@
                                 {{ $data->kpengajuan->name }} </td>
                             <td>
                                 @switch($data)
-                                @case($data->status == null)
+                                @case($data->status == 0)
                                 <span class="badge bg-secondary">Pending</span>
                                 @break
                                 @case($data->status == 4)
@@ -76,7 +76,7 @@
                                     class="btn btn-icon btn-secondary btn-sm">
                                     <span class="ti ti-eye"></span>
                                 </a>
-                                 @break
+                                @break
 
                                 @default
                                 <form onsubmit="return confirm('Apakah Anda Yakin ?');"

@@ -37,6 +37,7 @@ class FormsController extends Controller
 
     public function list()
     {
+        // dd('maintenante');
         $form = Form::where('status', '8')->get();
         return view('pages.form.selesai.list', [
             'form' => $form
@@ -88,6 +89,8 @@ class FormsController extends Controller
 
     public function today()
     {
+
+        // dd('waiting maintenance');
         $currentDay = date('d');
         $form = Form::where('status', '4')
             ->where('payment', 'Cash')
