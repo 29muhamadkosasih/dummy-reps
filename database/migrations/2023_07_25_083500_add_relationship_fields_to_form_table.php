@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInvoiceOutTable extends Migration
+class AddRelationshipFieldsToFormTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateInvoiceOutTable extends Migration
      */
     public function up()
     {
-        Schema::create('invoice_out', function (Blueprint $table) {
-            $table->id();
-            $table->string('no_invoice');
-            $table->string('client');
-            $table->string('amount');
-            $table->timestamps();
+        Schema::table('form', function (Blueprint $table) {
+            $table->string('no_rf')
+                ->nullable()
+                ->unique()
+                ->after('keperluan_id');
         });
     }
 
@@ -29,6 +28,8 @@ class CreateInvoiceOutTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('saldo');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 }

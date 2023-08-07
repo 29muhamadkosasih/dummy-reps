@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Reportpb;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BankController;
@@ -78,6 +77,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('form-list/today', [ReportpbController::class, 'saldoStore'])->name('saldoStore');
     Route::get('form/download/{file}', [FormController::class, 'download'])->name('form.download');
     Route::get('/print', [ReportpbController::class, 'showPrintView']);
+    Route::get('paymentIn/report', [PaymentInController::class, 'report'])->name('paymentIn.report');
+    Route::get('invoiceOut/report', [InvoiceOutController::class, 'report'])->name('invoiceOut.report');
     Route::resource('/users', UserController::class);
     Route::resource('/roles', RoleController::class);
     Route::resource('/permissions', PermissionController::class)->except(['show']);

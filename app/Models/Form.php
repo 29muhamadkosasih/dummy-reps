@@ -11,6 +11,24 @@ class Form extends Model
     protected $table = 'form';
     protected $guarded = [];
 
+    public static function generateInvoiceNumber()
+    {
+        $lastOrder = Form::orderBy('id', 'desc')->first();
+        $currentYear = date('Y');
+        $lastInvoiceNumber = $lastOrder ? $lastOrder->no_rf : null;
+
+        if ($lastInvoiceNumber && strpos($lastInvoiceNumber, $currentYear) !== false) {
+            // Jika nomor invoice tahun ini sudah ada, tambahkan 1 ke nomor berurut
+            $lastInvoiceNumber = intval(substr($lastInvoiceNumber, -3));
+            $newInvoiceNumber = sprintf('RF-%s-%03d', $currentYear, $lastInvoiceNumber + 1);
+        } else {
+            // Jika nomor invoice tahun ini belum ada, mulai dari 001
+            $newInvoiceNumber = sprintf('RF-%s-%03d', $currentYear, 1);
+        }
+
+        return $newInvoiceNumber;
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'from_id');

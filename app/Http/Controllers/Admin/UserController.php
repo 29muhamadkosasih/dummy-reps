@@ -6,7 +6,6 @@ use App\Models\Role;
 use App\Models\User;
 use App\Models\Jabatan;
 use App\Models\Departement;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
@@ -14,10 +13,7 @@ use App\Imports\DatabaseUsersImport;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Http\Requests\StoreUserRequest;
-use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\UpdateUserRequest;
-use App\Http\Requests\UpdateUserPhotoRequest;
+
 
 class UserController extends Controller
 {
@@ -61,17 +57,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // User::create($request->all());
-        // dd($request->all());
-        //     $request->validate([
-        //     'name' => 'required|max:255|min:7',
-        //     'username' => 'required|max:255|min:7',
-        //     'email' => 'required|email:rfc,dns',
-        //     'no_hp' => 'required|max:12|min:11',
-        //     'jabatan_id' => 'required',
-        //     'departement_id' => 'required',
-        //     'password' => 'required|max:255|min:7'
-        // ]);
         User::create([
             'name' => $request->name,
             'username' => $request->username,

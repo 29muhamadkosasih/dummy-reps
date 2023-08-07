@@ -156,13 +156,15 @@
             </a>
         </li>
         @endcan
-        <li class="menu-item {{ Route::currentRouteNamed('paymentIn.index') ? 'active' : '' }}">
+        <li
+            class="menu-item {{ Route::currentRouteNamed('paymentIn.index','paymentIn.edit','paymentIn.report') ? 'active' : '' }}">
             <a href="{{ route('paymentIn.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-file-invoice"></i>
                 <div data-i18n="Payment In">Payment In</div>
             </a>
         </li>
-        <li class="menu-item {{ Route::currentRouteNamed('invoiceOut.index') ? 'active' : '' }}">
+        <li
+            class="menu-item {{ Route::currentRouteNamed('invoiceOut.index','invoiceOut.edit','invoiceOut.report') ? 'active' : '' }}">
             <a href="{{ route('invoiceOut.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-brand-juejin"></i>
                 <div data-i18n="Invoice Out">Invoice Out</div>

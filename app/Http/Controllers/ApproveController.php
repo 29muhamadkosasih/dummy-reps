@@ -151,6 +151,9 @@ class ApproveController extends Controller
         $userId = auth()->id();
         $date = date('y-m-d');
         $data = Form::where('id', $id)->first();
+        $data->no_rf = Form::generateInvoiceNumber();
+        // dd($data);
+
         $data->update(
             [
                 "status" => "4",

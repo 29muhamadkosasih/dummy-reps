@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InvoiceOut;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class InvoiceOutController extends Controller
 {
@@ -13,7 +17,11 @@ class InvoiceOutController extends Controller
      */
     public function index()
     {
-        dd('ini ');
+        // abort_if(Gate::denies('InvoiceOut.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
+        $InvoiceOut = InvoiceOut::all();
+        return view('pages.InvoiceOut.index', [
+            'InvoiceOut' => $InvoiceOut,
+        ]);
     }
 
     /**
@@ -23,7 +31,9 @@ class InvoiceOutController extends Controller
      */
     public function create()
     {
-        //
+        // abort_if(Gate::denies('InvoiceOut.create'), Response::HTTP_FORBIDDEN, 'Forbidden');
+
+        return view('pages.InvoiceOut.create');
     }
 
     /**
@@ -34,7 +44,18 @@ class InvoiceOutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'client' => 'required',
+            'amount' => 'required|numeric',
+        ]);
+
+        $order = new InvoiceOut();
+        $order->no_invoice = InvoiceOut::generateInvoiceNumber();
+        $order->client = $request->client;
+        $order->amount = $request->amount;
+        $order->save();
+
+        return redirect()->route('invoiceOut.index')->with('success', 'Success ! Data InvoiceOut Berhasil di Tambahkan');
     }
 
     /**
@@ -45,7 +66,11 @@ class InvoiceOutController extends Controller
      */
     public function show($id)
     {
-        //
+        $data   = InvoiceOut::find($id);
+
+        return view('pages.InvoiceOut.show', [
+            'data' => $data
+        ]);
     }
 
     /**
@@ -56,7 +81,14 @@ class InvoiceOutController extends Controller
      */
     public function edit($id)
     {
-        //
+        // abort_if(Gate::denies('InvoiceOut.edit'), Response::HTTP_FORBIDDEN, 'Forbidden');
+
+        $edit = InvoiceOut::find($id);
+        $data = InvoiceOut::all();
+        return view('pages.InvoiceOut.edit', [
+            'edit'   => $edit,
+            'data'    => $data
+        ]);
     }
 
     /**
@@ -68,7 +100,20 @@ class InvoiceOutController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $InvoiceOut   = InvoiceOut::find($id);
+        $request->validate([
+            'client' => 'required',
+            'amount' => 'required|numeric',
+        ]);
+
+        $InvoiceOut->update([
+            'no_invoice' => $request->no_invoice,
+            'client' => $request->client,
+            'amount' => $request->amount,
+        ]);
+
+        return redirect()->route('invoiceOut.index')
+            ->with('success', 'Success ! Data InvoiceOut Berhasil di Update');
     }
 
     /**
@@ -79,6 +124,29 @@ class InvoiceOutController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // abort_if(Gate::denies('invoiceOut.delete'), Response::HTTP_FORBIDDEN, 'Forbidden');
+
+        $delete = InvoiceOut::find($id);
+        $delete->delete();
+        return redirect()->route('invoiceOut.index')
+            ->with('success', 'Success ! Data InvoiceOut Berhasil di Hapus');
+    }
+
+    public function report()
+    {
+        $currentDay = date('d');
+        $currentDay2 = date('d M Y');
+
+        // dd($currentDay2);
+        $InvoiceOut = InvoiceOut::whereDay('created_at', $currentDay)->get();
+        // dd($InvoiceOut);
+        $total_amount = InvoiceOut::whereDay('created_at', $currentDay)
+            ->sum('amount');
+
+        return view('pages.InvoiceOut.report', [
+            'InvoiceOut' => $InvoiceOut,
+            'total_amount' => $total_amount,
+            'currentDay2' => $currentDay2,
+        ]);
     }
 }

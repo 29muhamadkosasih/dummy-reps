@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePaymentInTable extends Migration
+class CreateInvoiceOutTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreatePaymentInTable extends Migration
      */
     public function up()
     {
-        Schema::create('payment_in', function (Blueprint $table) {
+        Schema::create('invoice_out', function (Blueprint $table) {
             $table->id();
-            $table->string('no_invoice');
+            $table->string('no_invoice')->unique();
             $table->string('client');
             $table->string('amount');
-            $table->string('deduction');
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
