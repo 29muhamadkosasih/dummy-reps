@@ -27,6 +27,7 @@ class CreateFormTable extends Migration
             $table->foreign('kpengajuan_id')->references('id')->on('kpengajuan');
             $table->unsignedBigInteger('keperluan_id')->nullable();
             $table->foreign('keperluan_id')->references('id')->on('keperluan');
+            $table->string('no_rf')->nullable()->unique();
             $table->string('tanggal_kebutuhan');
             $table->string('payment');
             $table->string('description');
@@ -69,6 +70,16 @@ class CreateFormTable extends Migration
             $table->string('total6')->nullable();
             $table->string('total7')->nullable();
             $table->string('total8')->nullable();
+            $table->string('file')->nullable();
+            $table->string('image1')->nullable();
+            $table->string('image2')->nullable();
+            $table->string('image3')->nullable();
+            $table->string('image4')->nullable();
+            $table->string('image5')->nullable();
+            $table->string('image6')->nullable();
+            $table->string('image7')->nullable();
+            $table->string('image8')->nullable();
+            $table->string('b_admin')->nullable();
             $table->string('jumlah_total');
             $table->string('status')->nullable();
             $table->unsignedBigInteger('checked_by')->nullable();

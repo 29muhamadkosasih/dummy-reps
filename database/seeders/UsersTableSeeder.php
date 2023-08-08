@@ -19,8 +19,6 @@ class UsersTableSeeder extends Seeder
             'email' => 'Superadmin@admin.com',
             'password' => bcrypt('password'),
             'role_id' => '1',
-            'jabatan_id'   => '1',
-            'departement_id' => '14',
             'username' => 'Superadmin',
             'no_hp'  => '08558955539',
         ]);
@@ -30,8 +28,6 @@ class UsersTableSeeder extends Seeder
             'email' => 'user@user.com',
             'password' => bcrypt('password'),
             'role_id' => '2',
-            'jabatan_id'   => '1',
-            'departement_id' => '14',
             'username' => 'User',
             'no_hp'  => '08558955539'
         ]);

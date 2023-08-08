@@ -14,15 +14,15 @@ use App\Http\Controllers\ReportpbController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PaymentInController;
 use App\Http\Controllers\StaterkitController;
-use App\Http\Controllers\Admin\RoleController;
-use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\InvoiceOutController;
-use App\Http\Controllers\Users\FormsController;
-use App\Http\Controllers\Admin\RujukanController;
-use App\Http\Controllers\Users\ProfileController;
-use App\Http\Controllers\Admin\KeperluanController;
-use App\Http\Controllers\Admin\KpengajuanController;
-use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\FormsController;
+use App\Http\Controllers\RujukanController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\KeperluanController;
+use App\Http\Controllers\KpengajuanController;
+use App\Http\Controllers\PermissionController;
 
 /*
 |--------------------------------------------------------------------------
