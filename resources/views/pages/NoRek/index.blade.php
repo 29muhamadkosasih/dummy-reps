@@ -16,9 +16,9 @@
                 </div>
                 <div class="card-body">
                     @if (isset($edit))
-                    @include('pages.Norek.edit')
+                    @include('pages.NoRek.edit')
                     @else
-                    @include('pages.Norek.create')
+                    @include('pages.NoRek.create')
                     @endif
                 </div>
             </div>

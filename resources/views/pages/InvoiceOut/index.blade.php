@@ -14,7 +14,7 @@
                 <div class="col-auto">
                     @can('invoiceOut.report')
                     <a href="{{ url('invoiceOut/report') }}" class="btn btn-secondary">Report</a>
-                @endcan
+                    @endcan
                 </div>
                 <div class="col-auto">
                     @can('invoiceOut.create')
@@ -24,13 +24,13 @@
                 </div>
             </div>
             <div class="table-responsive text-nowrap">
-                <table class="table table-hover zero-configuration">
+                <table class="table table-hover table-bordered zero-configuration">
                     <thead>
-                        <tr>
+                        <tr style="background-color: skyblue">
                             <th width='10px' style="text-align: center">No</th>
-                            <th>Invoice</th>
-                            <th>Client</th>
-                            <th>Amount (RP.)</th>
+                            <th style="text-align: center">No Invoice</th>
+                            <th style="text-align: center">Client</th>
+                            <th style="text-align: center">Amount (RP.)</th>
                             <th width='150px' class="text-center">Action</th>
                         </tr>
                     </thead>
