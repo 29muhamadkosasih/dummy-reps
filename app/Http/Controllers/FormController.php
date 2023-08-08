@@ -334,12 +334,15 @@ class FormController extends Controller
 
     public function update(Request $request, $id)
     {
-
         $request->validate([
             'qty' => 'required',
             'unit' => 'required',
             'price' => 'required',
-            'departement_id' => 'required'
+            'departement_id' => 'required|numeric',
+            'kpengajuan_id' => 'required|numeric',
+            'payment' => 'required',
+            'rujukan_id' => 'required|numeric',
+            'keperluan_id' => 'required|numeric',
         ]);
         $data = Form::findOrFail($id);
         $userId = auth()->id();

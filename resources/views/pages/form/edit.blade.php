@@ -1,11 +1,15 @@
 @extends('layouts.master')
 @section('content')
 @section('title', 'Form')
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title"> Edit Pengajuan</h4>
+
+<div class="col-xl-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="row ">
+                <div class="col-auto me-auto ">
+                    <h5 class="mb-0 ms-3">Edit Form
+
+                </div>
             </div>
             <form action="{{ route('form.update', $edit->id) }}" method="POST" enctype="multipart/form-data">
                 @method('PUT')
@@ -25,11 +29,17 @@
                                     Kategori
                                     Pengajuan
                                 </label>
-                                <select class="form-select" id="selectDefault" name="kpengajuan_id" required readonly>
+                                <select class="form-select @error('kpengajuan_id') is-invalid @enderror"
+                                    id="selectDefault" name="kpengajuan_id" required readonly>
                                     <option selected>Open this select</option> @foreach ($kpengajuan as $item)
                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
                                 </select>
+                                @error('kpengajuan_id')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                         </div>
 
@@ -38,13 +48,18 @@
                                 <label class="form-label" for="basicInput">
                                     Keperluan
                                 </label>
-                                <select class="form-select" onchange="enableBrand2(this)" id="selectDefault"
-                                    name="keperluan_id" required>
+                                <select class="form-select @error('keperluan_id') is-invalid @enderror"
+                                    onchange="enableBrand2(this)" id="selectDefault" name="keperluan_id" required>
                                     <option selected>Open this select</option>
                                     @foreach ($keperluan as $item)
                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
                                 </select>
+                                @error('keperluan_id')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                         </div>
                         <input type="hidden" name="departement_id" value="{{ Auth::user()->departement_id }}">
@@ -59,22 +74,33 @@
                         <div class="col-xl-4 col-md-6 col-12">
                             <div class="mb-1">
                                 <label class="form-label" for="helpInputTop">Ditujukan Untuk</label>
-                                <select class="form-select" id="selectDefault" name="rujukan_id" required>
+                                <select class="form-select @error('rujukan_id') is-invalid @enderror" id="selectDefault"
+                                    name="rujukan_id" required>
                                     <option selected>Open this select</option> @foreach ($rujukan as $item)
                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
                                 </select>
+                                @error('rujukan_id')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-xl-4 col-md-6 col-12">
                             <div class="mb-1">
                                 <label class="form-label" for="helpInputTop">Payment</label>
-                                <select class="form-select" id="selectDefault" name="payment" id="car"
-                                    onchange="enableBrand(this)" required>
+                                <select class="form-select @error('payment') is-invalid @enderror" id="selectDefault"
+                                    name="payment" id="car" onchange="enableBrand(this)" required>
                                     <option selected>Open this select</option>
                                     <option value="Cash">Cash</option>
                                     <option value="Transfer">Transfer</option>
                                 </select>
+                                @error('payment')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-xl-12 col-md-12 col-12 d-none" id="carbrand">
@@ -585,6 +611,7 @@
         </div>
     </div>
 </div>
+
 
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 
