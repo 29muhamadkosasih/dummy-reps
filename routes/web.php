@@ -1,28 +1,31 @@
 <?php
 
+use App\Models\Departement;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BankController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\FormsController;
 use App\Http\Controllers\NoRekController;
 use App\Http\Controllers\ApproveController;
 use App\Http\Controllers\CheckedController;
+use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RevenueController;
+use App\Http\Controllers\RujukanController;
 use App\Http\Controllers\CashFlowController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ReportpbController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KeperluanController;
 use App\Http\Controllers\PaymentInController;
 use App\Http\Controllers\StaterkitController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\InvoiceOutController;
-use App\Http\Controllers\FormsController;
-use App\Http\Controllers\RujukanController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\KeperluanController;
 use App\Http\Controllers\KpengajuanController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\DepartementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,7 +76,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard-approve', [DashboardController::class, 'approve'])->name('dashboard.approve');
     Route::get('dashboard-general', [DashboardController::class, 'general'])->name('dashboard.general');
     Route::post('getLaporan', [FormsController::class, 'getLaporan'])->name('laporan.getLaporan');
-    Route::post('import-file', [UserController::class, 'import'])->name('import');
+    // Route::post('import-file', [UserController::class, 'import'])->name('import');
+    Route::post('import-file', [NoRekController::class, 'import'])->name('import');
+    Route::get('export_excel', [UserController::class, 'export_excel'])->name('export_excel');
     Route::post('form-list/today', [ReportpbController::class, 'saldoStore'])->name('saldoStore');
     Route::get('form/download/{file}', [FormController::class, 'download'])->name('form.download');
     Route::get('/print', [ReportpbController::class, 'showPrintView']);
@@ -98,4 +103,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('paymentIn', PaymentInController::class);
     Route::resource('cashflow', CashFlowController::class);
     Route::resource('revenue', RevenueController::class);
+    Route::resource('jabatan', JabatanController::class);
+    Route::resource('departement', DepartementController::class);
 });

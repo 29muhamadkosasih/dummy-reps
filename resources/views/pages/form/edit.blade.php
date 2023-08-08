@@ -2,9 +2,9 @@
 @section('content')
 @section('title', 'Form')
 <div class="row">
-    <div class="offset-2 col-8">
+    <div class="col-12">
         <div class="card">
-            <div class="card-header border-bottom">
+            <div class="card-header">
                 <h4 class="card-title"> Edit Pengajuan</h4>
             </div>
             <form action="{{ route('form.update', $edit->id) }}" method="POST" enctype="multipart/form-data">
@@ -38,7 +38,8 @@
                                 <label class="form-label" for="basicInput">
                                     Keperluan
                                 </label>
-                                <select class="form-select" id="selectDefault" name="keperluan_id" required>
+                                <select class="form-select" onchange="enableBrand2(this)" id="selectDefault"
+                                    name="keperluan_id" required>
                                     <option selected>Open this select</option>
                                     @foreach ($keperluan as $item)
                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -84,19 +85,48 @@
                                 <select class="select2 form-select" id="select2-basic" name="norek_id">
                                     <option></option>
                                     @foreach ($norek as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nama_penerima }}</option>
+                                    <option value="{{ $item->id }}">
+                                        {{ $item->no_rekening }} &nbsp; A/N &nbsp; {{ $item->nama_penerima }} &nbsp;
+                                        ( {{ $item->bank->nama_bank }} ) </option>
                                     @endforeach
                                 </select>
-                                {{-- <div id="defaultFormControlHelp" class="form-text">
-                                    * Biaya Admin
-                                    @switch($item->bank_id)
-                                    @case($item->bank->b_admin == 1)
-                                    <span class="badge bg-primary">FREE</span>
-                                    @break
-                                    @default
-                                    Rp. {{ number_format($item->bank->b_admin, 0, ',', '.',) }}
-                                    @endswitch
-                                </div> --}}
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6 col-md-6 col-12 d-none" id="t1">
+                            <div class="mb-1">
+                                <label class="form-label" for="basicInput">
+                                    No. Project
+                                </label>
+                                <input type="text" class="form-control" id="basicInput" name="no_project"
+                                    placeholder="Enter" autofocus />
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-6 col-12 d-none" id="t2">
+                            <div class="mb-1">
+                                <label class="form-label" for="basicInput">
+                                    Jumlah Peserta
+                                </label>
+                                <input type="number" class="form-control" id="basicInput" name="j_peserta"
+                                    placeholder="Enter" autofocus />
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-6 col-12 d-none" id="t3">
+                            <div class="mb-1">
+                                <label class="form-label" for="helpInputTop">
+                                    Jumlah Trainer / Asesor
+                                </label>
+                                <input type="number" class="form-control" id="basicInput" name="j_traine_asesor"
+                                    placeholder="Enter" autofocus />
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-6 col-12 d-none" id="t4">
+                            <div class="mb-1">
+                                <label class="form-label" for="basicInput">
+                                    Jumlah Assist
+                                </label>
+                                <input type="number" class="form-control" id="basicInput" name="j_assist"
+                                    placeholder="Enter" autofocus />
                             </div>
                         </div>
                     </div>
@@ -146,7 +176,7 @@
                                                 Lampirkan File
                                             </label>
                                             <input type="file" class="form-control" name="image1" placeholder="Enter"
-                                                autofocus required value="{{$edit->image1}}" />
+                                                autofocus value="{{$edit->image1}}" />
                                         </div>
                                     </div>
                                 </div>
@@ -570,12 +600,25 @@
         console.log(answer.value);
         if (answer.value == 'Transfer') {
             document.getElementById('carbrand').classList.remove('d-none');
-            document.getElementById('carbrand2').classList.remove('d-none');
-            document.getElementById('carbrand3').classList.remove('d-none');
         } else {
             document.getElementById('carbrand').classList.add('d-none');
-            document.getElementById('carbrand2').classList.add('d-none');
-            document.getElementById('carbrand3').classList.add('d-none');
+        }
+    }
+</script>
+<script type="text/javascript">
+    function enableBrand2(answer) {
+        console.log(answer.value);
+        if (answer.value == 1 ) {
+            document.getElementById('t1').classList.remove('d-none');
+            document.getElementById('t2').classList.remove('d-none');
+            document.getElementById('t3').classList.remove('d-none');
+            document.getElementById('t4').classList.remove('d-none');
+
+        } else {
+            document.getElementById('t1').classList.add('d-none');
+            document.getElementById('t2').classList.add('d-none');
+            document.getElementById('t3').classList.add('d-none');
+            document.getElementById('t4').classList.add('d-none');
         }
     }
 </script>

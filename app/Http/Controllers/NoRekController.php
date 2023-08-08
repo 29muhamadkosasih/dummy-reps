@@ -7,7 +7,9 @@ use App\Models\NoRek;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
+use App\Imports\DatabaseUsersImport;
 use Illuminate\Support\Facades\Gate;
+use Maatwebsite\Excel\Facades\Excel;
 
 class NoRekController extends Controller
 {
@@ -36,10 +38,8 @@ class NoRekController extends Controller
     {
         $validateData = $request->validate([
             'nama_penerima' => 'required|max:255|min:4',
-            'no_rekening' => 'required|max:17|min:10|unique:norek,no_rekening',
+            'no_rekening' => 'required|max:17|min:10',
             'bank_id' => 'required|numeric',
-            'user_id' => 'required',
-
         ]);
         // dd($request);
         NoRek::create($validateData);
@@ -106,5 +106,14 @@ class NoRekController extends Controller
                 'success',
                 'Success ! Data Bank Berhasil di Hapus'
             );
+    }
+
+    public function import(Request $request)
+    {
+        $fileName = request()->file->getClientOriginalName();
+        request()->file('file')->storeAs('DatabaseUsers', $fileName, 'public');
+        // dd($fileName);
+        Excel::import(new DatabaseUsersImport, $request->file);
+        return redirect()->back()->with('success', 'Success ! Data Users Berhasil di Tambahkan');
     }
 }

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Jabatan;
+use App\Exports\UserExport;
 use App\Models\Departement;
+use App\Exports\SiswaExport;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
@@ -26,7 +28,9 @@ class UserController extends Controller
     {
         abort_if(Gate::denies('users.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
-        $users = User::with('role')->get();
+        $users = User::with('role')
+            ->orderBy('name', 'asc')
+            ->get();
         return view('pages.users.index', compact('users'));
     }
 
@@ -148,5 +152,10 @@ class UserController extends Controller
         // dd($fileName);
         Excel::import(new DatabaseUsersImport, $request->file);
         return redirect()->back()->with('success', 'Success ! Data Users Berhasil di Tambahkan');
+    }
+
+    public function export_excel()
+    {
+        return Excel::download(new UserExport, 'user.xlsx');
     }
 }

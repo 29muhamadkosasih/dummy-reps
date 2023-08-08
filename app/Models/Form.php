@@ -11,7 +11,7 @@ class Form extends Model
     protected $table = 'form';
     protected $guarded = [];
 
-    public static function generateInvoiceNumber()
+    public static function generateInvoiceNumber2()
     {
         $lastOrder = Form::orderBy('id', 'desc')->first();
         $currentYear = date('Y');

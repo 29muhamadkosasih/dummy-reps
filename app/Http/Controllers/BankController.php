@@ -14,7 +14,8 @@ class BankController extends Controller
     {
         abort_if(Gate::denies('bank.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
-        $bank = Bank::latest()->get();
+        $bank = Bank::orderBy('nama_bank', 'asc')
+            ->get();
         return view('pages.bank.index', [
             'bank'    => $bank
         ]);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Form;
 use App\Models\Rujukan;
 use App\Models\Keperluan;
+use App\Models\PaymentIn;
 use App\Models\Kpengajuan;
 use App\Models\Departement;
 use Illuminate\Http\Request;
@@ -18,7 +19,9 @@ class ApproveController extends Controller
     public function index()
     {
         abort_if(Gate::denies('form-approve.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
-        $form = Form::where('status', '2')->get();
+        $form = Form::where('status', '2')
+            ->orderBy('created_at', 'desc')
+            ->get();
         // $form = Form::all();
         // dd($form);
         return view('pages.form.approve.index', [
@@ -140,7 +143,11 @@ class ApproveController extends Controller
             'image6' => $request->image6,
             'image7' => $request->image7,
             'image8' => $request->image8,
-            'b_admin' => $badmin
+            'b_admin' => $badmin,
+            'no_project'  => $request->no_project,
+            'j_peserta'  => $request->j_peserta,
+            'j_traine_asesor'  => $request->j_traine_asesor,
+            'j_assist'  => $request->j_assist
         ]);
         // dd($data);
         return redirect()->route('form-approve.index')
@@ -152,7 +159,9 @@ class ApproveController extends Controller
         $userId = auth()->id();
         $date = date('y-m-d');
         $data = Form::where('id', $id)->first();
-        $data->no_rf = Form::generateInvoiceNumber();
+        // $data->no_rf = Form::generateInvoiceNumber2();
+        // $order->no_invoice = PaymentIn::generateInvoiceNumber();
+
         // dd($data);
 
         $data->update(
@@ -287,7 +296,7 @@ class ApproveController extends Controller
             'norek_id' => $request->norek_id,
             'jumlah_dana' => $request->jumlah_dana,
             'tgl_terima_dana' => $date,
-            'status' => 5
+            'status' => 5,
         ]);
         // dd($data);
         return redirect()->route('form-list.index')

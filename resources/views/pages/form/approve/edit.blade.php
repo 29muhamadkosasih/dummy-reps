@@ -35,6 +35,10 @@
                                     <input type="hidden" name="image7" value="{{ $edit->image7 }}" />
                                     <input type="hidden" name="image8" value="{{ $edit->image8 }}" />
 
+                                    <input type="hidden" name="no_project" value="{{ $edit->no_project }}" />
+                                    <input type="hidden" name="j_peserta" value="{{ $edit->j_peserta }}" />
+                                    <input type="hidden" name="j_traine_asesor" value="{{ $edit->j_traine_asesor }}" />
+                                    <input type="hidden" name="j_assist" value="{{ $edit->j_assist }}" />
 
                                     <input type="text" class="form-control" id="basicInput" placeholder="Enter" required
                                         value="{{ $edit->user->name }}" readonly />

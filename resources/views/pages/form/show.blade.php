@@ -23,6 +23,10 @@
 
                         <dt class="col-sm-4 fw-bolder mb-1">Payment</dt>
                         <dd class="col-sm-8 mb-1"> {{ $show->payment }}</dd>
+
+                        <dt class="col-sm-4 fw-bolder mb-1">Tgl Kebutuhan</dt>
+                        <dd class="col-sm-8 mb-1"> {{ $show->tanggal_kebutuhan }}</dd>
+
                         @switch($show)
                         @case($show->payment == 'Transfer')
                         <dt class="col-sm-4 fw-bolder mb-1">Nomor Rekening</dt>
@@ -40,7 +44,7 @@
                         @switch($show)
                         @case($show->payment == 'Transfer')
                         <dt class="col-sm-4 fw-bolder mb-1">A/n</dt>
-                        <dd class="col-sm-8 mb-2"> {{ $show->norek->nama_penerima }}</dd>
+                        <dd class="col-sm-8 mb-1"> {{ $show->norek->nama_penerima }}</dd>
                         @break
                         @default
                         @endswitch
@@ -56,13 +60,28 @@
 
                         <dt class="col-sm-4 fw-bolder mb-1">Keperluan</dt>
                         <dd class="col-sm-8 mb-1"> {{ $show->keperluan->name }}</dd>
+                        @switch($show)
+                        @case($show->keperluan_id == 1)
+                        <dt class="col-sm-4 fw-bolder mb-1">No Project</dt>
+                        <dd class="col-sm-8 mb-1"> {{ $show->no_project }}</dd>
 
-                        <dt class="col-sm-4 fw-bolder mb-1">Tgl Kebutuhan</dt>
-                        <dd class="col-sm-8 mb-3"> {{ $show->tanggal_kebutuhan }}</dd>
+                        <dt class="col-sm-4 fw-bolder mb-1">Jumlah Peserta</dt>
+                        <dd class="col-sm-8 mb-1"> {{ $show->j_peserta }}</dd>
+
+                        <dt class="col-sm-4 fw-bolder mb-1">Jumlah Trainer/Asesor</dt>
+                        <dd class="col-sm-8 mb-1"> {{ $show->j_traine_asesor }}</dd>
+
+                        <dt class="col-sm-4 fw-bolder mb-1">Jumlah Assist</dt>
+                        <dd class="col-sm-8 mb-1"> {{ $show->j_assist }}</dd>
+                        @break
+                        @default
+                        @endswitch
+
+
 
                     </dl>
                 </div>
-                <div class="table-responsive">
+                <div class="table-responsive mt-2">
                     <table class="table table-bordered">
                         <thead>
                             <tr width='20px' style="background-color:skyblue">

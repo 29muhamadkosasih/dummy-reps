@@ -221,7 +221,7 @@
                                 Keperluan
                             </label>
                             <select class="form-select @error('keperluan_id') is-invalid @enderror" id="selectDefault"
-                                name="keperluan_id" required>
+                                name="keperluan_id" onchange="enableBrand2(this)" required>
                                 <option selected>Open this select</option>
                                 @foreach ($keperluan as $item)
                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -271,7 +271,7 @@
                                 Payment
                             </label>
                             <select class="form-select @error('payment') is-invalid @enderror" id="selectDefault"
-                                name="payment" id="car" onchange="enableBrand(this)" required>
+                                name="payment" onchange="enableBrand(this)" required>
                                 <option selected>Open this select</option>
                                 <option value="Cash">Cash</option>
                                 <option value="Transfer">Transfer</option>
@@ -291,9 +291,49 @@
                             <select class="select2 form-select" id="select2-basic" name="norek_id">
                                 <option></option>
                                 @foreach ($norek as $item)
-                                <option value="{{ $item->id }}">{{ $item->nama_penerima }}</option>
+                                <option value="{{ $item->id }}">
+                                    {{ $item->no_rekening }} &nbsp; A/N &nbsp; {{ $item->nama_penerima }} &nbsp;
+                                    ( {{ $item->bank->nama_bank }} )
+                                </option>
                                 @endforeach
                             </select>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6 col-md-6 col-12 d-none" id="t1">
+                        <div class="mb-1">
+                            <label class="form-label" for="basicInput">
+                                No. Project
+                            </label>
+                            <input type="text" class="form-control" id="basicInput" name="no_project"
+                                placeholder="Enter" autofocus />
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-md-6 col-12 d-none" id="t2">
+                        <div class="mb-1">
+                            <label class="form-label" for="basicInput">
+                                Jumlah Peserta
+                            </label>
+                            <input type="number" class="form-control" id="basicInput" name="j_peserta"
+                                placeholder="Enter" autofocus />
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-md-6 col-12 d-none" id="t3">
+                        <div class="mb-1">
+                            <label class="form-label" for="helpInputTop">
+                                Jumlah Trainer / Asesor
+                            </label>
+                            <input type="number" class="form-control" id="basicInput" name="j_traine_asesor"
+                                placeholder="Enter" autofocus />
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-md-6 col-12 d-none" id="t4">
+                        <div class="mb-1">
+                            <label class="form-label" for="basicInput">
+                                Jumlah Assist
+                            </label>
+                            <input type="number" class="form-control" id="basicInput" name="j_assist"
+                                placeholder="Enter" autofocus />
                         </div>
                     </div>
 
@@ -850,49 +890,26 @@
         console.log(answer.value);
         if (answer.value == 'Transfer') {
             document.getElementById('carbrand').classList.remove('d-none');
-            document.getElementById('carbrand2').classList.remove('d-none');
-            document.getElementById('carbrand3').classList.remove('d-none');
         } else {
             document.getElementById('carbrand').classList.add('d-none');
-            document.getElementById('carbrand2').classList.add('d-none');
-            document.getElementById('carbrand3').classList.add('d-none');
         }
     }
 </script>
+<script type="text/javascript">
+    function enableBrand2(answer) {
+        console.log(answer.value);
+        if (answer.value == 1 ) {
+            document.getElementById('t1').classList.remove('d-none');
+            document.getElementById('t2').classList.remove('d-none');
+            document.getElementById('t3').classList.remove('d-none');
+            document.getElementById('t4').classList.remove('d-none');
 
-<script>
-    $(document).ready(function () {
-        $('#bank').on('change', function () {
-            var kode_bank = $(this).val();
-            // console.log(kode_bank);
-            if (kode_bank) {
-                $.ajax({
-                    url: '/form/' + kode_bank,
-                    type: 'GET',
-                    data: {
-                        '_token': '{{ csrf_token() }}'
-                    },
-                    dataType: 'json',
-                    success: function (data) {
-                        console.log(data);
-                        if (data) {
-                            $('#user').empty();
-                            $('#user').append('<option value="">-Pilih-</option>');
-                            $.each(data, function (key, NoRek) {
-                                $('select[name="norek_id"]').append(
-                                    '<option value="' + NoRek.id + '">' +
-                                    NoRek.nama_penerima + '</option>'
-                                );
-                            });
-                        } else {
-                            $('#user').empty();
-                        }
-                    }
-                });
-            } else {
-                $('#user').empty();
-            }
-        });
-    });
+        } else {
+            document.getElementById('t1').classList.add('d-none');
+            document.getElementById('t2').classList.add('d-none');
+            document.getElementById('t3').classList.add('d-none');
+            document.getElementById('t4').classList.add('d-none');
+        }
+    }
 </script>
 @endsection

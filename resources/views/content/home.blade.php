@@ -18,7 +18,7 @@
                     </div>
                     <div class="col-md-8" style="background-color: #7367f0;">
                         <div class="card-body mt-5">
-                            <h3 class="text-center mt-4 ms-5 me-5" style="color: white">Hello {{ Auth::user()->name }},
+                            <h3 class="text-center" style="color: white">Hello {{ Auth::user()->name }},
                                 how
                                 can we help?</h3>
                         </div>
@@ -35,25 +35,25 @@
                     <li class="nav-item">
                         <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#payment">
                             <i class="ti ti-credit-card me-1 ti-sm"></i>
-                            <span class="align-middle fw-semibold">Pengajuan</span>
+                            <span class="align-middle fw-semibold">Form Electronic (E-RF)</span>
                         </button>
                     </li>
                     <li class="nav-item">
                         <button class="nav-link" data-bs-toggle="tab" data-bs-target="#delivery">
                             <i class="ti ti-briefcase me-1 ti-sm"></i>
-                            <span class="align-middle fw-semibold">Peninjauan Permintaan</span>
+                            <span class="align-middle fw-semibold">Prosedur Umum</span>
                         </button>
                     </li>
                     <li class="nav-item">
                         <button class="nav-link" data-bs-toggle="tab" data-bs-target="#cancellation">
                             <i class="ti ti-rotate-clockwise-2 me-1 ti-sm"></i>
-                            <span class="align-middle fw-semibold">Persetujuan</span>
+                            <span class="align-middle fw-semibold">Membuat E-RF</span>
                         </button>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item d-none">
                         <button class="nav-link" data-bs-toggle="tab" data-bs-target="#orders">
                             <i class="ti ti-box me-1 ti-sm"></i>
-                            <span class="align-middle fw-semibold">Penggunaan Dana</span>
+                            <span class="align-middle fw-semibold">Status E-RF</span>
                         </button>
                     </li>
                 </ul>
@@ -79,7 +79,7 @@
                         </div>
                         <div>
                             <h4 class="mb-0">
-                                <span class="align-middle">Pengajuan</span>
+                                <span class="align-middle">Form Electronic (E-RF)</span>
                             </h4>
                         </div>
                     </div>
@@ -89,36 +89,14 @@
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     aria-expanded="true" data-bs-target="#accordionPayment-1"
                                     aria-controls="accordionPayment-1">
-                                    Pengajuan Permintaan Dana
+                                    Pengajuan Permintaan Dana Melalui Form Electronic (E-RF)
                                 </button>
                             </h2>
 
                             <div id="accordionPayment-1" class="accordion-collapse collapse show">
                                 <div class="accordion-body">
-                                    Karyawan yang membutuhkan dana harus mengajukan permintaan dana
-                                    melalui formulir pengajuan dana yang
-                                    telah disiapkan oleh departemen keuangan atau manajemen. Formulir tersebut harus
-                                    mencakup informasi berikut:
-                                    Nama lengkap pengaju dana.
-                                    Tujuan penggunaan dana (deskripsi singkat kebutuhan dan alasan).
-                                    Jumlah dana yang diminta.
-                                    Tanggal perkiraan penggunaan dana.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#accordionPayment-2" aria-controls="accordionPayment-2">
-                                    Bagiamana cara membuat form pengajuan?
-                                </button>
-                            </h2>
-                            <div id="accordionPayment-2" class="accordion-collapse collapse">
-                                <div class="accordion-body">
-                                    Klik Create kemudian Isi Lengkap Nama pengajuan dana. Tujuan penggunaan dana
-                                    (deskripsi singkat kebutuhan dan alasan). Jumlah dana yang diminta.
-                                    Tanggal perkiraan penggunaan dana.
+                                    Setiap Departemen/Karyawan yang hendak mengajukan dana untuk keperluannya wajib
+                                    mengisi formulir E-RF.
                                 </div>
                             </div>
                         </div>
@@ -133,7 +111,7 @@
                         </div>
                         <div>
                             <h4 class="mb-0">
-                                <span class="align-middle">Peninjauan Permintaan</span>
+                                <span class="align-middle">Prosedur Umum</span>
                             </h4>
                         </div>
                     </div>
@@ -143,14 +121,21 @@
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     aria-expanded="true" data-bs-target="#accordionDelivery-1"
                                     aria-controls="accordionDelivery-1">
-                                    Apa Harus saya lakukan?
+                                    Prosedur Umum Pengajuan Dana Secara Electronic
                                 </button>
                             </h2>
-
                             <div id="accordionDelivery-1" class="accordion-collapse collapse show">
                                 <div class="accordion-body">
-                                    Pengajuan anda akan ditinjau <br>
-                                    anda cukup menugggu <br>
+                                    <ul class="ps-1 g-1 ms-3">
+                                        <li class="mb-2">Mengisi formulir E-RF melalui laptop atau HP</li>
+                                        <li class="mb-2">Formulir E-RF yang telah di ajukan akan di cek oleh atasan
+                                            (SPV atau Manager)</li>
+                                        <li class="mb-2">Jika atasan setuju, maka E-RF akan diteruskan ke bagian
+                                            Finance untuk diproses</li>
+                                        <li class="mb-2">Jika Finance setuju maka pengajuan akan diteruskan ke Kasir
+                                            untuk dikeluarkan dananya</li>
+
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -165,7 +150,7 @@
                         </div>
                         <div>
                             <h4 class="mb-0"><span class="align-middle">
-                                    Persetujuan</span></h4>
+                                    Membuat E-RF</span></h4>
                         </div>
                     </div>
                     <div id="accordionCancellation" class="accordion">
@@ -174,16 +159,23 @@
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     aria-expanded="true" data-bs-target="#accordionCancellation-1"
                                     aria-controls="accordionCancellation-1">
-                                    Jika pengajuan di reject?
+                                    Bagiamana Cara Membuat E-RF ?
                                 </button>
                             </h2>
 
                             <div id="accordionCancellation-1" class="accordion-collapse collapse show">
                                 <div class="accordion-body">
-                                    <p>
-                                        Pengajuan anda telah di cancel <br>
-                                        dan tidak bisa melanjutkanya ke tahap berikutnya
-                                    </p>
+                                    <ul class="ps-1 g-1 ms-3">
+                                        <li class="mb-2">Klik Menu Form</li>
+                                        <li class="mb-2">Klik Button Create</li>
+                                        <li class="mb-2">Nama anda (yang Login) sudah tercantum otomatis sebagai PIC
+                                            yang megajukan E-RF</li>
+                                        <li class="mb-2">Isi semua kolom sesuai dengan keperluan</li>
+                                        <li class="mb-2">Isi pengajuan yang dibutuhkan (disediakan 8 item, jika item
+                                            melebihi 8 dapat dibuatkan pengajiuan baru)</li>
+                                        <li class="mb-2">Klick tombol “Submit” jika sudah selesai dan tunggu
+                                            pengecekan dari atasan</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -192,13 +184,28 @@
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#accordionCancellation-2" aria-controls="accordionCancellation-2">
-                                    Jika Pengajuan di Approve?
+                                    Syarat & Ketentuan
                                 </button>
                             </h2>
                             <div id="accordionCancellation-2" class="accordion-collapse collapse">
                                 <div class="accordion-body">
-                                    Pengajuan anda telah berhasil ditinjau <br>
-                                    dan dalam process
+                                    <ul class="ps-1 g-1 ms-3">
+                                        <li class="mb-2">Jika pembayaran hendak dilakukan secara Transfer, maka perlu
+                                            diinput Bank dan No. Rekening terlebih dulu di menu
+                                            MASTER DATA – Bank & No. Rekening.</li>
+                                        <li class="mb-2">Jika dana yang diberikan oleh kasir tidak sesuai dengan jumlah
+                                            pengajuan, maka Kasir akan menginformasikan jumlah uang
+                                            yang dibayar dan Pembuat E-RF wajib memberikan konfirmasi penerimaan melalui
+                                            formulir pengajuan E-RF yang pernah dibuat.</li>
+                                        <li class="mb-2">Jika kategori pengajuan secara Advance, maka sebelum dana
+                                            dikembalikan atau dibuktikan dengan kuitansi/tanda terima
+                                            pembayaran, maka status E-RF tersebut belumlah selesai, dan apabila telah
+                                            diselesaikan semua, maka status E-RF tersebut
+                                            sudah “Closed”</li>
+                                        <li class="mb-2">10.Status E-RF yang belum closed wajib diselesaikan selambatnya
+                                            2 (dua) minggu setelah dana diserahkan oleh Kasir. Jika
+                                            belum diselesaikan, maka Dana Wajib dikembalikan ke Finance.</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -214,7 +221,7 @@
                         </div>
                         <div>
                             <h4 class="mb-0">
-                                <span class="align-middle">Penggunaan Dana</span>
+                                <span class="align-middle">Status E-RF</span>
                             </h4>
                         </div>
                     </div>
@@ -224,45 +231,153 @@
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     aria-expanded="true" data-bs-target="#accordionOrders-1"
                                     aria-controls="accordionOrders-1">
-                                    Jika berhasil?
+                                    Timeline Status E-RF
                                 </button>
                             </h2>
-
                             <div id="accordionOrders-1" class="accordion-collapse collapse show">
                                 <div class="accordion-body">
-                                    <p>
-                                        Approval Akan menindaklanjuti pengajuan anda
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                                    <div class="card-body pb-0">
+                                        <ul class="timeline mb-0">
+                                            <li class="timeline-item timeline-item-transparent">
+                                                <span class="timeline-point timeline-point-primary"></span>
+                                                <div class="timeline-event">
+                                                    <div class="timeline-header mb-3">
+                                                        <h6 class="mb-0">Pending</h6>
+                                                    </div>
+                                                    <div class="d-flex justify-content-between flex-wrap mb-2">
+                                                        <div>
+                                                            <span>Pengajuan Baru</span>
+                                                        </div>
 
-                        <div class="card accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#accordionOrders-2" aria-controls="accordionOrders-2">
-                                    Dana Pengajuan masuk?
-                                </button>
-                            </h2>
-                            <div id="accordionOrders-2" class="accordion-collapse collapse">
-                                <div class="accordion-body">
-                                    Anda perlu meng-klik Konfirmasi jika sudah menerima dana pengajuan
-                                </div>
-                            </div>
-                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="timeline-item timeline-item-transparent">
+                                                <span class="timeline-point timeline-point-success"></span>
+                                                <div class="timeline-event">
+                                                    <div class="timeline-header mb-3">
+                                                        <h6 class="mb-0">Reject</h6>
+                                                    </div>
+                                                    <div class="d-flex justify-content-between flex-wrap mb-2">
+                                                        <div>
+                                                            <span>Pengajuan Baru</span>
+                                                        </div>
 
-                        <div class="card accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#accordionOrders-3" aria-controls="accordionOrders-3">
-                                    Apa langkah selanjutnya?
-                                </button>
-                            </h2>
-                            <div id="accordionOrders-3" class="accordion-collapse collapse">
-                                <div class="accordion-body">
-                                    <p>
-                                        Anda perlu meng-konfimasi pembayaran dan konfimasi pengembalian
-                                    </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="timeline-item timeline-item-transparent">
+                                                <span class="timeline-point timeline-point-danger"></span>
+                                                <div class="timeline-event">
+                                                    <div class="timeline-header mb-3">
+                                                        <h6 class="mb-0">Approve</h6>
+                                                    </div>
+                                                    <div class="d-flex justify-content-between flex-wrap mb-2">
+                                                        <div>
+                                                            <span>Pengajuan Baru</span>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="timeline-item timeline-item-transparent">
+                                                <span class="timeline-point timeline-point-info"></span>
+                                                <div class="timeline-event">
+                                                    <div class="timeline-header">
+                                                        <h6 class="mb-0">Interview Schedule</h6>
+                                                        <span class="text-muted">6th October</span>
+                                                    </div>
+                                                    <p>
+                                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                                                        Possimus quos, voluptates
+                                                        voluptas rem veniam expedita.
+                                                    </p>
+                                                    <hr>
+                                                    <div class="d-flex justify-content-between flex-wrap gap-2">
+                                                        <div class="d-flex flex-wrap">
+                                                            <div class="avatar me-3">
+                                                                <img src="../../assets/img/avatars/6.png" alt="Avatar"
+                                                                    class="rounded-circle">
+                                                            </div>
+                                                            <div>
+                                                                <p class="mb-0">Rebecca Godman</p>
+                                                                <span class="text-muted">Javascript Developer</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex flex-wrap align-items-center cursor-pointer">
+                                                            <i class="ti ti-brand-hipchat me-2"></i>
+                                                            <i class="ti ti-phone-call"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="timeline-item timeline-item-transparent border-0">
+                                                <span class="timeline-point timeline-point-warning"></span>
+                                                <div class="timeline-event">
+                                                    <div class="timeline-header">
+                                                        <h6 class="mb-0">2 Notifications</h6>
+                                                        <span class="text-muted">7th October</span>
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                        <li
+                                                            class="list-group-item d-flex justify-content-between align-items-center flex-wrap border-top-0 p-0">
+                                                            <div class="d-flex flex-wrap align-items-center">
+                                                                <ul
+                                                                    class="list-unstyled users-list d-flex align-items-center avatar-group m-0 my-3 me-2">
+                                                                    <li data-bs-toggle="tooltip"
+                                                                        data-popup="tooltip-custom"
+                                                                        data-bs-placement="top"
+                                                                        class="avatar avatar-xs pull-up"
+                                                                        aria-label="Vinnie Mostowy"
+                                                                        data-bs-original-title="Vinnie Mostowy">
+                                                                        <img class="rounded-circle"
+                                                                            src="../../assets/img/avatars/5.png"
+                                                                            alt="Avatar">
+                                                                    </li>
+                                                                    <li data-bs-toggle="tooltip"
+                                                                        data-popup="tooltip-custom"
+                                                                        data-bs-placement="top"
+                                                                        class="avatar avatar-xs pull-up"
+                                                                        aria-label="Allen Rieske"
+                                                                        data-bs-original-title="Allen Rieske">
+                                                                        <img class="rounded-circle"
+                                                                            src="../../assets/img/avatars/12.png"
+                                                                            alt="Avatar">
+                                                                    </li>
+                                                                    <li data-bs-toggle="tooltip"
+                                                                        data-popup="tooltip-custom"
+                                                                        data-bs-placement="top"
+                                                                        class="avatar avatar-xs pull-up"
+                                                                        aria-label="Julee Rossignol"
+                                                                        data-bs-original-title="Julee Rossignol">
+                                                                        <img class="rounded-circle"
+                                                                            src="../../assets/img/avatars/6.png"
+                                                                            alt="Avatar">
+                                                                    </li>
+                                                                </ul>
+                                                                <span>Commented on your post.</span>
+                                                            </div>
+                                                            <button
+                                                                class="btn btn-outline-primary btn-sm my-sm-0 my-3 waves-effect">View</button>
+                                                        </li>
+                                                        <li
+                                                            class="list-group-item d-flex justify-content-between align-items-center flex-wrap pb-0 px-0">
+                                                            <div class="d-flex align-items-center">
+                                                                <img src="../../assets/img/avatars/4.png"
+                                                                    class="rounded-circle me-3" alt="avatar" height="24"
+                                                                    width="24">
+                                                                <div class="user-info">
+                                                                    <p class="my-0">Dwight repaid you</p>
+                                                                    <span class="text-muted">30 minutes ago</span>
+                                                                </div>
+                                                            </div>
+                                                            <h5 class="mb-0">$20</h5>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>

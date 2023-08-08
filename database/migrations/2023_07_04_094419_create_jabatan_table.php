@@ -15,14 +15,7 @@ class CreateJabatanTable extends Migration
     {
         Schema::create('jabatan', function (Blueprint $table) {
             $table->id();
-            $table->enum('jabatan', [
-                'General',
-                'Cashier',
-                'Supervisor',
-                'Finance',
-                'Manager',
-                'Director'
-            ]);
+            $table->string('jabatan');
             $table->timestamps();
         });
     }

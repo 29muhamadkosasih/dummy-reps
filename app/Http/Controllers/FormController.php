@@ -27,7 +27,7 @@ class FormController extends Controller
         abort_if(Gate::denies('form.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
         $userId = auth()->id();
         $bank = Bank::get();
-        $norek = NoRek::where('user_id', $userId)->get();
+        $norek = NoRek::all();
         $kpengajuan = Kpengajuan::all();
         $keperluan = Keperluan::all();
         $rujukan = Rujukan::all();
@@ -36,6 +36,7 @@ class FormController extends Controller
 
         $form = Form::where('from_id', $userId)
             ->where('status', '<', 8)
+            ->orderBy('created_at', 'desc')
             ->get();
 
         $role = User::where('jabatan_id', $userId)->get();
@@ -86,10 +87,7 @@ class FormController extends Controller
         $data = $request->norek_id;
         if ($data == NULL) {
             $jumlah_total_akhir = $jumlah_akhir + 0;
-            // $jumlah_total_akhir = $jumlah_akhir + 0;
-            // dd($data);
         } else {
-            // $jumlah_total_akhir = $jumlah_akhir + 6500;
             $jumlah_total_akhir = $jumlah_akhir + 0;
         }
 
@@ -217,6 +215,7 @@ class FormController extends Controller
         }
 
         // dd($request->all());
+
         Form::create([
             'from_id' => $userId,
             'rujukan_id' => $request->rujukan_id,
@@ -277,6 +276,10 @@ class FormController extends Controller
             'image7' => $filename7,
             'image8' => $filename8,
             'status' => 0,
+            'no_project'  => $request->no_project,
+            'j_peserta'  => $request->j_peserta,
+            'j_traine_asesor'  => $request->j_traine_asesor,
+            'j_assist'  => $request->j_assist
         ]);
 
         return redirect()->route('form.index')
@@ -551,6 +554,10 @@ class FormController extends Controller
             'image6' => $filename6,
             'image7' => $filename7,
             'image8' => $filename8,
+            'no_project'  => $request->no_project,
+            'j_peserta'  => $request->j_peserta,
+            'j_traine_asesor'  => $request->j_traine_asesor,
+            'j_assist'  => $request->j_assist
 
         ]);
 

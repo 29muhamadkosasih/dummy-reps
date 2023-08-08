@@ -59,7 +59,7 @@
         @endcan
         <!-- Apps & Pages -->
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Form RF</span>
+            <span class="menu-header-text"> <b>Form RF</b> </span>
         </li>
 
         @can('layout.empty.index')
@@ -135,7 +135,7 @@
 
         @canany(['report.today.index','report.resumeRf.index','report.reportPB.index','paymentIn.index','invoiceOut.index','cashflow.index','revenue.index'])
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Report</span>
+            <span class="menu-header-text"> <b>Report</b> </span>
         </li>
 
 
@@ -177,25 +177,6 @@
         </li>
 
         @endcan
-
-        {{-- @can('cashflow.index') --}}
-        <li class="menu-item {{ Route::currentRouteNamed('cashflow.index') ? 'active' : '' }}">
-            <a href="{{ route('cashflow.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-cash"></i>
-                <div data-i18n="Cash Flow">Cash Flow</div>
-            </a>
-        </li>
-        {{-- @endcan --}}
-
-        {{-- @can('revenue.index') --}}
-        <li class="menu-item {{ Route::currentRouteNamed('revenue.index') ? 'active' : '' }}">
-            <a href="{{ route('revenue.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-building-warehouse"></i>
-                <div data-i18n="Revenue">Revenue</div>
-            </a>
-        </li>
-        {{-- @endcan --}}
-
         @endcanany
         @can('listAdvance.index')
         <li class="menu-item {{ (request()->is('listAdvance')) ? 'active' : '' }}">
@@ -207,9 +188,9 @@
         @endcan
 
 
-        @canany(['bank.index','norek.index','keperluan.index','kpengajuan.index','rujukan.index'])
+        @canany(['bank.index','norek.index','keperluan.index','kpengajuan.index','rujukan.index','departement.index','jabatan.index'])
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Master Data</span>
+            <span class="menu-header-text"> <b>Master Data</b> </span>
         </li>
 
         @can('bank.index')
@@ -248,7 +229,6 @@
         </li>
         @endcan
 
-
         @can('rujukan.index')
         <li class="menu-item {{ (request()->is('rujukan')) ? 'active' : '' }}">
             <a href="{{ route('rujukan.index') }}" class="menu-link">
@@ -258,11 +238,29 @@
         </li>
         @endcan
 
+        @can('departement.index')
+        <li class="menu-item {{ (request()->is('departement')) ? 'active' : '' }}">
+            <a href="{{ route('departement.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-bookmark-filled"></i>
+                <div data-i18n="Departement">Departement</div>
+            </a>
+        </li>
+        @endcan
+
+        @can('jabatan.index')
+        <li class="menu-item {{ (request()->is('jabatan')) ? 'active' : '' }}">
+            <a href="{{ route('jabatan.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-article-filled-filled"></i>
+                <div data-i18n="Jabatan">Jabatan</div>
+            </a>
+        </li>
+        @endcan
+
         @endcanany
 
         @canany(['users.index','roles.index','permissions.index'])
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Users Management</span>
+            <span class="menu-header-text"> <b>Users Management</b> </span>
         </li>
 
         @can('users.index')
