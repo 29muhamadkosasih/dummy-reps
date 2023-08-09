@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="table-responsive text-nowrap">
-                <table class="table table-hover zero-configuration">
+                <table class="table table-hover table-bordered zero-configuration">
                     <thead>
                         <tr>
                             <th width='10px'>No</th>

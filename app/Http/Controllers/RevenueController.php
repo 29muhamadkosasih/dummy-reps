@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Revenue;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
 
@@ -15,8 +16,12 @@ class RevenueController extends Controller
         abort_if(Gate::denies('revenue.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
         $revenue = Revenue::all();
+        $jumlah_a = DB::table('revenue')
+            ->get()
+            ->sum('amount_invoice');
         return view('pages.revenue.index', [
-            'revenue'    => $revenue
+            'revenue'    => $revenue,
+            'jumlah_a'    => $jumlah_a
         ]);
     }
 

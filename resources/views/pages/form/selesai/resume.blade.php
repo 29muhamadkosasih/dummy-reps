@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="table-responsive text-nowrap">
-                <table class="table table-hover table-bordered">
+                <table class="table table-hover table-bordered table-bordered">
                     <thead>
                         <tr>
                             <th width='10px' style="text-align: center">No</th>

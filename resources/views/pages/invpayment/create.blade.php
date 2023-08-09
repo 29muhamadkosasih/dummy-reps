@@ -16,12 +16,12 @@
                     <div class="col-md-6 mb-3">
                         <label class="form-label" for="multicol-country">No Project</label>
                         <input type="number" class="form-control" id="basic-default-fullname" placeholder="Enter"
-                            name="no_project" />
+                            name="no_project" required autofocus />
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label" for="basic-default-fullname">PIC Client</label>
                         <input type="text" class="form-control" id="basic-default-fullname" placeholder="Enter"
-                            name="pic_client" />
+                            name="pic_client" required />
                     </div>
                 </div>
                 <div class="row g-3">
@@ -29,14 +29,14 @@
                         <label class="form-label" for="basic-default-email">No Invoice</label>
                         <div class="input-group input-group-merge">
                             <input type="number" id="basic-default-email" class="form-control" placeholder="john.doe"
-                                aria-label="john.doe" aria-describedby="basic-default-email2" name="no_invoice" />
+                                aria-label="john.doe" aria-describedby="basic-default-email2" name="no_invoice"
+                                required />
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label" for="basic-default-fullname">No PO</label>
                         <input type="text" class="form-control @error('no_po') is-invalid @enderror"
-                            id="basic-default-fullname" name="no_po" placeholder="Enter" value="{{ old('no_po') }}"
-                            required />
+                            id="basic-default-fullname" name="no_po" placeholder="Enter" value="{{ old('no_po') }}" />
                         @error('no_po')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -48,7 +48,7 @@
                     <div class="col-md-6">
                         <label class="form-label" for="basicInput">Date Invoice</label>
                         <input type="date" class="form-control" id="basic-default-fullname" placeholder="Enter"
-                            name="date_invoice" />
+                            name="date_invoice" required />
                         @error('date_invoice')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -60,7 +60,8 @@
                             <label class="form-label" for="password">Amount Invoice</label>
                         </div>
                         <input type="text" id="basic-default-email" class="form-control" placeholder="john.doe"
-                            aria-label="john.doe" aria-describedby="basic-default-email2" name="amount_invoice" />
+                            aria-label="john.doe" aria-describedby="basic-default-email2" name="amount_invoice"
+                            required />
                     </div>
                 </div>
                 <div class="row g-3">
@@ -77,7 +78,7 @@
                     <div class="col-md-6 mb-3">
                         <label class="form-label" for="basicInput">Due Date</label>
                         <input type="date" class="form-control" id="basic-default-fullname" placeholder="Enter"
-                            name="due_date" />
+                            name="due_date" required />
                         @error('due_date')
                         <div class="invalid-feedback">
                             {{ $message }}

@@ -16,12 +16,12 @@
                     <div class="col-md-6 mb-2">
                         <label class="form-label" for="multicol-country">Client</label>
                         <input type="text" class="form-control" id="basic-default-fullname" placeholder="Enter"
-                            name="client" />
+                            name="client" required />
                     </div>
                     <div class="col-md-6 mb-2">
                         <label class="form-label" for="basic-default-fullname">No Invoice</label>
                         <input type="text" class="form-control" id="basic-default-fullname" placeholder="Enter"
-                            name="no_invoice" />
+                            name="no_invoice" required />
                     </div>
                 </div>
                 <div class="row g-3">
@@ -29,7 +29,8 @@
                         <label class="form-label" for="basic-default-email">Payment In</label>
                         <div class="input-group input-group-merge">
                             <input type="number" id="basic-default-email" class="form-control" placeholder="john.doe"
-                                aria-label="john.doe" aria-describedby="basic-default-email2" name="payment_in" />
+                                aria-label="john.doe" aria-describedby="basic-default-email2" name="payment_in"
+                                required />
                         </div>
                     </div>
                     <div class="col-md-6 mb-2">
@@ -60,14 +61,14 @@
                             <label class="form-label" for="password">Paid Date</label>
                         </div>
                         <input type="date" id="basic-default-email" class="form-control" placeholder="john.doe"
-                            aria-label="john.doe" aria-describedby="basic-default-email2" name="paid_date" />
+                            aria-label="john.doe" aria-describedby="basic-default-email2" name="paid_date" required />
                     </div>
                 </div>
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label class="form-label" for="basicInput">PPH 23</label>
                         <input type="number" class="form-control" id="basic-default-fullname" placeholder="Enter"
-                            name="pph23" />
+                            name="pph23" required />
                         @error('pph23')
                         <div class="invalid-feedback">
                             {{ $message }}

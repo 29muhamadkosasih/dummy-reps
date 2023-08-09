@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="table-responsive text-nowrap">
-                <table class="table table-hover zero-configuration">
+                <table class="table table-hover table-bordered zero-configuration">
                     <thead>
                         <tr>
                             <th width='10px' style="text-align: center">No</th>
@@ -97,6 +97,35 @@
                         </tr>
                         @endforeach
                     </tbody>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr style="background-color: skyblue">
+                        <th colspan="3" style="text-align: right">TOTAL</th>
+                        <td colspan="" style="text-align: right">
+
+                            {{ number_format($jumlah_a, 0, ',', '.') }}
+                            {{-- 90 --}}
+                        </td>
+                        <td colspan="1" style="text-align: right">
+                            {{ number_format($jumlah_b, 0, ',', '.') }}
+                            {{-- 90 --}}
+                        </td>
+                        <td></td>
+                        <td colspan="" style="text-align: right">
+
+                            {{ number_format($jumlah_c, 0, ',', '.') }}
+                            {{-- 90 --}}
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
                 </table>
             </div>
         </div>

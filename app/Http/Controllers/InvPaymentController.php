@@ -7,6 +7,7 @@ use App\Models\InvPayment;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Exports\InvPaymentExport;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
 use Maatwebsite\Excel\Facades\Excel;
@@ -24,7 +25,17 @@ class InvPaymentController extends Controller
 
 
         $invpayment = InvPayment::all();
-        return view('pages.invpayment.index', compact('invpayment'));
+
+        $jumlah_a = DB::table('invpayment')
+            ->get()
+            ->sum('amount_invoice');
+        $jumlah_b = DB::table('invpayment')
+            ->get()
+            ->sum('payment_in');
+        $jumlah_c = DB::table('invpayment')
+            ->get()
+            ->sum('deduction');
+        return view('pages.invpayment.index', compact('invpayment', 'jumlah_a', 'jumlah_b', 'jumlah_c'));
     }
 
     /**
@@ -47,8 +58,12 @@ class InvPaymentController extends Controller
     {
         // InvPayment::create($request->all());
 
-        $data = 2;
-        $t_deduction = ($data / 100) * $request->amount_invoice;
+        // $data = 2;
+
+        $data = $request->amount_invoice;
+        $data2 = $request->payment_in;
+        // dd($data);
+        $t_deduction = $data - $data2;
 
         $order = new InvPayment();
         $order->no_project = $request->no_project;
@@ -113,8 +128,11 @@ class InvPaymentController extends Controller
             'no_project' => 'required',
         ]);
 
-        $data = 2;
-        $t_deduction = ($data / 100) * $request->amount_invoice;
+        // $data = 2;
+        $data = $request->amount_invoice;
+        $data2 = $request->payment_in;
+        // dd($data);
+        $t_deduction = $data - $data2;
         $payment->update([
             'no_project' => $request->no_project,
             'pic_client' => $request->pic_client,
@@ -138,10 +156,11 @@ class InvPaymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(InvPayment $user)
-    {
 
-        $user->delete();
+    public function destroy($id)
+    {
+        $delete = InvPayment::find($id);
+        $delete->delete();
         return redirect()->back()->with('success', 'Success ! Data invpayment Berhasil di Hapus');
     }
 

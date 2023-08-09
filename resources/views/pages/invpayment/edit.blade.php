@@ -13,10 +13,10 @@
                 @csrf
                 @method('PUT')
                 <div class="row g-3">
-                    <div class="col-md-6">
+                    <div class="col-md-6 mb-2">
                         <label class="form-label" for="multicol-country">No Project</label>
                         <input type="number" class="form-control" placeholder="Enter" name="no_project"
-                            value="{{ old('no_project', $user->no_project) }}" />
+                            value="{{ old('no_project', $user->no_project) }}" required />
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">PIC Client</label>
@@ -25,12 +25,12 @@
                     </div>
                 </div>
                 <div class="row g-3">
-                    <div class="col-md-6">
+                    <div class="col-md-6 mb-2">
                         <label class="form-label" for="basic-default-email">No Invoice</label>
                         <div class="input-group input-group-merge">
                             <input type="number" id="basic-default-email" class="form-control" placeholder="john.doe"
                                 aria-label="john.doe" aria-describedby="basic-default-email2" name="no_invoice"
-                                value="{{ old('no_invoice', $user->no_invoice) }}" />
+                                value="{{ old('no_invoice', $user->no_invoice) }}" required />
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
@@ -48,7 +48,7 @@
                     <div class="col-md-6">
                         <label class="form-label" for="basicInput">Date Invoice</label>
                         <input type="date" class="form-control" placeholder="Enter" name="date_invoice"
-                            value="{{ old('date_invoice', $user->date_invoice) }}" />
+                            value="{{ old('date_invoice', $user->date_invoice) }}" required />
                         @error('date_invoice')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -61,7 +61,7 @@
                         </div>
                         <input type="text" id="basic-default-email" class="form-control" placeholder="john.doe"
                             aria-label="john.doe" aria-describedby="basic-default-email2" name="amount_invoice"
-                            value="{{ old('amount_invoice', $user->amount_invoice) }}" />
+                            value="{{ old('amount_invoice', $user->amount_invoice) }}" required />
                     </div>
                 </div>
                 <div class="row g-3">
@@ -78,7 +78,7 @@
                     <div class="col-md-6 mb-3">
                         <label class="form-label" for="basicInput">Due Date</label>
                         <input type="date" class="form-control" placeholder="Enter" name="due_date"
-                            value="{{ old('due_date', $user->due_date) }}" />
+                            value="{{ old('due_date', $user->due_date) }}" required />
                         @error('due_date')
                         <div class="invalid-feedback">
                             {{ $message }}

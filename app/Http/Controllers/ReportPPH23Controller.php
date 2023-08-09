@@ -8,6 +8,7 @@ use App\Models\ReportPPH23;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Exports\ReportPPH23Export;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
 use Maatwebsite\Excel\Facades\Excel;
@@ -22,8 +23,17 @@ class ReportPPH23Controller extends Controller
     public function index(Request $request)
     {
 
+        $jumlah_a = DB::table('reportpph23')
+            ->get()
+            ->sum('bruto');
+        $jumlah_b = DB::table('reportpph23')
+            ->get()
+            ->sum('payment_in');
+        $jumlah_c = DB::table('reportpph23')
+            ->get()
+            ->sum('pph23');
         $reportpph = ReportPPH23::all();
-        return view('pages.reportpph.index', compact('reportpph'));
+        return view('pages.reportpph.index', compact('reportpph', 'jumlah_a', 'jumlah_b', 'jumlah_c'));
     }
 
     /**
