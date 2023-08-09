@@ -5,7 +5,6 @@
 @section('content')
 
 <!-- Invoice table -->
-
 <div class="col-xl-12">
     <div class="row mb-5">
         <div class="col-md">

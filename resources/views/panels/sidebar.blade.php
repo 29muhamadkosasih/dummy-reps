@@ -157,32 +157,30 @@
         </li>
         @endcan
 
-        @can('paymentIn.index')
-        <li
-            class="menu-item {{ Route::currentRouteNamed('paymentIn.index','paymentIn.edit','paymentIn.report') ? 'active' : '' }}">
-            <a href="{{ route('paymentIn.index') }}" class="menu-link">
+        @can('invpayment.index')
+        <li class="menu-item {{ Route::currentRouteNamed('invpayment.index','invpayment.edit') ? 'active' : '' }}">
+            <a href="{{ route('invpayment.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-file-invoice"></i>
-                <div data-i18n="Payment In">Payment In</div>
+                <div data-i18n="Invoice & Payemnt In">Invoice & Payemnt In</div>
             </a>
         </li>
         @endcan
 
-        @can('invoiceOut.index')
-        <li
-            class="menu-item {{ Route::currentRouteNamed('invoiceOut.index','invoiceOut.edit','invoiceOut.report') ? 'active' : '' }}">
-            <a href="{{ route('invoiceOut.index') }}" class="menu-link">
+        @can('revenue.index')
+        <li class="menu-item {{ Route::currentRouteNamed('revenue.index','revenue.edit') ? 'active' : '' }}">
+            <a href="{{ route('revenue.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-brand-juejin"></i>
-                <div data-i18n="Invoice Out">Invoice Out</div>
+                <div data-i18n="A/E Revenue">A/E Revenue</div>
             </a>
         </li>
 
         @endcan
         @endcanany
-        @can('listAdvance.index')
-        <li class="menu-item {{ (request()->is('listAdvance')) ? 'active' : '' }}">
-            <a href="{{ route('listAdvance') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-checkbox"></i>
-                <div data-i18n="List Advance">List Advance</div>
+        @can('reportpph.index')
+        <li class="menu-item {{ Route::currentRouteNamed('reportpph.index','reportpph.edit') ? 'active' : '' }}"> <a
+                href="{{ route('reportpph.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-address-book"></i>
+                <div data-i18n="Report PPH 23">Report PPH 23 </div>
             </a>
         </li>
         @endcan
@@ -241,7 +239,7 @@
         @can('departement.index')
         <li class="menu-item {{ (request()->is('departement')) ? 'active' : '' }}">
             <a href="{{ route('departement.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-bookmark-filled"></i>
+                <i class="menu-icon tf-icons ti ti-assembly"></i>
                 <div data-i18n="Departement">Departement</div>
             </a>
         </li>
@@ -250,7 +248,7 @@
         @can('jabatan.index')
         <li class="menu-item {{ (request()->is('jabatan')) ? 'active' : '' }}">
             <a href="{{ route('jabatan.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-article-filled-filled"></i>
+                <i class="menu-icon tf-icons ti ti-brand-abstract"></i>
                 <div data-i18n="Jabatan">Jabatan</div>
             </a>
         </li>

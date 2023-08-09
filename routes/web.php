@@ -23,9 +23,11 @@ use App\Http\Controllers\KeperluanController;
 use App\Http\Controllers\PaymentInController;
 use App\Http\Controllers\StaterkitController;
 use App\Http\Controllers\InvoiceOutController;
+use App\Http\Controllers\InvPaymentController;
 use App\Http\Controllers\KpengajuanController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\DepartementController;
+use App\Http\Controllers\ReportPPH23Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,6 +86,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/print', [ReportpbController::class, 'showPrintView']);
     Route::get('paymentIn/report', [PaymentInController::class, 'report'])->name('paymentIn.report');
     Route::get('invoiceOut/report', [InvoiceOutController::class, 'report'])->name('invoiceOut.report');
+    Route::get('export_excel/reportpph', [ReportPPH23Controller::class, 'export_excel'])->name('export_excel.reportpph');
+    Route::post('getLaporan/reportpph', [ReportPPH23Controller::class, 'getLaporan'])->name('laporan.getLaporan.reportpph');
+    Route::post('getLaporan/InvPayment', [InvPaymentController::class, 'getLaporan'])->name('laporan.getLaporan.InvPayment');
     Route::resource('/users', UserController::class);
     Route::resource('/roles', RoleController::class);
     Route::resource('/permissions', PermissionController::class)->except(['show']);
@@ -105,4 +110,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('revenue', RevenueController::class);
     Route::resource('jabatan', JabatanController::class);
     Route::resource('departement', DepartementController::class);
+    Route::resource('reportpph', ReportPPH23Controller::class);
+    Route::resource('invpayment', InvPaymentController::class);
 });
