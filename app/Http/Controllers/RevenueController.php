@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\revenue;
+use App\Models\Revenue;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;

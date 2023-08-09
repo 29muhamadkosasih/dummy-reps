@@ -114,11 +114,13 @@ class ReportPPH23Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ReportPPH23 $user)
+    public function destroy($id)
     {
 
-        $user->delete();
-        return redirect()->back()->with('success', 'Success ! Data reportpph Berhasil di Hapus');
+        $delete = ReportPPH23::find($id);
+        $delete->delete();
+        return redirect()->route('reportpph.index')
+            ->with('success', 'Success ! Data ReportPPH23 Berhasil di Hapus');
     }
 
     public function getLaporan(Request $request)
