@@ -1,6 +1,6 @@
 @extends('layouts/master')
 
-@section('title', 'INVOICE & PAYMENT IN')
+@section('title', 'Invoice & Payment In')
 
 @section('content')
 <!-- Invoice table -->

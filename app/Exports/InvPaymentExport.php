@@ -45,4 +45,5 @@ class InvPaymentExport implements FromCollection, WithHeadings
             'TGL PEMOTONGAN',
         ];
     }
+
 }

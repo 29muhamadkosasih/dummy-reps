@@ -32,6 +32,7 @@ class ReportPPH23Controller extends Controller
         $jumlah_c = DB::table('reportpph23')
             ->get()
             ->sum('pph23');
+
         $reportpph = ReportPPH23::all();
         return view('pages.reportpph.index', compact('reportpph', 'jumlah_a', 'jumlah_b', 'jumlah_c'));
     }
@@ -140,16 +141,27 @@ class ReportPPH23Controller extends Controller
         $to = $request->to . ' ';
         $reportpph = ReportPPH23::whereBetween('created_at', [$from, $to])
             ->get();
-        // $jumlah_total = Form::whereBetween('created_at', [$from, $to])->get()->sum('jumlah_total');
 
-
-        // dd($jumlah_total);
+        $jumlah_a = DB::table('reportpph23')
+            ->whereBetween('created_at', [$from, $to])
+            ->get()
+            ->sum('bruto');
+        $jumlah_b = DB::table('reportpph23')
+            ->whereBetween('created_at', [$from, $to])
+            ->get()
+            ->sum('payment_in');
+        $jumlah_c = DB::table('reportpph23')
+            ->whereBetween('created_at', [$from, $to])
+            ->get()
+            ->sum('pph23');
 
         return view('pages.reportpph.index', [
             'reportpph' => $reportpph,
             'from' => $from,
             'to' => $to,
-            // 'jumlah_total' => $jumlah_total,
+            'jumlah_a' => $jumlah_a,
+            'jumlah_b' => $jumlah_b,
+            'jumlah_c' => $jumlah_c,
 
         ]);
     }

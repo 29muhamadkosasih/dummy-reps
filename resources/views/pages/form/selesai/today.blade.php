@@ -1,6 +1,6 @@
 @extends('layouts/master')
 @section('content')
-@section('title', 'Form')
+@section('title', 'Resume RF')
 <!-- Projects table -->
 <div class="col-12 col-xl-9 col-sm-12 order-1 order-lg-2 mb-4 mb-lg-0">
     <div class="card">

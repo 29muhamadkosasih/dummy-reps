@@ -35,6 +35,7 @@ class InvPaymentController extends Controller
         $jumlah_c = DB::table('invpayment')
             ->get()
             ->sum('deduction');
+
         return view('pages.invpayment.index', compact('invpayment', 'jumlah_a', 'jumlah_b', 'jumlah_c'));
     }
 
@@ -171,16 +172,27 @@ class InvPaymentController extends Controller
         $to = $request->to . ' ';
         $invpayment = InvPayment::whereBetween('created_at', [$from, $to])
             ->get();
-        // $jumlah_total = Form::whereBetween('created_at', [$from, $to])->get()->sum('jumlah_total');
 
-
-        // dd($jumlah_total);
+        $jumlah_a = DB::table('invpayment')
+            ->whereBetween('created_at', [$from, $to])
+            ->get()
+            ->sum('amount_invoice');
+        $jumlah_b = DB::table('invpayment')
+            ->whereBetween('created_at', [$from, $to])
+            ->get()
+            ->sum('payment_in');
+        $jumlah_c = DB::table('invpayment')
+            ->whereBetween('created_at', [$from, $to])
+            ->get()
+            ->sum('deduction');
 
         return view('pages.invpayment.index', [
             'invpayment' => $invpayment,
             'from' => $from,
             'to' => $to,
-            // 'jumlah_total' => $jumlah_total,
+            'jumlah_a' => $jumlah_a,
+            'jumlah_b' => $jumlah_b,
+            'jumlah_c' => $jumlah_c,
 
         ]);
     }

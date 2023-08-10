@@ -1,7 +1,7 @@
 @extends('layouts/master')
 @section('content')
 
-@section('title', 'Form')
+@section('title', 'Report PB')
 
 <!-- Invoice table -->
 
