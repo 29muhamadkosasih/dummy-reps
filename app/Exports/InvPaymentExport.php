@@ -33,16 +33,16 @@ class InvPaymentExport implements FromCollection, WithHeadings
     public function headings(): array
     {
         return [
-            'client',
-            'no_invoice',
-            'bruto',
-            'payment_in',
-            'paid_date',
-            'pph23',
-            'npwp',
-            'masa_pajak',
-            'no_bukpot',
-            'tgl_pemotongan',
+            'CLIENT',
+            'INV NO',
+            'BRUTO',
+            'PAYMENT IN',
+            'PAID DATE',
+            'PPH 23',
+            'NPWP',
+            'MASA PAJAK',
+            'NO BUKPOT',
+            'TGL PEMOTONGAN',
         ];
     }
 }
