@@ -1,6 +1,6 @@
 @extends('layouts/master')
 
-@section('title', 'Invoice & Payemnt In')
+@section('title', 'Invoice & Payment In')
 
 @section('content')
 <!-- Invoice table -->
@@ -66,7 +66,7 @@
                 </div>
                 <div class="row g-3">
                     <div class="col-md-6">
-                        <label class="form-label" for="basicInput">Payemnt In</label>
+                        <label class="form-label" for="basicInput">Payment In</label>
                         <input type="text" class="form-control" id="basic-default-fullname" placeholder="Enter"
                             name="payment_in" />
                         @error('payment_in')

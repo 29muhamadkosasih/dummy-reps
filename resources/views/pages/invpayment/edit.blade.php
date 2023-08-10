@@ -1,12 +1,12 @@
 @extends('layouts/master')
 
 @section('content')
-@section('title', 'Invoice & Payemnt In')
+@section('title', 'Invoice & Payment In')
 <!-- Invoice table -->
 <div class="col-12">
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Edit Invoice & Payemnt In</h5>
+            <h5 class="mb-0">Edit Invoice & Payment In</h5>
         </div>
         <div class="card-body">
             <form method="POST" action="{{ route('invpayment.update', $user->id) }}">
@@ -66,7 +66,7 @@
                 </div>
                 <div class="row g-3">
                     <div class="col-md-6">
-                        <label class="form-label" for="basicInput">Payemnt In</label>
+                        <label class="form-label" for="basicInput">Payment In</label>
                         <input type="text" class="form-control" placeholder="Enter" name="payment_in"
                             value="{{ old('payment_in', $user->payment_in) }}" />
                         @error('payment_in')

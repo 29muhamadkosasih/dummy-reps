@@ -10,7 +10,7 @@
         <div class="card-body">
             <div class="row mb-2">
                 <div class="col-auto me-auto ">
-                    <h5 class="mb-0">Report Data Invoice & Payemnt In
+                    <h5 class="mb-0">Report Data Invoice & Payment In
                 </div>
             </div>
             <form action="{{ route('laporan.getLaporan.InvPayment') }}" method="POST">
@@ -31,7 +31,7 @@
         <div class="card-body">
             <div class="row ">
                 <div class="col-auto me-auto ">
-                    <h5 class="mb-0">List Data Invoice & Payemnt In</h5>
+                    <h5 class="mb-0">List Data Invoice & Payment In</h5>
                 </div>
                 <div class="col-auto">
                     <a href="{{ route('invpayment.create') }}" class="btn btn-primary">Create</a>
@@ -48,7 +48,7 @@
                             <th>No PO</th>
                             <th>Date Invoice</th>
                             <th>Amount Invoice (Rp.)</th>
-                            <th>Payemnt In (Rp.)</th>
+                            <th>Payment In (Rp.)</th>
                             <th>Due Date</th>
                             <th>Paid Date</th>
                             <th>Deduction</th>

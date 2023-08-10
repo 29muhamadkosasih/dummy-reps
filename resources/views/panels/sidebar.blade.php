@@ -161,7 +161,7 @@
         <li class="menu-item {{ Route::currentRouteNamed('invpayment.index','invpayment.edit') ? 'active' : '' }}">
             <a href="{{ route('invpayment.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-file-invoice"></i>
-                <div data-i18n="Invoice & Payemnt In">Invoice & Payemnt In</div>
+                <div data-i18n="Invoice & Payment In">Invoice & Payment In</div>
             </a>
         </li>
         @endcan
