@@ -25,7 +25,7 @@ class NoRekController extends Controller
 
         // dd($bank);
 
-        return view('pages.NoRek.index', [
+        return view('pages.norek.index', [
             'norek'   => $norek,
             'bank'    => $bank,
             'userId'  => $userId,
@@ -61,7 +61,7 @@ class NoRekController extends Controller
 
 
 
-        return view('pages.NoRek.index', [
+        return view('pages.norek.index', [
             'edit'   => $edit,
             'bank'   => $bank,
             'norek'   => $norek,

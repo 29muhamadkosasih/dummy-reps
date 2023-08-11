@@ -14,13 +14,22 @@
             </div>
             <form action="{{ route('laporan.getLaporan.reportpph') }}" method="POST">
                 @csrf
-                <label for="from" class="mb-2">Start Date</label><br>
-                <input type="text" name="from" class="form-control mb-2" placeholder="Start Date"
-                    onfocusin="(this.type='date')" onfocusout="(this.type='text')">
-                <label for="to" class="mb-2">End Date</label><br>
-                <input type="text" name="to" class="form-control mb-3" placeholder="End Date"
-                    onfocusin="(this.type='date')" onfocusout="(this.type='text')">
-                <button type="submit" class="btn btn-primary mb-0" style="align-items: right">Cari Data</button>
+                <div class="row g-4">
+                    <div class="col-md-5 mb-2">
+                        <label for="from" class="mb-2">Start Date</label><br> <input type="text" name="from"
+                            class="form-control mb-0" placeholder="Start Date" onfocusin="(this.type='date')"
+                            onfocusout="(this.type='text')">
+                    </div>
+                    <div class="col-md-5 mb-2">
+                        <label for="to" class="mb-2">End Date</label><br>
+                        <input type="text" name="to" class="form-control mb-0" placeholder="End Date"
+                            onfocusin="(this.type='date')" onfocusout="(this.type='text')">
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <label for="to" class="mb-2"></label><br>
+                        <button type="submit" class="btn btn-primary float-end mt-2">Cari Data</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
@@ -42,7 +51,7 @@
             <div class="table-responsive text-nowrap">
                 <table class="table table-hover table-bordered zero-configuration">
                     <thead>
-                        <tr>
+                        <tr style="background-color: skyblue">
                             <th width='10px' style="text-align: center">No</th>
                             <th>Client</th>
                             <th>No Invoice</th>
@@ -104,7 +113,7 @@
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr style="background-color: skyblue">
+                    <tr style="color:black; background-color: lightgreen">
                         <th colspan="3" style="text-align: right">TOTAL</th>
                         <td colspan="" style="text-align: right">
 

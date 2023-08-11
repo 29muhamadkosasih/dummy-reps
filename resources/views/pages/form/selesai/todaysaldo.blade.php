@@ -14,7 +14,7 @@
             <div class="table-responsive text-nowrap">
                 <table class="table table-hover table-bordered">
                     <thead>
-                        <tr>
+                        <tr style="background-color: skyblue">
                             <th width='10px' style="text-align: center">No</th>
                             <th>Dari</th>
                             <th>Payment Method</th>
@@ -47,8 +47,7 @@
                         </tr>
                         @empty
                         @endforelse
-                        <tr style="color:black;
-                                                    background-color: skyblue">
+                        <tr style="color:black; background-color: lightgreen">
                             <th colspan="4" style="text-align :right ">TOTAL CASH</th>
                             <td style="text-align :right"> {{ number_format($jumlah_total, 0, ',',
                                 '.') }}</td>
@@ -72,21 +71,19 @@
                         </tr>
                         @empty
                         @endforelse
-                        <tr style="color:black;
-                            background-color: skyblue">
+                        <tr style="color:black; background-color: lightgreen">
                             <th colspan="4" style="text-align :right ">TOTAL TRANSFER </th>
                             <td style="text-align :right"> {{ number_format($jumlah_total2, 0, ',',
                                 '.') }}</td>
                         </tr>
-                        <tr style="color:black;
-                                                    background-color: skyblue">
+                        <tr style="color:black; background-color: lightgreen">
                             <th colspan="4" style="text-align :right ">JUMLAH TOTAL </th>
                             <td style="text-align :right"> {{ number_format($jumlah_total3, 0, ',',
                                 '.') }}</td>
                         </tr>
                     </tbody>
                     @foreach ($latestData as $item)
-                    <tr style="color:black;background-color: skyblue">
+                    <tr style="color:black; background-color: lightgreen">
                         <th colspan="4" style="text-align :right ">JUMLAH TOTAL SALDO </th>
 
                         <td style="text-align :right">{{ number_format($item->jumlah_saldo, 0, ',',

@@ -36,7 +36,7 @@
             <div class="table-responsive text-nowrap">
                 <table class="table table-hover table-bordered zero-configuration">
                     <thead>
-                        <tr>
+                        <tr style="background-color: skyblue">
                             <th width='10px'>No</th>
                             <th>Nama</th>
                             <th>Biaya Admin (Rp.)</th>

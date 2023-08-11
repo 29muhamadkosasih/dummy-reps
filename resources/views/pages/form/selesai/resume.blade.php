@@ -38,7 +38,7 @@
             <div class="table-responsive text-nowrap">
                 <table class="table table-hover table-bordered table-bordered">
                     <thead>
-                        <tr>
+                        <tr style="background-color: skyblue">
                             <th width='10px' style="text-align: center">No</th>
                             <th>Tanggal</th>
                             <th>Dari</th>
@@ -69,7 +69,7 @@
                             </td>
                         </tr>
                         @endforeach
-                        <tr style="background-color: skyblue">
+                        <tr style="color:black; background-color: lightgreen">
                             <th colspan="5" style="text-align :right ">TOTAL</th>
                             <td style="text-align :right"> {{ number_format($jumlah_total, 0, ',',
                                 '.') }}</td>

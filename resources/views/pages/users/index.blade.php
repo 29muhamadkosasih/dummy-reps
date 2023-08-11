@@ -12,12 +12,12 @@
                     <h5 class="mb-0">List Data Users</h5>
                 </div>
                 <div class="col-auto">
-                    <a href="{{ url('/export_excel') }}" class="btn btn-success me-2" target="_blank">Export Excel</a>
+                    {{-- <a href="{{ url('/export_excel') }}" class="btn btn-success me-2" target="_blank">Export Excel</a> --}}
                     @can('users.create')
                     <a href="{{ route('users.create') }}" class="btn btn-primary">Create</a>
                     @endcan
-
-                    {{-- <button class="btn btn-secondary add-new btn-success" tabindex="0"
+{{--
+                    <button class="btn btn-secondary add-new btn-success" tabindex="0"
                         aria-controls="DataTables_Table_0" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasAddUser"><span><span class="d-none d-sm-inline-block ">Import
                                 Excel</span></span></button> --}}
@@ -27,7 +27,7 @@
             <div class="table-responsive text-nowrap">
                 <table class="table table-hover table-bordered zero-configuration">
                     <thead>
-                        <tr>
+                        <tr style="background-color: skyblue">
                             <th width='10px' style="text-align: center">No</th>
                             <th>Name</th>
                             <th>UserName</th>

@@ -60,8 +60,7 @@
                         </tr>
                         @empty
                         @endforelse
-                        <tr style="color:black;
-                                                    background-color: skyblue">
+                        <tr style="color:black; background-color: lightgreen">
                             <th colspan="5" style="text-align :right ">TOTAL CASH</th>
                             <td style="text-align :right"> {{ number_format($jumlah_total, 0, ',',
                                 '.') }}</td>
@@ -88,26 +87,22 @@
                         </tr>
                         @empty
                         @endforelse
-                        <tr style="color:black;
-                            background-color: skyblue">
+                        <tr style="color:black; background-color: lightgreen">
                             <th colspan="5" style="text-align :right ">TOTAL TRANSFER </th>
                             <td style="text-align :right"> {{ number_format($jumlah_total2, 0, ',',
                                 '.') }}</td>
                         </tr>
-                        <tr style="color:black;
-                            background-color: skyblue">
-                            <th colspan="5" style="text-align :right ">TOTAL BIAYA TRANSFER </th>
+                        <tr style="color:black; background-color: lightgreen">n :right ">TOTAL BIAYA TRANSFER </th>
                             <td style="text-align :right"> {{ number_format($jumlah_admin, 0, ',',
                                 '.') }}</td>
                         </tr>
-                        <tr style="color:black;
-                                                    background-color: skyblue">
+                        <tr style="color:black; background-color: lightgreen">
                             <th colspan="5" style="text-align :right ">JUMLAH TOTAL </th>
                             <td style="text-align :right"> {{ number_format($jumlah_akhir, 0, ',',
                                 '.') }}</td>
                         </tr>
                         @foreach ($latestData as $item)
-                        <tr style="color:black;background-color: skyblue">
+                        <tr style="color:black; background-color: lightgreen">
                             <th colspan="5" style="text-align :right ">JUMLAH TOTAL SALDO </th>
 
                             <td style="text-align :right">{{ number_format($item->jumlah_saldo, 0, ',',

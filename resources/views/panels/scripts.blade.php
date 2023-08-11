@@ -48,6 +48,7 @@
 
 <!-- Page JS -->
 <script src="{{ asset('assets/js/ui-toasts.js') }}"></script>
+<script src="{{ asset('assets/js/ui-modals.js') }}"></script>
 
 <!-- Vendors JS -->
 <script src="{{ asset('assets/vendor/libs/@form-validation/umd/bundle/popular.min.js') }}"></script>

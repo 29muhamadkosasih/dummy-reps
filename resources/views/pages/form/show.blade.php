@@ -349,18 +349,18 @@
                             </tr>
                             @switch($show)
                             @case($show->payment == 'Transfer')
-                            <tr>
+                            <tr style="color:black; background-color: lightgreen">
                                 <th colspan="6" style="text-align :right ">Biaya Admin</th>
                                 <td style="text-align :right">{{ $show->b_admin }}</td>
                             </tr>
-                            <tr>
+                            <tr style="color:black; background-color: lightgreen">
                                 <th colspan="6" style="text-align :right ">TOTAL</th>
                                 <td style="text-align :right"> {{ number_format($show->jumlah_total, 0, ',',
                                     '.') }}</td>
                             </tr>
                             @break
                             @default
-                            <tr>
+                            <tr style="color:black; background-color: lightgreen">
                                 <th colspan="6" style="text-align :right ">TOTAL</th>
                                 <td style="text-align :right"> {{ number_format($show->jumlah_total, 0, ',',
                                     '.') }}</td>

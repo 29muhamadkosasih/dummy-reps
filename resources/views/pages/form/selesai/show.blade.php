@@ -43,7 +43,7 @@
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <thead>
-                                    <tr>
+                                    <tr style="background-color: skyblue">
                                         <th width='20px'>No</th>
                                         <th>Description</th>
                                         <th>Qty</th>
@@ -125,7 +125,7 @@
                                             @endswitch
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr style="color:black; background-color: lightgreen">
                                         <th colspan="5" style="text-align: right ">TOTAL</th>
                                         <td>Rp. {{ number_format($show->jumlah_total, 0, ',', '.') }}</td>
                                     </tr>

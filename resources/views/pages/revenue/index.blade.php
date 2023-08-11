@@ -9,9 +9,9 @@
             <div class="row ">
                 <div class="col-auto me-auto ">
                     @if (isset($edit))
-                    <h5 class="mb-0">Edit Data Revenue</h5>
+                    <h5 class="mb-0">Edit A/E Revenue</h5>
                     @else
-                    <h5 class="mb-0">Tambah Data Revenue</h5>
+                    <h5 class="mb-0">Tambah A/E Revenue</h5>
                     @endif
                 </div>
                 <div class="card-body">
@@ -30,13 +30,13 @@
         <div class="card-body">
             <div class="row ">
                 <div class="col-auto me-auto ">
-                    <h5 class="mb-0">List Data Revenue</h5>
+                    <h5 class="mb-0">List A/E Revenue</h5>
                 </div>
             </div>
             <div class="table-responsive text-nowrap">
                 <table class="table table-hover table-bordered zero-configuration">
                     <thead>
-                        <tr>
+                        <tr style="background-color: skyblue">
                             <th width='10px'>No</th>
                             <th>Date</th>
                             <th>Keterangan</th>
@@ -74,7 +74,7 @@
                         @endforeach
                     </tbody>
                     <tr></tr>
-                    <tr style="background-color: skyblue">
+                    <tr style="color:black; background-color: lightgreen">
                         <th colspan="3" style="text-align: right">TOTAL</th>
                         <td colspan="" style="text-align: right">
 

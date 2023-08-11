@@ -238,7 +238,7 @@
                                     @endswitch
                                 </td>
                             </tr>
-                            <tr style="background-color:skyblue">
+                            <tr style="color:black; background-color: lightgreen">
                                 <th colspan="5" style="text-align: right">TOTAL</th>
                                 <td style="text-align: right"> {{ number_format($show->jumlah_total, 0, ',',
                                     '.') }}</td>
@@ -263,7 +263,7 @@
                                     '.') }}</td>
                             </tr>
 
-                            <tr style="background-color:skyblue">
+                            <tr style="color:black; background-color: lightgreen">
                                 <th colspan="5" style="text-align: right">Balance</th>
                                 <td style="text-align: right"> {{ number_format($show->balance, 0, ',',
                                     '.') }}</td>

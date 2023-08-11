@@ -111,6 +111,7 @@
                 <div class="mb-3 mt-2">
                     <button type="submit" class="btn btn-primary float-end ms-2">Submit</button>
                     <a href="{{ route('reportpph.index') }}" class="btn btn-secondary float-end ">Back</a>
+                </div>
             </form>
 
         </div>

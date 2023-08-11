@@ -16,9 +16,9 @@
                 </div>
                 <div class="card-body">
                     @if (isset($edit))
-                    @include('pages.NoRek.edit')
+                    @include('pages.norek.edit')
                     @else
-                    @include('pages.NoRek.create')
+                    @include('pages.norek.create')
                     @endif
                 </div>
             </div>
@@ -39,7 +39,7 @@
             <div class="table-responsive text-nowrap">
                 <table class="table table-hover table-bordered zero-configuration">
                     <thead>
-                        <tr>
+                        <tr style="background-color: skyblue">
                             <th width='10px'>No</th>
                             <th>Bank</th>
                             <th>Rekening</th>
@@ -88,9 +88,9 @@
                 </div>
             </div>
             <div class="table-responsive text-nowrap">
-                <table class="table table-hover zero-configuration">
+                <table class="table table-hover table-bordered zero-configuration">
                     <thead>
-                        <tr>
+                        <tr style="background-color: skyblue">
                             <th width='10px'>No</th>
                             <th>Bank</th>
                             <th>Rekening</th>

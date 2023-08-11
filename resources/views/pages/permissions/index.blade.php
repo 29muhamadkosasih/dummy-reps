@@ -21,7 +21,7 @@
             <div class="table-responsive text-nowrap">
                 <table class="table table-hover table-bordered zero-configuration">
                     <thead>
-                        <tr>
+                        <tr style="background-color: skyblue">
                             <th width='50px' class="text-center">No</th>
                             <th>Name</th>
                             <th width='100px' class="text-center">Actions</th>

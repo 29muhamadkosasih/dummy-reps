@@ -41,9 +41,14 @@ class RevenueController extends Controller
 
         $edit = Revenue::find($id);
         $revenue = Revenue::all();
+        $jumlah_a = DB::table('revenue')
+            ->get()
+            ->sum('amount_invoice');
         return view('pages.revenue.index', [
             'edit'   => $edit,
-            'revenue'    => $revenue
+            'revenue'    => $revenue,
+            'jumlah_a'    => $jumlah_a
+
         ]);
     }
 

@@ -57,7 +57,7 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <div class="d-flex justify-content-between">
-                            <label class="form-label" for="password">Amount Invoice</label>
+                            <label class="form-label" for="password">Amount (Rp.)</label>
                         </div>
                         <input type="text" id="basic-default-email" class="form-control" placeholder="john.doe"
                             aria-label="john.doe" aria-describedby="basic-default-email2" name="amount_invoice"
@@ -65,21 +65,21 @@
                     </div>
                 </div>
                 <div class="row g-3">
-                    <div class="col-md-6">
-                        <label class="form-label" for="basicInput">Payment In</label>
-                        <input type="text" class="form-control" id="basic-default-fullname" placeholder="Enter"
-                            name="payment_in" />
-                        @error('payment_in')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label" for="basicInput">Due Date</label>
                         <input type="date" class="form-control" id="basic-default-fullname" placeholder="Enter"
                             name="due_date" required />
                         @error('due_date')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label" for="basicInput">Amount Payment In (Rp.)</label>
+                        <input type="text" class="form-control" id="basic-default-fullname" placeholder="Enter"
+                            name="payment_in" />
+                        @error('payment_in')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>

@@ -15,13 +15,22 @@
             </div>
             <form action="{{ route('laporan.getLaporan.InvPayment') }}" method="POST">
                 @csrf
-                <label for="from" class="mb-2">Start Date</label><br>
-                <input type="text" name="from" class="form-control mb-2" placeholder="Start Date"
-                    onfocusin="(this.type='date')" onfocusout="(this.type='text')">
-                <label for="to" class="mb-2">End Date</label><br>
-                <input type="text" name="to" class="form-control mb-3" placeholder="End Date"
-                    onfocusin="(this.type='date')" onfocusout="(this.type='text')">
-                <button type="submit" class="btn btn-primary mb-0" style="align-items: right">Cari Data</button>
+                <div class="row g-4">
+                    <div class="col-md-5 mb-2">
+                        <label for="from" class="mb-2">Start Date</label><br> <input type="text" name="from"
+                            class="form-control mb-0" placeholder="Start Date" onfocusin="(this.type='date')"
+                            onfocusout="(this.type='text')">
+                    </div>
+                    <div class="col-md-5 mb-2">
+                        <label for="to" class="mb-2">End Date</label><br>
+                        <input type="text" name="to" class="form-control mb-0" placeholder="End Date"
+                            onfocusin="(this.type='date')" onfocusout="(this.type='text')">
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <label for="to" class="mb-2"></label><br>
+                        <button type="submit" class="btn btn-primary float-end mt-2">Cari Data</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
@@ -40,18 +49,18 @@
             <div class="table-responsive text-nowrap">
                 <table class="table table-hover table-bordered zero-configuration">
                     <thead>
-                        <tr>
+                        <tr style="background-color: skyblue">
                             <th width='10px' style="text-align: center">No</th>
                             <th>No Project</th>
                             <th>PIC Client</th>
                             <th>No Invoice</th>
                             <th>No PO</th>
                             <th>Date Invoice</th>
-                            <th>Amount Invoice (Rp.)</th>
-                            <th>Payment In (Rp.)</th>
+                            <th>Amount (Rp.)</th>
                             <th>Due Date</th>
+                            <th>Amount Payment In (Rp.)</th>
                             <th>Paid Date</th>
-                            <th>Deduction</th>
+                            <th>Pot. PPH 23</th>
                             <th width='150px' class="text-center">Action</th>
                         </tr>
                     </thead>
@@ -65,12 +74,12 @@
                             <td>{{$user->no_po}}</td>
                             <td>{{$user->date_invoice}}</td>
                             <td style="text-align: right">
-                                {{ number_format($user->amount_invoice, 0, ',', '.') }}
-                            </td>
-                            <td style="text-align: right">
                                 {{ number_format($user->payment_in, 0, ',', '.') }}
                             </td>
                             <td>{{$user->due_date}}</td>
+                            <td style="text-align: right">
+                                {{ number_format($user->amount_invoice, 0, ',', '.') }}
+                            </td>
                             <td>{{$user->paid_date}}</td>
                             <td style="text-align: right">
 
@@ -100,16 +109,16 @@
                     <tr></tr>
                     <tr></tr>
                     <tr></tr>
-                    <tr style="background-color: skyblue">
-                        <th colspan="6" style="text-align: right">TOTAL</th>
+                    <tr style="color:black; background-color: lightgreen">
+                        <th colspan="6" style="text-align: right"><b>TOTAL</b></th>
                         <td colspan="" style="text-align: right">
 
                             {{ number_format($jumlah_a, 0, ',', '.') }}
                         </td>
+                        <td></td>
                         <td colspan="" style="text-align: right">
                             {{ number_format($jumlah_b, 0, ',', '.') }}
                         </td>
-                        <td></td>
                         <td></td>
                         <td colspan="" style="text-align: right">
 
