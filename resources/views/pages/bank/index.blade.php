@@ -37,9 +37,9 @@
                 <table class="table table-hover table-bordered zero-configuration">
                     <thead>
                         <tr style="background-color: skyblue">
-                            <th width='10px'>No</th>
-                            <th>Nama</th>
-                            <th>Biaya Admin (Rp.)</th>
+                            <th class="text-center" width='10px'>No</th>
+                            <th class="text-center">Nama</th>
+                            <th class="text-center">Biaya Admin (Rp.)</th>
                             <th width='150px' class="text-center">Action</th>
                         </tr>
                     </thead>

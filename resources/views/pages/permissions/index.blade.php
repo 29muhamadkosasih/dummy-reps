@@ -23,7 +23,7 @@
                     <thead>
                         <tr style="background-color: skyblue">
                             <th width='50px' class="text-center">No</th>
-                            <th>Name</th>
+                            <th class="text-center">Name</th>
                             <th width='100px' class="text-center">Actions</th>
                         </tr>
                     </thead>

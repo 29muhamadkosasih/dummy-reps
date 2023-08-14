@@ -24,15 +24,15 @@
                     <thead>
                         <tr style="background-color: skyblue">
                             <th width='10px' style="text-align: center">No</th>
-                            <th>Tgl Pengajuan</th>
+                            <th class="text-center">Tgl Pengajuan</th>
                             {{-- <th>Dari</th>
                             <th>Departement</th> --}}
-                            <th>Keperluan</th>
-                            <th>Untuk</th>
-                            <th>Pengajuan</th>
-                            <th>Payment</th>
-                            <th>Tgl Kebutuhan</th>
-                            <th>Status</th>
+                            <th class="text-center">Keperluan</th>
+                            <th class="text-center">Untuk</th>
+                            <th class="text-center">Pengajuan</th>
+                            <th class="text-center">Payment</th>
+                            <th class="text-center">Tgl Kebutuhan</th>
+                            <th class="text-center">Status</th>
                             <th width='200px' style="text-align: center">Action</th>
                         </tr>
                     </thead>

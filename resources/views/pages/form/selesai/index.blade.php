@@ -17,15 +17,15 @@
                     <thead>
                         <tr style="background-color: skyblue">
                             <th width='10px' style="text-align: center">No</th>
-                            <th>Dari</th>
-                            <th>Departement</th>
-                            <th>Payment Method</th>
-                            <th>Kategori
+                            <th class="text-center">Dari</th>
+                            <th class="text-center">Departement</th>
+                            <th class="text-center">Payment Method</th>
+                            <th class="text-center">Kategori
                                 Pengajuan</th>
-                            <th>Jumlah (Rp)</th>
-                            <th>Nama Bank </th>
-                            <th>No Rekening </th>
-                            <th>Penerima </th>
+                            <th class="text-center">Jumlah (Rp)</th>
+                            <th class="text-center">Nama Bank </th>
+                            <th class="text-center">No Rekening </th>
+                            <th class="text-center">Penerima </th>
                             <th class="text-center">Status</th>
                         </tr>
                     </thead>

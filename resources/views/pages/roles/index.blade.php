@@ -23,8 +23,8 @@
                     <thead>
                         <tr style="background-color: skyblue">
                             <th width='10px' style="text-align: center">No</th>
-                            <th>Title</th>
-                            <th>Short Code</th>
+                            <th class="text-center">Title</th>
+                            <th class="text-center">Short Code</th>
                             <th width='150px' class="text-center">Actions</th>
                         </tr>
                     </thead>

@@ -4,7 +4,6 @@
 
 @section('content')
 <!-- Invoice table -->
-
 <div class="col-xl-12 mb-3">
     <div class="card">
         <div class="card-body">
@@ -51,16 +50,16 @@
                     <thead>
                         <tr style="background-color: skyblue">
                             <th width='10px' style="text-align: center">No</th>
-                            <th>No Project</th>
-                            <th>PIC Client</th>
-                            <th>No Invoice</th>
-                            <th>No PO</th>
-                            <th>Date Invoice</th>
-                            <th>Amount (Rp.)</th>
-                            <th>Due Date</th>
-                            <th>Amount Payment In (Rp.)</th>
-                            <th>Paid Date</th>
-                            <th>Pot. PPH 23</th>
+                            <th class="text-center">No Project</th>
+                            <th class="text-center">PIC Client</th>
+                            <th class="text-center">No Invoice</th>
+                            <th class="text-center">No PO</th>
+                            <th class="text-center">Date Invoice</th>
+                            <th class="text-center">Amount (Rp.)</th>
+                            <th class="text-center">Due Date</th>
+                            <th class="text-center">Amount Payment In (Rp.)</th>
+                            <th class="text-center">Paid Date</th>
+                            <th class="text-center">Pot. PPH 23</th>
                             <th width='150px' class="text-center">Action</th>
                         </tr>
                     </thead>
@@ -74,11 +73,11 @@
                             <td>{{$user->no_po}}</td>
                             <td>{{$user->date_invoice}}</td>
                             <td style="text-align: right">
-                                {{ number_format($user->payment_in, 0, ',', '.') }}
+                                {{ number_format($user->amount_invoice, 0, ',', '.') }}
                             </td>
                             <td>{{$user->due_date}}</td>
                             <td style="text-align: right">
-                                {{ number_format($user->amount_invoice, 0, ',', '.') }}
+                                {{ number_format($user->payment_in, 0, ',', '.') }}
                             </td>
                             <td>{{$user->paid_date}}</td>
                             <td style="text-align: right">

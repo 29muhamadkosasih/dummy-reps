@@ -36,8 +36,8 @@
                 <table class="table table-hover table-bordered zero-configuration">
                     <thead>
                         <tr style="background-color: skyblue">
-                            <th width='10px'>No</th>
-                            <th>Departement</th>
+                            <th class="text-center" width='10px'>No</th>
+                            <th class="text-center">Departement</th>
                             <th width='100px' class="text-center">Action</th>
                         </tr>
                     </thead>

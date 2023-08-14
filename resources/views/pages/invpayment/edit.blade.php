@@ -28,8 +28,8 @@
                     <div class="col-md-6">
                         <label class="form-label" for="basic-default-email">No Invoice</label>
                         <div class="input-group input-group-merge">
-                            <input type="number" id="basic-default-email" class="form-control" placeholder="john.doe"
-                                aria-label="john.doe" aria-describedby="basic-default-email2" name="no_invoice" required
+                            <input type="number" id="basic-default-email" class="form-control" placeholder="Enter"
+                                aria-label="Enter" aria-describedby="basic-default-email2" name="no_invoice" required
                                 value="{{ $user->no_invoice }}" />
                         </div>
                     </div>
@@ -60,8 +60,8 @@
                         <div class="d-flex justify-content-between">
                             <label class="form-label" for="password">Amount (Rp.)</label>
                         </div>
-                        <input type="text" id="basic-default-email" class="form-control" placeholder="john.doe"
-                            aria-label="john.doe" aria-describedby="basic-default-email2" name="amount_invoice" required
+                        <input type="text" id="basic-default-email" class="form-control" placeholder="Enter"
+                            aria-label="Enter" aria-describedby="basic-default-email2" name="amount_invoice" required
                             value="{{ $user->amount_invoice }}" />
                     </div>
                 </div>

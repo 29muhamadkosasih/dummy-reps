@@ -37,10 +37,10 @@
                 <table class="table table-hover table-bordered zero-configuration">
                     <thead>
                         <tr style="background-color: skyblue">
-                            <th width='10px'>No</th>
-                            <th>Date</th>
-                            <th>Keterangan</th>
-                            <th>Invoice Amount (Rp.)</th>
+                            <th class="text-center" width='10px'>No</th>
+                            <th class="text-center">Date</th>
+                            <th class="text-center">Keterangan</th>
+                            <th class="text-center">Amount (Rp.)</th>
                             <th width='150px' class="text-center">Action</th>
                         </tr>
                     </thead>

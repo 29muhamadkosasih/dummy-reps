@@ -53,16 +53,16 @@
                     <thead>
                         <tr style="background-color: skyblue">
                             <th width='10px' style="text-align: center">No</th>
-                            <th>Client</th>
-                            <th>No Invoice</th>
-                            <th>Bruto (Rp.)</th>
-                            <th>Payment In (Rp.)</th>
-                            <th>Paid Date</th>
-                            <th>PPH 23 (Rp.)</th>
-                            <th>Npwp</th>
-                            <th>Masa Pajak</th>
-                            <th>No Bukpot</th>
-                            <th>Tanggal Pemotongan</th>
+                            <th class="text-center">Client</th>
+                            <th class="text-center">No Invoice</th>
+                            <th class="text-center">Bruto (Rp.)</th>
+                            <th class="text-center">Amount Payment In (Rp.)</th>
+                            <th class="text-center">Paid Date</th>
+                            <th class="text-center">PPH 23 (Rp.)</th>
+                            <th class="text-center">Npwp</th>
+                            <th class="text-center">Masa Pajak</th>
+                            <th class="text-center">No Bukpot</th>
+                            <th class="text-center">Tanggal Pemotongan</th>
                             <th width='150px' class="text-center">Action</th>
                         </tr>
                     </thead>

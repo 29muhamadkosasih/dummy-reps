@@ -13,7 +13,7 @@
             <div class="table-responsive text-nowrap">
                 <table class="table table-hover table-bordered">
                     <thead>
-                        <tr>
+                        <tr style="background-color: skyblue">
                             <th width='10px' style="text-align: center">No</th>
                             <th>Dari</th>
                             <th>Payment Method</th>
@@ -92,7 +92,8 @@
                             <td style="text-align :right"> {{ number_format($jumlah_total2, 0, ',',
                                 '.') }}</td>
                         </tr>
-                        <tr style="color:black; background-color: lightgreen">n :right ">TOTAL BIAYA TRANSFER </th>
+                        <tr style="color:black; background-color: lightgreen">
+                            <th colspan="5" style="text-align :right ">TOTAL BIAYA TRANSFER </th>
                             <td style="text-align :right"> {{ number_format($jumlah_admin, 0, ',',
                                 '.') }}</td>
                         </tr>

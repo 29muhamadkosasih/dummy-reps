@@ -141,14 +141,14 @@
                     <thead>
                         <tr style="background-color: skyblue">
                             <th width='10px' style="text-align: center">No</th>
-                            <th>Tanggal Pengajuan</th>
-                            <th>Dari</th>
-                            <th>Departement</th>
-                            <th>Untuk</th>
-                            <th>Pengajuan</th>
-                            <th>Payment</th>
-                            <th>Tanggal Kebutuhan</th>
-                            <th>Status</th>
+                            <th class="text-center">Tanggal Pengajuan</th>
+                            <th class="text-center">Dari</th>
+                            <th class="text-center">Departement</th>
+                            <th class="text-center">Untuk</th>
+                            <th class="text-center">Pengajuan</th>
+                            <th class="text-center">Payment</th>
+                            <th class="text-center">Tanggal Kebutuhan</th>
+                            <th class="text-center">Status</th>
                         </tr>
                     </thead>
                     <tbody>
