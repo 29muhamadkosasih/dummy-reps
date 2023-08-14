@@ -91,10 +91,10 @@
                 <table class="table table-hover table-bordered zero-configuration">
                     <thead>
                         <tr style="background-color: skyblue">
-                            <th width='10px'>No</th>
-                            <th>Bank</th>
-                            <th>Rekening</th>
-                            <th>Nama Penerima</th>
+                            <th class="text-center" width='10px'>No</th>
+                            <th class="text-center">Bank</th>
+                            <th class="text-center">Rekening</th>
+                            <th class="text-center">Nama Penerima</th>
                             <th width='100px' class="text-center">Action</th>
                         </tr>
                     </thead>

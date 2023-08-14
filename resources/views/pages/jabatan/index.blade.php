@@ -1,6 +1,6 @@
 @extends('layouts/master')
 @section('content')
-@section('title', 'jabatan')
+@section('title', 'Jabatan')
 <!-- Invoice table -->
 <div class="col-xs-4 col-sm-4 col-md-4 mb-4">
     <div class="card">
@@ -8,9 +8,9 @@
             <div class="row ">
                 <div class="col-auto me-auto ">
                     @if (isset($edit))
-                    <h5 class="mb-0">Edit Data jabatan</h5>
+                    <h5 class="mb-0">Edit Data Jabatan</h5>
                     @else
-                    <h5 class="mb-0">Tambah Data jabatan</h5>
+                    <h5 class="mb-0">Tambah Data Jabatan</h5>
                     @endif
                 </div>
                 <div class="card-body">
@@ -29,7 +29,7 @@
         <div class="card-body">
             <div class="row ">
                 <div class="col-auto me-auto ">
-                    <h5 class="mb-0">List Data jabatan</h5>
+                    <h5 class="mb-0">List Data Jabatan</h5>
                 </div>
             </div>
             <div class="table-responsive text-nowrap">
