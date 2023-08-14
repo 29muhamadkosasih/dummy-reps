@@ -41,8 +41,11 @@
                 <div class="col-auto me-auto ">
                     <h5 class="mb-0">List Data Invoice & Payment In</h5>
                 </div>
-                <div class="col-auto">
-                    <a href="{{ route('invpayment.create') }}" class="btn btn-primary">Create</a>
+                <div class="col-auto mt-1">
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalCenter">
+                        Import
+                    </button>
+                    <a href="{{ route('invpayment.create') }}" class="btn btn-primary me-2">Create</a>
                 </div>
             </div>
             <div class="table-responsive text-nowrap">
@@ -67,22 +70,96 @@
                         @foreach ($invpayment as $user)
                         <tr>
                             <td class="text-center">{{$loop->iteration}}</td>
-                            <td>{{$user->no_project}}</td>
-                            <td>{{$user->pic_client}}</td>
-                            <td>{{$user->no_invoice}}</td>
-                            <td>{{$user->no_po}}</td>
-                            <td>{{$user->date_invoice}}</td>
-                            <td style="text-align: right">
-                                {{ number_format($user->amount_invoice, 0, ',', '.') }}
+                            <td>
+                                @switch($user)
+                                @case($user->no_project == null)
+                                @break
+                                @default
+                                {{$user->no_project}}
+                                @endswitch
+
                             </td>
-                            <td>{{$user->due_date}}</td>
-                            <td style="text-align: right">
-                                {{ number_format($user->payment_in, 0, ',', '.') }}
+                            <td>
+
+                                @switch($user)
+                                @case($user->pic_client == null)
+                                @break
+                                @default
+                                {{$user->pic_client}}
+                                @endswitch
                             </td>
-                            <td>{{$user->paid_date}}</td>
+                            <td>
+
+                                @switch($user)
+                                @case($user->no_invoice == null)
+                                @break
+                                @default
+                                {{$user->no_invoice}}
+                                @endswitch
+                            </td>
+                            <td>
+
+                                @switch($user)
+                                @case($user->no_po == null)
+                                @break
+                                @default
+                                {{$user->no_po}}
+                                @endswitch
+
+                            </td>
+                            <td>
+                                @switch($user)
+                                @case($user->date_invoice == null)
+                                @break
+                                @default
+                                {{$user->date_invoice}}
+                                @endswitch
+
+                            </td>
                             <td style="text-align: right">
 
+                                @switch($user)
+                                @case($user->amount_invoice == null)
+                                @break
+                                @default
+                                {{ number_format($user->amount_invoice, 0, ',', '.') }}
+                                @endswitch
+
+                            </td>
+                            <td>
+
+                                @switch($user)
+                                @case($user->due_date == null)
+                                @break
+                                @default
+                                {{$user->due_date}}
+                                @endswitch
+                            </td>
+                            <td style="text-align: right">
+
+                                @switch($user)
+                                @case($user->payment_in == null)
+                                @break
+                                @default
+                                {{ number_format($user->payment_in, 0, ',', '.') }}
+                                @endswitch
+
+                            </td>
+                            <td>
+                                @switch($user)
+                                @case($user->paid_date == null)
+                                @break
+                                @default
+                                {{$user->paid_date}}
+                                @endswitch
+                            </td>
+                            <td style="text-align: right">
+                                @switch($user)
+                                @case($user->deduction == null)
+                                @break
+                                @default
                                 {{ number_format($user->deduction, 0, ',', '.') }}
+                                @endswitch
                             </td>
                             <td class="text-center">
                                 <a href="{{ route('invpayment.edit', $user->id) }}"
@@ -127,6 +204,34 @@
                     </tr>
                 </table>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCenterTitle">Import</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form class="add-new-user pt-0" action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label" for="add-user-fullname">Import</label>
+                        <input type="file" class="form-control" id="add-user-fullname" name="file" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+
+                </div>
+            </form>
         </div>
     </div>
 </div>

@@ -95,7 +95,7 @@
                 <label class="form-label" for="add-user-fullname">Import</label>
                 <input type="file" class="form-control" id="add-user-fullname" name="file" />
             </div>
-            <button type="reset" class="btn btn-label-secondary me-sm-3 me-1"
+        <button type="reset" class="btn btn-label-secondary me-sm-3 me-1"
                 data-bs-dismiss="offcanvas">Cancel</button>
             <button type="submit" class="btn btn-primary data-submit">Submit</button>
         </form>

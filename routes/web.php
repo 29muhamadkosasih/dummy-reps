@@ -79,7 +79,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard-general', [DashboardController::class, 'general'])->name('dashboard.general');
     Route::post('getLaporan', [FormsController::class, 'getLaporan'])->name('laporan.getLaporan');
     // Route::post('import-file', [UserController::class, 'import'])->name('import');
-    Route::post('import-file', [NoRekController::class, 'import'])->name('import');
+    Route::post('import-file', [InvPaymentController::class, 'import'])->name('import');
     Route::get('export_excel', [UserController::class, 'export_excel'])->name('export_excel');
     Route::post('form-list/today', [ReportpbController::class, 'saldoStore'])->name('saldoStore');
     Route::get('form/download/{file}', [FormController::class, 'download'])->name('form.download');

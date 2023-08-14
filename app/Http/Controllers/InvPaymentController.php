@@ -7,6 +7,7 @@ use App\Models\InvPayment;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Exports\InvPaymentExport;
+use App\Imports\InvPaymentImport;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
@@ -57,13 +58,8 @@ class InvPaymentController extends Controller
      */
     public function store(Request $request)
     {
-        // InvPayment::create($request->all());
-
-        // $data = 2;
-
         $data = $request->amount_invoice;
         $data2 = $request->payment_in;
-        // dd($data);
         $t_deduction = $data - $data2;
 
         $order = new InvPayment();
@@ -80,7 +76,7 @@ class InvPaymentController extends Controller
 
 
         $order->save();
-        return redirect()->route('invpayment.index')->with('success', 'Success ! Data invpayment Berhasil di Tambahkan');
+        return redirect()->route('invpayment.index')->with('success', 'Success ! Data Invoice Payment In Berhasil di Tambahkan');
     }
 
 
@@ -147,7 +143,7 @@ class InvPaymentController extends Controller
             'deduction' => $t_deduction,
         ]);
 
-        return redirect()->route('invpayment.index')->with('success', 'Success ! Data invpayment Berhasil di Update');
+        return redirect()->route('invpayment.index')->with('success', 'Success ! Data Invoice Payment In Berhasil di Update');
     }
 
 
@@ -162,7 +158,7 @@ class InvPaymentController extends Controller
     {
         $delete = InvPayment::find($id);
         $delete->delete();
-        return redirect()->back()->with('success', 'Success ! Data invpayment Berhasil di Hapus');
+        return redirect()->back()->with('success', 'Success ! Data Invoice Payment In Berhasil di Hapus');
     }
 
     public function getLaporan(Request $request)
@@ -195,5 +191,14 @@ class InvPaymentController extends Controller
             'jumlah_c' => $jumlah_c,
 
         ]);
+    }
+
+    public function import(Request $request)
+    {
+        $fileName = request()->file->getClientOriginalName();
+        request()->file('file')->storeAs('InvPaymentIn', $fileName, 'public');
+        // dd($fileName);
+        Excel::import(new InvPaymentImport, $request->file);
+        return redirect()->back()->with('success', 'Success ! Data Invoice Payment In Berhasil di Tambahkan');
     }
 }

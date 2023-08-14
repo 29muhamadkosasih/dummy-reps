@@ -24,3 +24,6 @@ class DatabaseUsersImport implements ToModel
         ]);
     }
 }
+
+
+//php artisan make:import SiswaImport --model=Siswa

@@ -16,7 +16,7 @@
                             alt class="h-auto rounded-circle" />
                     </div>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-end">
+                {{-- <ul class="dropdown-menu dropdown-menu-end">
                     <li>
                         <a class="dropdown-item" href="#">
                             <div class="d-flex">
@@ -42,7 +42,7 @@
                             Logout
                         </a>
                     </li>
-                </ul>
+                </ul> --}}
             </li>
             <form action="{{ route('logout') }}" method="POST" id="logout-form">
                 @csrf

@@ -179,7 +179,7 @@
             <div class="modal-body">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="text-center mb-4">
-                    <h1 class="mb-0"> Buat Pengajuan Dana</h1>
+                    <h2 class="mb-0"> Buat Pengajuan Dana</h2>
                 </div>
                 <form action="{{ route('form.store') }}" method="POST" class="row g-3" enctype="multipart/form-data">
                     @csrf
