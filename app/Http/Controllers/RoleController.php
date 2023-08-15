@@ -22,7 +22,9 @@ class RoleController extends Controller
     {
         abort_if(Gate::denies('roles.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
-        $roles = Role::with('permissions')->get();
+        $roles = Role::with('permissions')
+            ->orderBy('short_code', 'asc')
+            ->get();
 
         return view('pages.roles.index', compact('roles'));
     }

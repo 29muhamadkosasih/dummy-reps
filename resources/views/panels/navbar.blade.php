@@ -7,7 +7,14 @@
     </div>
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-        <h4 class="mt-3" style="color: white">TRANSAFE - FINANCE MANAGEMENT SYSTEM</h4>
+
+        <!-- Search -->
+        <div class="navbar-nav align-items-center">
+            <div class="nav-item navbar-search-wrapper mb-0">
+                <h4 class="mt-3" style="color: white">TRANSAFE FINANCE MANAGEMENT SYSTEM</h4>
+            </div>
+        </div>
+        <!-- /Search -->
         <ul class="navbar-nav flex-row align-items-center ms-auto">
             <!-- User -->
             <li class="nav-item navbar-dropdown dropdown-user dropdown">

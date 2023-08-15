@@ -12,14 +12,13 @@ use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
 
-class CheckedController extends Controller
+class MancheckedController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('form-checked.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
+        abort_if(Gate::denies('form-checkedman.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
         // dd($id);
         $form = Form::where('status', 0)
-            ->where('rujukan_id', '!=', '2')
             ->orderBy('created_at', 'desc')
             ->get();
 
@@ -27,7 +26,7 @@ class CheckedController extends Controller
         $departement = Departement::all();
 
         // dd($form);
-        return view('pages.form.checked.index', [
+        return view('pages.form.checkedman.index', [
             'form'   => $form,
             'departement'  => $departement
         ]);
@@ -36,7 +35,7 @@ class CheckedController extends Controller
     public function show($id)
     {
         $show = Form::find($id);
-        return view('pages.form.checked.show', [
+        return view('pages.form.checkedman.show', [
             'show'   => $show
         ]);
     }
@@ -46,7 +45,7 @@ class CheckedController extends Controller
 
         $show = Form::find($id);
         // dd($show);
-        return view('pages.form.checked.detail', [
+        return view('pages.form.checkedman.detail', [
             'show'   => $show
         ]);
     }
@@ -60,7 +59,7 @@ class CheckedController extends Controller
         $keperluan = Keperluan::all();
         $rujukan = Rujukan::all();
 
-        return view('pages.form.checked.edit', [
+        return view('pages.form.checkedman.edit', [
             'edit'   => $edit,
             'departement'  => $departement,
             'kpengajuan'   => $kpengajuan,
@@ -164,7 +163,7 @@ class CheckedController extends Controller
         ]);
 
         // dd($data);
-        return redirect()->route('form-checked.index')
+        return redirect()->route('form-checkedman.index')
             ->with('success', 'Congratulation !  Data Berhasil DiUpdate');
     }
 

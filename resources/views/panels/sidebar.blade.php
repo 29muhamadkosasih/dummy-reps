@@ -25,7 +25,7 @@
         @can('dashboard.index')
         <li class="menu-item {{ (request()->is('dashboard')) ? 'active' : '' }}">
             <a href="{{ route('dashboard.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-layout-sidebar"></i>
+                <i class="menu-icon tf-icons ti ti-layout-kanban"></i>
                 <div data-i18n="Dashboard">Dashboard</div>
             </a>
         </li>
@@ -34,7 +34,7 @@
         @can('dashboard.checked.index')
         <li class="menu-item {{ (request()->is('dashboard-checked')) ? 'active' : '' }}">
             <a href="{{ route('dashboard.checked') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-3d-cube-sphere"></i>
+                <i class="menu-icon tf-icons ti ti-layout-kanban"></i>
                 <div data-i18n="Dashboard"> Dashboard</div>
             </a>
         </li>
@@ -43,7 +43,7 @@
         @can('dashboard.approve.index')
         <li class="menu-item {{ (request()->is('dashboard-approve')) ? 'active' : '' }}">
             <a href="{{ route('dashboard.approve') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-atom-2"></i>
+                <i class="menu-icon tf-icons ti ti-layout-kanban"></i>
                 <div data-i18n="Dashboard">Dashboard</div>
             </a>
         </li>
@@ -72,7 +72,8 @@
         @endcan
 
         @can('profile.index')
-        <li class="menu-item {{  (request()->is('me')) ? 'active' : ''  }}">
+        <li
+            class="menu-item {{ Route::currentRouteNamed('profile.index','profile.edit','profile.show') ? 'active' : '' }}">
             <a href="{{ route('me.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-user"></i>
                 <div data-i18n="Profile">Profile</div>
@@ -80,8 +81,28 @@
         </li>
         @endcan
 
+        @can('form-man.index')
+        <li
+            class="menu-item {{ Route::currentRouteNamed('form-man.index','form-man.edit','form-man.show') ? 'active' : '' }}">
+            <a href="{{ route('form-man.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-folder"></i>
+                <div data-i18n="Form">Form</div>
+            </a>
+        </li>
+        @endcan
+
+        @can('form-spv.index')
+        <li
+            class="menu-item {{ Route::currentRouteNamed('form-spv.index','form-spv.edit','form-spv.show') ? 'active' : '' }}">
+            <a href="{{ route('form-spv.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-folder"></i>
+                <div data-i18n="Form">Form</div>
+            </a>
+        </li>
+        @endcan
+
         @can('form.index')
-        <li class="menu-item {{ (request()->is('form','form.show','form.edit')) ? 'active' : '' }}">
+        <li class="menu-item {{ Route::currentRouteNamed('form.index','form.edit','form.show') ? 'active' : '' }}">
             <a href="{{ route('form.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-folder"></i>
                 <div data-i18n="Form">Form</div>
@@ -90,7 +111,8 @@
         @endcan
 
         @can('form-checked.index')
-        <li class="menu-item {{ (request()->is('form-checked')) ? 'active' : '' }}">
+        <li
+            class="menu-item {{ Route::currentRouteNamed('form-checked.index','form-checked.edit','form-checked.detail') ? 'active' : '' }}">
             <a href="{{ route('form-checked.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-chart-pie"></i>
                 <div data-i18n="Checked">Checked </div>
@@ -98,8 +120,20 @@
         </li>
         @endcan
 
+
+        @can('form-checkedman.index')
+        <li
+            class="menu-item {{ Route::currentRouteNamed('form-checkedman.index','form-checkedman.edit','form-checkedman.detail') ? 'active' : '' }}">
+            <a href="{{ route('form-checkedman.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-chart-pie"></i>
+                <div data-i18n="Checked">Checked </div>
+            </a>
+        </li>
+        @endcan
+
         @can('form-approve.index')
-        <li class="menu-item {{ (request()->is('form-approve')) ? 'active' : '' }}">
+        <li
+            class="menu-item {{ Route::currentRouteNamed('form-approve.index','form-approve.edit','form-approve.detail') ? 'active' : '' }}">
             <a href="{{ route('form-approve.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-checks"></i>
                 <div data-i18n="Approve">Approve</div>
