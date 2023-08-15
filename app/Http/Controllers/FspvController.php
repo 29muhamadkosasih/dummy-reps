@@ -26,7 +26,7 @@ class FspvController extends Controller
         $norek = NoRek::all();
         $kpengajuan = Kpengajuan::all();
         $keperluan = Keperluan::all();
-        $rujukan = Rujukan::all();
+        $rujukan = Rujukan::where('id', '2')->get();
 
         // dd($norek);
 

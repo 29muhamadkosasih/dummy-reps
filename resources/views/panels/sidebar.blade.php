@@ -101,6 +101,16 @@
         </li>
         @endcan
 
+        @can('form-app.index')
+        <li
+            class="menu-item {{ Route::currentRouteNamed('form-app.index','form-app.edit','form-app.show') ? 'active' : '' }}">
+            <a href="{{ route('form-app.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-folder"></i>
+                <div data-i18n="Form">Form</div>
+            </a>
+        </li>
+        @endcan
+
         @can('form.index')
         <li class="menu-item {{ Route::currentRouteNamed('form.index','form.edit','form.show') ? 'active' : '' }}">
             <a href="{{ route('form.index') }}" class="menu-link">

@@ -88,19 +88,9 @@
                                 {{ number_format($user->pph23, 0, ',', '.') }}
                             </td>
                             <td>{{$user->npwp}}</td>
-                            <td>
-
-                                @switch($user)
-                                @case($user->masa_pajak == null)
-                                @break
-                                @default
-                                {{ \Carbon\Carbon::parse($user->masa_pajak)->format('d-m-Y') }}
-                                @endswitch
-
-                            </td>
+                            <td>{{$user->masa_pajak}}</td>
                             <td>{{$user->no_bukpot}}</td>
                             <td>
-
                                 @switch($user)
                                 @case($user->tgl_pemotongan == null)
                                 @break

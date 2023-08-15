@@ -20,7 +20,7 @@ class FapproveController extends Controller
 {
     public function index()
     {
-        // abort_if(Gate::denies('form-app.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
+        abort_if(Gate::denies('form-app.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
         $userId = auth()->id();
         $bank = Bank::get();
         $norek = NoRek::all();

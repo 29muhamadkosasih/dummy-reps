@@ -30,7 +30,7 @@ class FormController extends Controller
         $norek = NoRek::all();
         $kpengajuan = Kpengajuan::all();
         $keperluan = Keperluan::all();
-        $rujukan = Rujukan::all();
+        $rujukan = Rujukan::where('id', '<', '3')->get();
 
         // dd($norek);
 
