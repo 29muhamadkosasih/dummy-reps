@@ -101,7 +101,7 @@
         @can('form-approve.index')
         <li class="menu-item {{ (request()->is('form-approve')) ? 'active' : '' }}">
             <a href="{{ route('form-approve.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-atom-2"></i>
+                <i class="menu-icon tf-icons ti ti-checks"></i>
                 <div data-i18n="Approve">Approve</div>
             </a>
         </li>
@@ -119,7 +119,7 @@
         @can('form-list.paid')
         <li class="menu-item {{ Route::currentRouteNamed('list') ? 'active' : '' }}">
             <a href="{{ route('list') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-checkbox"></i>
+                <i class="menu-icon tf-icons ti ti-list-check"></i>
                 <div data-i18n="Paid">Paid</div>
             </a>
         </li>
@@ -127,7 +127,7 @@
         @can('report.today.index')
         <li class="menu-item {{ Route::currentRouteNamed('today') ? 'active' : '' }}">
             <a href="{{ route('today') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-shield"></i>
+                <i class="menu-icon tf-icons ti ti-report-money"></i>
                 <div data-i18n="Resume RF">Resume RF</div>
             </a>
         </li>
@@ -194,7 +194,7 @@
         @can('bank.index')
         <li class="menu-item {{ (request()->is('bank')) ? 'active' : '' }}">
             <a href="{{ route('bank.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-tool"></i>
+                <i class="menu-icon tf-icons ti ti-building-bank"></i>
                 <div data-i18n="Bank">Bank</div>
             </a>
         </li>
@@ -283,7 +283,7 @@
         @can('permissions.index')
         <li class="menu-item {{ (request()->is('permissions')) ? 'active' : '' }}">
             <a href="{{ route('permissions.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-checkbox"></i>
+                <i class="menu-icon tf-icons ti ti-lock-access"></i>
                 <div data-i18n="Permissions">Permissions</div>
             </a>
         </li>

@@ -28,7 +28,7 @@
                         <tr>
                             <td style="text-align: center">{{ $loop->iteration }}</td>
                             <td>
-                                {{ $data->created_at->format('d M Y') }}
+                                {{ $data->created_at->format('d-m-Y') }}
                             </td>
                             <td style="text-align :right">
                                 {{ number_format($data->a_b, 0, ',', '.') }}

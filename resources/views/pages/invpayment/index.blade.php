@@ -112,7 +112,10 @@
                                 @case($user->date_invoice == null)
                                 @break
                                 @default
-                                {{$user->date_invoice}}
+                                {{-- {{$user->date_invoice}} --}}
+
+                                {{ \Carbon\Carbon::parse($user->date_invoice)->format('d-m-Y') }}
+
                                 @endswitch
 
                             </td>
@@ -132,7 +135,7 @@
                                 @case($user->due_date == null)
                                 @break
                                 @default
-                                {{$user->due_date}}
+                                {{ \Carbon\Carbon::parse($user->due_date)->format('d-m-Y') }}
                                 @endswitch
                             </td>
                             <td style="text-align: right">
@@ -150,7 +153,8 @@
                                 @case($user->paid_date == null)
                                 @break
                                 @default
-                                {{$user->paid_date}}
+                                {{ \Carbon\Carbon::parse($user->paid_date)->format('d-m-Y') }}
+
                                 @endswitch
                             </td>
                             <td style="text-align: right">

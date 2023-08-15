@@ -49,7 +49,9 @@
 
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $data->date }}</td>
+                            <td>
+                                {{ \Carbon\Carbon::parse($data->date )->format('d-m-Y') }}
+                            </td>
                             <td>{{ $data->ket }}</td>
                             <td style="text-align: right">
                                 {{ number_format($data->amount_invoice, 0, ',', '.') }}

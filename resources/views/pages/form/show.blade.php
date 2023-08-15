@@ -25,7 +25,10 @@
                         <dd class="col-sm-8 mb-1"> {{ $show->payment }}</dd>
 
                         <dt class="col-sm-4 fw-bolder mb-1">Tgl Kebutuhan</dt>
-                        <dd class="col-sm-8 mb-1"> {{ $show->tanggal_kebutuhan }}</dd>
+                        <dd class="col-sm-8 mb-1">
+                            {{ \Carbon\Carbon::parse($show->tanggal_kebutuhan)->format('d-m-Y') }}
+
+                        </dd>
 
                         @switch($show)
                         @case($show->payment == 'Transfer')

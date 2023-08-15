@@ -66,7 +66,7 @@
                         <tr>
                             <td style="text-align: center">{{ $loop->iteration }}</td>
                             <td>
-                                {{ $data->created_at->format('d M Y') }}
+                                {{ $data->created_at->format('d-m-Y')}}
                             </td>
                             <td>
                                 {{ $data->user->name }}

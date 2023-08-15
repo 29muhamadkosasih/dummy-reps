@@ -57,7 +57,8 @@
                         <dd class="col-sm-8 mb-1"> {{ $show->rujukan->name }}</dd>
 
                         <dt class="col-sm-4 fw-bolder mb-1">Tgl Kebutuhan</dt>
-                        <dd class="col-sm-8 mb-3"> {{ $show->tanggal_kebutuhan }}</dd>
+                        <dd class="col-sm-8 mb-3"> {{ \Carbon\Carbon::parse($show->tanggal_kebutuhan)->format('d-m-Y')
+                            }}</dd>
 
                     </dl>
                 </div>

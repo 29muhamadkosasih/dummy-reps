@@ -223,7 +223,8 @@
                             </tr>
                             <tr style="color:black; background-color: lightgreen">
                                 <th colspan="2" style="text-align: right">Tanggal Uang Masuk</th>
-                                <td colspan="2" style="text-align: right"> {{ $show->tgl_terima_dana }}
+                                <td colspan="2" style="text-align: right"> {{
+                                    \Carbon\Carbon::parse($show->tgl_terima_dana)->format('d-m-Y') }}
                                 </td>
                                 <th colspan="1" style="text-align: right">Jumlah Uang Masuk</th>
                                 <td colspan="2" style="text-align: right"> {{ number_format($show->jumlah_dana, 0, ',',
@@ -232,7 +233,8 @@
                             </tr>
                             <tr style="color:black; background-color: lightgreen">
                                 <th colspan="2" style="text-align: right">Tanggal Pemakaian</th>
-                                <td colspan="2" style="text-align: right"> {{ $show->tgl_terima_dana }}
+                                <td colspan="2" style="text-align: right"> {{
+                                    \Carbon\Carbon::parse($show->tgl_terima_dana)->format('d-m-Y') }}
                                 </td>
 
                                 <th colspan="1" style="text-align: right">Jumlah Uang Pemakaian</th>

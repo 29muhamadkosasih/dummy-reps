@@ -87,7 +87,7 @@
                         <tr>
                             <td style="text-align: center">{{ $loop->iteration }}</td>
                             <td>
-                                {{ $data->created_at->format('Y-m-d')}}
+                                {{ $data->created_at->format('d-m-Y')}}
                             </td>
                             <td>
                                 {{ $data->rujukan->name }}
@@ -99,7 +99,8 @@
                                 {{ $data->payment }}
                             </td>
                             <td>
-                                {{ $data->tanggal_kebutuhan }}
+                                {{ \Carbon\Carbon::parse($data->tanggal_kebutuhan)->format('d-m-Y')}}
+
                             </td>
                             <td>
                                 @switch($data)

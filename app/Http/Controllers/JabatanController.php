@@ -13,7 +13,7 @@ class JabatanController extends Controller
     public function index()
     {
         abort_if(Gate::denies('jabatan.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
-        $jabatan = Jabatan::all();
+        $jabatan = Jabatan::orderBy('created_at', 'asc')->get();
 
         // dd($bank);
 

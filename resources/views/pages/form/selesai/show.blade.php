@@ -36,7 +36,8 @@
                                 <dd class="col-sm-8 mb-1">: {{ $show->payment }}</dd>
 
                                 <dt class="col-sm-4 fw-bolder mb-1">Tgl Kebutuhan</dt>
-                                <dd class="col-sm-8 mb-1">: {{ $show->tanggal_kebutuhan }}</dd>
+                                <dd class="col-sm-8 mb-1">: {{
+                                    \Carbon\Carbon::parse($show->tanggal_kebutuhan)->format('d-m-Y') }}</dd>
 
                             </dl>
                         </div>
@@ -134,7 +135,7 @@
                         </div>
                     </div>
 
-                    <div class="container-fluid mt-1">
+                    {{-- <div class="container-fluid mt-1">
                         <div class="row justify-content-evenly">
                             <div class="col-4">
                                 Checked By : {{ $show->checked_by }}
@@ -143,7 +144,7 @@
                                 Approve By : {{ $show->approve_by }}
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <!--/ Billing Address -->

@@ -26,6 +26,7 @@ class InvPaymentController extends Controller
 
 
         $invpayment = InvPayment::all();
+        // $invpayment = InvPayment::orderBy('pic_client', 'asc')->get();
 
         $jumlah_a = DB::table('invpayment')
             ->get()

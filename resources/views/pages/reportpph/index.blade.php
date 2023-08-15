@@ -80,15 +80,34 @@
 
                                 {{ number_format($user->payment_in, 0, ',', '.') }}
                             </td>
-                            <td>{{$user->paid_date}}</td>
+                            <td>
+                                {{ \Carbon\Carbon::parse($user->paid_date)->format('d-m-Y') }}
+                            </td>
                             <td style="text-align: right">
 
                                 {{ number_format($user->pph23, 0, ',', '.') }}
                             </td>
                             <td>{{$user->npwp}}</td>
-                            <td>{{$user->masa_pajak}}</td>
+                            <td>
+
+                                @switch($user)
+                                @case($user->masa_pajak == null)
+                                @break
+                                @default
+                                {{ \Carbon\Carbon::parse($user->masa_pajak)->format('d-m-Y') }}
+                                @endswitch
+
+                            </td>
                             <td>{{$user->no_bukpot}}</td>
-                            <td>{{$user->tgl_pemotongan}}</td>
+                            <td>
+
+                                @switch($user)
+                                @case($user->tgl_pemotongan == null)
+                                @break
+                                @default
+                                {{ \Carbon\Carbon::parse($user->tgl_pemotongan)->format('d-m-Y') }}
+                                @endswitch
+                            </td>
                             <td class="text-center">
                                 <a href="{{ route('reportpph.edit', $user->id) }}"
                                     class="btn btn-icon btn-warning btn-sm">

@@ -59,7 +59,9 @@
                         <dd class="col-sm-8 mb-1"> {{ $show->keperluan->name }}</dd>
 
                         <dt class="col-sm-4 fw-bolder mb-1">Tgl Kebutuhan</dt>
-                        <dd class="col-sm-8 mb-3"> {{ $show->tanggal_kebutuhan }}</dd>
+                        <dd class="col-sm-8 mb-3">
+                            {{ \Carbon\Carbon::parse($show->tanggal_kebutuhan)->format('d-m-Y') }}
+                        </dd>
 
                     </dl>
                 </div>
@@ -245,7 +247,9 @@
                             </tr>
                             <tr>
                                 <th colspan="2" style="text-align: right">Tanggal Uang Masuk</th>
-                                <td colspan="2" style="text-align: right"> {{ $show->tgl_terima_dana }}
+                                <td colspan="2" style="text-align: right">
+
+                                    {{ \Carbon\Carbon::parse($show->tgl_terima_dana)->format('d-m-Y') }}
                                 </td>
                                 <th colspan="1" style="text-align: right">Jumlah Uang Masuk</th>
                                 <td colspan="2" style="text-align: right"> {{ number_format($show->jumlah_dana, 0, ',',
@@ -254,7 +258,10 @@
                             </tr>
                             <tr>
                                 <th colspan="2" style="text-align: right">Tanggal Pemakaian</th>
-                                <td colspan="2" style="text-align: right"> {{ $show->tgl_terima_dana }}
+                                <td colspan="2" style="text-align: right">
+
+                                    {{ \Carbon\Carbon::parse($show->tgl_terima_dana)->format('d-m-Y') }}
+
                                 </td>
 
                                 <th colspan="1" style="text-align: right">Jumlah Uang Pemakaian</th>
