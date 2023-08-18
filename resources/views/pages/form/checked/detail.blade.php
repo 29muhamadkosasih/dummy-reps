@@ -86,13 +86,13 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr width='20px' style="background-color:skyblue">
-                                <th width='20px'>No</th>
-                                <th>Description</th>
-                                <th>Qty</th>
-                                <th>Unit</th>
-                                <th>Lampiran</th>
-                                <th class="text-center" style="text-align center">Unit Price (Rp)</th>
-                                <th class="text-center" style="text-align center">Sub Total (Rp)</th>
+                                <th class="text-center" width='20px'>No</th>
+                                <th class="text-center">Description</th>
+                                <th class="text-center">Qty</th>
+                                <th class="text-center">Unit</th>
+                                <th class="text-center">Lampiran</th>
+                                <th class="text-center">Unit Price (Rp)</th>
+                                <th class="text-center">Sub Total (Rp)</th>
                             </tr>
                         </thead>
                         <tbody>

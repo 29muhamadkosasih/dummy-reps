@@ -318,7 +318,7 @@ class FormController extends Controller
         $departement = Departement::all();
         $kpengajuan = Kpengajuan::all();
         $keperluan = Keperluan::all();
-        $rujukan = Rujukan::all();
+        $rujukan = Rujukan::where('id', '<', '3')->get();
         $norek = NoRek::get();
 
         return view('pages.form.edit', [

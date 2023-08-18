@@ -79,7 +79,7 @@
                             </td>
                             <td>
                                 {{ $data->kpengajuan->name }} </td>
-                            <td>
+                            <td style="text-align: right">
                                 {{ number_format($data->jumlah_total, 0, ',', '.',) }}
                             </td>
                             <td>

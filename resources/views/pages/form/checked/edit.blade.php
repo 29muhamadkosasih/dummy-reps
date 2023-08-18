@@ -1,103 +1,94 @@
 @extends('layouts.master')
 @section('content')
 @section('title', 'Form')
-<section id="complex-header-datatable">
-    <div class="col-xl-12">
-        <div class="card">
+<div class="col-xl-12">
+    <div class="card">
+        <form action="{{ route('form-checked.update', $edit->id) }}" method="POST" enctype="multipart/form-data">
+            @method('PUT')
+            @csrf
+            <h5 class="card-header">Edit Form</h5>
             <div class="card-body">
-                <div class="row ">
-                    <div class="col-auto me-auto ">
-                        <h5 class="mb-0 ms-3">Edit Form
+                <div class="row">
+                    <div class="col-xl-4 col-md-6 col-12">
+                        <div class="mb-1">
+                            <label class="form-label" for="basicInput">Dari</label>
+                            <input type="hidden" name="from_id" value="{{ $edit->from_id }}" />
+                            <input type="hidden" name="departement_id" value="{{ $edit->departement_id }}" />
+                            <input type="hidden" name="kpengajuan_id" value="{{ $edit->kpengajuan_id }}" />
+                            <input type="hidden" name="keperluan_id" value="{{ $edit->keperluan_id }}" />
+                            <input type="hidden" name="payment" value="{{ $edit->payment }}" />
+                            <input type="hidden" name="rujukan_id" value="{{ $edit->rujukan_id }}" />
+                            <input type="hidden" name="norek_id" value="{{ $edit->norek_id }}" />
 
-                    </div>
-                </div>
-                <form action="{{ route('form-checked.update', $edit->id) }}" method="POST"
-                    enctype="multipart/form-data">
-                    @method('PUT')
-                    @csrf
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-xl-4 col-md-6 col-12">
-                                <div class="mb-1">
-                                    <label class="form-label" for="basicInput">Dari</label>
-                                    <input type="hidden" name="from_id" value="{{ $edit->from_id }}" />
-                                    <input type="hidden" name="departement_id" value="{{ $edit->departement_id }}" />
-                                    <input type="hidden" name="kpengajuan_id" value="{{ $edit->kpengajuan_id }}" />
-                                    <input type="hidden" name="keperluan_id" value="{{ $edit->keperluan_id }}" />
-                                    <input type="hidden" name="payment" value="{{ $edit->payment }}" />
-                                    <input type="hidden" name="rujukan_id" value="{{ $edit->rujukan_id }}" />
-                                    <input type="hidden" name="norek_id" value="{{ $edit->norek_id }}" />
+                            <input type="hidden" name="image1" value="{{ $edit->image1 }}" />
+                            <input type="hidden" name="image2" value="{{ $edit->image2 }}" />
+                            <input type="hidden" name="image3" value="{{ $edit->image3 }}" />
+                            <input type="hidden" name="image4" value="{{ $edit->image4 }}" />
+                            <input type="hidden" name="image5" value="{{ $edit->image5 }}" />
+                            <input type="hidden" name="image6" value="{{ $edit->image6 }}" />
+                            <input type="hidden" name="image7" value="{{ $edit->image7 }}" />
+                            <input type="hidden" name="image8" value="{{ $edit->image8 }}" />
 
-                                    <input type="hidden" name="image1" value="{{ $edit->image1 }}" />
-                                    <input type="hidden" name="image2" value="{{ $edit->image2 }}" />
-                                    <input type="hidden" name="image3" value="{{ $edit->image3 }}" />
-                                    <input type="hidden" name="image4" value="{{ $edit->image4 }}" />
-                                    <input type="hidden" name="image5" value="{{ $edit->image5 }}" />
-                                    <input type="hidden" name="image6" value="{{ $edit->image6 }}" />
-                                    <input type="hidden" name="image7" value="{{ $edit->image7 }}" />
-                                    <input type="hidden" name="image8" value="{{ $edit->image8 }}" />
+                            <input type="hidden" name="no_project" value="{{ $edit->no_project }}" />
+                            <input type="hidden" name="j_peserta" value="{{ $edit->j_peserta }}" />
+                            <input type="hidden" name="j_traine_asesor" value="{{ $edit->j_traine_asesor }}" />
+                            <input type="hidden" name="j_assist" value="{{ $edit->j_assist }}" />
 
-                                    <input type="hidden" name="no_project" value="{{ $edit->no_project }}" />
-                                    <input type="hidden" name="j_peserta" value="{{ $edit->j_peserta }}" />
-                                    <input type="hidden" name="j_traine_asesor" value="{{ $edit->j_traine_asesor }}" />
-                                    <input type="hidden" name="j_assist" value="{{ $edit->j_assist }}" />
-
-                                    <input type="text" class="form-control" id="basicInput" placeholder="Enter" required
-                                        value="{{ $edit->user->name }}" readonly />
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-md-6 col-12">
-                                <div class="mb-1">
-                                    <label class="form-label" for="basicInput">Kategori
-                                        Pengajuan</label>
-                                    <input type="text" class="form-control" id="basicInput" placeholder="Enter" required
-                                        value="{{ $edit->kpengajuan->name }}" readonly />
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-md-6 col-12">
-                                <div class="mb-1">
-                                    <label class="form-label" for="basicInput">
-                                        Keperluan
-                                    </label>
-                                    <input type="text" class="form-control" id="basicInput" placeholder="Enter" required
-                                        value="{{ $edit->keperluan->name }}" readonly />
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-md-6 col-12">
-                                <div class="mb-1">
-                                    <label class="form-label" for="basicInput">Tanggal
-                                        Kebutuhan</label>
-                                    <input type="date" class="form-control" id="basicInput" placeholder="Enter"
-                                        name="tanggal_kebutuhan" required value="{{ $edit->tanggal_kebutuhan }}" />
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-md-6 col-12">
-                                <div class="mb-1">
-                                    <label class="form-label" for="helpInputTop">Payment</label>
-                                    <input type="text" class="form-control" id="basicInput" placeholder="Enter" required
-                                        value="{{ $edit->payment }}" readonly />
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-md-6 col-12">
-                                <div class="mb-1">
-                                    <label class="form-label" for="helpInputTop">Ditujukan Untuk</label>
-                                    <input type="text" class="form-control" id="basicInput" placeholder="Enter" required
-                                        value="{{ $edit->rujukan->name}}" readonly />
-                                </div>
-                            </div>
+                            <input type="text" class="form-control" id="basicInput" placeholder="Enter" required
+                                value="{{ $edit->user->name }}" readonly />
                         </div>
                     </div>
-                    <div id="accordionIcon" class="accordion accordion-without-arrow">
-
-                        <div class="accordion-item">
-                            <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconTwo">
-                                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                    data-bs-target="#accordionIcon-2" aria-controls="accordionIcon-2">
-                                    Pengajuan 1
-                                </button>
+                    <div class="col-xl-4 col-md-6 col-12">
+                        <div class="mb-1">
+                            <label class="form-label" for="basicInput">Kategori
+                                Pengajuan</label>
+                            <input type="text" class="form-control" id="basicInput" placeholder="Enter" required
+                                value="{{ $edit->kpengajuan->name }}" readonly />
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 col-12">
+                        <div class="mb-1">
+                            <label class="form-label" for="basicInput">
+                                Keperluan
+                            </label>
+                            <input type="text" class="form-control" id="basicInput" placeholder="Enter" required
+                                value="{{ $edit->keperluan->name }}" readonly />
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 col-12">
+                        <div class="mb-1">
+                            <label class="form-label" for="basicInput">Tanggal
+                                Kebutuhan</label>
+                            <input type="date" class="form-control" id="basicInput" placeholder="Enter"
+                                name="tanggal_kebutuhan" required value="{{ $edit->tanggal_kebutuhan }}" />
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 col-12">
+                        <div class="mb-1">
+                            <label class="form-label" for="helpInputTop">Payment</label>
+                            <input type="text" class="form-control" id="basicInput" placeholder="Enter" required
+                                value="{{ $edit->payment }}" readonly />
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 col-12">
+                        <div class="mb-1">
+                            <label class="form-label" for="helpInputTop">Ditujukan Untuk</label>
+                            <input type="text" class="form-control" id="basicInput" placeholder="Enter" required
+                                value="{{ $edit->rujukan->name}}" readonly />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-12 col-md-12 col-12 mb-0">
+                    <div class="accordion mt-3" id="accordionExample">
+                        <div class="card accordion-item active">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button type="button" class="accordion-button" data-bs-toggle="collapse"
+                                    data-bs-target="#accordionOne" aria-expanded="true" aria-controls="accordionOne">
+                                    Pengajuan 1 </button>
                             </h2>
-                            <div id="accordionIcon-2" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionIcon">
+
+                            <div id="accordionOne" class="accordion-collapse collapse show"
+                                data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <div class="row">
                                         <div class="col-xl-6 col-md-6 col-12">
@@ -143,17 +134,16 @@
                             </div>
                         </div>
 
-                        <div class="accordion-item">
-                            <h2 class="accordion-header text-body d-flex justify-content-between"
-                                id="accordionIconThree">
-                                <button type="button" class="accordion-button" data-bs-toggle="collapse"
-                                    data-bs-target="#accordionIcon-3" aria-expanded="true"
-                                    aria-controls="accordionIcon-3">
+                        <div class="card accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#accordionTwo" aria-expanded="false" aria-controls="accordionTwo">
                                     Pengajuan 2
                                 </button>
                             </h2>
-                            <div id="accordionIcon-3" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionIcon">
+
+                            <div id="accordionTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <div class="row">
                                         <div class="col-xl-6 col-md-6 col-12">
@@ -199,17 +189,16 @@
                             </div>
                         </div>
 
-                        <div class="accordion-item">
-                            <h2 class="accordion-header text-body d-flex justify-content-between"
-                                id="accordionIconFour">
-                                <button type="button" class="accordion-button" data-bs-toggle="collapse"
-                                    data-bs-target="#accordionIcon-4" aria-expanded="true"
-                                    aria-controls="accordionIcon-4">
+                        <div class="card accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#accordionThree" aria-expanded="false"
+                                    aria-controls="accordionThree">
                                     Pengajuan 3
                                 </button>
                             </h2>
-                            <div id="accordionIcon-4" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionIcon">
+                            <div id="accordionThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <div class="row">
                                         <div class="col-xl-6 col-md-6 col-12">
@@ -255,16 +244,15 @@
                             </div>
                         </div>
 
-                        <div class="accordion-item">
-                            <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconOne">
-                                <button type="button" class="accordion-button" data-bs-toggle="collapse"
-                                    data-bs-target="#accordionIcon-1" aria-expanded="true"
-                                    aria-controls="accordionIcon-1">
+                        <div class="card accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#accordionFour" aria-expanded="false" aria-controls="accordionFour">
                                     Pengajuan 4
                                 </button>
                             </h2>
-                            <div id="accordionIcon-1" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionIcon">
+                            <div id="accordionFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                                data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <div class="row">
                                         <div class="col-xl-6 col-md-6 col-12">
@@ -310,46 +298,52 @@
                             </div>
                         </div>
 
-                        <div class="accordion-item">
-                            <h2 class="accordion-header text-body d-flex justify-content-between"
-                                id="accordionIconFive">
-                                <button type="button" class="accordion-button" data-bs-toggle="collapse"
-                                    data-bs-target="#accordionIcon-5" aria-expanded="true"
-                                    aria-controls="accordionIcon-5">
+                        <div class="card accordion-item">
+                            <h2 class="accordion-header" id="headingFive">
+                                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#accordionFive" aria-expanded="false" aria-controls="accordionFive">
                                     Pengajuan 5
                                 </button>
                             </h2>
-                            <div id="accordionIcon-5" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionIcon">
+                            <div id="accordionFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                                data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <div class="row">
                                         <div class="col-xl-6 col-md-6 col-12">
                                             <div class="mb-1">
-                                                <label class="form-label" for="basicInput">Description</label>
+                                                <label class="form-label" for="basicInput">
+                                                    Description
+                                                </label>
                                                 <input type="text" class="form-control" id="basicInput"
-                                                    name="description5" placeholder="Enter"
+                                                    name="description5" placeholder="Enter" autofocus
                                                     value="{{ $edit->description5 }}" />
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-md-6 col-12">
                                             <div class="mb-1">
-                                                <label class="form-label" for="basicInput">Unit</label>
+                                                <label class="form-label" for="basicInput">
+                                                    Unit
+                                                </label>
                                                 <input type="text" class="form-control" id="basicInput" name="unit5"
-                                                    placeholder="Enter" value="{{ $edit->unit5 }}" />
+                                                    placeholder="Enter" autofocus value="{{ $edit->unit5 }}" />
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-md-6 col-12">
                                             <div class="mb-1">
-                                                <label class="form-label" for="helpInputTop">Price</label>
-                                                <input type="text" class="form-control" id="basicInput" name="price5"
-                                                    placeholder="Enter" value="{{ $edit->price5 }}" />
+                                                <label class="form-label" for="helpInputTop">
+                                                    Price
+                                                </label>
+                                                <input type="number" class="form-control" id="basicInput" name="price5"
+                                                    placeholder="Enter" autofocus value="{{ $edit->price5 }}" />
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-md-6 col-12">
                                             <div class="mb-1">
-                                                <label class="form-label" for="basicInput">Qty</label>
+                                                <label class="form-label" for="basicInput">
+                                                    Qty
+                                                </label>
                                                 <input type="number" class="form-control" id="basicInput" name="qty5"
-                                                    placeholder="Enter" value="{{ $edit->qty5 }}" />
+                                                    placeholder="Enter" autofocus value="{{ $edit->qty5 }}" />
                                             </div>
                                         </div>
                                         <div class="col-xl-12 col-md-12 col-12">
@@ -365,45 +359,53 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconSix">
-                                <button type="button" class="accordion-button" data-bs-toggle="collapse"
-                                    data-bs-target="#accordionIcon-6" aria-expanded="true"
-                                    aria-controls="accordionIcon-6">
+
+                        <div class="card accordion-item">
+                            <h2 class="accordion-header" id="headingSix">
+                                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#accordionSix" aria-expanded="false" aria-controls="accordionSix">
                                     Pengajuan 6
                                 </button>
                             </h2>
-                            <div id="accordionIcon-6" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionIcon">
+                            <div id="accordionSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                                data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <div class="row">
                                         <div class="col-xl-6 col-md-6 col-12">
                                             <div class="mb-1">
-                                                <label class="form-label" for="basicInput">Description</label>
+                                                <label class="form-label" for="basicInput">
+                                                    Description
+                                                </label>
                                                 <input type="text" class="form-control" id="basicInput"
-                                                    name="description6" placeholder="Enter"
+                                                    name="description6" placeholder="Enter" autofocus
                                                     value="{{ $edit->description6 }}" />
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-md-6 col-12">
                                             <div class="mb-1">
-                                                <label class="form-label" for="basicInput">Unit</label>
+                                                <label class="form-label" for="basicInput">
+                                                    Unit
+                                                </label>
                                                 <input type="text" class="form-control" id="basicInput" name="unit6"
-                                                    placeholder="Enter" value="{{ $edit->unit6 }}" />
+                                                    placeholder="Enter" autofocus value="{{ $edit->unit6 }}" />
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-md-6 col-12">
                                             <div class="mb-1">
-                                                <label class="form-label" for="helpInputTop">Price</label>
-                                                <input type="text" class="form-control" id="basicInput" name="price6"
-                                                    placeholder="Enter" value="{{ $edit->price6 }}" />
+                                                <label class="form-label" for="helpInputTop">
+                                                    Price
+                                                </label>
+                                                <input type="number" class="form-control" id="basicInput" name="price6"
+                                                    placeholder="Enter" autofocus value="{{ $edit->price6 }}" />
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-md-6 col-12">
                                             <div class="mb-1">
-                                                <label class="form-label" for="basicInput">Qty</label>
+                                                <label class="form-label" for="basicInput">
+                                                    Qty
+                                                </label>
                                                 <input type="number" class="form-control" id="basicInput" name="qty6"
-                                                    placeholder="Enter" value="{{ $edit->qty6 }}" />
+                                                    placeholder="Enter" autofocus value="{{ $edit->qty6 }}" />
                                             </div>
                                         </div>
                                         <div class="col-xl-12 col-md-12 col-12">
@@ -419,46 +421,54 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header text-body d-flex justify-content-between"
-                                id="accordionIconSeven">
-                                <button type="button" class="accordion-button" data-bs-toggle="collapse"
-                                    data-bs-target="#accordionIcon-7" aria-expanded="true"
-                                    aria-controls="accordionIcon-7">
+
+                        <div class="card accordion-item">
+                            <h2 class="accordion-header" id="headingSeven">
+                                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#accordionSeven" aria-expanded="false"
+                                    aria-controls="accordionSeven">
                                     Pengajuan 7
                                 </button>
                             </h2>
-                            <div id="accordionIcon-7" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionIcon">
+                            <div id="accordionSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+                                data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <div class="row">
                                         <div class="col-xl-6 col-md-6 col-12">
                                             <div class="mb-1">
-                                                <label class="form-label" for="basicInput">Description</label>
+                                                <label class="form-label" for="basicInput">
+                                                    Description
+                                                </label>
                                                 <input type="text" class="form-control" id="basicInput"
-                                                    name="description7" placeholder="Enter"
+                                                    name="description7" placeholder="Enter" autofocus
                                                     value="{{ $edit->description7 }}" />
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-md-6 col-12">
                                             <div class="mb-1">
-                                                <label class="form-label" for="basicInput">Unit</label>
+                                                <label class="form-label" for="basicInput">
+                                                    Unit
+                                                </label>
                                                 <input type="text" class="form-control" id="basicInput" name="unit7"
-                                                    placeholder="Enter" value="{{ $edit->unit7 }}" />
+                                                    placeholder="Enter" autofocus value="{{ $edit->unit7 }}" />
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-md-6 col-12">
                                             <div class="mb-1">
-                                                <label class="form-label" for="helpInputTop">Price</label>
-                                                <input type="text" class="form-control" id="basicInput" name="price7"
-                                                    placeholder="Enter" value="{{ $edit->price7 }}" />
+                                                <label class="form-label" for="helpInputTop">
+                                                    Price
+                                                </label>
+                                                <input type="number" class="form-control" id="basicInput" name="price7"
+                                                    placeholder="Enter" autofocus value="{{ $edit->price7 }}" />
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-md-6 col-12">
                                             <div class="mb-1">
-                                                <label class="form-label" for="basicInput">Qty</label>
+                                                <label class="form-label" for="basicInput">
+                                                    Qty
+                                                </label>
                                                 <input type="number" class="form-control" id="basicInput" name="qty7"
-                                                    placeholder="Enter" value="{{ $edit->qty7}}" />
+                                                    placeholder="Enter" autofocus value="{{ $edit->qty7 }}" />
                                             </div>
                                         </div>
                                         <div class="col-xl-12 col-md-12 col-12">
@@ -474,46 +484,54 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header text-body d-flex justify-content-between"
-                                id="accordionIconEight">
-                                <button type="button" class="accordion-button" data-bs-toggle="collapse"
-                                    data-bs-target="#accordionIcon-8" aria-expanded="true"
-                                    aria-controls="accordionIcon-8">
+
+                        <div class="card accordion-item">
+                            <h2 class="accordion-header" id="headingEight">
+                                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#accordionEight" aria-expanded="false"
+                                    aria-controls="accordionEight">
                                     Pengajuan 8
                                 </button>
                             </h2>
-                            <div id="accordionIcon-8" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionIcon">
+                            <div id="accordionEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
+                                data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <div class="row">
                                         <div class="col-xl-6 col-md-6 col-12">
                                             <div class="mb-1">
-                                                <label class="form-label" for="basicInput">Description</label>
+                                                <label class="form-label" for="basicInput">
+                                                    Description
+                                                </label>
                                                 <input type="text" class="form-control" id="basicInput"
-                                                    name="description8" placeholder="Enter"
+                                                    name="description8" placeholder="Enter" autofocus
                                                     value="{{ $edit->description8 }}" />
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-md-6 col-12">
                                             <div class="mb-1">
-                                                <label class="form-label" for="basicInput">Unit</label>
+                                                <label class="form-label" for="basicInput">
+                                                    Unit
+                                                </label>
                                                 <input type="text" class="form-control" id="basicInput" name="unit8"
-                                                    placeholder="Enter" value="{{ $edit->unit8 }}" />
+                                                    placeholder="Enter" autofocus value="{{ $edit->unit8 }}" />
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-md-6 col-12">
                                             <div class="mb-1">
-                                                <label class="form-label" for="helpInputTop">Price</label>
-                                                <input type="text" class="form-control" id="basicInput" name="price8"
-                                                    placeholder="Enter" value="{{ $edit->price8 }}" />
+                                                <label class="form-label" for="helpInputTop">
+                                                    Price
+                                                </label>
+                                                <input type="number" class="form-control" id="basicInput" name="price8"
+                                                    placeholder="Enter" autofocus value="{{ $edit->price8 }}" />
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-md-6 col-12">
                                             <div class="mb-1">
-                                                <label class="form-label" for="basicInput">Qty</label>
+                                                <label class="form-label" for="basicInput">
+                                                    Qty
+                                                </label>
                                                 <input type="number" class="form-control" id="basicInput" name="qty8"
-                                                    placeholder="Enter" value="{{ $edit->qty8 }}" />
+                                                    placeholder="Enter" autofocus value="{{ $edit->qty8 }}" />
                                             </div>
                                         </div>
                                         <div class="col-xl-12 col-md-12 col-12">
@@ -529,17 +547,14 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
-                    <div class="col-12 text-center mb-2 mt-1 pt-20 mb-4">
-                        <a href="{{ route('form-checked.index') }}" class="btn btn-outline-secondary me-1">Back</a>
-                        <button type="submit" class="btn btn-primary ">Update</button>
-                    </div>
-                </form>
+                </div>
             </div>
-        </div>
+            <div class="col-12 text-center mt-0 pt-20 mb-4">
+                <a href="{{ route('form-checked.index') }}" class="btn btn-outline-secondary me-1">Back</a>
+                <button type="submit" class="btn btn-primary ">Update</button>
+            </div>
+        </form>
     </div>
-
-</section>
-
+</div>
 @endsection

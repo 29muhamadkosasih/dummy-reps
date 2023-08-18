@@ -10,7 +10,8 @@
                     <h5 class="mb-0">List Data Form
                 </div>
                 <div class="col-auto">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editUser">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#modalScrollable">
                         Create
                     </button>
                 </div>
@@ -117,7 +118,8 @@
 
                                 @break
                                 @case($data->status == 6)
-                                <a href="{{ route('form-spv.detail', $data->id) }}" class="btn btn-icon btn-primary btn-sm">
+                                <a href="{{ route('form-spv.detail', $data->id) }}"
+                                    class="btn btn-icon btn-primary btn-sm">
                                     <span class="ti ti-eye"></span>
                                 </a>
                                 @break
@@ -160,171 +162,173 @@
 </div>
 <!-- /Invoice table -->
 
-<!-- Edit User Modal -->
-<div class="modal fade" id="editUser" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-simple modal-edit-user">
-        <div class="modal-content p-2 p-md-4">
-            <div class="modal-body">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                <div class="text-center mb-4">
-                    <h2 class="mb-0"> Buat Pengajuan Dana</h2>
+<form action="{{ route('form-spv.store') }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    <div class="modal fade" id="modalScrollable" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center">
+                    <h4 class="modal-title" id="modalScrollableTitle">Buat Pengajuan Dana</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('form-spv.store') }}" method="POST" class="row g-3"
-                    enctype="multipart/form-data">
-                    @csrf
+                <div class="modal-body">
+
+                    <div class="row g-3">
+
+                        <div class="col-xl-4 col-md-6 col-12">
+                            <div class="mb-1">
+                                <label class="form-label" for="basicInput">
+                                    Dari
+                                </label>
+                                <input type="text" class="form-control" id="basicInput" name="from_id"
+                                    placeholder="Enter" required value="{{ Auth::user()->name }}" readonly />
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-md-6 col-12">
+                            <div class="mb-1">
+                                <label class="form-label" for="basicInput">
+                                    Kategori
+                                    Pengajuan
+                                </label>
+                                <select class="form-select @error('kpengajuan_id') is-invalid @enderror"
+                                    id="selectDefault" name="kpengajuan_id" required>
+                                    <option selected>Open this select</option>
+                                    @foreach ($kpengajuan as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('kpengajuan_id')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-md-6 col-12">
+                            <div class="mb-1">
+                                <label class="form-label" for="basicInput">
+                                    Keperluan
+                                </label>
+                                <select class="form-select @error('keperluan_id') is-invalid @enderror"
+                                    id="selectDefault" name="keperluan_id" onchange="enableBrand2(this)" required>
+                                    <option selected>Open this select</option>
+                                    @foreach ($keperluan as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('keperluan_id')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+
+
+                        <div class="col-xl-4 col-md-6 col-12">
+                            <div class="mb-1">
+                                <label class="form-label" for="basicInput">
+                                    Tanggal
+                                    Kebutuhan
+                                </label>
+                                <input type="date" class="form-control" id="basicInput" placeholder="Enter"
+                                    name="tanggal_kebutuhan" required />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6 col-12">
+                            <div class="mb-1">
+                                <label class="form-label" for="helpInputTop">
+                                    Ditujukan Untuk
+                                </label>
+                                <select class="form-select @error('rujukan_id') is-invalid @enderror" id="selectDefault"
+                                    name="rujukan_id" required>
+                                    <option>Open this select</option>
+                                    @foreach ($rujukan as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('rujukan_id')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6 col-12">
+                            <div class="mb-1">
+                                <label class="form-label" for="helpInputTop">
+                                    Payment
+                                </label>
+                                <select class="form-select @error('payment') is-invalid @enderror" id="selectDefault"
+                                    name="payment" onchange="enableBrand(this)" required>
+                                    <option selected>Open this select</option>
+                                    <option value="Cash">Cash</option>
+                                    <option value="Transfer">Transfer</option>
+                                </select>
+                                @error('payment')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-xl-12 col-md-12 col-12 d-none" id="carbrand">
+                            <div class="mb-1">
+                                <label class="form-label" for="select2-basic">
+                                    Nama Rekening Penerima
+                                </label>
+                                <select class="select2 form-select" id="select2-basic" name="norek_id">
+                                    <option></option>
+                                    @foreach ($norek as $item)
+                                    <option value="{{ $item->id }}">
+                                        {{ $item->no_rekening }} &nbsp; A/N &nbsp; {{ $item->nama_penerima }} &nbsp;
+                                        ( {{ $item->bank->nama_bank }} )
+                                    </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6 col-md-6 col-12 d-none" id="t1">
+                            <div class="mb-1">
+                                <label class="form-label" for="basicInput">
+                                    No. Project
+                                </label>
+                                <input type="text" class="form-control" id="basicInput" name="no_project"
+                                    placeholder="Enter" autofocus />
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-6 col-12 d-none" id="t2">
+                            <div class="mb-1">
+                                <label class="form-label" for="basicInput">
+                                    Jumlah Peserta
+                                </label>
+                                <input type="number" class="form-control" id="basicInput" name="j_peserta"
+                                    placeholder="Enter" autofocus />
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-6 col-12 d-none" id="t3">
+                            <div class="mb-1">
+                                <label class="form-label" for="helpInputTop">
+                                    Jumlah Trainer / Asesor
+                                </label>
+                                <input type="number" class="form-control" id="basicInput" name="j_traine_asesor"
+                                    placeholder="Enter" autofocus />
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-6 col-12 d-none" id="t4">
+                            <div class="mb-1">
+                                <label class="form-label" for="basicInput">
+                                    Jumlah Assist
+                                </label>
+                                <input type="number" class="form-control" id="basicInput" name="j_assist"
+                                    placeholder="Enter" autofocus />
+                            </div>
+                        </div>
+                    </div>
                     <input type="hidden" name="departement_id" value="{{ Auth::user()->departement_id }}">
-                    <div class="col-xl-4 col-md-6 col-12">
-                        <div class="mb-1">
-                            <label class="form-label" for="basicInput">
-                                Dari
-                            </label>
-                            <input type="text" class="form-control" id="basicInput" name="from_id" placeholder="Enter"
-                                required value="{{ Auth::user()->name }}" readonly />
-                        </div>
-                    </div>
-
-                    <div class="col-xl-4 col-md-6 col-12">
-                        <div class="mb-1">
-                            <label class="form-label" for="basicInput">
-                                Kategori
-                                Pengajuan
-                            </label>
-                            <select class="form-select @error('kpengajuan_id') is-invalid @enderror" id="selectDefault"
-                                name="kpengajuan_id" required>
-                                <option selected>Open this select</option>
-                                @foreach ($kpengajuan as $item)
-                                <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('kpengajuan_id')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="col-xl-4 col-md-6 col-12">
-                        <div class="mb-1">
-                            <label class="form-label" for="basicInput">
-                                Keperluan
-                            </label>
-                            <select class="form-select @error('keperluan_id') is-invalid @enderror" id="selectDefault"
-                                name="keperluan_id" onchange="enableBrand2(this)" required>
-                                <option selected>Open this select</option>
-                                @foreach ($keperluan as $item)
-                                <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('keperluan_id')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                    </div>
-
-
-                    <div class="col-xl-4 col-md-6 col-12">
-                        <div class="mb-1">
-                            <label class="form-label" for="basicInput">
-                                Tanggal
-                                Kebutuhan
-                            </label>
-                            <input type="date" class="form-control" id="basicInput" placeholder="Enter"
-                                name="tanggal_kebutuhan" required />
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-12">
-                        <div class="mb-1">
-                            <label class="form-label" for="helpInputTop">
-                                Ditujukan Untuk
-                            </label>
-                            <select class="form-select @error('rujukan_id') is-invalid @enderror" id="selectDefault"
-                                name="rujukan_id" required>
-                                <option>Open this select</option>
-                                @foreach ($rujukan as $item)
-                                <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('rujukan_id')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-12">
-                        <div class="mb-1">
-                            <label class="form-label" for="helpInputTop">
-                                Payment
-                            </label>
-                            <select class="form-select @error('payment') is-invalid @enderror" id="selectDefault"
-                                name="payment" onchange="enableBrand(this)" required>
-                                <option selected>Open this select</option>
-                                <option value="Cash">Cash</option>
-                                <option value="Transfer">Transfer</option>
-                            </select>
-                            @error('payment')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-xl-12 col-md-12 col-12 d-none" id="carbrand">
-                        <div class="mb-1">
-                            <label class="form-label" for="select2-basic">
-                                Nama Rekening Penerima
-                            </label>
-                            <select class="select2 form-select" id="select2-basic" name="norek_id">
-                                <option></option>
-                                @foreach ($norek as $item)
-                                <option value="{{ $item->id }}">
-                                    {{ $item->no_rekening }} &nbsp; A/N &nbsp; {{ $item->nama_penerima }} &nbsp;
-                                    ( {{ $item->bank->nama_bank }} )
-                                </option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-6 col-md-6 col-12 d-none" id="t1">
-                        <div class="mb-1">
-                            <label class="form-label" for="basicInput">
-                                No. Project
-                            </label>
-                            <input type="text" class="form-control" id="basicInput" name="no_project"
-                                placeholder="Enter" autofocus />
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-md-6 col-12 d-none" id="t2">
-                        <div class="mb-1">
-                            <label class="form-label" for="basicInput">
-                                Jumlah Peserta
-                            </label>
-                            <input type="number" class="form-control" id="basicInput" name="j_peserta"
-                                placeholder="Enter" autofocus />
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-md-6 col-12 d-none" id="t3">
-                        <div class="mb-1">
-                            <label class="form-label" for="helpInputTop">
-                                Jumlah Trainer / Asesor
-                            </label>
-                            <input type="number" class="form-control" id="basicInput" name="j_traine_asesor"
-                                placeholder="Enter" autofocus />
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-md-6 col-12 d-none" id="t4">
-                        <div class="mb-1">
-                            <label class="form-label" for="basicInput">
-                                Jumlah Assist
-                            </label>
-                            <input type="number" class="form-control" id="basicInput" name="j_assist"
-                                placeholder="Enter" autofocus />
-                        </div>
-                    </div>
 
                     <div class="col-xl-12 col-md-12 col-12">
                         <div class="accordion mt-3" id="accordionExample">
@@ -850,20 +854,17 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-12 text-center">
-                        <button type="reset" class="btn btn-label-secondary me-sm-3 me-1" data-bs-dismiss="modal"
-                            aria-label="Close">
-                            Cancel
-                        </button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!--/ Edit User Modal -->
+</form>
 
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 

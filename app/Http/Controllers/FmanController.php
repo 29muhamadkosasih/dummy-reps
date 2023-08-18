@@ -299,7 +299,7 @@ class FmanController extends Controller
         $departement = Departement::all();
         $kpengajuan = Kpengajuan::all();
         $keperluan = Keperluan::all();
-        $rujukan = Rujukan::all();
+        $rujukan = Rujukan::where('id', '>', '2')->get();
         $norek = NoRek::get();
 
         return view('pages.f-man.edit', [
