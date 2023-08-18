@@ -80,7 +80,45 @@
                     </div>
                     @switch($edit)
                     @case($edit->payment == 'Transfer')
-                    <div class="col-xl-12 col-md-12 col-12 m-2">
+
+                    <div class="row g-0">
+                        <div class="col-md p-4">
+                            <div class="cardMaster border p-3 rounded ">
+                                <div class="d-flex justify-content-between flex-sm-row flex-column">
+                                    <div class="card-information mb-4">
+                                        <h6 class="mb-2 pt-2">Transfer</h6>
+                                        <span class="card-number">
+                                            {{ $edit->norek->no_rekening }} &nbsp; A/N &nbsp; {{
+                                            $edit->norek->nama_penerima }} &nbsp;
+                                            ( {{ $edit->norek->bank->nama_bank }} )
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md p-4">
+                            <div class="cardMaster border p-3 rounded">
+                                <div class="d-flex justify-content-between flex-sm-row flex-column">
+                                    <div class="card-information">
+                                        <h6 class="mb-2 pt-1">Biaya Admin</h6>
+                                        <div class="form-check mt-1">
+                                            <input name="b_admin" class="form-check-input" type="radio" value="0"
+                                                id="defaultRadio1">
+                                            <label class="form-check-label" for="defaultRadio1"><span
+                                                    class="badge bg-success">Free</span> </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input name="b_admin" class="form-check-input" type="radio" value="6500"
+                                                id="defaultRadio2" checked="">
+                                            <label class="form-check-label" for="defaultRadio2"> Rp. 6.500 </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- <div class="col-xl-12 col-md-12 col-12 m-2">
                         <label class="form-label" for="helpInputTop">Biaya Admin</label>
                         <div class="form-check mt-1">
                             <input name="b_admin" class="form-check-input" type="radio" value="0" id="defaultRadio1">
@@ -92,7 +130,7 @@
                                 checked="">
                             <label class="form-check-label" for="defaultRadio2"> Rp. 6.500 </label>
                         </div>
-                    </div>
+                    </div> --}}
                     @break
                     @default
                     @endswitch

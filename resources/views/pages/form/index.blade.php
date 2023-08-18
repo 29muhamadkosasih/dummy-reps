@@ -56,7 +56,7 @@
                                 {{ $data->payment }}
                             </td>
                             <td>
-                                {{ $data->tanggal_kebutuhan }}
+                                {{ \Carbon\Carbon::parse($data->tanggal_kebutuhan)->format('d-m-Y')}}
                             </td>
                             <td>
                                 @switch($data)

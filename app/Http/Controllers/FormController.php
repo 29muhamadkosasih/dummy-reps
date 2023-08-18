@@ -374,7 +374,7 @@ class FormController extends Controller
         if ($data2 == NULL) {
             $jumlah_total_akhir = $jumlah_akhir + 0;
         } else {
-            $jumlah_total_akhir = $jumlah_akhir + 6500;
+            $jumlah_total_akhir = $jumlah_akhir + 0;
         };
         // dd($jumlah_total_akhir);
         $documentNumber = $username;

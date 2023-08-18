@@ -11,7 +11,7 @@
         <!-- Search -->
         <div class="navbar-nav align-items-center">
             <div class="nav-item navbar-search-wrapper mb-0">
-                <h4 class="mt-3" style="color: white">TRANSAFE FINANCE MANAGEMENT SYSTEM</h4>
+                <h4 class="mt-3" style="color: white">REQUEST FUND</h4>
             </div>
         </div>
         <!-- /Search -->
